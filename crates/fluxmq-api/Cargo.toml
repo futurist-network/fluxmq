@@ -20,7 +20,7 @@ fluxmq-backup.workspace = true
 fluxmq-scheduler.workspace = true
 fluxmq-tls = { workspace = true, features = ["server"] }
 axum.workspace = true
-base64 = "0.22"
+base64 = "0.23"
 crc32fast = "1"
 bytes.workspace = true
 futures.workspace = true
