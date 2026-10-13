@@ -86,5 +86,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           case "$GITHUB_REF_NAME" in *-*) pre=--prerelease ;; *) pre= ;; esac
+          # Release notes: the version's CHANGELOG.md section plus install commands.
+          version=${GITHUB_REF_NAME#v}
+          gh api "repos/$GITHUB_REPOSITORY/contents/CHANGELOG.md?ref=$GITHUB_REF_NAME" --jq .content \
+            | base64 -d | awk -v v="$version" '/^## /{p = ($0 == "## " v || index($0, "## " v " ") == 1); next} p' > notes.md
+          cat >> notes.md <<EOF
+
+          ## Install
+
+          \`\`\`sh
+          docker run -d -p 7420:7420 -p 7421:7421 -v fluxmq:/var/lib/fluxmq $IMAGE:$version
+          curl -fsSL https://raw.githubusercontent.com/$GITHUB_REPOSITORY/master/deploy/install.sh | sudo sh
+          \`\`\`
+          EOF
           gh release create "$GITHUB_REF_NAME" out/*.tar.gz out/*.sha256 \
-            --repo "$GITHUB_REPOSITORY" --generate-notes $pre
+            --repo "$GITHUB_REPOSITORY" --title "FluxMQ $version" --notes-file notes.md $pre

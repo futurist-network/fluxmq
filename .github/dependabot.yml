@@ -1,0 +1,19 @@
+# Weekly dependency updates, grouped into one pull request per ecosystem; security fixes come
+# as soon as they are published.
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule: { interval: weekly }
+    groups: { cargo: { patterns: ['*'] } }
+  - package-ecosystem: npm
+    directory: /ui
+    schedule: { interval: weekly }
+    groups: { npm: { patterns: ['*'] } }
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly }
+    groups: { actions: { patterns: ['*'] } }
+  - package-ecosystem: docker
+    directory: /
+    schedule: { interval: weekly }
