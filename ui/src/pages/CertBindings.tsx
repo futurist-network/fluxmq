@@ -197,7 +197,7 @@ export function CertBindingsSection() {
         </GateButton>
       </div>
       {!notSupported && gate.allowed && !forbidden && (
-        <p className="faint cb-intro">
+        <p className="faint cb-intro explain">
           {t('security.cb.intro')}
         </p>
       )}

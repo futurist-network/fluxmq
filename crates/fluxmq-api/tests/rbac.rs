@@ -363,7 +363,7 @@ async fn open_mode_first_token_enforces() {
         (Some("open"), Some("anonymous"))
     );
 
-    // CORS is permissive in open mode.
+    // CORS is permissive in open mode, for loopback origins only.
     let cors_req = || {
         Request::builder()
             .uri("/api/channels")
@@ -373,6 +373,30 @@ async fn open_mode_first_token_enforces() {
     };
     let (_, headers, _) = h.raw(cors_req()).await;
     assert!(headers.contains_key(header::ACCESS_CONTROL_ALLOW_ORIGIN));
+
+    // A foreign site can't drive an open broker from a browser; same-origin and curl can.
+    let origin_req = |method: &str, origin: Option<&str>| {
+        let mut b = Request::builder()
+            .method(method)
+            .uri("/api/auth/tokens")
+            .header(header::HOST, "broker.lan:7421")
+            .header(header::CONTENT_TYPE, "application/json");
+        if let Some(o) = origin {
+            b = b.header(header::ORIGIN, o);
+        }
+        b.body(Body::from(r#"{"name":"x","role":"viewer"}"#))
+            .unwrap()
+    };
+    let (s, headers, _) = h
+        .raw(origin_req("POST", Some("https://evil.example")))
+        .await;
+    assert_eq!(s, StatusCode::FORBIDDEN);
+    assert!(!headers.contains_key(header::ACCESS_CONTROL_ALLOW_ORIGIN));
+    for origin in [Some("http://broker.lan:7421"), None] {
+        // Reaches the handler (400: the first token must be admin).
+        let (s, _, _) = h.raw(origin_req("POST", origin)).await;
+        assert_eq!(s, StatusCode::BAD_REQUEST, "{origin:?}");
+    }
 
     // The first token must be admin; reserved names are refused.
     for body in [

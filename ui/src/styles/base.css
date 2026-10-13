@@ -144,3 +144,10 @@ kbd,
     scroll-behavior: auto !important;
   }
 }
+
+/* Settings → Appearance → Descriptions: page descriptions and explanatory blocks are hidden
+   unless turned on. */
+html:not([data-hints='on']) .page-head .titles > p,
+html:not([data-hints='on']) .explain {
+  display: none;
+}

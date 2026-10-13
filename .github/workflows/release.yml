@@ -95,7 +95,8 @@ jobs:
           ## Install
 
           \`\`\`sh
-          docker run -d -p 7420:7420 -p 7421:7421 -v fluxmq:/var/lib/fluxmq $IMAGE:$version
+          docker run -d --name fluxmq -p 7420:7420 -p 7421:7421 -v fluxmq:/var/lib/fluxmq $IMAGE:$version
+          docker exec fluxmq cat /var/lib/fluxmq/admin-token   # admin token, generated on first start
           curl -fsSL https://raw.githubusercontent.com/$GITHUB_REPOSITORY/master/deploy/install.sh | sudo sh
           \`\`\`
           EOF

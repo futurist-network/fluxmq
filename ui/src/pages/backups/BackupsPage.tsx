@@ -676,7 +676,7 @@ export default function BackupsPage() {
       ) : (
         <>
           {!status.data!.configured && !config.data && (
-            <section className="card bk-intro">
+            <section className="card bk-intro explain">
               <div className="bk-intro-icons" aria-hidden>
                 <Cloud size={18} />
                 <HardDrive size={18} />

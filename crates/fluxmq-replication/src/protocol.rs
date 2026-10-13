@@ -25,6 +25,8 @@ use tokio::io::{AsyncRead, AsyncReadExt, AsyncWrite, AsyncWriteExt};
 pub const PROTOCOL_VERSION: u16 = 1;
 /// Largest accepted frame body (fetch_max_bytes is capped below this).
 pub const MAX_FRAME_LEN: usize = 128 * 1024 * 1024;
+/// Largest accepted `Hello` (read before the peer is authenticated).
+pub const MAX_HELLO_LEN: usize = 64 * 1024;
 const FIXED: usize = 12;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -202,6 +204,14 @@ pub async fn write_frame<W: AsyncWrite + Unpin, T: Serialize>(
 pub async fn read_frame<R: AsyncRead + Unpin, T: for<'a> Deserialize<'a>>(
     r: &mut R,
 ) -> Result<Option<(u64, T, Bytes)>, FrameError> {
+    read_frame_max(r, MAX_FRAME_LEN).await
+}
+
+/// [`read_frame`] with a smaller size limit (e.g. [`MAX_HELLO_LEN`] before authentication).
+pub async fn read_frame_max<R: AsyncRead + Unpin, T: for<'a> Deserialize<'a>>(
+    r: &mut R,
+    max: usize,
+) -> Result<Option<(u64, T, Bytes)>, FrameError> {
     let mut len = [0u8; 4];
     match r.read_exact(&mut len).await {
         Ok(_) => {}
@@ -209,7 +219,7 @@ pub async fn read_frame<R: AsyncRead + Unpin, T: for<'a> Deserialize<'a>>(
         Err(e) => return Err(e.into()),
     }
     let body = u32::from_be_bytes(len) as usize;
-    if body > MAX_FRAME_LEN {
+    if body > max {
         return Err(FrameError::TooLarge(body));
     }
     if body < FIXED {
@@ -266,6 +276,17 @@ mod tests {
         let (id, _, payload) = read_frame::<_, Response>(&mut b).await.unwrap().unwrap();
         assert_eq!((id, payload.len()), (7, 0));
         assert!(read_frame::<_, Response>(&mut b).await.unwrap().is_none());
+    }
+
+    #[tokio::test]
+    async fn hello_limit_refuses_large_frames_before_reading_them() {
+        // Only the length prefix: the frame is refused before its body is read or allocated.
+        let (mut a, mut b) = tokio::io::duplex(64);
+        a.write_all(&((MAX_HELLO_LEN + 1) as u32).to_be_bytes())
+            .await
+            .unwrap();
+        let r = read_frame_max::<_, Response>(&mut b, MAX_HELLO_LEN).await;
+        assert!(matches!(r, Err(FrameError::TooLarge(_))));
     }
 
     #[tokio::test]

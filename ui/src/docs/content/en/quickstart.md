@@ -19,6 +19,7 @@ summary: Install FluxMQ with one command, or run it from source or in Docker; ch
 ```bash
 # Docker (amd64 / arm64)
 docker run -d --name fluxmq -p 7420:7420 -p 7421:7421 -v fluxmq:/var/lib/fluxmq ghcr.io/futurist-network/fluxmq
+docker exec fluxmq cat /var/lib/fluxmq/admin-token   # admin token, generated on first start
 
 # Linux server with systemd (x86_64 / aarch64, glibc 2.36+): binary, /etc/fluxmq/fluxmq.toml,
 # a generated admin token (sudo cat /etc/fluxmq/admin-token) and the fluxmq service

@@ -59,6 +59,8 @@ x-fluxmq-cluster-env: &fluxmq-cluster-env
   FLUXMQ_COMMIT_PIPELINE: ${FLUXMQ_COMMIT_PIPELINE:-}
   FLUXMQ_COMMIT_PIPELINE_DEPTH: ${FLUXMQ_COMMIT_PIPELINE_DEPTH:-}
   FLUXMQ_ADMIN_TOKEN: ${FLUXMQ_ADMIN_TOKEN:-}
+  # Open auth unless FLUXMQ_ADMIN_TOKEN is set: a local stack, ports bound to 127.0.0.1.
+  FLUXMQ_AUTH: ${FLUXMQ_AUTH:-open}
   FLUXMQ_LOG: ${FLUXMQ_LOG:-info}
   # TLS record layer (fast | ktls | classic; empty = default fast, the userspace record layer;
   # ktls = kernel TLS when the host kernel has the `tls` module, else fast).
@@ -167,6 +169,7 @@ services:
       FLUXMQ_COMMIT_PIPELINE: ${FLUXMQ_COMMIT_PIPELINE:-}
       FLUXMQ_COMMIT_PIPELINE_DEPTH: ${FLUXMQ_COMMIT_PIPELINE_DEPTH:-}
       FLUXMQ_ADMIN_TOKEN: ${FLUXMQ_ADMIN_TOKEN:-}
+      FLUXMQ_AUTH: ${FLUXMQ_AUTH:-open}
       FLUXMQ_LOG: ${FLUXMQ_LOG:-info}
       FLUXMQ_TLS_IMPL: ${FLUXMQ_TLS_IMPL:-}
     volumes:

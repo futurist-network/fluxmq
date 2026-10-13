@@ -103,7 +103,7 @@ export function PullFeedCard() {
         <span className="card-sub">{t('notifications.feed.sub')}</span>
       </div>
       <div className="card-body feed-grid">
-        <div className="feed-explain">
+        <div className="feed-explain explain">
           <p>
             {t.rich('notifications.feed.explain', {
               channel: (

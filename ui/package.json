@@ -1,7 +1,7 @@
 {
   "name": "fluxmq-ui",
   "private": true,
-  "version": "0.11.0",
+  "version": "0.11.1",
   "type": "module",
   "packageManager": "pnpm@9.2.0",
   "engines": {

@@ -1299,7 +1299,11 @@ impl Group {
 
     pub fn nack(&self, ch: &Channel, delivery_id: u64, reason: &str, retry: bool) -> Result<()> {
         let now_ms = now_ms();
-        let reason = if reason.is_empty() { "unknown" } else { reason };
+        let reason = if reason.is_empty() {
+            "unknown"
+        } else {
+            truncate_str(reason, MAX_NACK_REASON_LEN)
+        };
         let outcome = AttemptOutcome::Nacked {
             reason: reason.to_string(),
         };
@@ -2693,9 +2697,35 @@ fn record_delivery_latency(ch: &Channel, ts_ms: &[u64]) {
     }
 }
 
+/// Longest nack reason kept (attempt history, `last_error`, dead letters); longer ones are cut.
+pub const MAX_NACK_REASON_LEN: usize = 1024;
+
+/// `s` cut to at most `max` bytes on a char boundary.
+pub fn truncate_str(s: &str, max: usize) -> &str {
+    if s.len() <= max {
+        return s;
+    }
+    let mut end = max;
+    while !s.is_char_boundary(end) {
+        end -= 1;
+    }
+    &s[..end]
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn truncate_str_cuts_on_char_boundaries() {
+        assert_eq!(truncate_str("abc", 5), "abc");
+        assert_eq!(truncate_str("abcdef", 3), "abc");
+        assert_eq!(truncate_str("ии", 3), "и");
+        assert_eq!(
+            truncate_str(&"x".repeat(5000), MAX_NACK_REASON_LEN).len(),
+            1024
+        );
+    }
 
     fn rec(consumer: &str, at: u64) -> AttemptRec {
         AttemptRec {

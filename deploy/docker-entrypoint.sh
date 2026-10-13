@@ -11,6 +11,10 @@
 #              --tls-client-ca when FLUXMQ_CLIENT_MTLS=on;
 #     fluxmq-bench / fluxmq-demo: the client CA (+ client certificate when FLUXMQ_CLIENT_MTLS=on).
 #   Explicitly set FLUXMQ_TLS_* / FLUXMQ_CLUSTER_TLS_* / FLUXMQ_CLIENT_TLS_* variables win.
+# * Admin token: without FLUXMQ_ADMIN_TOKEN / FLUXMQ_ADMIN_TOKEN_FILE / --admin-token* the
+#   broker would start in open mode (everyone is admin) on 0.0.0.0. Instead a random token is
+#   generated once into $FLUXMQ_DATA_DIR/admin-token and used. FLUXMQ_AUTH=open opts out
+#   (local evaluation stacks such as deploy/docker-compose.yml, which bind to 127.0.0.1).
 set -eu
 
 for var in $(env | sed -n 's/^\(FLUXMQ_[A-Z0-9_]*\)=$/\1/p'); do
@@ -39,6 +43,19 @@ esac
 
 if [ "$cmd" = "fluxmq" ] && { [ $# -le 1 ] || case "${2:-}" in -*) true ;; *) false ;; esac; }; then
   # Broker mode (no subcommand such as `tls`, `backup`, `restore`).
+  token_given=
+  for a in "$@"; do case "$a" in --admin-token*) token_given=1 ;; esac; done
+  if [ "${FLUXMQ_AUTH:-}" != "open" ] && [ -z "$token_given" ] \
+    && [ -z "${FLUXMQ_ADMIN_TOKEN:-}" ] && [ -z "${FLUXMQ_ADMIN_TOKEN_FILE:-}" ]; then
+    f="${FLUXMQ_DATA_DIR:-/var/lib/fluxmq}/admin-token"
+    if [ ! -s "$f" ]; then
+      (umask 077 && tr -dc 'A-Za-z0-9' </dev/urandom | head -c 43 >"$f")
+      echo "docker-entrypoint: generated an admin token in $f" >&2
+    fi
+    echo "docker-entrypoint: console login token: docker exec <container> cat $f" >&2
+    FLUXMQ_ADMIN_TOKEN_FILE="$f"
+    export FLUXMQ_ADMIN_TOKEN_FILE
+  fi
   if tls_on; then
     d="$FLUXMQ_TLS_DIR"
     wait_file "$d/server.pem"
@@ -69,4 +86,5 @@ elif [ "$cmd" = "fluxmq-bench" ] || [ "$cmd" = "fluxmq-demo" ]; then
   fi
 fi
 
+unset FLUXMQ_AUTH
 exec "$@"

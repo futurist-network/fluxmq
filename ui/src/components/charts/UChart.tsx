@@ -80,13 +80,23 @@ function tooltipPlugin(series: ChartSeries[], yFormat: (v: number) => string, se
         const x = u.data[0][idx];
         if (x == null) return;
         const d = new Date(x * 1000);
-        const rows = series
-          .map((s, i) => {
-            const v = u.data[i + 1]?.[idx];
-            return `<div class="uc-tip-row"><i style="background:${cssVar(s.color)}"></i><span>${s.label}</span><b>${v == null ? '—' : yFormat(v)}</b></div>`;
-          })
-          .join('');
-        tip.innerHTML = `<div class="uc-tip-time">${d.toLocaleDateString(getLocale(), { month: 'short', day: 'numeric' })} · ${fmtClock(x * 1000, seconds)}</div>${rows}`;
+        // Built with textContent: series labels may one day carry user data (channel names).
+        const el = (tag: string, cls: string, text = '') => {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          e.textContent = text;
+          return e;
+        };
+        const time = el('div', 'uc-tip-time', `${d.toLocaleDateString(getLocale(), { month: 'short', day: 'numeric' })} · ${fmtClock(x * 1000, seconds)}`);
+        const rows = series.map((s, i) => {
+          const v = u.data[i + 1]?.[idx];
+          const row = el('div', 'uc-tip-row');
+          const dot = el('i', '');
+          dot.style.background = cssVar(s.color);
+          row.append(dot, el('span', '', s.label), el('b', '', v == null ? '—' : yFormat(v)));
+          return row;
+        });
+        tip.replaceChildren(time, ...rows);
         tip.style.display = 'block';
         const w = tip.offsetWidth;
         const overW = u.over.clientWidth;

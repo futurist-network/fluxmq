@@ -61,6 +61,11 @@ open http://localhost:37421
 docker run --rm fluxmq:dev fluxmq --help        # any command works
 ```
 
+Without `FLUXMQ_ADMIN_TOKEN` / `FLUXMQ_ADMIN_TOKEN_FILE` the entrypoint generates an admin token
+once into `/var/lib/fluxmq/admin-token` (read it with `docker exec <container> cat /var/lib/fluxmq/admin-token`),
+so a container never starts with open auth by accident. `FLUXMQ_AUTH=open` turns that off; the compose
+stacks here set it, since their ports are bound to 127.0.0.1.
+
 ## Compose profiles
 
 ```sh

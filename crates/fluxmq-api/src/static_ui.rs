@@ -4,7 +4,9 @@
 use std::path::{Path, PathBuf};
 
 use axum::Router;
-use axum::http::{StatusCode, Uri, header};
+use axum::extract::Request;
+use axum::http::{HeaderValue, StatusCode, Uri, header};
+use axum::middleware::Next;
 use axum::response::{Html, IntoResponse, Response};
 use tower_http::services::{ServeDir, ServeFile};
 
@@ -51,12 +53,56 @@ const NOT_BUILT: &str = r#"<!doctype html>
 
 /// Adds the console as the router's fallback.
 pub fn attach<S: Clone + Send + Sync + 'static>(router: Router<S>, ui: &UiSource) -> Router<S> {
-    match ui {
-        UiSource::Off => router.fallback(|| async { StatusCode::NOT_FOUND }),
+    let router = match ui {
+        UiSource::Off => return router.fallback(|| async { StatusCode::NOT_FOUND }),
         UiSource::Embedded if Embedded::get("index.html").is_some() => router.fallback(embedded),
         UiSource::Embedded => router.fallback(not_built),
         UiSource::Dir(dir) => attach_dir(router, dir),
+    };
+    router.layer(axum::middleware::from_fn(console_headers))
+}
+
+/// Caching and hardening headers for console responses (API, WebSocket and cluster routes are
+/// left alone). Hashed `/assets/*` files never change; `index.html` (every client-side route)
+/// must be revalidated, or a browser keeps a cached page that points at the previous build's
+/// chunks after an upgrade. The console is never framed (clickjacking).
+async fn console_headers(req: Request, next: Next) -> Response {
+    let path = req.uri().path();
+    if ["/api/", "/ws", "/internal/"]
+        .iter()
+        .any(|p| path.starts_with(p))
+    {
+        return next.run(req).await;
     }
+    let asset = path.starts_with("/assets/");
+    let mut res = next.run(req).await;
+    // A missing hashed asset (a stale page asking for the previous build) is a 404, not the
+    // SPA fallback: HTML served as a script fails confusingly and must never be cached.
+    let html = res
+        .headers()
+        .get(header::CONTENT_TYPE)
+        .and_then(|v| v.to_str().ok())
+        .is_some_and(|v| v.starts_with("text/html"));
+    if asset && html {
+        res = StatusCode::NOT_FOUND.into_response();
+    }
+    let cache = if asset && res.status() == StatusCode::OK {
+        "public, max-age=31536000, immutable"
+    } else {
+        "no-cache"
+    };
+    let h = res.headers_mut();
+    h.insert(header::CACHE_CONTROL, HeaderValue::from_static(cache));
+    h.insert(header::X_FRAME_OPTIONS, HeaderValue::from_static("DENY"));
+    h.insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    h.insert(
+        header::REFERRER_POLICY,
+        HeaderValue::from_static("same-origin"),
+    );
+    res
 }
 
 fn attach_dir<S: Clone + Send + Sync + 'static>(router: Router<S>, dir: &Path) -> Router<S> {

@@ -393,8 +393,16 @@ impl Broker {
             config.created_at_ms = now_ms();
         }
         let _admin = self.inner.admin.lock();
-        if self.inner.channels.read().contains_key(&config.name) {
-            return Err(CoreError::ChannelExists(config.name));
+        // Case-insensitively: on a case-insensitive filesystem (macOS) `ORDERS` is the
+        // directory of a live `orders`, which the leftover cleanup below would delete.
+        if let Some(existing) = self
+            .inner
+            .channels
+            .read()
+            .keys()
+            .find(|n| n.eq_ignore_ascii_case(&config.name))
+        {
+            return Err(CoreError::ChannelExists(existing.clone()));
         }
         let dir = self.inner.channels_dir.join(&config.name);
         if dir.exists() {

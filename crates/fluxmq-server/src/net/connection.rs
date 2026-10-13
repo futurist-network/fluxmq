@@ -408,8 +408,11 @@ impl Connection {
     }
 
     async fn handle(&mut self, frame: ClientFrame) -> Result<(), Exit> {
-        let ClientFrame { req_id, body } = frame;
-        if let Err(err) = self.authorize(&body) {
+        let ClientFrame { req_id, mut body } = frame;
+        if let Err(err) = self
+            .authorize(&body)
+            .and_then(|()| limit_request(&mut body))
+        {
             if req_id == 0 {
                 return Ok(());
             }
@@ -839,6 +842,36 @@ async fn push_metadata_changes(
         {
             return;
         }
+    }
+}
+
+/// Most delivery ids (`Ack`) or ranges (`AckRanges`) in one request; the SDK sends at most 4096.
+const MAX_ACKS_PER_REQUEST: usize = 65_536;
+/// Longest `ReportStats.last_error` kept.
+const MAX_LAST_ERROR_LEN: usize = 1024;
+
+/// Refuses requests over the per-request limits and cuts free-text fields that the broker
+/// keeps in memory (a nack reason is cut by the core).
+fn limit_request(body: &mut ClientRequest) -> Result<(), WireError> {
+    let too_many = |n: usize| {
+        (n > MAX_ACKS_PER_REQUEST).then(|| {
+            WireError::new(
+                ErrorCode::BadRequest,
+                format!("{n} acks in one request (max {MAX_ACKS_PER_REQUEST})"),
+            )
+        })
+    };
+    match body {
+        ClientRequest::Ack { delivery_ids, .. } => too_many(delivery_ids.len()).map_or(Ok(()), Err),
+        ClientRequest::AckRanges { ranges, .. } => too_many(ranges.len()).map_or(Ok(()), Err),
+        ClientRequest::ReportStats(stats) => {
+            if let Some(e) = stats.last_error.as_mut() {
+                let n = fluxmq_core::truncate_str(e, MAX_LAST_ERROR_LEN).len();
+                e.truncate(n);
+            }
+            Ok(())
+        }
+        _ => Ok(()),
     }
 }
 

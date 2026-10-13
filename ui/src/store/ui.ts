@@ -1,6 +1,6 @@
 /** UI-only state: overlays, auth prompt, toasts. Kept apart from telemetry on purpose. */
 import { create } from 'zustand';
-import { getThemePref, resolveTheme, setTheme as persistTheme, systemTheme, type Theme, type ThemePref } from '../lib/settings';
+import { getHints, getThemePref, resolveTheme, setHints as persistHints, setTheme as persistTheme, systemTheme, type Theme, type ThemePref } from '../lib/settings';
 
 export interface Toast {
   id: number;
@@ -17,6 +17,9 @@ interface UiStore {
   theme: Theme;
   themePref: ThemePref;
   setTheme: (t: ThemePref) => void;
+  /** Show page descriptions and explanatory blocks. */
+  hints: boolean;
+  setHints: (on: boolean) => void;
   toasts: Toast[];
   setPaletteOpen: (v: boolean) => void;
   setCreateOpen: (v: boolean) => void;
@@ -38,6 +41,11 @@ export const useUi = create<UiStore>()((set, get) => ({
   setTheme: (themePref) => {
     persistTheme(themePref);
     set({ themePref, theme: resolveTheme(themePref) });
+  },
+  hints: typeof window === 'undefined' ? false : getHints(),
+  setHints: (hints) => {
+    persistHints(hints);
+    set({ hints });
   },
   toasts: [],
   setPaletteOpen: (paletteOpen) => set({ paletteOpen }),

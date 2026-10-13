@@ -136,7 +136,7 @@ export function OverviewTab({ name }: { name: string }) {
             <SkeletonRows rows={5} h={28} />
           ) : (
             <>
-              <p className="muted" style={{ fontSize: 13, marginBottom: 14 }}>
+              <p className="muted explain" style={{ fontSize: 13, marginBottom: 14 }}>
                 {t(`channels.semantics.${d.config.mode}`)}
               </p>
               <dl className="kv">

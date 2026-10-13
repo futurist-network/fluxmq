@@ -37,9 +37,7 @@ type HeaderData = {
   channels?: number;
   consumers?: number;
   groups?: number;
-  p99?: number;
-  ingress?: number;
-  acked?: number;
+  messages?: number;
   storage?: number;
   capacity?: number;
 };
@@ -56,9 +54,7 @@ function HealthHeader() {
           channels: o.channels,
           consumers: o.consumers,
           groups: o.consumer_groups,
-          p99: o.publish_latency.p99,
-          ingress: o.ingress_rate,
-          acked: o.ack_rate,
+          messages: o.messages_total,
           storage: o.storage_bytes,
           capacity: o.storage_capacity_bytes,
         }
@@ -81,9 +77,8 @@ function HealthHeader() {
     [t('common.nodes'), d.nodes, t('dashboard.stat.nodesUp')],
     [t('common.channels'), d.channels != null ? fmtCount(d.channels) : undefined],
     [t('common.consumers'), d.consumers != null ? fmtCount(d.consumers) : undefined, d.groups != null ? t('common.groupsCount', { count: d.groups }) : undefined],
-    [t('dashboard.stat.publishP99'), d.p99 != null ? fmtMs(d.p99) : undefined],
-    [t('dashboard.stat.published'), d.ingress != null ? fmtRate(d.ingress) : undefined],
-    [t('dashboard.stat.consumed'), d.acked != null ? fmtRate(d.acked) : undefined, t('dashboard.stat.acked'), t('dashboard.sumAllGroups')],
+    // Rates and latency live in the KPI cards below; the header shows inventory only.
+    [t('dashboard.stat.messages'), d.messages != null ? fmtCount(d.messages) : undefined, t('dashboard.stat.stored')],
     [t('dashboard.stat.storage'), d.storage != null ? fmtBytes(d.storage) : undefined, d.capacity ? t('dashboard.stat.ofCapacity', { capacity: fmtBytes(d.capacity) }) : undefined],
   ];
   return (
@@ -370,9 +365,9 @@ function LatencyCard() {
           liveKeys={[SK.p50, SK.p95, SK.p99]}
           range={range}
           series={[
-            { label: 'p50', color: '--series-1' },
-            { label: 'p95', color: '--series-2' },
-            { label: 'p99', color: '--series-3', dash: [4, 3] },
+            { label: 'p50', color: '--series-1', width: 1.5 },
+            { label: 'p95', color: '--series-2', width: 1.5 },
+            { label: 'p99', color: '--series-3', width: 2.25 },
           ]}
           height={248}
           yFormat={(v) => fmtMs(v)}

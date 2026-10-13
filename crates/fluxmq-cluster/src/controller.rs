@@ -707,6 +707,22 @@ async fn create_channel(rt: &Runtime, cfg: ChannelConfig) -> Result<ControllerOk
     if cfg.created_at_ms == 0 {
         cfg.created_at_ms = fluxmq_proto::now_ms();
     }
+    // Names differing only in case share a directory on case-insensitive filesystems.
+    if let Some(existing) = rt
+        .meta
+        .list(CHANNELS_PREFIX)
+        .into_iter()
+        .find_map(|(k, _)| {
+            let name = k.strip_prefix(CHANNELS_PREFIX)?;
+            name.eq_ignore_ascii_case(&cfg.name)
+                .then(|| name.to_string())
+        })
+    {
+        return Err(RpcError::new(
+            RpcErrorKind::AlreadyExists,
+            format!("channel '{existing}' already exists"),
+        ));
+    }
     let ckey = channel_key(&cfg.name);
     match cas_put(rt, &ckey, &cfg, 0).await {
         Ok(_) => {}

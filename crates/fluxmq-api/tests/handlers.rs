@@ -303,8 +303,54 @@ async fn dlq_and_history_validation() {
 
 #[tokio::test]
 async fn ui_placeholder_when_not_built() {
-    let h = harness(None).await;
+    // A UI directory without index.html (the embedded UI depends on whether ui/dist was built).
+    let mut h = harness(None).await;
+    let empty = tempfile::tempdir().unwrap();
+    let telemetry = TelemetryHub::start(h.broker.clone(), TelemetryConfig::default());
+    h.app = router(
+        AppState::new(h.broker.clone(), telemetry)
+            .with_ui(fluxmq_api::UiSource::Dir(empty.path().to_path_buf())),
+    );
     let (s, v) = h.call("GET", "/", None, None).await;
     assert_eq!(s, StatusCode::OK);
     assert!(v.as_str().unwrap().contains("pnpm build"));
+}
+
+#[tokio::test]
+async fn console_cache_and_frame_headers() {
+    let mut h = harness(None).await;
+    let dir = tempfile::tempdir().unwrap();
+    std::fs::create_dir(dir.path().join("assets")).unwrap();
+    std::fs::write(dir.path().join("index.html"), "<!doctype html>").unwrap();
+    std::fs::write(dir.path().join("assets/app-1a2b.js"), "x").unwrap();
+    let telemetry = TelemetryHub::start(h.broker.clone(), TelemetryConfig::default());
+    h.app = router(
+        AppState::new(h.broker.clone(), telemetry)
+            .with_ui(fluxmq_api::UiSource::Dir(dir.path().to_path_buf())),
+    );
+    let get = |uri: &str| {
+        let app = h.app.clone();
+        let req = axum::http::Request::builder()
+            .uri(uri)
+            .body(axum::body::Body::empty())
+            .unwrap();
+        async move { tower::ServiceExt::oneshot(app, req).await.unwrap() }
+    };
+    for uri in ["/", "/webhooks/new"] {
+        let r = get(uri).await;
+        assert_eq!(r.headers()["cache-control"], "no-cache", "{uri}");
+        assert_eq!(r.headers()["x-frame-options"], "DENY", "{uri}");
+    }
+    let r = get("/assets/app-1a2b.js").await;
+    assert!(
+        r.headers()["cache-control"]
+            .to_str()
+            .unwrap()
+            .contains("immutable")
+    );
+    let r = get("/assets/gone-0000.js").await;
+    assert_eq!(r.status(), axum::http::StatusCode::NOT_FOUND);
+    assert_eq!(r.headers()["cache-control"], "no-cache");
+    let r = get("/api/health").await;
+    assert!(r.headers().get("cache-control").is_none());
 }

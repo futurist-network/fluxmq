@@ -14,12 +14,12 @@ use bytes::Bytes;
 use fluxmq_core::{Broker, FetchError, FetchRequest, ReplicaHandle};
 use tokio::io::BufWriter;
 use tokio::net::TcpListener;
-use tokio::sync::{mpsc, watch};
+use tokio::sync::{OwnedSemaphorePermit, Semaphore, mpsc, watch};
 use tracing::{debug, warn};
 
 use crate::protocol::{
-    Capabilities, FetchExt, FetchReq, FetchResp, PROTOCOL_VERSION, ProgressReq, Request, Response,
-    read_frame, secret_eq, write_frame,
+    Capabilities, FetchExt, FetchReq, FetchResp, MAX_HELLO_LEN, PROTOCOL_VERSION, ProgressReq,
+    Request, Response, read_frame, read_frame_max, secret_eq, write_frame,
 };
 use crate::throttle::{Grant, MAX_THROTTLE_WAIT, Throttles};
 use crate::transport::Stream;
@@ -27,6 +27,8 @@ use crate::transport::Stream;
 /// Upper bound for a follower-requested long-poll.
 const MAX_WAIT_CAP: Duration = Duration::from_secs(5);
 const HANDSHAKE_TIMEOUT: Duration = Duration::from_secs(5);
+/// Connections allowed to sit in the (unauthenticated) handshake at once; more are closed.
+const MAX_PENDING_HANDSHAKES: usize = 64;
 
 pub(crate) struct ServerCtx {
     pub broker: Broker,
@@ -46,11 +48,16 @@ pub(crate) async fn accept_loop(
     ctx: Arc<ServerCtx>,
     mut shutdown: watch::Receiver<bool>,
 ) {
+    let pending = Arc::new(Semaphore::new(MAX_PENDING_HANDSHAKES));
     loop {
         tokio::select! {
             _ = shutdown.changed() => break,
             r = listener.accept() => match r {
                 Ok((stream, peer)) => {
+                    let Ok(permit) = pending.clone().try_acquire_owned() else {
+                        debug!(%peer, "too many pending replication handshakes, closing");
+                        continue;
+                    };
                     let ctx = ctx.clone();
                     let sd = shutdown.clone();
                     tokio::spawn(async move {
@@ -61,7 +68,7 @@ pub(crate) async fn accept_loop(
                                 return;
                             }
                         };
-                        if let Err(e) = serve_conn(stream, ctx, sd).await {
+                        if let Err(e) = serve_conn(stream, ctx, sd, permit).await {
                             debug!(%peer, error = %e, "replication connection ended");
                         }
                     });
@@ -79,55 +86,61 @@ async fn serve_conn(
     stream: Stream,
     ctx: Arc<ServerCtx>,
     mut shutdown: watch::Receiver<bool>,
+    handshake: OwnedSemaphorePermit,
 ) -> Result<(), crate::protocol::FrameError> {
     let peer_cn = stream.peer_cn().map(str::to_string);
     let (mut rd, wr) = stream.into_split();
     let mut wr = BufWriter::with_capacity(256 * 1024, wr);
-    let (peer, caps) =
-        match tokio::time::timeout(HANDSHAKE_TIMEOUT, read_frame::<_, Request>(&mut rd)).await {
-            Ok(Ok(Some((
-                _,
-                Request::Hello {
-                    node_id,
-                    version,
-                    secret,
-                },
-                caps,
-            )))) => {
-                let ok_secret = match (&ctx.secret, &secret) {
-                    (None, _) => true,
-                    (Some(want), Some(got)) => secret_eq(want, got),
-                    (Some(_), None) => false,
-                };
-                let reject = if version != PROTOCOL_VERSION {
-                    Some(format!(
-                        "unsupported replication protocol version {version}"
-                    ))
-                } else if !ok_secret {
-                    Some("bad cluster secret".to_string())
-                } else {
-                    None
-                };
-                if let Some(why) = reject {
-                    warn!(peer = %node_id, reason = %why, "rejected replication peer");
-                    write_frame(&mut wr, 0, &Response::HelloErr(why), &[]).await?;
-                    tokio::io::AsyncWriteExt::flush(&mut wr).await?;
-                    return Ok(());
-                }
-                write_frame(
-                    &mut wr,
-                    0,
-                    &Response::HelloOk {
-                        node_id: ctx.node_id.clone(),
-                    },
-                    &Capabilities::local().encode(),
-                )
-                .await?;
+    let (peer, caps) = match tokio::time::timeout(
+        HANDSHAKE_TIMEOUT,
+        read_frame_max::<_, Request>(&mut rd, MAX_HELLO_LEN),
+    )
+    .await
+    {
+        Ok(Ok(Some((
+            _,
+            Request::Hello {
+                node_id,
+                version,
+                secret,
+            },
+            caps,
+        )))) => {
+            let ok_secret = match (&ctx.secret, &secret) {
+                (None, _) => true,
+                (Some(want), Some(got)) => secret_eq(want, got),
+                (Some(_), None) => false,
+            };
+            let reject = if version != PROTOCOL_VERSION {
+                Some(format!(
+                    "unsupported replication protocol version {version}"
+                ))
+            } else if !ok_secret {
+                Some("bad cluster secret".to_string())
+            } else {
+                None
+            };
+            if let Some(why) = reject {
+                warn!(peer = %node_id, reason = %why, "rejected replication peer");
+                write_frame(&mut wr, 0, &Response::HelloErr(why), &[]).await?;
                 tokio::io::AsyncWriteExt::flush(&mut wr).await?;
-                (node_id, Capabilities::decode(&caps))
+                return Ok(());
             }
-            _ => return Ok(()),
-        };
+            write_frame(
+                &mut wr,
+                0,
+                &Response::HelloOk {
+                    node_id: ctx.node_id.clone(),
+                },
+                &Capabilities::local().encode(),
+            )
+            .await?;
+            tokio::io::AsyncWriteExt::flush(&mut wr).await?;
+            (node_id, Capabilities::decode(&caps))
+        }
+        _ => return Ok(()),
+    };
+    drop(handshake);
     if let Some(cn) = peer_cn.as_deref() {
         fluxmq_tls::cluster::warn_on_mismatch(&peer, Some(cn), "replication follower");
     }

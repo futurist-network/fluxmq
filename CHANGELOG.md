@@ -2,6 +2,38 @@
 
 What changed in each FluxMQ version. Install and upgrade instructions are in the [README](README.md#install).
 
+## 0.11.1 — 2026-10-13
+
+Security fixes. **Upgrade note:** the Docker image no longer starts with open auth. Without
+`FLUXMQ_ADMIN_TOKEN` / `FLUXMQ_ADMIN_TOKEN_FILE` it generates an admin token on first start; read it with
+`docker exec fluxmq cat /var/lib/fluxmq/admin-token`. `FLUXMQ_AUTH=open` restores the old behaviour.
+
+- **Open auth mode refuses foreign browser origins:** a web page on another site could otherwise drive a broker
+  without a token through the operator's browser. Cross-origin requests are allowed only from loopback origins
+  (the console dev server); CORS is permissive only for them.
+- **An empty `--admin-token-file` / `--cluster-secret-file` is an error** instead of silently starting with open
+  auth. Surrounding whitespace in these files is trimmed.
+- **Replication port:** the unauthenticated `Hello` is limited to 64 KiB (was 128 MiB), and at most 64 connections
+  may be in the handshake at once.
+- **Client protocol limits:** at most 65 536 delivery ids (or ranges) per ack; nack reasons and reported client
+  errors are cut to 1 KiB.
+- **Channel names are unique regardless of case.** On a case-insensitive filesystem (macOS) creating `ORDERS`
+  next to `orders` could delete the live channel's files.
+
+Console:
+
+- The dashboard header shows inventory (nodes, channels, consumers, stored messages, storage); rates and
+  latency are only in the cards below it, no longer twice.
+- Solid p99 line on the latency chart, more readable secondary text in both themes (WCAG AA in the light
+  theme), the alert badge no longer covers the bell.
+- Page descriptions and explanatory notes are hidden by default for a cleaner screen; Settings → Appearance →
+  Descriptions shows them. Form field hints always stay.
+- After a broker upgrade an open console tab reloads itself instead of failing to open a page; any other page
+  error shows a message with a reload button inside the console, not a blank error screen.
+- The console's `index.html` is served with `Cache-Control: no-cache` (a cached page pointed at the previous
+  build's files after an upgrade), hashed `/assets/*` as immutable, a missing asset is a 404 instead of the
+  page; `X-Frame-Options: DENY`, `nosniff` and `Referrer-Policy` on every console response.
+
 ## 0.11.0 — 2026-10-13
 
 - **Install in one command:** a multi-arch image (`ghcr.io/futurist-network/fluxmq`, amd64 and arm64) and

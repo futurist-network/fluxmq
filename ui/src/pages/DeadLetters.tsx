@@ -234,7 +234,7 @@ function EntriesPanel({
         </div>
         {why && total > 0 && (
           // What the reason means and what to fix; permanent errors get the danger tone.
-          <div className={`dlq-why ${permanent ? 'permanent' : ''}`} role="note">
+          <div className={`dlq-why ${permanent ? 'permanent' : 'explain'}`} role="note">
             {permanent ? <ShieldAlert size={15} /> : <Info size={15} />}
             <span>
               {why.hint}

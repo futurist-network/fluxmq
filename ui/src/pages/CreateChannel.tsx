@@ -288,7 +288,7 @@ function Wizard({ onClose }: { onClose: () => void }) {
               {t('recipes.section.all')} <ArrowUpRight size={12} aria-hidden />
             </Link>
           </div>
-          <p className="recipes-desc faint">{t('recipes.section.desc')}</p>
+          <p className="recipes-desc faint explain">{t('recipes.section.desc')}</p>
           <ul className="recipe-grid">
             {RECIPES.map((r) => {
               const Icon = RECIPE_ICON[r.id];

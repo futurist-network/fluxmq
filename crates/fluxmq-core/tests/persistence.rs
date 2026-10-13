@@ -451,10 +451,13 @@ async fn stats_sanity_and_validation() {
     assert!(b.create_channel(zero).is_err());
     b.create_channel(channel("s", ChannelMode::Stream, 3))
         .unwrap();
-    assert!(matches!(
-        b.create_channel(channel("s", ChannelMode::Stream, 3)),
-        Err(CoreError::ChannelExists(_))
-    ));
+    for name in ["s", "S"] {
+        // Case-insensitively: on macOS `S` would be the directory of `s`.
+        assert!(matches!(
+            b.create_channel(channel(name, ChannelMode::Stream, 3)),
+            Err(CoreError::ChannelExists(_))
+        ));
+    }
     assert!(matches!(
         b.subscribe("s", "g", info("w", 1), 0, StartFrom::Latest),
         Err(CoreError::InvalidArgument(_))

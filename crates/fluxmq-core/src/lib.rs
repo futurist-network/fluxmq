@@ -75,7 +75,8 @@ pub use channel::StickyPartitioner;
 pub use config::{BrokerConfig, FsyncPolicy};
 pub use error::{CoreError, Result};
 pub use group::{
-    MAX_RAW_FRAMES_PER_POLL, RawDelivery, SharedDelivery, SubMode, delivery_wire_size,
+    MAX_NACK_REASON_LEN, MAX_RAW_FRAMES_PER_POLL, RawDelivery, SharedDelivery, SubMode,
+    delivery_wire_size, truncate_str,
 };
 pub use live::{LiveReader, LiveWatch};
 pub use replica::{

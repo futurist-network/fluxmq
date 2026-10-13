@@ -62,6 +62,11 @@ export const shell = {
   'shell.notFound.title': 'Page not found',
   'shell.notFound.back': 'Back to dashboard',
   'shell.notFound.body': 'Press {keys} to jump to any channel, consumer group or page.',
+  'shell.error.title': 'Something went wrong',
+  'shell.error.body': 'This page failed to render. Reloading usually helps; if it keeps happening, report it with the error below.',
+  'shell.error.staleTitle': 'The console was updated',
+  'shell.error.staleBody': 'A newer version of the console is on the server. Reload to load it.',
+  'shell.error.reload': 'Reload',
 
   'shell.banner.contract': 'Server speaks telemetry contract v{server}; this console expects v1. Some panels may be wrong.',
   'shell.banner.lost': 'Connection lost.',

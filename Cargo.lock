@@ -924,7 +924,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-api"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "axum",
  "base64 0.22.1",
@@ -961,7 +961,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-auth"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "fluxmq-meta",
  "fluxmq-proto",
@@ -980,7 +980,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-backup"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "aes-gcm",
  "base64 0.22.1",
@@ -1005,7 +1005,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-client"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "anyhow",
  "bytes",
@@ -1029,7 +1029,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-cluster"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "axum",
  "crc32fast",
@@ -1054,7 +1054,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-core"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "bytes",
  "crc32fast",
@@ -1073,7 +1073,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-meta"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "parking_lot",
  "serde",
@@ -1086,7 +1086,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-notify"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "axum",
  "bytes",
@@ -1111,7 +1111,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-proto"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "bytes",
  "crc32c",
@@ -1126,7 +1126,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-replication"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "bytes",
  "crc32fast",
@@ -1145,7 +1145,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-router"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "base64 0.22.1",
  "bytes",
@@ -1164,7 +1164,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-scheduler"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "bytes",
  "fluxmq-cluster",
@@ -1179,7 +1179,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-server"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "anyhow",
  "axum",
@@ -1217,7 +1217,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-telemetry"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "fluxmq-cluster",
  "fluxmq-core",
@@ -1236,7 +1236,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-tls"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "axum",
  "fluxmq-proto",
@@ -1263,7 +1263,7 @@ dependencies = [
 
 [[package]]
 name = "fluxmq-webhooks"
-version = "0.11.0"
+version = "0.11.1"
 dependencies = [
  "axum",
  "base64 0.22.1",

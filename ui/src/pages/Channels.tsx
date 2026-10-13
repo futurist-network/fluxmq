@@ -46,7 +46,7 @@ export default function ChannelsPage() {
         <div className="titles">
           <h1 title={t('channels.titleHint')}>{t('channels.title')}</h1>
           <p>{t('channels.subtitle')}</p>
-          <ModesLegend className="modes-legend faint" />
+          <ModesLegend className="modes-legend faint explain" />
         </div>
         <div className="page-actions">
           <GateButton need="admin" className="btn btn-primary" onClick={() => setCreateOpen(true)}>

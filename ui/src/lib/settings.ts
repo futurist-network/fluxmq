@@ -2,6 +2,7 @@
 
 const TOKEN_KEY = 'fluxmq.adminToken';
 const THEME_KEY = 'fluxmq.theme';
+const HINTS_KEY = 'fluxmq.hints';
 const LANG_KEY = 'fluxmq.lang';
 
 export type Theme = 'dark' | 'light';
@@ -87,4 +88,14 @@ export function getStoredLang(): StoredLang {
 
 export function setStoredLang(lang: StoredLang): void {
   write(LANG_KEY, lang);
+}
+
+/** Page descriptions and explanatory blocks (`.explain`), hidden by default; form field hints always stay. */
+export function getHints(): boolean {
+  return read(HINTS_KEY) === 'on';
+}
+
+export function setHints(on: boolean): void {
+  write(HINTS_KEY, on ? 'on' : null);
+  document.documentElement.dataset.hints = on ? 'on' : 'off';
 }

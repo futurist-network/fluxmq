@@ -55,6 +55,8 @@ export default function SettingsPage() {
   const theme = useUi((s) => s.theme);
   const themePref = useUi((s) => s.themePref);
   const setTheme = useUi((s) => s.setTheme);
+  const hints = useUi((s) => s.hints);
+  const setHints = useUi((s) => s.setHints);
   const conn = useTelemetry((s) => s.conn);
   const [token, setTokenDraft] = useState(getToken() ?? '');
   const [status, setStatus] = useState<string | null>(null);
@@ -129,6 +131,20 @@ export default function SettingsPage() {
             ]}
           />
           {theme === 'dark' ? <Moon size={16} className="faint" /> : <Sun size={16} className="faint" />}
+        </div>
+        <div className="card-body settings-row">
+          <span className="muted" style={{ flex: 1 }}>
+            {t('settings.appearance.hintsHint')}
+          </span>
+          <Segmented<'on' | 'off'>
+            value={hints ? 'on' : 'off'}
+            onChange={(v) => setHints(v === 'on')}
+            label={t('settings.appearance.hints')}
+            options={[
+              { value: 'on', label: t('settings.appearance.hintsOn') },
+              { value: 'off', label: t('settings.appearance.hintsOff') },
+            ]}
+          />
         </div>
       </section>
 

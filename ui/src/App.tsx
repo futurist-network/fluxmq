@@ -1,5 +1,6 @@
-import { createBrowserRouter, Link, RouterProvider } from 'react-router';
-import { Compass } from 'lucide-react';
+import { createBrowserRouter, isRouteErrorResponse, Link, RouterProvider, useRouteError } from 'react-router';
+import { AlertTriangle, Compass } from 'lucide-react';
+import { isChunkLoadError, reloadForNewBuild } from './lib/chunkReload';
 import { Layout } from './shell/Layout';
 import Dashboard from './pages/dashboard/Dashboard';
 import ChannelsPage from './pages/Channels';
@@ -57,34 +58,73 @@ function NotFound() {
   );
 }
 
+/** Route errors: a stale lazy chunk reloads the page (new build); anything else gets a reload button. */
+function RouteError() {
+  const t = useT();
+  const err = useRouteError();
+  const stale = isChunkLoadError(err);
+  if (stale && reloadForNewBuild()) return null;
+  const detail = isRouteErrorResponse(err) ? `${err.status} ${err.statusText}` : err instanceof Error ? err.message : String(err);
+  return (
+    <div className="page">
+      <EmptyState
+        icon={<AlertTriangle size={20} />}
+        title={stale ? t('shell.error.staleTitle') : t('shell.error.title')}
+        actions={
+          <>
+            <button className="btn btn-primary" onClick={() => window.location.reload()}>
+              {t('shell.error.reload')}
+            </button>
+            <a href="/" className="btn">
+              {t('shell.notFound.back')}
+            </a>
+          </>
+        }
+      >
+        {stale ? t('shell.error.staleBody') : t('shell.error.body')}
+        <span className="mono faint" style={{ display: 'block', marginTop: 8, fontSize: 12, overflowWrap: 'anywhere' }}>
+          {detail}
+        </span>
+      </EmptyState>
+    </div>
+  );
+}
+
 const router = createBrowserRouter([
   {
     element: <Layout />,
+    errorElement: <RouteError />,
     children: [
-      { index: true, element: <Dashboard /> },
-      { path: 'channels', element: <ChannelsPage /> },
-      { path: 'channels/:name', element: <ChannelDetailPage /> },
-      { path: 'channels/:name/:tab', element: <ChannelDetailPage /> },
-      { path: 'consumers', element: <ConsumersPage /> },
-      { path: 'dlq', element: <DeadLettersPage /> },
-      { path: 'alerts', element: <AlertsPage /> },
-      { path: 'nodes', element: <NodesPage /> },
-      { path: 'settings', element: <SettingsPage /> },
-      { path: 'settings/tokens', element: <AccessTokensPage /> },
-      { path: 'settings/notifications', element: <Lazy><NotificationsPage /></Lazy> },
-      { path: 'settings/backups', element: <Lazy><BackupsPage /></Lazy> },
-      { path: 'settings/security', element: <Lazy><SecurityPage /></Lazy> },
-      { path: 'webhooks', element: <Lazy><WebhooksPage /></Lazy> },
-      { path: 'webhooks/new', element: <Lazy><WebhookEditorPage /></Lazy> },
-      { path: 'webhooks/:id', element: <Lazy><WebhookEditorPage /></Lazy> },
-      { path: 'scheduled', element: <Lazy><ScheduledPage /></Lazy> },
-      { path: 'live', element: <Lazy><LivePage /></Lazy> },
-      { path: 'docs', element: <Lazy><DocsPage /></Lazy> },
-      { path: 'docs/:slug', element: <Lazy><DocsPage /></Lazy> },
-      { path: 'routing', element: <RoutingPage /> },
-      { path: 'routing/new', element: <RouteEditorPage /> },
-      { path: 'routing/:id', element: <RouteEditorPage /> },
-      { path: '*', element: <NotFound /> },
+      {
+        // Pages fail inside the shell: sidebar and top bar stay usable.
+        errorElement: <RouteError />,
+        children: [
+          { index: true, element: <Dashboard /> },
+          { path: 'channels', element: <ChannelsPage /> },
+          { path: 'channels/:name', element: <ChannelDetailPage /> },
+          { path: 'channels/:name/:tab', element: <ChannelDetailPage /> },
+          { path: 'consumers', element: <ConsumersPage /> },
+          { path: 'dlq', element: <DeadLettersPage /> },
+          { path: 'alerts', element: <AlertsPage /> },
+          { path: 'nodes', element: <NodesPage /> },
+          { path: 'settings', element: <SettingsPage /> },
+          { path: 'settings/tokens', element: <AccessTokensPage /> },
+          { path: 'settings/notifications', element: <Lazy><NotificationsPage /></Lazy> },
+          { path: 'settings/backups', element: <Lazy><BackupsPage /></Lazy> },
+          { path: 'settings/security', element: <Lazy><SecurityPage /></Lazy> },
+          { path: 'webhooks', element: <Lazy><WebhooksPage /></Lazy> },
+          { path: 'webhooks/new', element: <Lazy><WebhookEditorPage /></Lazy> },
+          { path: 'webhooks/:id', element: <Lazy><WebhookEditorPage /></Lazy> },
+          { path: 'scheduled', element: <Lazy><ScheduledPage /></Lazy> },
+          { path: 'live', element: <Lazy><LivePage /></Lazy> },
+          { path: 'docs', element: <Lazy><DocsPage /></Lazy> },
+          { path: 'docs/:slug', element: <Lazy><DocsPage /></Lazy> },
+          { path: 'routing', element: <RoutingPage /> },
+          { path: 'routing/new', element: <RouteEditorPage /> },
+          { path: 'routing/:id', element: <RouteEditorPage /> },
+          { path: '*', element: <NotFound /> },
+        ],
+      },
     ],
   },
 ]);

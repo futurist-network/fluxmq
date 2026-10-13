@@ -19,6 +19,7 @@ summary: Установка FluxMQ одной командой, запуск и�
 ```bash
 # Docker (amd64 / arm64)
 docker run -d --name fluxmq -p 7420:7420 -p 7421:7421 -v fluxmq:/var/lib/fluxmq ghcr.io/futurist-network/fluxmq
+docker exec fluxmq cat /var/lib/fluxmq/admin-token   # токен администратора, создаётся при первом запуске
 
 # Linux-сервер с systemd (x86_64 / aarch64, glibc 2.36+): бинарник, /etc/fluxmq/fluxmq.toml,
 # сгенерированный токен администратора (sudo cat /etc/fluxmq/admin-token) и сервис fluxmq

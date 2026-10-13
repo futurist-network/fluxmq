@@ -229,7 +229,9 @@ impl Cli {
         Ok(Self::parse_from(args))
     }
 
-    /// Replaces `--admin-token-file` / `--cluster-secret-file` with the files' contents.
+    /// Replaces `--admin-token-file` / `--cluster-secret-file` with the files' contents
+    /// (surrounding whitespace trimmed). An empty file is an error: it would silently leave the
+    /// broker open (no admin token) or the cluster without a secret.
     pub fn read_secret_files(&mut self) -> anyhow::Result<()> {
         for (file, value) in [
             (self.admin_token_file.take(), &mut self.admin_token),
@@ -238,7 +240,9 @@ impl Cli {
             if let Some(path) = non_empty(file) {
                 let s = std::fs::read_to_string(&path)
                     .with_context(|| format!("reading {}", path.display()))?;
-                *value = Some(s.trim_end_matches(['\r', '\n']).to_string());
+                let s = s.trim();
+                anyhow::ensure!(!s.is_empty(), "{} is empty", path.display());
+                *value = Some(s.to_string());
             }
         }
         Ok(())
@@ -867,6 +871,9 @@ mod tests {
         let mut missing =
             Cli::try_parse_from(["fluxmq", "--cluster-secret-file", "/nonexistent"]).unwrap();
         assert!(missing.read_secret_files().is_err());
+        std::fs::write(&file, " \n").unwrap();
+        let mut empty = Cli::try_parse_from(["fluxmq", "--admin-token-file", f]).unwrap();
+        assert!(empty.read_secret_files().is_err());
     }
 
     #[test]
