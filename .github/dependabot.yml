@@ -1,19 +1,20 @@
-# Weekly dependency updates, grouped into one pull request per ecosystem; security fixes come
-# as soon as they are published.
+# Weekly dependency updates. Minor and patch versions come grouped into one pull request per
+# ecosystem; a major version (breaking changes) comes as its own pull request, so one
+# incompatible package doesn't block all the others. Security fixes come as soon as published.
 version: 2
 updates:
   - package-ecosystem: cargo
     directory: /
     schedule: { interval: weekly }
-    groups: { cargo: { patterns: ['*'] } }
+    groups: { cargo: { patterns: ['*'], update-types: [minor, patch] } }
   - package-ecosystem: npm
     directory: /ui
     schedule: { interval: weekly }
-    groups: { npm: { patterns: ['*'] } }
+    groups: { npm: { patterns: ['*'], update-types: [minor, patch] } }
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: weekly }
-    groups: { actions: { patterns: ['*'] } }
+    groups: { actions: { patterns: ['*'], update-types: [minor, patch] } }
   - package-ecosystem: docker
     directory: /
     schedule: { interval: weekly }
