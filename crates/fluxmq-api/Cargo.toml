@@ -45,3 +45,5 @@ profiling = ["dep:pprof"]
 http-body-util = "0.1"
 tempfile.workspace = true
 tower = { version = "0.5", features = ["util"] }
+# `#[tokio::test(start_paused = true)]` in the live-gateway rate limiter tests.
+tokio = { workspace = true, features = ["test-util"] }

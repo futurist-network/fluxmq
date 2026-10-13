@@ -2,7 +2,7 @@
 title: Быстрый старт
 group: start
 order: 3
-summary: Запуск FluxMQ локально из исходников или в Docker, проверка и демо-нагрузка за пару минут.
+summary: Установка FluxMQ одной командой, запуск из исходников или в Docker; проверка и демо-нагрузка за пару минут.
 ---
 
 ## Что нужно {#requirements}
@@ -14,12 +14,25 @@ summary: Запуск FluxMQ локально из исходников или �
 | macOS или Linux | — | |
 | Docker | любой свежий | если запускаете образ вместо сборки |
 
+## Быстрее всего: готовый релиз {#install}
+
+```bash
+# Docker (amd64 / arm64)
+docker run -d --name fluxmq -p 7420:7420 -p 7421:7421 -v fluxmq:/var/lib/fluxmq ghcr.io/futurist-network/fluxmq
+
+# Linux-сервер с systemd (x86_64 / aarch64, glibc 2.36+): бинарник, /etc/fluxmq/fluxmq.toml,
+# сгенерированный токен администратора (sudo cat /etc/fluxmq/admin-token) и сервис fluxmq
+curl -fsSL https://raw.githubusercontent.com/futurist-network/fluxmq/master/deploy/install.sh | sudo sh
+```
+
+Консоль встроена в бинарник: откройте `http://localhost:7421`. Настройки — в `/etc/fluxmq/fluxmq.toml` (ключи — [имена флагов](/docs/ref-cli)); повторный запуск скрипта обновляет брокер и сохраняет конфиг и данные.
+
 ## Вариант 1. Из исходников (как в продакшене) {#from-source}
 
 Команды выполняются из корня репозитория.
 
 ```bash
-cd ui && pnpm install && pnpm build && cd ..        # консоль -> ui/dist
+cd ui && pnpm install && pnpm build && cd ..        # консоль -> ui/dist, встраивается в бинарник
 cargo build --release -p fluxmq-server -p fluxmq-client
 ./target/release/fluxmq --data-dir ./data          # брокер: TCP 7420, HTTP 7421
 ```
@@ -30,7 +43,7 @@ cargo build --release -p fluxmq-server -p fluxmq-client
 ./target/release/fluxmq-demo            # --speed 2 — вдвое больше трафика
 ```
 
-Откройте `http://localhost:7421`. Если консоль не собрана, по этому адресу будет страница-подсказка «UI is not built» — соберите её и проверьте `--ui-dir`.
+Откройте `http://localhost:7421`. Если бинарник собран раньше консоли, по этому адресу будет страница-подсказка «FluxMQ is running»: соберите консоль и пересоберите брокер (или передайте `--ui-dir ui/dist`).
 
 ## Вариант 2. Режим разработки одной командой {#dev}
 

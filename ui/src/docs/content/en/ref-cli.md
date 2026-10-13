@@ -5,18 +5,21 @@ order: 1
 summary: Every fluxmq start-up option (from crates/fluxmq-server/src/config.rs) — flag, environment variable, default — plus the backup, restore and tls subcommands.
 ---
 
-Every option is a flag or an environment variable; the flag wins. An empty variable (`FLUXMQ_TLS_CERT=`) counts as unset. The full list with descriptions: `fluxmq --help`.
+Every option is a flag, an environment variable or a key in the `--config` TOML file (the key is the flag name: `data-dir = "/var/lib/fluxmq"`). The flag wins over the variable, the variable over the file; an unknown key in the file is an error. An empty variable (`FLUXMQ_TLS_CERT=`) counts as unset. The full list with descriptions: `fluxmq --help`.
 
 ## General {#general}
 
 | Flag | Variable | Default | Description |
 |---|---|---|---|
+| `--config` | `FLUXMQ_CONFIG` | — | TOML file with any of these settings, keyed by flag name (example: `deploy/fluxmq.toml`) |
 | `--data-dir` | `FLUXMQ_DATA_DIR` | `./data` | data directory: messages, offsets, DLQ, audit log |
 | `--client-addr` | `FLUXMQ_CLIENT_ADDR` | `0.0.0.0:7420` | client protocol (TCP) listen address |
 | `--http-addr` | `FLUXMQ_HTTP_ADDR` | `0.0.0.0:7421` | HTTP listen address: REST, WebSocket telemetry, console |
 | `--cluster-name` | `FLUXMQ_CLUSTER_NAME` | `local` | cluster name shown in the console |
-| `--ui-dir` | `FLUXMQ_UI_DIR` | `./ui/dist` | directory of the built console |
+| `--ui` | `FLUXMQ_UI` | `on` | the web console on the HTTP port; `off` leaves only the API |
+| `--ui-dir` | `FLUXMQ_UI_DIR` | — | serve the console from this directory instead of the copy built into the binary |
 | `--admin-token` | `FLUXMQ_ADMIN_TOKEN` | — | bootstrap admin token; enforces auth on REST, WebSocket and the client protocol |
+| `--admin-token-file` | `FLUXMQ_ADMIN_TOKEN_FILE` | — | read the admin token from a file (Docker / Kubernetes secrets, systemd credentials) |
 | `--log` | `FLUXMQ_LOG` | `RUST_LOG`, then `info` | log filter, e.g. `info,fluxmq_core=debug` |
 | `--public-url` | `FLUXMQ_PUBLIC_URL` | — | public console URL (`https://mq.example.com`) for links in notifications |
 | `--webhooks-allow-private` | `FLUXMQ_WEBHOOKS_ALLOW_PRIVATE` | unset | `true`/`false`: let webhooks target loopback, private and link-local addresses. Unset — allowed in open mode, denied once auth is enforced |
@@ -67,6 +70,7 @@ Without `--peers` the broker is a single node.
 | `--replication-factor` | `FLUXMQ_REPLICATION_FACTOR` | `3` | replicas of new channels (capped at the live node count) |
 | `--min-isr` | `FLUXMQ_MIN_ISR` | `1` | minimum in-sync replicas to acknowledge a publish, otherwise `Overloaded` |
 | `--cluster-secret` | `FLUXMQ_CLUSTER_SECRET` | — | shared secret for node-to-node traffic; required with `--peers`, the same on every node |
+| `--cluster-secret-file` | `FLUXMQ_CLUSTER_SECRET_FILE` | — | read the cluster secret from a file |
 | `--auto-rebalance` | `FLUXMQ_AUTO_REBALANCE` | `full` | `off` / `repair` / `full` — the rebalancing mode while the cluster has no stored config; afterwards `PUT /api/cluster/rebalance/config` is the source of truth |
 
 ## TLS {#tls}

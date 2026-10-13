@@ -1,6 +1,6 @@
 # FluxMQ Roadmap
 
-Источники: UI-концепт (Cluster → Channels → Messages → Consumers → Problems), концепт realtime observability pipeline, мокап дашборда `img.png`.
+Источники: UI-концепт (Cluster → Channels → Messages → Consumers → Problems), концепт realtime observability pipeline, мокап дашборда [`dashboard-mockup.png`](design/dashboard-mockup.png).
 
 ## 1. Принципы
 
@@ -32,7 +32,7 @@
 6. **Routing preview «Matched last 24h»** — backtest правила по хранимым сообщениям.
 7. **Replay / Discard / Retry all** — auth, RBAC и audit log (в концепте отсутствуют — главный пробел).
 
-## 4. Замечания по мокапу (`img.png`)
+## 4. Замечания по мокапу (`dashboard-mockup.png`)
 
 - В мокапе есть режим **Fanout**, в тексте концепта — только Stream / Queue / Keyed. Набор режимов надо зафиксировать.
 - «NAT3-compatible» — вероятно, NATS. Совместимость с NATS — отдельная крупная задача, на старте не берём.

@@ -16,7 +16,6 @@ graphify-out/
 *.ndjson
 data/
 data-dev/
-img.png
 docs/
 scripts/
 bench/results/

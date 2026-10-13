@@ -10,7 +10,7 @@ summary: Common symptoms and their causes — start-up, auth, latency, clusters,
 | Symptom | Cause and fix |
 |---|---|
 | `Address already in use` | port 7420 or 7421 is taken (often by a second instance or `pnpm mock`). Find it with `lsof -i :7421`, or change `--http-addr` / `--client-addr` |
-| The console address shows "UI is not built" | the console isn't built: `cd ui && pnpm install && pnpm build`, then check `--ui-dir` |
+| The console address shows "FluxMQ is running" instead of the console | the binary was built without the console: `cd ui && pnpm install && pnpm build`, then rebuild the broker (or pass `--ui-dir ui/dist`); also check that `--ui` is not `off` |
 | A "Connection lost" banner | the broker is stopped or unreachable; the console reconnects by itself |
 | Write errors, "restart the broker" | the disk is full; free space and restart — the broker repairs its files at start |
 | `cargo` complains about the version | Rust 1.88+ is required: `rustup update stable` |

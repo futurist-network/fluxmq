@@ -2,7 +2,7 @@
 title: Quick start
 group: start
 order: 3
-summary: Run FluxMQ locally from source or in Docker, check it and start demo traffic in a couple of minutes.
+summary: Install FluxMQ with one command, or run it from source or in Docker; check it and start demo traffic in a couple of minutes.
 ---
 
 ## Requirements {#requirements}
@@ -14,12 +14,25 @@ summary: Run FluxMQ locally from source or in Docker, check it and start demo tr
 | macOS or Linux | — | |
 | Docker | any recent | if you run the image instead of building |
 
+## Fastest: a ready release {#install}
+
+```bash
+# Docker (amd64 / arm64)
+docker run -d --name fluxmq -p 7420:7420 -p 7421:7421 -v fluxmq:/var/lib/fluxmq ghcr.io/futurist-network/fluxmq
+
+# Linux server with systemd (x86_64 / aarch64, glibc 2.36+): binary, /etc/fluxmq/fluxmq.toml,
+# a generated admin token (sudo cat /etc/fluxmq/admin-token) and the fluxmq service
+curl -fsSL https://raw.githubusercontent.com/futurist-network/fluxmq/master/deploy/install.sh | sudo sh
+```
+
+The console is built into the binary: open `http://localhost:7421`. Settings live in `/etc/fluxmq/fluxmq.toml` (keys are the [flag names](/docs/ref-cli)); re-running the script upgrades and keeps the config and data.
+
 ## Option 1. From source (production-like) {#from-source}
 
 Run from the repository root.
 
 ```bash
-cd ui && pnpm install && pnpm build && cd ..        # console -> ui/dist
+cd ui && pnpm install && pnpm build && cd ..        # console -> ui/dist, built into the binary
 cargo build --release -p fluxmq-server -p fluxmq-client
 ./target/release/fluxmq --data-dir ./data          # broker: TCP 7420, HTTP 7421
 ```
@@ -30,7 +43,7 @@ In a second terminal, optionally, demo traffic that creates channels, load and r
 ./target/release/fluxmq-demo            # --speed 2 doubles the traffic
 ```
 
-Open `http://localhost:7421`. If the console isn't built, that address shows a "UI is not built" hint page — build it and check `--ui-dir`.
+Open `http://localhost:7421`. If the binary was built before the console, that address shows a "FluxMQ is running" hint page: build the console, then rebuild the broker (or pass `--ui-dir ui/dist`).
 
 ## Option 2. Development mode in one command {#dev}
 

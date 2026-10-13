@@ -5,18 +5,21 @@ order: 1
 summary: Все параметры запуска fluxmq (из crates/fluxmq-server/src/config.rs) — флаг, переменная окружения, значение по умолчанию — и подкоманды backup, restore, tls.
 ---
 
-Каждый параметр задаётся флагом или переменной окружения; флаг важнее переменной. Пустое значение переменной (`FLUXMQ_TLS_CERT=`) считается незаданным. Полный список с описаниями — `fluxmq --help`.
+Каждый параметр задаётся флагом, переменной окружения или ключом в TOML-файле `--config` (ключ — имя флага: `data-dir = "/var/lib/fluxmq"`). Флаг важнее переменной, переменная важнее файла; неизвестный ключ в файле — ошибка. Пустое значение переменной (`FLUXMQ_TLS_CERT=`) считается незаданным. Полный список с описаниями — `fluxmq --help`.
 
 ## Основные {#general}
 
 | Флаг | Переменная | По умолчанию | Описание |
 |---|---|---|---|
+| `--config` | `FLUXMQ_CONFIG` | — | TOML-файл с любыми из этих параметров, ключ — имя флага (пример: `deploy/fluxmq.toml`) |
 | `--data-dir` | `FLUXMQ_DATA_DIR` | `./data` | каталог данных: сообщения, смещения, DLQ, журнал аудита |
 | `--client-addr` | `FLUXMQ_CLIENT_ADDR` | `0.0.0.0:7420` | адрес клиентского протокола (TCP) |
 | `--http-addr` | `FLUXMQ_HTTP_ADDR` | `0.0.0.0:7421` | адрес HTTP: REST, WebSocket-телеметрия, консоль |
 | `--cluster-name` | `FLUXMQ_CLUSTER_NAME` | `local` | имя кластера в консоли |
-| `--ui-dir` | `FLUXMQ_UI_DIR` | `./ui/dist` | каталог собранной консоли |
+| `--ui` | `FLUXMQ_UI` | `on` | веб-консоль на HTTP-порту; `off` — только API |
+| `--ui-dir` | `FLUXMQ_UI_DIR` | — | раздавать консоль из каталога вместо встроенной в бинарник |
 | `--admin-token` | `FLUXMQ_ADMIN_TOKEN` | — | bootstrap-токен администратора; включает авторизацию для REST, WebSocket и клиентского протокола |
+| `--admin-token-file` | `FLUXMQ_ADMIN_TOKEN_FILE` | — | прочитать токен администратора из файла (секреты Docker / Kubernetes, credentials systemd) |
 | `--log` | `FLUXMQ_LOG` | `RUST_LOG`, иначе `info` | фильтр логов, например `info,fluxmq_core=debug` |
 | `--public-url` | `FLUXMQ_PUBLIC_URL` | — | публичный адрес консоли (`https://mq.example.com`) для ссылок в уведомлениях |
 | `--webhooks-allow-private` | `FLUXMQ_WEBHOOKS_ALLOW_PRIVATE` | не задано | `true`/`false`: разрешить вебхукам loopback-, приватные и link-local-адреса. Не задано — разрешено в открытом режиме, запрещено при включённой авторизации |
@@ -67,6 +70,7 @@ summary: Все параметры запуска fluxmq (из crates/fluxmq-ser
 | `--replication-factor` | `FLUXMQ_REPLICATION_FACTOR` | `3` | число реплик новых каналов (не больше числа живых узлов) |
 | `--min-isr` | `FLUXMQ_MIN_ISR` | `1` | минимум синхронных реплик для подтверждения публикации, иначе `Overloaded` |
 | `--cluster-secret` | `FLUXMQ_CLUSTER_SECRET` | — | общий секрет межузлового трафика; обязателен с `--peers`, одинаковый на всех узлах |
+| `--cluster-secret-file` | `FLUXMQ_CLUSTER_SECRET_FILE` | — | прочитать секрет кластера из файла |
 | `--auto-rebalance` | `FLUXMQ_AUTO_REBALANCE` | `full` | `off` / `repair` / `full` — режим ребалансировки, пока в кластере нет сохранённых настроек; дальше источник истины — `PUT /api/cluster/rebalance/config` |
 
 ## TLS {#tls}

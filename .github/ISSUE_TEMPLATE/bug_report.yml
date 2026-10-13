@@ -1,0 +1,31 @@
+name: Bug report
+description: Something does not work as described
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: What happened
+      description: What you did, what you expected and what happened instead. Logs help.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Version
+      description: Output of `fluxmq --version`
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: How do you run it
+      options: [Docker image, install.sh (systemd), Built from source, Other]
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Single node or cluster
+      placeholder: e.g. 3-node cluster with TLS
