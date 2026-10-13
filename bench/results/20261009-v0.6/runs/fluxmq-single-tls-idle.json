@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-single-tls-idle",
+  "label": "fluxmq-single-tls",
+  "system_name": "fluxmq-single-tls",
+  "system_title": "FluxMQ 1 node, TLS",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791533310211,
+  "measure_end_ms": 1791533340216,
+  "broker_version": "FluxMQ 0.6.0",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

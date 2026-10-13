@@ -1,0 +1,146 @@
+{
+  "broker_version": "FluxMQ 0.9.0",
+  "cleanup_error": null,
+  "client": "fluxmq-client (Rust SDK) BatchingProducer linger=5ms, max_in_flight=32, prefetch=2000, stamp_producer=false, compression=none, ack_mode=individual, raw_records=true, verify_crc=true",
+  "consume_mb_s": 854.39,
+  "consume_rate": 834369.0,
+  "consumed": 1048576,
+  "drain_miss": null,
+  "drain_s": 1.257,
+  "drained": true,
+  "duplicates": 0,
+  "durability": "FluxMQ single node: stream channel, 8 partitions; publish acked after the broker's group commit (fsync) and, in a cluster, after every ISR member has the batch (acks=all; min ISR per broker flag); consumer acks every message",
+  "e2e_ms": {
+    "count": 1048576,
+    "max": 5828.607,
+    "mean": 4469.128,
+    "min": 1310.72,
+    "p50": 4702.207,
+    "p90": 5316.607,
+    "p99": 5754.879,
+    "p999": 5824.511
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "fluxmq-single-tls-user",
+  "lag_end": 1048576,
+  "lag_growth_per_s": null,
+  "lag_start": 1048576,
+  "last_error": null,
+  "measure_end_ms": 1791769916629,
+  "measure_start_ms": 1791769911447,
+  "params": {
+    "brokers": [
+      "tls://fluxmq:7420"
+    ],
+    "consumers": 4,
+    "duration_s": 0,
+    "fluxmq_ack_mode": "individual",
+    "fluxmq_compression": "none",
+    "fluxmq_raw_records": true,
+    "fluxmq_verify_crc": true,
+    "linger_ms": 5,
+    "max_in_flight": 32,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "preload": 1048576,
+    "producers": 4,
+    "queue_type": null,
+    "rate": 0,
+    "replication": 1,
+    "retention_bytes": 536870912,
+    "segment_bytes": 16777216,
+    "size": 1024,
+    "tls": true,
+    "warmup_s": 0,
+    "window": 20000
+  },
+  "preload": {
+    "acked": 1048576,
+    "bytes": 1073741824,
+    "catchup_s": 1.257,
+    "consume_rate_after_first": 844265.0,
+    "first_receipt_s": 0.015,
+    "messages": 1048576,
+    "publish_rate": 201986.0,
+    "seconds": 5.191
+  },
+  "publish_mb_s": 206.83,
+  "publish_ms": {
+    "count": 1048576,
+    "max": 1708.031,
+    "mean": 380.248,
+    "min": 79.936,
+    "p50": 200.703,
+    "p90": 1019.391,
+    "p99": 1441.791,
+    "p999": 1467.391
+  },
+  "publish_rate": 201986.0,
+  "published": 1048576,
+  "received_of_window": 1048576,
+  "redelivered": 0,
+  "run_id": "fluxmq-single-tls-user-catchup-1024B-4p4c",
+  "scenario": "catchup",
+  "schema": 2,
+  "sent_in_window": 1048576,
+  "started_at_ms": 1791769911367,
+  "sustained": null,
+  "system": "fluxmq",
+  "timeline": [
+    {
+      "con": 0,
+      "lag": 457089,
+      "phase": "measure",
+      "pub": 457089,
+      "t": 1
+    },
+    {
+      "con": 0,
+      "lag": 792694,
+      "phase": "measure",
+      "pub": 335605,
+      "t": 2
+    },
+    {
+      "con": 0,
+      "lag": 861998,
+      "phase": "measure",
+      "pub": 69304,
+      "t": 3
+    },
+    {
+      "con": 0,
+      "lag": 934978,
+      "phase": "measure",
+      "pub": 72980,
+      "t": 4
+    },
+    {
+      "con": 0,
+      "lag": 1009196,
+      "phase": "measure",
+      "pub": 74218,
+      "t": 5
+    },
+    {
+      "con": 737712,
+      "lag": 310864,
+      "phase": "drain",
+      "pub": 39380,
+      "t": 6
+    }
+  ],
+  "topic": "bench-r-69911367",
+  "window_s": 5.191,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  },
+  "repeat": 1,
+  "system_name": "fluxmq-single-tls-user",
+  "system_title": "FluxMQ 1 node, TLS (userspace records)"
+}

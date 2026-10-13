@@ -1,0 +1,11 @@
+[
+  "runs/fluxmq-cluster-system.json",
+  "runs/fluxmq-cluster-sat-1024B-1p1c-r1.json",
+  "runs/fluxmq-cluster-sat-1024B-4p4c-r1.json",
+  "runs/fluxmq-cluster-sat-100B-1p1c-r1.json",
+  "runs/fluxmq-cluster-sat-100B-4p4c-r1.json",
+  "runs/fluxmq-cluster-sat-1024B-1p1c-r2.json",
+  "runs/fluxmq-cluster-sat-1024B-4p4c-r2.json",
+  "runs/fluxmq-cluster-sat-100B-1p1c-r2.json",
+  "runs/fluxmq-cluster-sat-100B-4p4c-r2.json"
+]

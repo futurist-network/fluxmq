@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "run": "kafka-cluster-fsync-powercut-leader-1",
+  "system": "kafka-cluster-fsync",
+  "title": "Kafka 3 nodes RF=3 min.insync 2 acks=all, log.flush.interval.messages=1",
+  "family": "kafka",
+  "mode": "powercut",
+  "target": "leader",
+  "iteration": 1,
+  "topic": "crash-powercut-1-1815729",
+  "method": "Simulated power loss of the broker's machine (crashctl powercut). The data directory is an ext4 filesystem on a device-mapper device over a loop device backed by a sparse file in a Docker volume. At the cut the dm device is suspended without flushing and switched to the dm `error` target, then the broker gets SIGKILL (before the device resumes, so it never sees the I/O errors). The filesystem is unmounted: dirty pages (written but not yet written back or fsynced) fail against the error target and the device's cache is dropped. Then the linear mapping is restored and ext4 is mounted again (journal replay), exactly the bytes that had reached the device at the cut. Only data that was fsynced (or written back by the kernel's periodic writeback before the cut) survives. A per-crash canary proves it: a file created just before the cut must be gone, a file synced before the workload must be there.",
+  "params": {
+    "rate": 5000,
+    "size": 1024,
+    "producers": 2,
+    "partitions": 4,
+    "down_s": 3.0,
+    "after_s": 5.0
+  },
+  "victims": [
+    "kafka2"
+  ],
+  "crash_ms": 1791581827239,
+  "crash_took_ms": 417,
+  "crash_after_s": 10.43,
+  "canary": {
+    "kafka2": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    }
+  },
+  "method_valid": true,
+  "restart_ms": 1791581831122,
+  "recovery_s": 9.6,
+  "write": {
+    "acked": 145082,
+    "brokers": [
+      "kafka1:9092",
+      "kafka2:9092",
+      "kafka3:9092"
+    ],
+    "client": "librdkafka 2.12.1 FutureProducer linger.ms=5",
+    "durability": "Kafka topic RF=3, min.insync.replicas=2; producer acks=all, enable.idempotence=true; broker flush policy per its config (log.flush.interval.messages)",
+    "enqueue_errors": 0,
+    "failed": 0,
+    "first_error_ms": null,
+    "go_ms": 1791581816695,
+    "last_error": null,
+    "linger_ms": 5,
+    "partitions": 4,
+    "producers": 2,
+    "publish_timeout_s": 30,
+    "rate": 5000,
+    "replication": 3,
+    "sent": 145082,
+    "size": 1024,
+    "stop_ms": 1791581845761,
+    "system": "kafka",
+    "topic": "crash-powercut-1-1815729",
+    "unacked_at_end": 0,
+    "window": 5000
+  },
+  "failover": {
+    "crash_ms": 1791581827239,
+    "restart_ms": 1791581831122,
+    "pub_gap_ms": 7450,
+    "partition_gap_ms": {
+      "3": 7453,
+      "0": 9259,
+      "2": 7450,
+      "1": 7471
+    },
+    "max_partition_gap_ms": 9259,
+    "pub_gap_ms_while_down": 3810,
+    "pub_gap_ms_after_restart": 3640,
+    "max_partition_gap_ms_after_restart": 5449,
+    "max_ack_latency_ms": 9350,
+    "p99_ack_latency_ms": 8284,
+    "acks_over_1s": 39157,
+    "errors": 0,
+    "first_error_ms": null,
+    "last_error": null
+  },
+  "verify": {
+    "acked": 145082,
+    "acked_unique": 145082,
+    "duplicates": 0,
+    "end_reason": "reached high watermarks",
+    "extra": {
+      "group": "crash-powercut-1-1815729-verify-846908",
+      "watermarks": {
+        "0": [
+          0,
+          37541
+        ],
+        "1": [
+          0,
+          35749
+        ],
+        "2": [
+          0,
+          37633
+        ],
+        "3": [
+          0,
+          34159
+        ]
+      }
+    },
+    "foreign": 0,
+    "found": 145082,
+    "last_ack_before_crash_ms": 1791581827312,
+    "lost": 0,
+    "lost_ack_ms_range": null,
+    "lost_acked_after_crash": 0,
+    "lost_acked_before_crash": 0,
+    "lost_by_partition": {},
+    "offsets_seen": {
+      "0": [
+        0,
+        37540
+      ],
+      "1": [
+        0,
+        35748
+      ],
+      "2": [
+        0,
+        37632
+      ],
+      "3": [
+        0,
+        34158
+      ]
+    },
+    "scanned": 145082,
+    "seconds": 0.3,
+    "system": "kafka",
+    "topic": "crash-powercut-1-1815729",
+    "unacked_but_stored": 0,
+    "lost_sample": []
+  },
+  "verify_passes": 1,
+  "acked": 145082,
+  "lost": 0,
+  "reused_from": "20261009-v0.7",
+  "evidence": "bench/results/20261009-v0.7/crash/runs/kafka-cluster-fsync-powercut-leader-1/"
+}

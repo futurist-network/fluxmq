@@ -1,0 +1,240 @@
+[
+  {
+    "run": "fluxmq-single-kill9-node-1",
+    "system": "fluxmq-single",
+    "mode": "kill9",
+    "target": "node",
+    "iteration": 1,
+    "victims": [
+      "fluxmq"
+    ],
+    "acked": 92587,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.1,
+    "crash_after_s": 10.01,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791620213496,
+      "restart_ms": 1791620216802,
+      "pub_gap_ms": 3599,
+      "partition_gap_ms": {
+        "0": 3605,
+        "2": 3599,
+        "1": 3599,
+        "3": 3602
+      },
+      "max_partition_gap_ms": 3605,
+      "pub_gap_ms_while_down": 3232,
+      "pub_gap_ms_after_restart": 367,
+      "max_partition_gap_ms_after_restart": 370,
+      "max_ack_latency_ms": 4828,
+      "p99_ack_latency_ms": 4478,
+      "acks_over_1s": 16286,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-single-powercut-node-1",
+    "system": "fluxmq-single",
+    "mode": "powercut",
+    "target": "node",
+    "iteration": 1,
+    "victims": [
+      "fluxmq"
+    ],
+    "acked": 95512,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.2,
+    "crash_after_s": 10.25,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791620236806,
+      "restart_ms": 1791620240391,
+      "pub_gap_ms": 4988,
+      "partition_gap_ms": {
+        "1": 4988,
+        "0": 4989,
+        "2": 4991,
+        "3": 4990
+      },
+      "max_partition_gap_ms": 4991,
+      "pub_gap_ms_while_down": 3513,
+      "pub_gap_ms_after_restart": 1475,
+      "max_partition_gap_ms_after_restart": 1476,
+      "max_ack_latency_ms": 5765,
+      "p99_ack_latency_ms": 5394,
+      "acks_over_1s": 22112,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-kill9-leader-1",
+    "system": "fluxmq-cluster",
+    "mode": "kill9",
+    "target": "leader",
+    "iteration": 1,
+    "victims": [
+      "n3"
+    ],
+    "acked": 95082,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.3,
+    "crash_after_s": 10.3,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791620265367,
+      "restart_ms": 1791620268663,
+      "pub_gap_ms": 3268,
+      "partition_gap_ms": {
+        "1": 3269,
+        "3": 3268,
+        "2": 3770,
+        "0": 3789
+      },
+      "max_partition_gap_ms": 3789,
+      "pub_gap_ms_while_down": 3226,
+      "pub_gap_ms_after_restart": 437,
+      "max_partition_gap_ms_after_restart": 558,
+      "max_ack_latency_ms": 4083,
+      "p99_ack_latency_ms": 3117,
+      "acks_over_1s": 15024,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-kill9-all-1",
+    "system": "fluxmq-cluster",
+    "mode": "kill9",
+    "target": "all",
+    "iteration": 1,
+    "victims": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "acked": 91302,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.3,
+    "crash_after_s": 9.44,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791620287458,
+      "restart_ms": 1791620290840,
+      "pub_gap_ms": 4371,
+      "partition_gap_ms": {
+        "0": 4371,
+        "1": 4387,
+        "2": 4378,
+        "3": 4375
+      },
+      "max_partition_gap_ms": 4387,
+      "pub_gap_ms_while_down": 3286,
+      "pub_gap_ms_after_restart": 1085,
+      "max_partition_gap_ms_after_restart": 1098,
+      "max_ack_latency_ms": 5166,
+      "p99_ack_latency_ms": 4244,
+      "acks_over_1s": 19135,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-powercut-leader-1",
+    "system": "fluxmq-cluster",
+    "mode": "powercut",
+    "target": "leader",
+    "iteration": 1,
+    "victims": [
+      "n3"
+    ],
+    "acked": 95780,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.4,
+    "crash_after_s": 10.37,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791620310461,
+      "restart_ms": 1791620313797,
+      "pub_gap_ms": 3305,
+      "partition_gap_ms": {
+        "2": 4042,
+        "0": 4037,
+        "1": 3316,
+        "3": 3305
+      },
+      "max_partition_gap_ms": 4042,
+      "pub_gap_ms_while_down": 3265,
+      "pub_gap_ms_after_restart": 710,
+      "max_partition_gap_ms_after_restart": 773,
+      "max_ack_latency_ms": 5198,
+      "p99_ack_latency_ms": 4932,
+      "acks_over_1s": 15641,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-powercut-all-1",
+    "system": "fluxmq-cluster",
+    "mode": "powercut",
+    "target": "all",
+    "iteration": 1,
+    "victims": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "acked": 89937,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.4,
+    "crash_after_s": 8.92,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791620332058,
+      "restart_ms": 1791620335646,
+      "pub_gap_ms": 6682,
+      "partition_gap_ms": {
+        "0": 6684,
+        "2": 6692,
+        "1": 6754,
+        "3": 6695
+      },
+      "max_partition_gap_ms": 6754,
+      "pub_gap_ms_while_down": 3368,
+      "pub_gap_ms_after_restart": 3314,
+      "max_partition_gap_ms_after_restart": 3384,
+      "max_ack_latency_ms": 7219,
+      "p99_ack_latency_ms": 6584,
+      "acks_over_1s": 29693,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  }
+]

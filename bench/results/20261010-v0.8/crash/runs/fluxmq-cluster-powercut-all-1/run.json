@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "run": "fluxmq-cluster-powercut-all-1",
+  "system": "fluxmq-cluster",
+  "title": "FluxMQ 3 nodes RF=3 min ISR 2, group commit on every replica",
+  "family": "fluxmq",
+  "mode": "powercut",
+  "target": "all",
+  "iteration": 1,
+  "topic": "crash-powercut-1-322454",
+  "method": "Simulated power loss of the broker's machine (crashctl powercut). The data directory is an ext4 filesystem on a device-mapper device over a loop device backed by a sparse file in a Docker volume. At the cut the dm device is suspended without flushing and switched to the dm `error` target, then the broker gets SIGKILL (before the device resumes, so it never sees the I/O errors). The filesystem is unmounted: dirty pages (written but not yet written back or fsynced) fail against the error target and the device's cache is dropped. Then the linear mapping is restored and ext4 is mounted again (journal replay), exactly the bytes that had reached the device at the cut. Only data that was fsynced (or written back by the kernel's periodic writeback before the cut) survives. A per-crash canary proves it: a file created just before the cut must be gone, a file synced before the workload must be there.",
+  "params": {
+    "rate": 5000,
+    "size": 1024,
+    "producers": 2,
+    "partitions": 4,
+    "down_s": 3.0,
+    "after_s": 5.0
+  },
+  "victims": [
+    "n1",
+    "n2",
+    "n3"
+  ],
+  "crash_ms": 1791620332058,
+  "crash_took_ms": 350,
+  "crash_after_s": 8.92,
+  "canary": {
+    "n1": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    },
+    "n2": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    },
+    "n3": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    }
+  },
+  "method_valid": true,
+  "restart_ms": 1791620335646,
+  "recovery_s": 0.4,
+  "write": {
+    "acked": 89937,
+    "brokers": [
+      "n1:7420",
+      "n2:7420",
+      "n3:7420"
+    ],
+    "client": "fluxmq-client BatchingProducer linger=5ms (broker 0.7.0)",
+    "durability": "FluxMQ stream channel; publish acknowledged per the broker's FLUXMQ_FSYNC policy (group-commit: after fsync; os: after write(2)) and, in a cluster, after every ISR member has it",
+    "enqueue_errors": 0,
+    "failed": 0,
+    "first_error_ms": null,
+    "go_ms": 1791620323045,
+    "last_error": null,
+    "linger_ms": 5,
+    "partitions": 4,
+    "producers": 2,
+    "publish_timeout_s": 30,
+    "rate": 5000,
+    "replication": 1,
+    "sent": 89937,
+    "size": 1024,
+    "stop_ms": 1791620341037,
+    "system": "fluxmq",
+    "topic": "crash-powercut-1-322454",
+    "unacked_at_end": 0,
+    "window": 5000
+  },
+  "failover": {
+    "crash_ms": 1791620332058,
+    "restart_ms": 1791620335646,
+    "pub_gap_ms": 6682,
+    "partition_gap_ms": {
+      "0": 6684,
+      "2": 6692,
+      "1": 6754,
+      "3": 6695
+    },
+    "max_partition_gap_ms": 6754,
+    "pub_gap_ms_while_down": 3368,
+    "pub_gap_ms_after_restart": 3314,
+    "max_partition_gap_ms_after_restart": 3384,
+    "max_ack_latency_ms": 7219,
+    "p99_ack_latency_ms": 6584,
+    "acks_over_1s": 29693,
+    "errors": 0,
+    "first_error_ms": null,
+    "last_error": null
+  },
+  "verify": {
+    "acked": 89937,
+    "acked_unique": 89937,
+    "duplicates": 80,
+    "end_reason": "all acked found",
+    "extra": {
+      "group": "crash-powercut-1-322454-verify-341702"
+    },
+    "foreign": 0,
+    "found": 89937,
+    "last_ack_before_crash_ms": 1791620332278,
+    "lost": 0,
+    "lost_ack_ms_range": null,
+    "lost_acked_after_crash": 0,
+    "lost_acked_before_crash": 0,
+    "lost_by_partition": {},
+    "offsets_seen": {
+      "0": [
+        0,
+        22563
+      ],
+      "1": [
+        0,
+        20612
+      ],
+      "2": [
+        0,
+        26712
+      ],
+      "3": [
+        0,
+        20126
+      ]
+    },
+    "scanned": 90017,
+    "seconds": 2.1,
+    "system": "fluxmq",
+    "topic": "crash-powercut-1-322454",
+    "unacked_but_stored": 0,
+    "lost_sample": []
+  },
+  "verify_passes": 1,
+  "acked": 89937,
+  "lost": 0
+}

@@ -1,0 +1,30 @@
+import type { Entry } from '../types';
+
+/** Shared building blocks: ui.tsx, forms.tsx, ChipsInput. */
+export const components = {
+  'components.loading': 'Loading',
+  'components.working': 'Working…',
+  'components.secret.storedAria': '{label}: stored, hidden',
+  'components.secret.stored': 'stored · never shown',
+  'components.secret.replace': 'Replace',
+  'components.secret.removeOnSave': 'Remove the stored value on save',
+  'components.secret.removeAria': 'Remove {label}',
+  'components.secret.emptyRemoves': 'Empty = remove the stored value',
+  'components.secret.newValue': 'New value',
+  'components.secret.hide': 'Hide',
+  'components.secret.show': 'Show',
+  'components.secret.keepHint': 'Keep the stored value',
+  'components.secret.keep': 'Keep stored',
+  'components.headers.empty': 'No custom headers.',
+  'components.headers.name': 'Header name',
+  'components.headers.valueOf': 'Value of {name}',
+  'components.headers.header': 'header',
+  'components.headers.remove': 'Remove header {name}',
+  'components.headers.add': 'Add header',
+  'components.readOnly': 'Read-only — {what} requires the admin role{reason}. Secrets are never shown to anyone.',
+  'components.readOnlyReason': ' (you are {role})',
+  'components.chips.remove': 'Remove {value}',
+  'components.moreActions': 'More actions',
+  'components.typeToConfirm': 'Type {name} to confirm',
+  'components.typeToConfirmAria': 'Confirmation: type {name}',
+} satisfies Record<string, Entry>;

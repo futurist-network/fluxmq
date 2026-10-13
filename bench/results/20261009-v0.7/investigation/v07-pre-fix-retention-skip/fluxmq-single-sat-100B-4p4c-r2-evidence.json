@@ -1,0 +1,57 @@
+{
+ "kind": "evidence",
+ "run": "fluxmq-single-sat-100B-4p4c-r2",
+ "logs": {
+  "fluxmq": [
+   "fluxmq-1  | \u001b[2m2026-10-09T15:40:16.671236Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_core::broker\u001b[0m\u001b[2m:\u001b[0m broker opened \u001b[3mnode_id\u001b[0m\u001b[2m=\u001b[0m\"n-5a6a2a3aab84\" \u001b[3mchannels\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:40:16.672042Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_router\u001b[0m\u001b[2m:\u001b[0m router started \u001b[3mroutes\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:40:16.682731Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_notify\u001b[0m\u001b[2m:\u001b[0m notifications started \u001b[3mnotifiers\u001b[0m\u001b[2m=\u001b[0m0 \u001b[3mrules\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:40:16.686831Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_webhooks\u001b[0m\u001b[2m:\u001b[0m webhooks started \u001b[3mwebhooks\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:40:16.696007Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_server\u001b[0m\u001b[2m:\u001b[0m FluxMQ 0.7.0 started",
+   "fluxmq-1  |   node:        n-5a6a2a3aab84 (cluster \"local\")",
+   "fluxmq-1  |   data dir:    /var/lib/fluxmq",
+   "fluxmq-1  |   clients:     tcp://0.0.0.0:7420",
+   "fluxmq-1  |   http:        http://0.0.0.0:7421",
+   "fluxmq-1  |   ui:          http://127.0.0.1:7421/",
+   "fluxmq-1  |   auth:        open (dev mode: no admin token, no access tokens)",
+   "fluxmq-1  |   fsync:       GroupCommit",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:41:55.706973Z\u001b[0m \u001b[33m WARN\u001b[0m \u001b[2mfluxmq_core::group\u001b[0m\u001b[2m:\u001b[0m retention removed messages a consumer group had not consumed; skipping them \u001b[3mchannel\u001b[0m\u001b[2m=\u001b[0mbench-r-60478650 \u001b[3mpartition\u001b[0m\u001b[2m=\u001b[0m3 \u001b[3mfrom\u001b[0m\u001b[2m=\u001b[0m1056472 \u001b[3mto\u001b[0m\u001b[2m=\u001b[0m1059594 \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m3122",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:41:56.689962Z\u001b[0m \u001b[33m WARN\u001b[0m \u001b[2mfluxmq_core::group\u001b[0m\u001b[2m:\u001b[0m retention removed messages a consumer group had not consumed; skipping them \u001b[3mchannel\u001b[0m\u001b[2m=\u001b[0mbench-r-60478650 \u001b[3mpartition\u001b[0m\u001b[2m=\u001b[0m3 \u001b[3mfrom\u001b[0m\u001b[2m=\u001b[0m1085228 \u001b[3mto\u001b[0m\u001b[2m=\u001b[0m1091594 \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m6366",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:41:58.694899Z\u001b[0m \u001b[33m WARN\u001b[0m \u001b[2mfluxmq_core::group\u001b[0m\u001b[2m:\u001b[0m retention removed messages a consumer group had not consumed; skipping them \u001b[3mchannel\u001b[0m\u001b[2m=\u001b[0mbench-r-60478650 \u001b[3mpartition\u001b[0m\u001b[2m=\u001b[0m3 \u001b[3mfrom\u001b[0m\u001b[2m=\u001b[0m1152537 \u001b[3mto\u001b[0m\u001b[2m=\u001b[0m1155594 \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m3057",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:43:16.879976Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-60478650\"",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:44:05.163042Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-60600171\"",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:45:16.713758Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-60648685\"",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:46:32.899087Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-60720020\"",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:47:15.756760Z\u001b[0m \u001b[33m WARN\u001b[0m \u001b[2mfluxmq_core::group\u001b[0m\u001b[2m:\u001b[0m retention removed messages a consumer group had not consumed; skipping them \u001b[3mchannel\u001b[0m\u001b[2m=\u001b[0mbench-r-60796264 \u001b[3mpartition\u001b[0m\u001b[2m=\u001b[0m0 \u001b[3mfrom\u001b[0m\u001b[2m=\u001b[0m1058506 \u001b[3mto\u001b[0m\u001b[2m=\u001b[0m1064789 \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m6283",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:47:15.759313Z\u001b[0m \u001b[33m WARN\u001b[0m \u001b[2mfluxmq_core::group\u001b[0m\u001b[2m:\u001b[0m retention removed messages a consumer group had not consumed; skipping them \u001b[3mchannel\u001b[0m\u001b[2m=\u001b[0mbench-r-60796264 \u001b[3mpartition\u001b[0m\u001b[2m=\u001b[0m0 \u001b[3mfrom\u001b[0m\u001b[2m=\u001b[0m1064789 \u001b[3mto\u001b[0m\u001b[2m=\u001b[0m1079789 \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m15000",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:47:16.751069Z\u001b[0m \u001b[33m WARN\u001b[0m \u001b[2mfluxmq_core::group\u001b[0m\u001b[2m:\u001b[0m retention removed messages a consumer group had not consumed; skipping them \u001b[3mchannel\u001b[0m\u001b[2m=\u001b[0mbench-r-60796264 \u001b[3mpartition\u001b[0m\u001b[2m=\u001b[0m0 \u001b[3mfrom\u001b[0m\u001b[2m=\u001b[0m1112214 \u001b[3mto\u001b[0m\u001b[2m=\u001b[0m1112789 \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m575",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:48:35.182359Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-60796264\"",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:49:24.243587Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-60918542\"",
+   "fluxmq-1  | \u001b[2m2026-10-09T15:50:37.123950Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-60967580\""
+  ]
+ },
+ "channel": {
+  "fluxmq": {
+   "name": "bench-r-61040681",
+   "mode": "stream",
+   "partitions": 8,
+   "retention": {
+    "max_age_secs": 3600,
+    "max_bytes": 4294967296
+   },
+   "retry": {
+    "max_attempts": 5,
+    "backoff_ms": [
+     1000,
+     10000,
+     60000,
+     300000
+    ],
+    "ack_timeout_ms": 30000
+   },
+   "dlq_enabled": true,
+   "ordering_key": null,
+   "created_at_ms": 1791561040683
+  }
+ }
+}

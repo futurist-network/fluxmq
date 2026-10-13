@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "fluxmq-cluster-system",
+  "system_name": "fluxmq-cluster",
+  "system_title": "FluxMQ 3 nodes RF=3",
+  "system": "fluxmq",
+  "startup_s": 3.2,
+  "broker_version": "FluxMQ 0.9.0",
+  "nodes": [
+    "n1",
+    "n2",
+    "n3"
+  ],
+  "tls": false,
+  "kafka_log_flush_interval_messages": null,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

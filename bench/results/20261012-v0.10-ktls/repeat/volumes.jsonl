@@ -1,0 +1,8 @@
+{"ts": 1791771897.9, "run": "fluxmq-single-tls-sat-1024B-4p4c-r1", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 65536}, "host_free_gb": 991.8}
+{"ts": 1791771942.7, "run": "fluxmq-single-tls-sat-1024B-4p4c-r2", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 77824}, "host_free_gb": 991.8}
+{"ts": 1791771988.0, "run": "fluxmq-single-tls-sat-1024B-4p4c-r3", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 81920}, "host_free_gb": 991.8}
+{"ts": 1791771998.4, "run": "fluxmq-single-tls-catchup-1024B-4p4c", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 90112}, "host_free_gb": 991.8}
+{"ts": 1791772047.6, "run": "fluxmq-single-tls-user-sat-1024B-4p4c-r1", "system": "fluxmq-single-tls-user", "bytes": {"fluxmq": 65536}, "host_free_gb": 991.8}
+{"ts": 1791772092.1, "run": "fluxmq-single-tls-user-sat-1024B-4p4c-r2", "system": "fluxmq-single-tls-user", "bytes": {"fluxmq": 77824}, "host_free_gb": 991.8}
+{"ts": 1791772136.4, "run": "fluxmq-single-tls-user-sat-1024B-4p4c-r3", "system": "fluxmq-single-tls-user", "bytes": {"fluxmq": 81920}, "host_free_gb": 991.8}
+{"ts": 1791772144.6, "run": "fluxmq-single-tls-user-catchup-1024B-4p4c", "system": "fluxmq-single-tls-user", "bytes": {"fluxmq": 90112}, "host_free_gb": 991.8}

@@ -1,0 +1,16 @@
+ Container fluxmq-bench-fluxmq-bench-run-cd2b7df25ba2 Creating 
+ Container fluxmq-bench-fluxmq-bench-run-cd2b7df25ba2 Created 
+fluxmq-bench → fluxmq:7420 (cluster 'local' of 1 nodes, broker 0.4.0), channel 'bench-current-2' created [Stream, 8 partitions]
+producers 4 × inflight 32 × batch 1, consumers 4 (prefetch 2000), size 1024 B, rate 1000/s (open loop), duration 3s
+    t    pub msg/s  pub MB/s    con msg/s  con MB/s | publish rtt p50/p99/p999 ms |  end-to-end p50/p99/p999 ms
+   1s          993       1.0          993       1.0 |            2.34/45.05/49.57 |            2.34/45.09/49.70
+   2s        1,017       1.0        1,017       1.0 |            1.70/18.18/26.18 |            1.70/18.21/26.18
+   3s        1,000       1.0        1,000       1.0 |              1.65/3.02/4.06 |              1.64/3.02/4.06
+
+=== summary (3.0s measured) ===
+published   3140 msgs, 1042 msg/s, 1.1 MB/s
+consumed    3140 msgs (3140 during the run, 1042 msg/s); all published messages consumed
+publish rtt (per 1-msg request) ms: min 0.84  p50 1.83  p90 9.27  p99 39.58  p99.9 47.07  max 49.57  (n=3140)
+end-to-end (publish→delivery) ms:   min 0.85  p50 1.83  p90 9.29  p99 39.87  p99.9 47.20  max 49.70  (n=3140)
+reconnects  0
+note: open-loop at 1000 msg/s — latencies measured from the scheduled send time (coordinated-omission corrected). If 'pub msg/s' is below target, the broker or client could not keep up.

@@ -1,0 +1,28 @@
+[package]
+name = "fluxmq-client"
+description = "FluxMQ Rust client SDK"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto = { workspace = true, features = ["codec"] }
+fluxmq-tls.workspace = true
+bytes.workspace = true
+crc32fast.workspace = true
+futures.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+tracing.workspace = true
+postcard.workspace = true
+serde.workspace = true
+parking_lot.workspace = true
+hdrhistogram.workspace = true
+sysinfo = { version = "0.39.6", default-features = false, features = ["system"] }
+# binaries
+clap.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+tracing-subscriber.workspace = true

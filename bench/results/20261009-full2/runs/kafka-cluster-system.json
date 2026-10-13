@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "kafka-cluster-system",
+  "system_name": "kafka-cluster",
+  "system_title": "Kafka 3 nodes RF=3",
+  "system": "kafka",
+  "startup_s": 10.5,
+  "broker_version": "Apache Kafka 3.7.0",
+  "nodes": [
+    "kafka1",
+    "kafka2",
+    "kafka3"
+  ],
+  "tls": false,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  }
+}

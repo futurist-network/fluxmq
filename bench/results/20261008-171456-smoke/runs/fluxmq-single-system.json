@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "fluxmq-single-system",
+  "system_name": "fluxmq-single",
+  "system_title": "FluxMQ 1 node",
+  "system": "fluxmq",
+  "startup_s": 2.5,
+  "broker_version": "FluxMQ 0.4.0",
+  "nodes": [
+    "fluxmq"
+  ],
+  "tls": false
+}

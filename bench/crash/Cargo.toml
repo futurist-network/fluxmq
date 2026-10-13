@@ -1,0 +1,34 @@
+# Crash-durability client (bench/crash/README.md): publishes with acks and records every
+# acknowledged id (`write`), then re-reads the topic / channel after a crash and reports
+# acknowledged-but-lost messages (`verify`). Like bench/harness, NOT a member of the FluxMQ
+# workspace; built in Docker (bench/crash/Dockerfile.client). `--no-default-features` builds
+# a FluxMQ-only binary natively (no cmake).
+[package]
+name = "mq-crash"
+version = "0.11.0"
+edition = "2024"
+publish = false
+license = "Apache-2.0"
+
+[[bin]]
+name = "mq-crash"
+path = "src/main.rs"
+
+[dependencies]
+fluxmq-client = { path = "../../crates/fluxmq-client" }
+rdkafka = { version = "0.39", default-features = false, features = ["cmake-build", "tokio"], optional = true }
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+clap = { version = "4", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+
+[features]
+default = ["kafka"]
+kafka = ["dep:rdkafka"]
+
+[profile.release]
+debug = 0
+strip = "symbols"
+
+[workspace]

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "kafka-cluster-idle",
+  "label": "kafka-cluster",
+  "system_name": "kafka-cluster",
+  "system_title": "Kafka 3 nodes RF=3",
+  "system": "kafka",
+  "scenario": "idle",
+  "measure_start_ms": 1791469110711,
+  "measure_end_ms": 1791469116714,
+  "broker_version": "Apache Kafka 3.7.0"
+}

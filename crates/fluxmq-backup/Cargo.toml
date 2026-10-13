@@ -1,0 +1,30 @@
+[package]
+name = "fluxmq-backup"
+description = "FluxMQ backups: consistent incremental backups to S3-compatible storage or a filesystem, and restore"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto.workspace = true
+fluxmq-core.workspace = true
+fluxmq-meta.workspace = true
+aes-gcm = "0.10"
+base64 = "0.22"
+bytes.workspace = true
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+crc32fast.workspace = true
+futures.workspace = true
+getrandom = "0.3"
+object_store = { version = "0.14", features = ["aws", "fs"] }
+parking_lot.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2 = "0.10"
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

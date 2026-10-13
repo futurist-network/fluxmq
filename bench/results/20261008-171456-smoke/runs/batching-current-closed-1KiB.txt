@@ -1,0 +1,16 @@
+ Container fluxmq-bench-fluxmq-bench-run-25df0a3a8964 Creating 
+ Container fluxmq-bench-fluxmq-bench-run-25df0a3a8964 Created 
+fluxmq-bench → fluxmq:7420 (cluster 'local' of 1 nodes, broker 0.4.0), channel 'bench-current-0' created [Stream, 8 partitions]
+producers 4 × inflight 4 × batch 100, consumers 4 (prefetch 2000), size 1024 B, rate max (closed loop), duration 3s
+    t    pub msg/s  pub MB/s    con msg/s  con MB/s | publish rtt p50/p99/p999 ms |  end-to-end p50/p99/p999 ms
+   1s       71,339      73.1       71,339      73.1 |          9.55/171.52/172.03 |         11.51/173.82/174.59
+   2s      109,925     112.6      109,836     112.5 |         10.59/108.29/112.51 |         12.40/110.27/113.79
+   3s      137,951     141.3      138,040     141.4 |           10.34/38.17/41.38 |           11.97/40.03/43.62
+
+=== summary (3.0s measured) ===
+published   321000 msgs, 106767 msg/s, 109.3 MB/s
+consumed    321000 msgs (320800 during the run, 106701 msg/s); all published messages consumed
+publish rtt (per 100-msg request) ms: min 5.06  p50 10.28  p90 21.77  p99 108.67  p99.9 171.65  max 172.03  (n=3210)
+end-to-end (publish→delivery) ms:   min 3.24  p50 12.03  p90 24.03  p99 110.72  p99.9 174.34  max 174.85  (n=321000)
+reconnects  0
+note: closed-loop run — latencies are subject to coordinated omission; use --rate for open-loop, CO-corrected latency at a fixed load.

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-single-tls-idle",
+  "label": "fluxmq-single-tls",
+  "system_name": "fluxmq-single-tls",
+  "system_title": "FluxMQ 1 node, TLS",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791468941724,
+  "measure_end_ms": 1791468947726,
+  "broker_version": "FluxMQ 0.4.0"
+}

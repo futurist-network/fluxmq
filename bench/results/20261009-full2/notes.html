@@ -1,0 +1,95 @@
+<h3>Headline</h3>
+<div class="tablewrap"><table class="headline">
+<thead><tr><th>Median consume msg/s (3 repeats)</th><th>FluxMQ 0.5</th><th>Kafka 3.7</th><th>RabbitMQ 4.1</th></tr></thead>
+<tbody>
+<tr><td>1 node, 1 KiB, 1×1</td><td>150k</td><td>383k</td><td>12.4k (classic)</td></tr>
+<tr><td>1 node, 1 KiB, 4×4</td><td>169k</td><td>681k <span class="muted-inline">client-bound</span></td><td>16.5k</td></tr>
+<tr><td>1 node, 100 B, 4×4</td><td>204k</td><td>1.04M <span class="muted-inline">client-bound</span></td><td>41.9k</td></tr>
+<tr><td>3 nodes RF=3, 1 KiB, 1×1</td><td>94k</td><td>216k <span class="muted-inline">2 of 3 runs</span></td><td>4.7k (quorum)</td></tr>
+<tr><td>3 nodes RF=3, 1 KiB, 4×4</td><td>120k</td><td>229k</td><td>6.5k</td></tr>
+<tr><td>3 nodes RF=3, 100 B, 4×4</td><td>179k</td><td>592k</td><td>8.2k</td></tr>
+<tr><td>E2E p50 / p99 at 1k msg/s, 1 node</td><td>3.9 / 6.4 ms</td><td>3.4 / 10.0 ms</td><td>1.6 / 3.1 ms</td></tr>
+<tr><td>E2E p50 / p99 at 50k msg/s, 1 node</td><td>8.1 / 593 ms <span class="muted-inline">retention stall, see below</span></td><td>2.3 / 7.1 ms</td><td>not reachable</td></tr>
+<tr><td>Idle memory, 3 nodes (sum)</td><td>152 MiB</td><td>1.4 GiB</td><td>351 MiB</td></tr>
+</tbody></table></div>
+
+<h3>Conclusions</h3>
+<ul class="concl">
+<li><b>Kafka is 2.5–5× faster than FluxMQ on throughput,</b> on one node and in a 3-node cluster, at both message
+sizes. In the 4×4 runs Kafka saturated its 4-CPU client container (4.0 cores), so its real broker ceiling is higher
+still. FluxMQ is clearly behind here; this report does not dress that up.</li>
+<li><b>FluxMQ is 10–25× faster than RabbitMQ</b> (classic queues on one node, quorum queues on three), and RabbitMQ's
+broker was CPU-bound (≈ 2.2 of 2 cores) in every saturation run.</li>
+<li><b>At low rates FluxMQ's latency is competitive:</b> p99 6.4 ms at 1k msg/s on one node (Kafka 10.0, RabbitMQ
+3.1) and 8.5 ms in the cluster (Kafka 6.1, RabbitMQ 8.3), with a p50 of about 4 ms. That floor comes from FluxMQ's
+group-commit fsync before every ack; Kafka acks from the page cache.</li>
+<li><b>At 50k msg/s FluxMQ has a severe tail</b> (p99 0.4–0.6 s on one node, 1.5–1.8 s in the cluster), caused by
+segment deletion under retention (next section). Kafka keeps p99 at 7 ms (one node) and 64 ms (cluster).</li>
+<li><b>Footprint:</b> FluxMQ idles at ~126 MiB per node and stays under ~600 MiB summed across 3 nodes under load.
+Kafka's 3 JVMs use 1.4 GiB idle and ~4.4 GiB under load.</li>
+<li><b>TLS costs FluxMQ 0–10 %</b> of throughput (largest with 4×4 at 1 KiB: −8 % on one node, −10 % in the cluster), with no measurable change in low-rate
+latency.</li>
+<li><b>v0.5 batched delivery vs v0.4:</b> +14 % (1 KiB) and +15 % (100 B) closed-loop throughput, and the same p99 at
+1k msg/s (3.4–3.6 ms; one outlier at 20 ms).</li>
+</ul>
+
+<h3>Why FluxMQ loses to Kafka (best technical explanation)</h3>
+<ol>
+<li><b>What an ack costs.</b> A FluxMQ ack waits for the batch to be fsynced (group commit, 2 ms window). In the
+cluster it waits for <i>every</i> ISR member to have it, and each follower also fsyncs. Kafka with
+<code>acks=all</code> acks once the followers have the batch in memory, with no fsync anywhere. On this Docker VM
+disk an fsync costs several milliseconds, which sets FluxMQ's ~4 ms p50 floor and caps how many commits per second
+each partition log can do.</li>
+<li><b>The single-node ceiling is a serialized ack path, not CPU.</b> At saturation FluxMQ's broker used only 1.3–1.9
+of its 2 cores and the client wasn't saturated. Going from 2,000 to 8,000 messages in flight (1×1 → 4×4) raised
+throughput only 13 % (150k → 169k) while p50 latency tripled (14 → 46 ms). That is queueing in front of a fixed-rate
+stage: the per-partition append + group-commit pipeline. By Little's law, 2,000 in flight ÷ 14 ms ≈ 143k msg/s, which
+matches the 1×1 result.</li>
+<li><b>Work per message.</b> FluxMQ parses every message, writes an index entry per message, and tracks per-message
+delivery state for consumer groups: acks, redelivery, retries and DLQ, which are its queue semantics. Kafka stores
+the producer's record batches as opaque blobs, serves consumers with <code>sendfile</code>, and consumers only commit
+offsets. Measured efficiency: Kafka ≈ 445k msg per broker CPU-second (1 KiB, 4×4), FluxMQ ≈ 100k, RabbitMQ ≈ 8k.</li>
+<li><b>Replication.</b> FluxMQ followers pull through a fetch loop and fsync before the leader can advance the high
+watermark. Going from 1 to 3 nodes cost FluxMQ 37 % (150k → 94k, 1 KiB 1×1); Kafka lost 44 % but from a much higher
+base. Three "nodes" on one VM and one disk also share fsync bandwidth, which hurts the fsync-per-replica design
+most.</li>
+</ol>
+
+<h3>The 50k msg/s tail: cause</h3>
+<p>Every FluxMQ 50k msg/s run shows a single 0.5–1 s dip in publish acks, about 24 s into the run; nothing similar
+happens at 1k or 10k msg/s. Publish RTT p99 equals E2E p99, so the stall is on the ack path, not in the consumers. The
+open-loop harness correctly charges the backlog to every message scheduled during the stall: ~1 s × 50k msg/s ≈ 3 %
+of the window, which lands squarely in p99.</p>
+<p><b>A/B test</b> (same image and limits; FluxMQ 1 node, 50k msg/s, 1 KiB, 4×4): with the harness's 128 MiB/partition
+retention cap, p99 was 633 ms and 457 ms (two runs); with a cap the run never reaches (4 GiB/partition), p99 was
+<b>17.6 ms</b>. So it is not the harness backlog and not steady-state fsync; it is retention deleting segments. Both capped runs dip exactly once, at t = 24 s (to 20–23k acks/s); the uncapped run never dips. Raw JSON: <code>investigation/</code> in this result set.</p>
+<p><b>Mechanism.</b> FluxMQ's default segment size is 128 MiB, the same as the per-partition cap, and retention
+deletes only whole closed segments. So nothing is deleted until each partition has a second segment. Then all 8
+partitions delete a 128 MiB segment at almost the same moment (~1 GiB, at ≈ 20–25 s at 50 MB/s). The segment-list
+lock is released before the unlinks, so the likely cause is the filesystem: on ext4 in the Docker VM, unlinking about
+1 GiB makes the concurrent group-commit fsync wait behind the journal commit of the freed extents.</p>
+<p><b>How this applies outside the benchmark.</b> This is a real broker behaviour at high write rates, not a harness
+artifact: any deployment where retention removes large segments under load will see it. Kafka here deletes 16 MiB
+segments (and 1 GiB by default) continuously. Remedies: smaller default segments, and staggered or rate-limited deletion (or truncating large files
+in steps). These are listed as remaining work.</p>
+
+<h3>Anomalies and exclusions</h3>
+<ul>
+<li><b>Kafka, 3 nodes, 1 KiB 1×1, repeat 3:</b> the consumer never received a message (its group never got an
+assignment), while the producer ran normally at 220k msg/s. It is excluded from the median, which is therefore over 2
+runs (211k / 222k).</li>
+<li><b>FluxMQ, 3 nodes TLS, 1 KiB 4×4, repeat 2:</b> "not drained": 250 of 3.27 M messages acknowledged in the
+window weren't received within the 15 s drain. Consumption stopped near the end of the drain. The run's channel is
+deleted after each run, so slow redelivery can't be told apart from loss after the fact. This is reported as is and
+listed for investigation. The live integration checks (decommission under load, forget, controller kill) consumed
+every acknowledged message, and the other 2 repeats drained fully.</li>
+<li><b>Batching drain rows are missing for v0.4:</b> the v0.5 SDK's drain mode can't connect to a v0.4 broker
+("unsupported protocol version 3 (broker speaks 2)"): the SDK does not negotiate down. Only the closed-loop and 1k
+msg/s rows compare the two versions. This is also a real compatibility limit: upgrade brokers before clients.</li>
+<li><b>Reproducibility:</b> the first full measurement (<code>20261009-full</code>, frozen, aborted at Kafka when the
+host disk filled) ran the same broker code as this one (its image is labelled <code>8df5f55-dirty</code>: the working
+tree later committed as <code>a02a18b</code>). The FluxMQ single-node saturation medians agree within −3 … +7 %; see the
+History section.</li>
+<li><b>Wall-clock gaps between some runs</b> (the laptop likely slept). The in-run timelines are clean and windows
+are measured on the harness's monotonic clock, so measurements are unaffected; total durations are not meaningful.</li>
+</ul>

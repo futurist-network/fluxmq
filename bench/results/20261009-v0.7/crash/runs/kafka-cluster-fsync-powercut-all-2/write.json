@@ -1,0 +1,297 @@
+{
+  "acked": 191847,
+  "brokers": [
+    "kafka1:9092",
+    "kafka2:9092",
+    "kafka3:9092"
+  ],
+  "client": "librdkafka 2.12.1 FutureProducer linger.ms=5",
+  "consumer": null,
+  "durability": "Kafka topic RF=3, min.insync.replicas=2; producer acks=all, enable.idempotence=true; broker flush policy per its config (log.flush.interval.messages)",
+  "enqueue_errors": 0,
+  "failed": 0,
+  "first_error_ms": null,
+  "go_ms": 1791581929522,
+  "last_error": null,
+  "linger_ms": 5,
+  "partitions": 4,
+  "producers": 2,
+  "publish_timeout_s": 30,
+  "rate": 5000,
+  "replication": 3,
+  "sent": 191847,
+  "size": 1024,
+  "stop_ms": 1791581967919,
+  "system": "kafka",
+  "timeline": [
+    {
+      "acked": 4890,
+      "errors": 0,
+      "ms": 1791581930522,
+      "sent": 5000,
+      "t": 1
+    },
+    {
+      "acked": 4852,
+      "errors": 0,
+      "ms": 1791581931523,
+      "sent": 4999,
+      "t": 2
+    },
+    {
+      "acked": 4746,
+      "errors": 0,
+      "ms": 1791581932522,
+      "sent": 4982,
+      "t": 3
+    },
+    {
+      "acked": 3773,
+      "errors": 0,
+      "ms": 1791581933524,
+      "sent": 4978,
+      "t": 4
+    },
+    {
+      "acked": 6667,
+      "errors": 0,
+      "ms": 1791581934522,
+      "sent": 5033,
+      "t": 5
+    },
+    {
+      "acked": 4989,
+      "errors": 0,
+      "ms": 1791581935522,
+      "sent": 5007,
+      "t": 6
+    },
+    {
+      "acked": 4980,
+      "errors": 0,
+      "ms": 1791581936522,
+      "sent": 4993,
+      "t": 7
+    },
+    {
+      "acked": 4441,
+      "errors": 0,
+      "ms": 1791581937523,
+      "sent": 5005,
+      "t": 8
+    },
+    {
+      "acked": 5242,
+      "errors": 0,
+      "ms": 1791581938522,
+      "sent": 4999,
+      "t": 9
+    },
+    {
+      "acked": 378,
+      "errors": 0,
+      "ms": 1791581939522,
+      "sent": 4996,
+      "t": 10
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581940523,
+      "sent": 4951,
+      "t": 11
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581941524,
+      "sent": 15,
+      "t": 12
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581942523,
+      "sent": 0,
+      "t": 13
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581943523,
+      "sent": 0,
+      "t": 14
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581944523,
+      "sent": 0,
+      "t": 15
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581945523,
+      "sent": 0,
+      "t": 16
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581946524,
+      "sent": 0,
+      "t": 17
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581947524,
+      "sent": 0,
+      "t": 18
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581948522,
+      "sent": 0,
+      "t": 19
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581949523,
+      "sent": 0,
+      "t": 20
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581950524,
+      "sent": 0,
+      "t": 21
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581951522,
+      "sent": 0,
+      "t": 22
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581952522,
+      "sent": 0,
+      "t": 23
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581953523,
+      "sent": 0,
+      "t": 24
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581954526,
+      "sent": 0,
+      "t": 25
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581955523,
+      "sent": 0,
+      "t": 26
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581956524,
+      "sent": 0,
+      "t": 27
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581957523,
+      "sent": 0,
+      "t": 28
+    },
+    {
+      "acked": 2150,
+      "errors": 0,
+      "ms": 1791581958523,
+      "sent": 2150,
+      "t": 29
+    },
+    {
+      "acked": 37265,
+      "errors": 0,
+      "ms": 1791581959525,
+      "sent": 37265,
+      "t": 30
+    },
+    {
+      "acked": 59464,
+      "errors": 0,
+      "ms": 1791581960522,
+      "sent": 54721,
+      "t": 31
+    },
+    {
+      "acked": 15950,
+      "errors": 0,
+      "ms": 1791581961523,
+      "sent": 10906,
+      "t": 32
+    },
+    {
+      "acked": 4913,
+      "errors": 0,
+      "ms": 1791581962523,
+      "sent": 4999,
+      "t": 33
+    },
+    {
+      "acked": 5161,
+      "errors": 0,
+      "ms": 1791581963523,
+      "sent": 5003,
+      "t": 34
+    },
+    {
+      "acked": 4947,
+      "errors": 0,
+      "ms": 1791581964522,
+      "sent": 4997,
+      "t": 35
+    },
+    {
+      "acked": 5052,
+      "errors": 0,
+      "ms": 1791581965522,
+      "sent": 5000,
+      "t": 36
+    },
+    {
+      "acked": 4974,
+      "errors": 0,
+      "ms": 1791581966522,
+      "sent": 5000,
+      "t": 37
+    },
+    {
+      "acked": 5040,
+      "errors": 0,
+      "ms": 1791581967522,
+      "sent": 5001,
+      "t": 38
+    }
+  ],
+  "topic": "crash-powercut-2-1928588",
+  "unacked_at_end": 0,
+  "window": 5000
+}

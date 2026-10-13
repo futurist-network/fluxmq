@@ -1,0 +1,30 @@
+import type { RuOf } from '../types';
+import type { components as en } from '../en/components';
+
+export const components: RuOf<typeof en> = {
+  'components.loading': 'Загрузка',
+  'components.working': 'Выполняется…',
+  'components.secret.storedAria': '{label}: сохранено, скрыто',
+  'components.secret.stored': 'сохранено · не показывается',
+  'components.secret.replace': 'Заменить',
+  'components.secret.removeOnSave': 'Удалить сохранённое значение при сохранении',
+  'components.secret.removeAria': 'Удалить {label}',
+  'components.secret.emptyRemoves': 'Пусто — сохранённое значение будет удалено',
+  'components.secret.newValue': 'Новое значение',
+  'components.secret.hide': 'Скрыть',
+  'components.secret.show': 'Показать',
+  'components.secret.keepHint': 'Оставить сохранённое значение',
+  'components.secret.keep': 'Оставить прежнее',
+  'components.headers.empty': 'Дополнительных заголовков нет.',
+  'components.headers.name': 'Имя заголовка',
+  'components.headers.valueOf': 'Значение {name}',
+  'components.headers.header': 'заголовка',
+  'components.headers.remove': 'Удалить заголовок {name}',
+  'components.headers.add': 'Добавить заголовок',
+  'components.readOnly': 'Только чтение: {what} — только для роли администратора{reason}. Секреты не показываются никому.',
+  'components.readOnlyReason': ' (ваша роль: {role})',
+  'components.chips.remove': 'Удалить {value}',
+  'components.moreActions': 'Ещё действия',
+  'components.typeToConfirm': 'Чтобы подтвердить, введите {name}',
+  'components.typeToConfirmAria': 'Подтверждение: введите {name}',
+};

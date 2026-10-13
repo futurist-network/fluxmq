@@ -1,0 +1,27 @@
+[Unit]
+Description=FluxMQ message broker
+Documentation=https://github.com/futurist-network/fluxmq
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=fluxmq
+Group=fluxmq
+ExecStart=/usr/local/bin/fluxmq --config /etc/fluxmq/fluxmq.toml
+# SIGHUP re-reads the TLS certificates; SIGTERM shuts down gracefully (in a cluster the node
+# hands its leaderships over first).
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=60
+Restart=on-failure
+RestartSec=2
+LimitNOFILE=1048576
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+# Backups to a local directory outside the data dir need it listed here too.
+ReadWritePaths=/var/lib/fluxmq
+
+[Install]
+WantedBy=multi-user.target

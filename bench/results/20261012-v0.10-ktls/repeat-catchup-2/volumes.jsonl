@@ -1,0 +1,2 @@
+{"ts": 1791772170.3, "run": "fluxmq-single-tls-catchup-1024B-4p4c", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 65536}, "host_free_gb": 991.8}
+{"ts": 1791772183.0, "run": "fluxmq-single-tls-user-catchup-1024B-4p4c", "system": "fluxmq-single-tls-user", "bytes": {"fluxmq": 61440}, "host_free_gb": 991.8}

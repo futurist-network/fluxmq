@@ -1,0 +1,155 @@
+{
+  "acked": 92587,
+  "brokers": [
+    "fluxmq:7420"
+  ],
+  "client": "fluxmq-client BatchingProducer linger=5ms (broker 0.7.0)",
+  "consumer": null,
+  "durability": "FluxMQ stream channel; publish acknowledged per the broker's FLUXMQ_FSYNC policy (group-commit: after fsync; os: after write(2)) and, in a cluster, after every ISR member has it",
+  "enqueue_errors": 0,
+  "failed": 0,
+  "first_error_ms": null,
+  "go_ms": 1791620203372,
+  "last_error": null,
+  "linger_ms": 5,
+  "partitions": 4,
+  "producers": 2,
+  "publish_timeout_s": 30,
+  "rate": 5000,
+  "replication": 1,
+  "sent": 92587,
+  "size": 1024,
+  "stop_ms": 1791620221896,
+  "system": "fluxmq",
+  "timeline": [
+    {
+      "acked": 4764,
+      "errors": 0,
+      "ms": 1791620204373,
+      "sent": 4999,
+      "t": 1
+    },
+    {
+      "acked": 5123,
+      "errors": 0,
+      "ms": 1791620205374,
+      "sent": 5003,
+      "t": 2
+    },
+    {
+      "acked": 4890,
+      "errors": 0,
+      "ms": 1791620206373,
+      "sent": 4990,
+      "t": 3
+    },
+    {
+      "acked": 4475,
+      "errors": 0,
+      "ms": 1791620207374,
+      "sent": 5010,
+      "t": 4
+    },
+    {
+      "acked": 5305,
+      "errors": 0,
+      "ms": 1791620208375,
+      "sent": 4979,
+      "t": 5
+    },
+    {
+      "acked": 4642,
+      "errors": 0,
+      "ms": 1791620209375,
+      "sent": 5021,
+      "t": 6
+    },
+    {
+      "acked": 4388,
+      "errors": 0,
+      "ms": 1791620210375,
+      "sent": 4990,
+      "t": 7
+    },
+    {
+      "acked": 5050,
+      "errors": 0,
+      "ms": 1791620211378,
+      "sent": 5030,
+      "t": 8
+    },
+    {
+      "acked": 5885,
+      "errors": 0,
+      "ms": 1791620212374,
+      "sent": 4985,
+      "t": 9
+    },
+    {
+      "acked": 5455,
+      "errors": 0,
+      "ms": 1791620213373,
+      "sent": 4985,
+      "t": 10
+    },
+    {
+      "acked": 987,
+      "errors": 0,
+      "ms": 1791620214373,
+      "sent": 5007,
+      "t": 11
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791620215373,
+      "sent": 5001,
+      "t": 12
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791620216374,
+      "sent": 964,
+      "t": 13
+    },
+    {
+      "acked": 9510,
+      "errors": 0,
+      "ms": 1791620217373,
+      "sent": 4518,
+      "t": 14
+    },
+    {
+      "acked": 2503,
+      "errors": 0,
+      "ms": 1791620218373,
+      "sent": 2500,
+      "t": 15
+    },
+    {
+      "acked": 17012,
+      "errors": 0,
+      "ms": 1791620219373,
+      "sent": 12017,
+      "t": 16
+    },
+    {
+      "acked": 4998,
+      "errors": 0,
+      "ms": 1791620220373,
+      "sent": 5001,
+      "t": 17
+    },
+    {
+      "acked": 4995,
+      "errors": 0,
+      "ms": 1791620221373,
+      "sent": 5000,
+      "t": 18
+    }
+  ],
+  "topic": "crash-kill9-1-202845",
+  "unacked_at_end": 0,
+  "window": 5000
+}

@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "rabbitmq-cluster-system",
+  "system_name": "rabbitmq-cluster",
+  "system_title": "RabbitMQ 3 nodes (quorum)",
+  "system": "rabbitmq",
+  "startup_s": 8.7,
+  "broker_version": "RabbitMQ 4.1.8",
+  "nodes": [
+    "rmq1",
+    "rmq2",
+    "rmq3"
+  ],
+  "tls": false,
+  "kafka_log_flush_interval_messages": null,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  },
+  "reused_from": "20261009-v0.7"
+}

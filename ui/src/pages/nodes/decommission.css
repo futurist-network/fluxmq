@@ -1,0 +1,224 @@
+/* Node decommission / forget (v0.5). Decommissioning is operator-driven, not a problem: it uses the
+   primary colour; removed = success; failed = critical. */
+.card.tone-primary {
+  border-color: color-mix(in srgb, var(--primary) 45%, transparent);
+}
+.node-status.primary {
+  color: var(--primary-text);
+  font-weight: 550;
+}
+.decom {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: -6px;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  background: var(--primary-soft);
+  font-size: 12.5px;
+  line-height: 17px;
+}
+.decom.tone-success {
+  background: var(--success-soft);
+}
+.decom.tone-critical {
+  background: var(--critical-soft);
+}
+.decom-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.decom-top .spacer {
+  flex: 1;
+}
+.decom-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 550;
+  background: var(--card);
+}
+.decom-chip.primary {
+  color: var(--primary-text);
+}
+.decom-chip.success {
+  color: var(--success);
+}
+.decom-chip.critical {
+  color: var(--critical-text);
+}
+.decom-count {
+  font-weight: 550;
+  color: var(--text);
+}
+.decom-when {
+  font-size: 12px;
+}
+.decom-meter {
+  background: color-mix(in srgb, var(--primary) 18%, transparent);
+}
+.decom-meter > span {
+  background: var(--primary);
+}
+.decom-meter.indet > span {
+  animation: rb-indet 1.4s linear infinite;
+}
+.decom-detail {
+  color: var(--text-secondary);
+}
+.decom-detail.faint {
+  color: var(--text-tertiary);
+}
+.decom-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 2px;
+}
+.node-actions {
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.removed-card {
+  border-style: dashed;
+}
+.removed-card .node-head h3 {
+  color: var(--text-secondary);
+}
+.removed-steps {
+  font-size: 12.5px;
+  margin-top: -6px;
+}
+.removed-steps ol {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  color: var(--text-secondary);
+  line-height: 19px;
+}
+
+/* Confirm dialogs */
+.decom-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.decom-dialog .rb-sub-h {
+  margin: 0;
+}
+.decom-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.decom-facts dt {
+  font-size: 11.5px;
+  color: var(--text-tertiary);
+}
+.decom-facts dd {
+  margin: 2px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.decom-facts dd.decom-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding-top: 3px;
+}
+@media (max-width: 560px) {
+  .decom-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.decom-plan-note {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 18px;
+}
+.decom-note,
+.decom-warn,
+.decom-error {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  line-height: 18px;
+}
+.decom-note {
+  background: var(--primary-soft);
+}
+.decom-note > svg {
+  color: var(--primary-text);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.decom-warn {
+  background: var(--warning-soft);
+}
+.decom-warn > svg {
+  color: var(--warning);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.decom-warn ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  color: var(--text-secondary);
+}
+.decom-error {
+  background: var(--critical-soft);
+}
+.decom-error > svg {
+  color: var(--critical);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.decom-error p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+}
+.decom-error-msg {
+  font-size: 12px;
+  word-break: break-word;
+  color: var(--text) !important;
+}
+
+/* Matrix + legend: replicas on a decommissioning node */
+.mx-cell.decom {
+  outline: 2px dashed var(--primary);
+  outline-offset: 1px;
+}
+.lg-sw.decom {
+  background: transparent;
+  outline: 2px dashed var(--primary);
+  outline-offset: -2px;
+}
+.lg-item.is-decom .mono {
+  color: var(--primary-text);
+}
+.decom.tone-warning {
+  background: var(--warning-soft);
+}
+.decom-chip.warning {
+  color: var(--warning-text);
+}
+.decom-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

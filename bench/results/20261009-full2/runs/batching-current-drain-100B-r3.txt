@@ -1,0 +1,15 @@
+ Container fluxmq-bench-fluxmq-bench-run-35463356c9a9 Creating 
+ Container fluxmq-bench-fluxmq-bench-run-35463356c9a9 Created 
+fluxmq-bench → fluxmq:7420 (cluster 'local' of 1 nodes, broker 0.5.0), channel 'bench-current-3-4' created [Stream, 8 partitions]
+producers 4 × inflight 4 × batch 100, consumers 4 (prefetch 2000), size 100 B, rate max (closed loop), duration 120s
+prefilled 3000000 msgs in 7.41s (404651 msg/s)
+  1.0s  con      516,512 msg/s
+  2.0s  con      483,424 msg/s
+  3.0s  con      494,864 msg/s
+  4.0s  con      509,536 msg/s
+  5.0s  con      490,416 msg/s
+  6.0s  con      503,792 msg/s
+
+=== drain summary ===
+consumed    3000000 of 3000000 msgs in 6.014s: 498809 msg/s, 49.9 MB/s
+reconnects  0

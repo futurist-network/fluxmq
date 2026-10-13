@@ -1,0 +1,329 @@
+{
+  "schema": 1,
+  "run": "kafka-cluster-powercut-all-1",
+  "system": "kafka-cluster",
+  "title": "Kafka 3 nodes RF=3 min.insync 2 acks=all, default flush",
+  "family": "kafka",
+  "mode": "powercut",
+  "target": "all",
+  "iteration": 1,
+  "topic": "crash-powercut-1-1535113",
+  "method": "Simulated power loss of the broker's machine (crashctl powercut). The data directory is an ext4 filesystem on a device-mapper device over a loop device backed by a sparse file in a Docker volume. At the cut the dm device is suspended without flushing and switched to the dm `error` target, then the broker gets SIGKILL (before the device resumes, so it never sees the I/O errors). The filesystem is unmounted: dirty pages (written but not yet written back or fsynced) fail against the error target and the device's cache is dropped. Then the linear mapping is restored and ext4 is mounted again (journal replay), exactly the bytes that had reached the device at the cut. Only data that was fsynced (or written back by the kernel's periodic writeback before the cut) survives. A per-crash canary proves it: a file created just before the cut must be gone, a file synced before the workload must be there.",
+  "params": {
+    "rate": 5000,
+    "size": 1024,
+    "producers": 2,
+    "partitions": 4,
+    "down_s": 3.0,
+    "after_s": 5.0
+  },
+  "victims": [
+    "kafka1",
+    "kafka2",
+    "kafka3"
+  ],
+  "crash_ms": 1791581547496,
+  "crash_took_ms": 440,
+  "crash_after_s": 11.65,
+  "canary": {
+    "kafka2": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    },
+    "kafka1": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    },
+    "kafka3": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    }
+  },
+  "method_valid": true,
+  "restart_ms": 1791581551190,
+  "recovery_s": 19.6,
+  "write": {
+    "acked": 200481,
+    "brokers": [
+      "kafka1:9092",
+      "kafka2:9092",
+      "kafka3:9092"
+    ],
+    "client": "librdkafka 2.12.1 FutureProducer linger.ms=5",
+    "durability": "Kafka topic RF=3, min.insync.replicas=2; producer acks=all, enable.idempotence=true; broker flush policy per its config (log.flush.interval.messages)",
+    "enqueue_errors": 0,
+    "failed": 0,
+    "first_error_ms": null,
+    "go_ms": 1791581535694,
+    "last_error": null,
+    "linger_ms": 5,
+    "partitions": 4,
+    "producers": 2,
+    "publish_timeout_s": 30,
+    "rate": 5000,
+    "replication": 3,
+    "sent": 200481,
+    "size": 1024,
+    "stop_ms": 1791581575801,
+    "system": "kafka",
+    "topic": "crash-powercut-1-1535113",
+    "unacked_at_end": 0,
+    "window": 5000
+  },
+  "failover": {
+    "crash_ms": 1791581547496,
+    "restart_ms": 1791581551190,
+    "pub_gap_ms": 23682,
+    "partition_gap_ms": {
+      "1": 23757,
+      "3": 23696,
+      "2": 23703,
+      "0": 23709
+    },
+    "max_partition_gap_ms": 23757,
+    "pub_gap_ms_while_down": 3583,
+    "pub_gap_ms_after_restart": 20099,
+    "max_partition_gap_ms_after_restart": 20159,
+    "max_ack_latency_ms": 24432,
+    "p99_ack_latency_ms": 23707,
+    "acks_over_1s": 118462,
+    "errors": 0,
+    "first_error_ms": null,
+    "last_error": null
+  },
+  "verify": {
+    "acked": 200481,
+    "acked_unique": 200481,
+    "duplicates": 0,
+    "end_reason": "reached high watermarks",
+    "extra": {
+      "group": "crash-powercut-1-1535113-verify-587467",
+      "watermarks": {
+        "0": [
+          0,
+          33518
+        ],
+        "1": [
+          0,
+          45516
+        ],
+        "2": [
+          0,
+          25836
+        ],
+        "3": [
+          0,
+          36090
+        ]
+      }
+    },
+    "foreign": 0,
+    "found": 140960,
+    "last_ack_before_crash_ms": 1791581547607,
+    "lost": 59521,
+    "lost_ack_ms_range": [
+      1791581536248,
+      1791581547607
+    ],
+    "lost_acked_after_crash": 0,
+    "lost_acked_before_crash": 59521,
+    "lost_by_partition": {
+      "0": {
+        "acked_offsets": [
+          0,
+          15036
+        ],
+        "count": 15037
+      },
+      "1": {
+        "acked_offsets": [
+          0,
+          14129
+        ],
+        "count": 14130
+      },
+      "2": {
+        "acked_offsets": [
+          0,
+          15141
+        ],
+        "count": 15142
+      },
+      "3": {
+        "acked_offsets": [
+          0,
+          15211
+        ],
+        "count": 15212
+      }
+    },
+    "offsets_seen": {
+      "0": [
+        0,
+        33517
+      ],
+      "1": [
+        0,
+        45515
+      ],
+      "2": [
+        0,
+        25835
+      ],
+      "3": [
+        0,
+        36089
+      ]
+    },
+    "scanned": 140960,
+    "seconds": 0.5,
+    "system": "kafka",
+    "topic": "crash-powercut-1-1535113",
+    "unacked_but_stored": 0,
+    "lost_sample": [
+      [
+        0,
+        281,
+        1,
+        262,
+        1791581536248
+      ],
+      [
+        0,
+        282,
+        1,
+        263,
+        1791581536248
+      ],
+      [
+        0,
+        283,
+        1,
+        264,
+        1791581536249
+      ],
+      [
+        0,
+        284,
+        1,
+        265,
+        1791581536249
+      ],
+      [
+        0,
+        285,
+        1,
+        266,
+        1791581536249
+      ],
+      [
+        0,
+        286,
+        1,
+        267,
+        1791581536249
+      ],
+      [
+        0,
+        287,
+        1,
+        268,
+        1791581536249
+      ],
+      [
+        0,
+        288,
+        1,
+        269,
+        1791581536249
+      ],
+      [
+        0,
+        289,
+        1,
+        270,
+        1791581536249
+      ],
+      [
+        0,
+        290,
+        1,
+        271,
+        1791581536249
+      ],
+      [
+        0,
+        291,
+        1,
+        272,
+        1791581536249
+      ],
+      [
+        0,
+        292,
+        1,
+        273,
+        1791581536249
+      ],
+      [
+        0,
+        293,
+        1,
+        274,
+        1791581536249
+      ],
+      [
+        0,
+        294,
+        1,
+        275,
+        1791581536249
+      ],
+      [
+        0,
+        295,
+        1,
+        276,
+        1791581536249
+      ],
+      [
+        0,
+        823,
+        3,
+        0,
+        1791581536260
+      ],
+      [
+        0,
+        824,
+        3,
+        1,
+        1791581536260
+      ],
+      [
+        0,
+        825,
+        3,
+        2,
+        1791581536260
+      ],
+      [
+        0,
+        826,
+        3,
+        3,
+        1791581536260
+      ],
+      [
+        0,
+        827,
+        3,
+        4,
+        1791581536260
+      ]
+    ]
+  },
+  "verify_passes": 2,
+  "acked": 200481,
+  "lost": 59521
+}

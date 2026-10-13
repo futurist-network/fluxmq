@@ -1,0 +1,19 @@
+{"ts": 1791585123.0, "run": "fluxmq-single-sat-1024B-1p1c-r1", "system": "fluxmq-single", "bytes": {"fluxmq": 69632}, "host_free_gb": 33.1}
+{"ts": 1791585167.0, "run": "fluxmq-single-sat-1024B-4p4c-r1", "system": "fluxmq-single", "bytes": {"fluxmq": 73728}, "host_free_gb": 34.6}
+{"ts": 1791585225.6, "run": "fluxmq-single-sat-100B-1p1c-r1", "system": "fluxmq-single", "bytes": {"fluxmq": 77824}, "host_free_gb": 34.7}
+{"ts": 1791585293.2, "run": "fluxmq-single-sat-100B-4p4c-r1", "system": "fluxmq-single", "bytes": {"fluxmq": 86016}, "host_free_gb": 34.7}
+{"ts": 1791585361.9, "run": "fluxmq-single-sat-1024B-1p1c-r2", "system": "fluxmq-single", "bytes": {"fluxmq": 86016}, "host_free_gb": 34.7}
+{"ts": 1791585405.7, "run": "fluxmq-single-sat-1024B-4p4c-r2", "system": "fluxmq-single", "bytes": {"fluxmq": 98304}, "host_free_gb": 30.2}
+{"ts": 1791585463.5, "run": "fluxmq-single-sat-100B-1p1c-r2", "system": "fluxmq-single", "bytes": {"fluxmq": 102400}, "host_free_gb": 34.7}
+{"ts": 1791585606.5, "run": "fluxmq-single-sat-100B-4p4c-r2", "system": "fluxmq-single", "bytes": {"fluxmq": 110592}, "host_free_gb": 30.8}
+{"ts": 1791585650.6, "run": "fluxmq-single-lat-1000", "system": "fluxmq-single", "bytes": {"fluxmq": 114688}, "host_free_gb": 34.7}
+{"ts": 1791585694.0, "run": "fluxmq-single-lat-10000", "system": "fluxmq-single", "bytes": {"fluxmq": 118784}, "host_free_gb": 34.3}
+{"ts": 1791585737.9, "run": "fluxmq-single-lat-50000", "system": "fluxmq-single", "bytes": {"fluxmq": 122880}, "host_free_gb": 34.7}
+{"ts": 1791585787.9, "run": "fluxmq-cluster-sat-1024B-1p1c-r1", "system": "fluxmq-cluster", "bytes": {"n1": 86016, "n2": 81920, "n3": 81920}, "host_free_gb": 25.4}
+{"ts": 1791585832.3, "run": "fluxmq-cluster-sat-1024B-4p4c-r1", "system": "fluxmq-cluster", "bytes": {"n1": 102400, "n2": 98304, "n3": 98304}, "host_free_gb": 22.4}
+{"ts": 1791585876.4, "run": "fluxmq-cluster-sat-100B-1p1c-r1", "system": "fluxmq-cluster", "bytes": {"n1": 110592, "n2": 106496, "n3": 106496}, "host_free_gb": 32.0}
+{"ts": 1791586014.6, "run": "fluxmq-cluster-sat-100B-4p4c-r1", "system": "fluxmq-cluster", "bytes": {"n1": 139264, "n2": 135168, "n3": 135168}, "host_free_gb": 24.8}
+{"ts": 1791586059.2, "run": "fluxmq-cluster-sat-1024B-1p1c-r2", "system": "fluxmq-cluster", "bytes": {"n1": 147456, "n2": 143360, "n3": 143360}, "host_free_gb": 34.7}
+{"ts": 1791586103.5, "run": "fluxmq-cluster-sat-1024B-4p4c-r2", "system": "fluxmq-cluster", "bytes": {"n1": 155648, "n2": 151552, "n3": 151552}, "host_free_gb": 34.7}
+{"ts": 1791586147.2, "run": "fluxmq-cluster-sat-100B-1p1c-r2", "system": "fluxmq-cluster", "bytes": {"n1": 167936, "n2": 163840, "n3": 163840}, "host_free_gb": 34.7}
+{"ts": 1791586205.2, "run": "fluxmq-cluster-sat-100B-4p4c-r2", "system": "fluxmq-cluster", "bytes": {"n1": 176128, "n2": 172032, "n3": 172032}, "host_free_gb": 34.7}

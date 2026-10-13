@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "kind": "invalid",
+  "reconstructed": true,
+  "valid_measurement": false,
+  "invalid_reason": "INVALID: host disk filled during the run (Docker VM filesystem went read-only); 8020 client errors",
+  "note": "Reconstructed from the runner log (bench1.log summary line): the original run JSON, its docker-stats samples and the idle record were deleted during a disk-full cleanup on 2026-10-09 before the decision to keep the first measurement intact. Only the fields printed in the summary line are known.",
+  "run_id": "kafka-single-sat-1024B-4p4c-r1",
+  "label": "kafka-single",
+  "system": "kafka",
+  "system_name": "kafka-single",
+  "system_title": "Kafka 1 node",
+  "scenario": "saturation",
+  "repeat": 1,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  },
+  "params": {
+    "size": 1024,
+    "producers": 4,
+    "consumers": 4,
+    "partitions": 8,
+    "rate": 0
+  },
+  "publish_rate": 229050,
+  "consume_rate": 229137,
+  "publish_mb_s": 234.5,
+  "drained": true,
+  "e2e_ms": {
+    "p50": 12.64,
+    "p99": 332.03,
+    "p999": 5038.08
+  },
+  "errors": 8020,
+  "broker_version": "Apache Kafka 3.7.0"
+}

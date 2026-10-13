@@ -1,0 +1,304 @@
+{
+  "acked": 142926,
+  "brokers": [
+    "kafka1:9092",
+    "kafka2:9092",
+    "kafka3:9092"
+  ],
+  "client": "librdkafka 2.12.1 FutureProducer linger.ms=5",
+  "consumer": null,
+  "durability": "Kafka topic RF=3, min.insync.replicas=2; producer acks=all, enable.idempotence=true; broker flush policy per its config (log.flush.interval.messages)",
+  "enqueue_errors": 0,
+  "failed": 0,
+  "first_error_ms": null,
+  "go_ms": 1791581773764,
+  "last_error": null,
+  "linger_ms": 5,
+  "partitions": 4,
+  "producers": 2,
+  "publish_timeout_s": 30,
+  "rate": 5000,
+  "replication": 3,
+  "sent": 142926,
+  "size": 1024,
+  "stop_ms": 1791581812963,
+  "system": "kafka",
+  "timeline": [
+    {
+      "acked": 2461,
+      "errors": 0,
+      "ms": 1791581774766,
+      "sent": 5001,
+      "t": 1
+    },
+    {
+      "acked": 7216,
+      "errors": 0,
+      "ms": 1791581775768,
+      "sent": 5000,
+      "t": 2
+    },
+    {
+      "acked": 5181,
+      "errors": 0,
+      "ms": 1791581776766,
+      "sent": 5000,
+      "t": 3
+    },
+    {
+      "acked": 5005,
+      "errors": 0,
+      "ms": 1791581777765,
+      "sent": 4992,
+      "t": 4
+    },
+    {
+      "acked": 5000,
+      "errors": 0,
+      "ms": 1791581778766,
+      "sent": 5009,
+      "t": 5
+    },
+    {
+      "acked": 4978,
+      "errors": 0,
+      "ms": 1791581779765,
+      "sent": 4991,
+      "t": 6
+    },
+    {
+      "acked": 4927,
+      "errors": 0,
+      "ms": 1791581780766,
+      "sent": 5008,
+      "t": 7
+    },
+    {
+      "acked": 5115,
+      "errors": 0,
+      "ms": 1791581781766,
+      "sent": 4999,
+      "t": 8
+    },
+    {
+      "acked": 4563,
+      "errors": 0,
+      "ms": 1791581782821,
+      "sent": 4976,
+      "t": 9
+    },
+    {
+      "acked": 4916,
+      "errors": 0,
+      "ms": 1791581783767,
+      "sent": 5017,
+      "t": 10
+    },
+    {
+      "acked": 1954,
+      "errors": 0,
+      "ms": 1791581784766,
+      "sent": 5000,
+      "t": 11
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581785766,
+      "sent": 5000,
+      "t": 12
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581786771,
+      "sent": 1323,
+      "t": 13
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581787766,
+      "sent": 0,
+      "t": 14
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581788765,
+      "sent": 0,
+      "t": 15
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581789765,
+      "sent": 0,
+      "t": 16
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581790766,
+      "sent": 0,
+      "t": 17
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581791766,
+      "sent": 0,
+      "t": 18
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581792765,
+      "sent": 0,
+      "t": 19
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581793765,
+      "sent": 0,
+      "t": 20
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581794766,
+      "sent": 0,
+      "t": 21
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581795766,
+      "sent": 0,
+      "t": 22
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581796766,
+      "sent": 0,
+      "t": 23
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581797765,
+      "sent": 0,
+      "t": 24
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581798766,
+      "sent": 0,
+      "t": 25
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581799765,
+      "sent": 0,
+      "t": 26
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581800765,
+      "sent": 0,
+      "t": 27
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581801767,
+      "sent": 0,
+      "t": 28
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581802765,
+      "sent": 0,
+      "t": 29
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581803765,
+      "sent": 0,
+      "t": 30
+    },
+    {
+      "acked": 9551,
+      "errors": 0,
+      "ms": 1791581804765,
+      "sent": 9551,
+      "t": 31
+    },
+    {
+      "acked": 44674,
+      "errors": 0,
+      "ms": 1791581805765,
+      "sent": 39820,
+      "t": 32
+    },
+    {
+      "acked": 2560,
+      "errors": 0,
+      "ms": 1791581806765,
+      "sent": 2501,
+      "t": 33
+    },
+    {
+      "acked": 2532,
+      "errors": 0,
+      "ms": 1791581807765,
+      "sent": 2500,
+      "t": 34
+    },
+    {
+      "acked": 2505,
+      "errors": 0,
+      "ms": 1791581808765,
+      "sent": 2500,
+      "t": 35
+    },
+    {
+      "acked": 2408,
+      "errors": 0,
+      "ms": 1791581809765,
+      "sent": 2495,
+      "t": 36
+    },
+    {
+      "acked": 2615,
+      "errors": 0,
+      "ms": 1791581810765,
+      "sent": 2504,
+      "t": 37
+    },
+    {
+      "acked": 2201,
+      "errors": 0,
+      "ms": 1791581811765,
+      "sent": 2499,
+      "t": 38
+    },
+    {
+      "acked": 11155,
+      "errors": 0,
+      "ms": 1791581812765,
+      "sent": 10921,
+      "t": 39
+    }
+  ],
+  "topic": "crash-kill9-2-1772811",
+  "unacked_at_end": 0,
+  "window": 5000
+}

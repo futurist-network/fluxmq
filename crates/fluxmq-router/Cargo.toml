@@ -1,0 +1,24 @@
+[package]
+name = "fluxmq-router"
+description = "FluxMQ content-based routing and the filter DSL"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto.workspace = true
+fluxmq-meta.workspace = true
+fluxmq-core.workspace = true
+base64 = "0.22"
+bytes.workspace = true
+crc32fast.workspace = true
+parking_lot.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

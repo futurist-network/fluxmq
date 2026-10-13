@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "run": "kafka-cluster-kill9-leader-1",
+  "system": "kafka-cluster",
+  "title": "Kafka 3 nodes RF=3 min.insync 2 acks=all, default flush",
+  "family": "kafka",
+  "mode": "kill9",
+  "target": "leader",
+  "iteration": 1,
+  "topic": "crash-kill9-1-187025",
+  "method": "SIGKILL of the broker's whole process group inside its container (crashctl kill9). The kernel and its page cache survive: everything the broker had written with write(2) is still there after the restart, fsynced or not. Simulates a broker process crash (OOM kill, panic, kill -9), not a machine crash.",
+  "params": {
+    "rate": 5000,
+    "size": 1024,
+    "producers": 2,
+    "partitions": 4,
+    "down_s": 30.0,
+    "after_s": 20.0
+  },
+  "victims": [
+    "kafka3"
+  ],
+  "crash_ms": 1791580198398,
+  "crash_took_ms": 135,
+  "crash_after_s": 10.33,
+  "canary": {
+    "kafka3": {
+      "unsynced_survived": true,
+      "synced_survived": true
+    }
+  },
+  "method_valid": true,
+  "restart_ms": 1791580228739,
+  "recovery_s": 7.5,
+  "write": {
+    "acked": 341506,
+    "brokers": [
+      "kafka1:9092",
+      "kafka2:9092",
+      "kafka3:9092"
+    ],
+    "client": "librdkafka 2.12.1 FutureProducer linger.ms=5",
+    "durability": "Kafka topic RF=3, min.insync.replicas=2; producer acks=all, enable.idempotence=true; broker flush policy per its config (log.flush.interval.messages)",
+    "enqueue_errors": 0,
+    "failed": 0,
+    "first_error_ms": null,
+    "go_ms": 1791580187980,
+    "last_error": null,
+    "linger_ms": 5,
+    "partitions": 4,
+    "producers": 2,
+    "publish_timeout_s": 30,
+    "rate": 5000,
+    "replication": 3,
+    "sent": 341506,
+    "size": 1024,
+    "stop_ms": 1791580256309,
+    "system": "kafka",
+    "topic": "crash-kill9-1-187025",
+    "unacked_at_end": 0,
+    "window": 5000
+  },
+  "failover": {
+    "crash_ms": 1791580198398,
+    "restart_ms": 1791580228739,
+    "pub_gap_ms": 8640,
+    "partition_gap_ms": {
+      "2": 8653,
+      "3": 8720,
+      "1": 8695,
+      "0": 8727
+    },
+    "max_partition_gap_ms": 8727,
+    "pub_gap_ms_while_down": 8640,
+    "pub_gap_ms_after_restart": 51,
+    "max_partition_gap_ms_after_restart": 163,
+    "max_ack_latency_ms": 8785,
+    "p99_ack_latency_ms": 8051,
+    "acks_over_1s": 40479,
+    "errors": 0,
+    "first_error_ms": null,
+    "last_error": null,
+    "consumer_received": 341506,
+    "consumer_duplicates": 0,
+    "consumer_errors": 2,
+    "con_gap_ms": 8640,
+    "con_gap_ms_after_restart": 50
+  },
+  "verify": {
+    "acked": 341506,
+    "acked_unique": 341506,
+    "duplicates": 0,
+    "end_reason": "reached high watermarks",
+    "extra": {
+      "group": "crash-kill9-1-187025-verify-258620",
+      "watermarks": {
+        "0": [
+          0,
+          87145
+        ],
+        "1": [
+          0,
+          85085
+        ],
+        "2": [
+          0,
+          80902
+        ],
+        "3": [
+          0,
+          88374
+        ]
+      }
+    },
+    "foreign": 0,
+    "found": 341506,
+    "last_ack_before_crash_ms": 1791580198469,
+    "lost": 0,
+    "lost_ack_ms_range": null,
+    "lost_acked_after_crash": 0,
+    "lost_acked_before_crash": 0,
+    "lost_by_partition": {},
+    "offsets_seen": {
+      "0": [
+        0,
+        87144
+      ],
+      "1": [
+        0,
+        85084
+      ],
+      "2": [
+        0,
+        80901
+      ],
+      "3": [
+        0,
+        88373
+      ]
+    },
+    "scanned": 341506,
+    "seconds": 0.6,
+    "system": "kafka",
+    "topic": "crash-kill9-1-187025",
+    "unacked_but_stored": 0,
+    "lost_sample": []
+  },
+  "verify_passes": 1,
+  "acked": 341506,
+  "lost": 0,
+  "reused_from": "20261009-v0.7",
+  "evidence": "bench/results/20261009-v0.7/failover/runs/kafka-cluster-kill9-leader-1/"
+}

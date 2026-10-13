@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "fluxmq-single-tls-system",
+  "system_name": "fluxmq-single-tls",
+  "system_title": "FluxMQ 1 node, TLS",
+  "system": "fluxmq",
+  "startup_s": 2.6,
+  "broker_version": "FluxMQ 0.4.0",
+  "nodes": [
+    "fluxmq"
+  ],
+  "tls": true
+}

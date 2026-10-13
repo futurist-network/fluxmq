@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-single-cumulative-idle",
+  "label": "fluxmq-single-cumulative",
+  "system_name": "fluxmq-single-cumulative",
+  "system_title": "FluxMQ 1 node, cumulative ack",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791569255605,
+  "measure_end_ms": 1791569285611,
+  "broker_version": "FluxMQ 0.7.0",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

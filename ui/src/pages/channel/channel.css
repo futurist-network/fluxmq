@@ -1,0 +1,247 @@
+.channel-page {
+  gap: 16px;
+}
+.ch-titles {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mono-title {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  font-weight: 550;
+}
+.ch-metrics {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.hm {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 20px;
+  border-left: 1px solid var(--border-subtle);
+  min-width: 0;
+}
+.hm:first-child {
+  border-left: none;
+}
+.hm-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.hm-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+}
+.hm-value .num {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.hm-value .unit {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.hm-sub {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.channel-page .tabs {
+  margin-top: 4px;
+}
+.tab-panel {
+  min-width: 0;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.lat-table td:first-child {
+  white-space: nowrap;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.storage-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  padding: 16px 20px;
+}
+.size-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.size-cell .num {
+  width: 64px;
+  text-align: right;
+  font-size: 12.5px;
+}
+
+.settings-stack {
+  max-width: 880px;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+.switch-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 34px;
+  font-size: 13px;
+}
+.danger-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.danger-row p {
+  flex: 1;
+  font-size: 13px;
+}
+
+@media (max-width: 1280px) {
+  .ch-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .hm:nth-child(4) {
+    border-left: none;
+  }
+  .hm:nth-child(n + 4) {
+    border-top: 1px solid var(--border-subtle);
+  }
+}
+@media (max-width: 1100px) {
+  .overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .storage-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .ch-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hm:nth-child(odd) {
+    border-left: none;
+  }
+  .hm:nth-child(4) {
+    border-left: 1px solid var(--border-subtle);
+  }
+  .hm:nth-child(n + 3) {
+    border-top: 1px solid var(--border-subtle);
+  }
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .storage-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .danger-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+fieldset.form-grid {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+}
+fieldset.form-grid:disabled {
+  opacity: 0.7;
+}
+.readonly-note {
+  margin: 0;
+  padding: 0 20px 12px;
+  font-size: 12.5px;
+}
+
+/* i18n: Russian labels run ~30% longer — keep metric labels on one line with an ellipsis. */
+.hm-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.channel-page .tabs a {
+  white-space: nowrap;
+}
+.channels-table th {
+  white-space: normal;
+  vertical-align: bottom;
+  line-height: 1.3;
+}
+.modes-legend {
+  margin-top: 4px;
+  font-size: 12.5px;
+}
+.modes-legend b {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+/* Narrow side cards: a wide (e.g. Russian) table scrolls inside its card, never the page. */
+.overview-grid .card-body.flush {
+  overflow-x: auto;
+}
+
+/* Publish dialog (operator). */
+.publish-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.publish-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .publish-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.publish-payload {
+  width: 100%;
+  min-height: 140px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  resize: vertical;
+  font-size: 12.5px;
+  line-height: 18px;
+}
+.publish-delay {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  max-width: 320px;
+}
+.publish-delay .input:first-child {
+  width: 110px;
+}
+.publish-at {
+  margin-top: 8px;
+  max-width: 260px;
+}
+
+.publish-prio {
+  max-width: 220px;
+}

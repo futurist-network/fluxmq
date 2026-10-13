@@ -1,0 +1,10 @@
+[
+  "runs/fluxmq-single-system.json",
+  "runs/fluxmq-single-sat-1024B-4p4c-r1.json",
+  "runs/fluxmq-single-sat-1024B-4p4c-r2.json",
+  "runs/fluxmq-single-lat-10000.json",
+  "runs/fluxmq-single-pipeline-system.json",
+  "runs/fluxmq-single-pipeline-sat-1024B-4p4c-r1.json",
+  "runs/fluxmq-single-pipeline-sat-1024B-4p4c-r2.json",
+  "runs/fluxmq-single-pipeline-lat-10000.json"
+]

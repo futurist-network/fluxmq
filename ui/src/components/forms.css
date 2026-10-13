@@ -1,0 +1,238 @@
+.secret-stored {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 4px 0 12px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  min-width: 0;
+}
+.secret-dots {
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+}
+.secret-note {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.secret-stored .spacer {
+  flex: 1;
+}
+.secret-edit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.secret-field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+.secret-field .input {
+  width: 100%;
+  padding-right: 36px;
+}
+.secret-field .btn {
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.headers-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.headers-empty {
+  font-size: 12.5px;
+}
+.header-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.4fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .header-row {
+    grid-template-columns: 1fr auto;
+  }
+  .header-row > :nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+.add-header {
+  align-self: flex-start;
+}
+.code-block {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  overflow: hidden;
+  min-width: 0;
+}
+.code-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.code-head .spacer {
+  flex: 1;
+}
+.code-title {
+  font-weight: 500;
+}
+.code-block pre {
+  margin: 0;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 18px;
+  overflow-x: auto;
+  white-space: pre;
+  color: var(--text);
+}
+.toggle-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tchip {
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+.tchip:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.tchip[aria-pressed='true'] {
+  border-color: transparent;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
+.tchip:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+}
+.form-grid .span-2 {
+  grid-column: 1 / -1;
+}
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.test-result {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+}
+.test-result.ok {
+  color: var(--success);
+}
+.test-result.fail {
+  color: var(--critical-text);
+}
+.status-badge {
+  text-transform: capitalize;
+}
+.helper-box {
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  font-size: 12.5px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+.helper-box ol {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+.helper-box code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text);
+}
+.system-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 5px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.table tr.row-muted td {
+  color: var(--text-tertiary);
+}
+.check-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  min-height: 32px;
+}
+.modal-foot .spacer {
+  flex: 1;
+}
+.readonly-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+.ch-system {
+  margin-left: 6px;
+  vertical-align: 1px;
+}
+.field > .segmented {
+  align-self: flex-start;
+  flex-wrap: wrap;
+}
+fieldset.fs-plain {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+}
+fieldset.fs-plain:not(.card-body) {
+  padding: 0;
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "skipped",
+  "run_id": "fluxmq-cluster-tls-lat-50000",
+  "label": "fluxmq-cluster-tls",
+  "system_name": "fluxmq-cluster-tls",
+  "system_title": "FluxMQ 3 nodes RF=3, full TLS",
+  "system": "fluxmq",
+  "scenario": "latency",
+  "params": {
+    "rate": 50000,
+    "size": 1024
+  },
+  "reason": "saturation throughput at 1 KiB (51701 msg/s) is below 50000 msg/s"
+}

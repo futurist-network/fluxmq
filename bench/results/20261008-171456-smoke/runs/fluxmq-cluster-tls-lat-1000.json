@@ -1,0 +1,98 @@
+{
+  "broker_version": "FluxMQ 0.4.0",
+  "cleanup_error": null,
+  "client": "fluxmq-client (Rust SDK) BatchingProducer linger=1ms, prefetch=2000",
+  "consume_mb_s": 1.13,
+  "consume_rate": 1100.0,
+  "consumed": 3302,
+  "drained": true,
+  "durability": "FluxMQ cluster of 3 nodes: stream channel, 8 partitions; publish acked after the broker's group commit (fsync) and, in a cluster, after every ISR member has the batch (acks=all; min ISR per broker flag); consumer acks every message",
+  "e2e_ms": {
+    "count": 2999,
+    "max": 248.319,
+    "mean": 25.892,
+    "min": 3.296,
+    "p50": 10.495,
+    "p90": 68.479,
+    "p99": 195.455,
+    "p999": 230.271
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "fluxmq-cluster-tls",
+  "last_error": null,
+  "measure_end_ms": 1791469041833,
+  "measure_start_ms": 1791469038831,
+  "params": {
+    "brokers": [
+      "tls://n1:7420",
+      "tls://n2:7420",
+      "tls://n3:7420"
+    ],
+    "consumers": 4,
+    "duration_s": 3,
+    "linger_ms": 1,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 4,
+    "queue_type": null,
+    "rate": 1000,
+    "replication": 1,
+    "size": 1024,
+    "tls": true,
+    "warmup_s": 1,
+    "window": 2000
+  },
+  "publish_mb_s": 1.13,
+  "publish_ms": {
+    "count": 2999,
+    "max": 248.319,
+    "mean": 25.884,
+    "min": 3.29,
+    "p50": 10.455,
+    "p90": 68.415,
+    "p99": 195.455,
+    "p999": 230.399
+  },
+  "publish_rate": 1100.0,
+  "published": 3302,
+  "received_of_window": 2999,
+  "run_id": "fluxmq-cluster-tls-lat-1000",
+  "scenario": "latency",
+  "schema": 1,
+  "sent_in_window": 2999,
+  "started_at_ms": 1791469037521,
+  "sustained": true,
+  "system": "fluxmq",
+  "timeline": [
+    {
+      "con": 705,
+      "phase": "measure",
+      "pub": 705,
+      "t": 1
+    },
+    {
+      "con": 1298,
+      "phase": "measure",
+      "pub": 1298,
+      "t": 2
+    },
+    {
+      "con": 1017,
+      "phase": "measure",
+      "pub": 1017,
+      "t": 3
+    },
+    {
+      "con": 991,
+      "phase": "drain",
+      "pub": 988,
+      "t": 4
+    }
+  ],
+  "topic": "bench-r-69037521",
+  "window_s": 3.002,
+  "system_name": "fluxmq-cluster-tls",
+  "system_title": "FluxMQ 3 nodes RF=3, full TLS"
+}

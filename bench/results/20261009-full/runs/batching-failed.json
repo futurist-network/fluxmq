@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "kind": "system-failed",
+  "run_id": "batching-failed",
+  "system_name": "batching",
+  "reconstructed": true,
+  "error": "host free disk 1.0 GB < --min-free-gb 8.0 (aborted; rerun in 20261009-full2)"
+}

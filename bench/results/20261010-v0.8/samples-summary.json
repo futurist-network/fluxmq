@@ -1,0 +1,870 @@
+[
+ {
+  "run": "fluxmq-cluster-catchup-100B-4p4c",
+  "system": "fluxmq-cluster",
+  "scenario": "catchup",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 1073741800,
+  "peak_data_bytes": {
+   "n1": 1137885184,
+   "n2": 1137868800,
+   "n3": 1137864704
+  },
+  "samples": 8,
+  "free_gb_min": 30.1,
+  "fsync": {
+   "n1": {
+    "per_s": 124.0,
+    "mean_ms": 6.25,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 10.3
+   },
+   "n2": {
+    "per_s": 120.8,
+    "mean_ms": 6.11,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 9.8
+   },
+   "n3": {
+    "per_s": 122.0,
+    "mean_ms": 5.94,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 9.7
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-catchup-1024B-4p4c",
+  "system": "fluxmq-cluster",
+  "scenario": "catchup",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 1073741824,
+  "peak_data_bytes": {
+   "n3": 912379904,
+   "n2": 963981312,
+   "n1": 1018920960
+  },
+  "samples": 4,
+  "free_gb_min": 40.5,
+  "fsync": {
+   "n3": {
+    "per_s": 130.0,
+    "mean_ms": 13.52,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 13.5
+   },
+   "n2": {
+    "per_s": 121.0,
+    "mean_ms": 12.87,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 12.9
+   },
+   "n1": {
+    "per_s": 89.5,
+    "mean_ms": 12.47,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 12.5
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-overload-100B-4p4c",
+  "system": "fluxmq-cluster",
+  "scenario": "overload",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 7442915500,
+  "peak_data_bytes": {
+   "n1": 4390944768,
+   "n2": 4387295232,
+   "n3": 4401336320
+  },
+  "samples": 37,
+  "free_gb_min": 29.9,
+  "fsync": {
+   "n1": {
+    "per_s": 124.3,
+    "mean_ms": 4.64,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 12.0
+   },
+   "n2": {
+    "per_s": 123.2,
+    "mean_ms": 4.75,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 14.6
+   },
+   "n3": {
+    "per_s": 123.1,
+    "mean_ms": 4.71,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 15.1
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-overload-1024B-4p4c",
+  "system": "fluxmq-cluster",
+  "scenario": "overload",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 15378916352,
+  "peak_data_bytes": {
+   "n3": 4414963712,
+   "n2": 4409565184,
+   "n1": 4400189440
+  },
+  "samples": 36,
+  "free_gb_min": 29.9,
+  "fsync": {
+   "n3": {
+    "per_s": 150.2,
+    "mean_ms": 12.66,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 24.4
+   },
+   "n2": {
+    "per_s": 146.4,
+    "mean_ms": 12.71,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 25.1
+   },
+   "n1": {
+    "per_s": 144.9,
+    "mean_ms": 12.72,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 24.3
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-sat-100B-1p1c",
+  "system": "fluxmq-cluster",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 1758262100,
+  "peak_data_bytes": {
+   "n1": 2505457664,
+   "n2": 2512257024,
+   "n3": 2519117824
+  },
+  "samples": 21,
+  "free_gb_min": 35.5,
+  "fsync": {
+   "n1": {
+    "per_s": 96.5,
+    "mean_ms": 3.01,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 6.4
+   },
+   "n2": {
+    "per_s": 96.3,
+    "mean_ms": 3.0,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 5.9
+   },
+   "n3": {
+    "per_s": 97.3,
+    "mean_ms": 2.99,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 6.1
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-sat-100B-4p4c",
+  "system": "fluxmq-cluster",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 3795700000,
+  "peak_data_bytes": {
+   "n1": 4379009024,
+   "n2": 4380311552,
+   "n3": 4357304320
+  },
+  "samples": 23,
+  "free_gb_min": 29.9,
+  "fsync": {
+   "n1": {
+    "per_s": 131.6,
+    "mean_ms": 3.78,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 5.3
+   },
+   "n2": {
+    "per_s": 129.5,
+    "mean_ms": 3.78,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 5.1
+   },
+   "n3": {
+    "per_s": 129.2,
+    "mean_ms": 3.81,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 4.7
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-sat-1024B-1p1c-r1",
+  "system": "fluxmq-cluster",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 8851394560,
+  "peak_data_bytes": {
+   "n2": 4391727104,
+   "n1": 4416466944,
+   "n3": 4413825024
+  },
+  "samples": 21,
+  "free_gb_min": 29.9,
+  "fsync": {
+   "n2": {
+    "per_s": 110.6,
+    "mean_ms": 10.32,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 11.6
+   },
+   "n1": {
+    "per_s": 112.2,
+    "mean_ms": 10.31,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 11.6
+   },
+   "n3": {
+    "per_s": 109.8,
+    "mean_ms": 10.38,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 11.0
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-sat-1024B-1p1c-r2",
+  "system": "fluxmq-cluster",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 8209652736,
+  "peak_data_bytes": {
+   "n2": 4402937856,
+   "n1": 4391501824,
+   "n3": 4384296960
+  },
+  "samples": 21,
+  "free_gb_min": 29.9,
+  "fsync": {
+   "n2": {
+    "per_s": 100.0,
+    "mean_ms": 12.06,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 16.3
+   },
+   "n1": {
+    "per_s": 100.7,
+    "mean_ms": 11.94,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 17.5
+   },
+   "n3": {
+    "per_s": 99.2,
+    "mean_ms": 12.27,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 17.5
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-sat-1024B-4p4c-r1",
+  "system": "fluxmq-cluster",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 7831056384,
+  "peak_data_bytes": {
+   "n2": 4404174848,
+   "n1": 4408557568,
+   "n3": 4392247296
+  },
+  "samples": 21,
+  "free_gb_min": 29.9,
+  "fsync": {
+   "n2": {
+    "per_s": 145.4,
+    "mean_ms": 13.21,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 16.3
+   },
+   "n1": {
+    "per_s": 146.1,
+    "mean_ms": 13.34,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 16.9
+   },
+   "n3": {
+    "per_s": 148.0,
+    "mean_ms": 13.33,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 17.2
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-sat-1024B-4p4c-r2",
+  "system": "fluxmq-cluster",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 8921502720,
+  "peak_data_bytes": {
+   "n2": 4398174208,
+   "n1": 4399620096,
+   "n3": 4404834304
+  },
+  "samples": 21,
+  "free_gb_min": 29.9,
+  "fsync": {
+   "n2": {
+    "per_s": 173.1,
+    "mean_ms": 11.28,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 13.2
+   },
+   "n1": {
+    "per_s": 165.4,
+    "mean_ms": 11.36,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 13.6
+   },
+   "n3": {
+    "per_s": 164.9,
+    "mean_ms": 11.57,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 13.4
+   }
+  }
+ },
+ {
+  "run": "fluxmq-cluster-tls-sat-1024B-4p4c",
+  "system": "fluxmq-cluster-tls",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 7006355456,
+  "peak_data_bytes": {
+   "n2": 4388089856,
+   "n1": 4401590272,
+   "n3": 4424847360
+  },
+  "samples": 21,
+  "free_gb_min": 29.9,
+  "fsync": {
+   "n2": {
+    "per_s": 138.1,
+    "mean_ms": 13.83,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 18.2
+   },
+   "n1": {
+    "per_s": 138.1,
+    "mean_ms": 13.63,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 17.0
+   },
+   "n3": {
+    "per_s": 142.0,
+    "mean_ms": 13.44,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 15.9
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-catchup-100B-4p4c",
+  "system": "fluxmq-single",
+  "scenario": "catchup",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 1073741800,
+  "peak_data_bytes": {
+   "fluxmq": 1137827840
+  },
+  "samples": 7,
+  "free_gb_min": 40.9,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 155.8,
+    "mean_ms": 4.31,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 10.8
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-catchup-1024B-4p4c",
+  "system": "fluxmq-single",
+  "scenario": "catchup",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 1073741824,
+  "peak_data_bytes": {
+   "fluxmq": 836718592
+  },
+  "samples": 3,
+  "free_gb_min": 41.2,
+  "fsync": {}
+ },
+ {
+  "run": "fluxmq-single-overload-100B-4p4c",
+  "system": "fluxmq-single",
+  "scenario": "overload",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 9317377900,
+  "peak_data_bytes": {
+   "fluxmq": 4400435200
+  },
+  "samples": 36,
+  "free_gb_min": 37.6,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 151.7,
+    "mean_ms": 3.19,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 16.8
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-overload-1024B-4p4c",
+  "system": "fluxmq-single",
+  "scenario": "overload",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 34255793152,
+  "peak_data_bytes": {
+   "fluxmq": 4437729280
+  },
+  "samples": 36,
+  "free_gb_min": 37.6,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 196.2,
+    "mean_ms": 6.37,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 13.9
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-sat-100B-1p1c-r1",
+  "system": "fluxmq-single",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 2101241600,
+  "peak_data_bytes": {
+   "fluxmq": 2865168384
+  },
+  "samples": 21,
+  "free_gb_min": 39.2,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 103.2,
+    "mean_ms": 2.11,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 7.1
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-sat-100B-1p1c-r2",
+  "system": "fluxmq-single",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 2108800000,
+  "peak_data_bytes": {
+   "fluxmq": 2988699648
+  },
+  "samples": 21,
+  "free_gb_min": 38.6,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 102.8,
+    "mean_ms": 1.78,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 5.2
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-sat-100B-4p4c-r1",
+  "system": "fluxmq-single",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 4881520000,
+  "peak_data_bytes": {
+   "fluxmq": 4375420928
+  },
+  "samples": 21,
+  "free_gb_min": 37.7,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 160.1,
+    "mean_ms": 2.89,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 6.7
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-sat-100B-4p4c-r2",
+  "system": "fluxmq-single",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 4800540700,
+  "peak_data_bytes": {
+   "fluxmq": 4389789696
+  },
+  "samples": 21,
+  "free_gb_min": 37.7,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 156.8,
+    "mean_ms": 3.09,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 18.2
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-sat-1024B-1p1c-r1",
+  "system": "fluxmq-single",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 15956330496,
+  "peak_data_bytes": {
+   "fluxmq": 4424552448
+  },
+  "samples": 21,
+  "free_gb_min": 37.6,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 133.7,
+    "mean_ms": 5.65,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 8.3
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-sat-1024B-1p1c-r2",
+  "system": "fluxmq-single",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 14938777600,
+  "peak_data_bytes": {
+   "fluxmq": 4427427840
+  },
+  "samples": 21,
+  "free_gb_min": 37.6,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 127.2,
+    "mean_ms": 4.92,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 14.0
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-sat-1024B-4p4c-r1",
+  "system": "fluxmq-single",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 15704487936,
+  "peak_data_bytes": {
+   "fluxmq": 4421746688
+  },
+  "samples": 21,
+  "free_gb_min": 37.6,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 186.9,
+    "mean_ms": 7.37,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 14.0
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-sat-1024B-4p4c-r2",
+  "system": "fluxmq-single",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 17906370560,
+  "peak_data_bytes": {
+   "fluxmq": 4424900608
+  },
+  "samples": 21,
+  "free_gb_min": 37.6,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 194.4,
+    "mean_ms": 6.06,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 13.4
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-tls-sat-100B-1p1c",
+  "system": "fluxmq-single-tls",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 2191345800,
+  "peak_data_bytes": {
+   "fluxmq": 3071651840
+  },
+  "samples": 21,
+  "free_gb_min": 40.0,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 137.4,
+    "mean_ms": 1.5,
+    "p99_le_ms": 10.0,
+    "worst_2s_mean_ms": 4.4
+   }
+  }
+ },
+ {
+  "run": "fluxmq-single-tls-sat-1024B-1p1c",
+  "system": "fluxmq-single-tls",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 12938020864,
+  "peak_data_bytes": {
+   "fluxmq": 4417089536
+  },
+  "samples": 21,
+  "free_gb_min": 38.7,
+  "fsync": {
+   "fluxmq": {
+    "per_s": 136.0,
+    "mean_ms": 6.29,
+    "p99_le_ms": 50.0,
+    "worst_2s_mean_ms": 18.2
+   }
+  }
+ },
+ {
+  "run": "kafka-cluster-sat-1024B-4p4c",
+  "system": "kafka-cluster",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 7717264384,
+  "peak_data_bytes": {
+   "kafka1": 4948439040,
+   "kafka2": 4967837696,
+   "kafka3": 5021229056
+  },
+  "samples": 22,
+  "free_gb_min": 27.6,
+  "fsync": {}
+ },
+ {
+  "run": "kafka-single-fsync-sat-100B-4p4c",
+  "system": "kafka-single-fsync",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 2759473900,
+  "peak_data_bytes": {
+   "kafka": 3826733056
+  },
+  "samples": 27,
+  "free_gb_min": 39.3,
+  "fsync": {}
+ },
+ {
+  "run": "kafka-single-fsync-sat-1024B-1p1c",
+  "system": "kafka-single-fsync",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 9264203776,
+  "peak_data_bytes": {
+   "kafka": 6635810816
+  },
+  "samples": 23,
+  "free_gb_min": 36.5,
+  "fsync": {}
+ },
+ {
+  "run": "kafka-single-fsync-sat-1024B-4p4c",
+  "system": "kafka-single-fsync",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 12141283328,
+  "peak_data_bytes": {
+   "kafka": 4895801344
+  },
+  "samples": 21,
+  "free_gb_min": 38.2,
+  "fsync": {}
+ },
+ {
+  "run": "kafka-single-sat-100B-4p4c",
+  "system": "kafka-single",
+  "scenario": "saturation",
+  "size": 100,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 3622099600,
+  "peak_data_bytes": {
+   "kafka": 4552560640
+  },
+  "samples": 23,
+  "free_gb_min": 38.5,
+  "fsync": {}
+ },
+ {
+  "run": "kafka-single-sat-1024B-1p1c",
+  "system": "kafka-single",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 14434049024,
+  "peak_data_bytes": {
+   "kafka": 10014969856
+  },
+  "samples": 23,
+  "free_gb_min": 33.2,
+  "fsync": {}
+ },
+ {
+  "run": "kafka-single-sat-1024B-4p4c",
+  "system": "kafka-single",
+  "scenario": "saturation",
+  "size": 1024,
+  "rate": 0,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 18108477440,
+  "peak_data_bytes": {
+   "kafka": 5583523840
+  },
+  "samples": 21,
+  "free_gb_min": 37.6,
+  "fsync": {}
+ }
+]

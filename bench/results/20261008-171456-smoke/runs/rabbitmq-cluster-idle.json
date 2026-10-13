@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "rabbitmq-cluster-idle",
+  "label": "rabbitmq-cluster",
+  "system_name": "rabbitmq-cluster",
+  "system_title": "RabbitMQ 3 nodes (quorum)",
+  "system": "rabbitmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791469245218,
+  "measure_end_ms": 1791469251223,
+  "broker_version": "RabbitMQ 4.1.8"
+}

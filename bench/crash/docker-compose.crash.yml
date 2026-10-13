@@ -1,0 +1,156 @@
+# Crash-durability overlay for deploy/docker-compose.yml (bench/crash/README.md). Used by
+# bench/crash/crash.py as project `fluxmq-crash`:
+#
+#   docker compose -p fluxmq-crash -f deploy/docker-compose.yml -f bench/crash/docker-compose.crash.yml \
+#     --profile single up -d --wait
+#
+# Every broker keeps its normal image, settings, CPU/memory limits and healthcheck; it only runs
+# under `crashctl` (privileged, for loop + device-mapper) with its data directory on an ext4
+# filesystem on a dm device backed by a sparse file in a named volume. No host ports (the
+# client runs in the compose network), so it never collides with the bench project.
+
+x-crash-fluxmq-env: &crash-fluxmq-env
+  CRASH_BROKER_CMD: docker-entrypoint.sh fluxmq
+  CRASH_RUN_AS: "10001:10001"
+  CRASH_DATA_DIR: /var/lib/fluxmq
+  CRASH_DISK_SIZE: ${CRASH_DISK_SIZE:-3G}
+
+x-crash-kafka-env: &crash-kafka-env
+  CRASH_BROKER_CMD: /etc/kafka/docker/run
+  CRASH_RUN_AS: "1000:1000"
+  CRASH_DATA_DIR: /var/lib/kafka/data
+  CRASH_DISK_SIZE: ${CRASH_DISK_SIZE:-3G}
+  # KAFKA_LOG_FLUSH_INTERVAL_MESSAGES comes from deploy/docker-compose.yml (kafka-*-fsync: 1).
+
+services:
+  fluxmq:
+    image: ${FLUXMQ_CRASH_IMAGE:-fluxmq-crash:dev}
+    privileged: true
+    init: true
+    user: root
+    working_dir: /
+    entrypoint: ["/usr/local/bin/crashctl", "boot"]
+    command: []
+    ports: !reset []
+    environment:
+      <<: *crash-fluxmq-env
+    volumes:
+      - fluxmq-crashdisk:/crashdisk
+
+  n1:
+    image: ${FLUXMQ_CRASH_IMAGE:-fluxmq-crash:dev}
+    privileged: true
+    init: true
+    user: root
+    working_dir: /
+    entrypoint: ["/usr/local/bin/crashctl", "boot"]
+    command: []
+    ports: !reset []
+    environment:
+      <<: *crash-fluxmq-env
+    volumes:
+      - n1-crashdisk:/crashdisk
+
+  n2:
+    image: ${FLUXMQ_CRASH_IMAGE:-fluxmq-crash:dev}
+    privileged: true
+    init: true
+    user: root
+    working_dir: /
+    entrypoint: ["/usr/local/bin/crashctl", "boot"]
+    command: []
+    ports: !reset []
+    environment:
+      <<: *crash-fluxmq-env
+    volumes:
+      - n2-crashdisk:/crashdisk
+
+  n3:
+    image: ${FLUXMQ_CRASH_IMAGE:-fluxmq-crash:dev}
+    privileged: true
+    init: true
+    user: root
+    working_dir: /
+    entrypoint: ["/usr/local/bin/crashctl", "boot"]
+    command: []
+    ports: !reset []
+    environment:
+      <<: *crash-fluxmq-env
+    volumes:
+      - n3-crashdisk:/crashdisk
+
+  kafka:
+    image: ${KAFKA_CRASH_IMAGE:-kafka-crash:dev}
+    privileged: true
+    init: true
+    user: root
+    working_dir: /
+    entrypoint: ["/usr/local/bin/crashctl", "boot"]
+    command: []
+    ports: !reset []
+    environment:
+      <<: *crash-kafka-env
+    volumes:
+      - kafka-crashdisk:/crashdisk
+
+  kafka1:
+    image: ${KAFKA_CRASH_IMAGE:-kafka-crash:dev}
+    privileged: true
+    init: true
+    user: root
+    working_dir: /
+    entrypoint: ["/usr/local/bin/crashctl", "boot"]
+    command: []
+    ports: !reset []
+    environment:
+      <<: *crash-kafka-env
+    volumes:
+      - kafka1-crashdisk:/crashdisk
+
+  kafka2:
+    image: ${KAFKA_CRASH_IMAGE:-kafka-crash:dev}
+    privileged: true
+    init: true
+    user: root
+    working_dir: /
+    entrypoint: ["/usr/local/bin/crashctl", "boot"]
+    command: []
+    ports: !reset []
+    environment:
+      <<: *crash-kafka-env
+    volumes:
+      - kafka2-crashdisk:/crashdisk
+
+  kafka3:
+    image: ${KAFKA_CRASH_IMAGE:-kafka-crash:dev}
+    privileged: true
+    init: true
+    user: root
+    working_dir: /
+    entrypoint: ["/usr/local/bin/crashctl", "boot"]
+    command: []
+    ports: !reset []
+    environment:
+      <<: *crash-kafka-env
+    volumes:
+      - kafka3-crashdisk:/crashdisk
+
+  # mq-crash (write / verify), run with `docker compose run --rm crashclient ...`.
+  crashclient:
+    image: ${CRASH_CLIENT_IMAGE:-fluxmq-crash-client:dev}
+    profiles: [crashclient]
+    restart: "no"
+    volumes:
+      - ${CRASH_RESULTS_DIR:-../bench/results/crash}:/results
+    cpus: ${BENCH_CPUS:-2}
+    mem_limit: ${BENCH_MEM:-2g}
+
+volumes:
+  fluxmq-crashdisk:
+  n1-crashdisk:
+  n2-crashdisk:
+  n3-crashdisk:
+  kafka-crashdisk:
+  kafka1-crashdisk:
+  kafka2-crashdisk:
+  kafka3-crashdisk:

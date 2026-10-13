@@ -1,0 +1,186 @@
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+  gap: 12px;
+}
+.reason-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 14px 16px;
+  text-align: left;
+  color: var(--text);
+  min-width: 0;
+  transition:
+    border-color 0.12s var(--ease),
+    background 0.12s var(--ease);
+}
+.reason-card:hover {
+  border-color: var(--border-strong);
+  background: var(--card-hover);
+}
+.reason-card.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+.rc-count {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+}
+/* Translated titles run longer than raw codes: up to two lines, then an ellipsis. */
+.rc-reason {
+  font-size: 13px;
+  font-weight: 500;
+  max-width: 100%;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+.rc-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+.rc-chip {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.rc-chip b {
+  font-weight: 550;
+  color: var(--text);
+}
+.rc-meta {
+  font-size: 12px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.dlq-head {
+  flex-wrap: wrap;
+  padding-bottom: 8px;
+}
+.dlq-type {
+  font-weight: 500;
+}
+.dlq-table tr.selected-row td {
+  background: var(--primary-soft);
+}
+.dlq-inspector {
+  display: flex;
+  flex-direction: column;
+  margin: -4px -20px -20px;
+  padding: 0 20px;
+}
+.dlq-inspector .insp-head {
+  display: none;
+}
+.dlq-inspector .insp-actions,
+.dlq-inspector .insp-scroll {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.dlq-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: -4px;
+}
+.dlq-filters .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.rc-sample {
+  font-size: 12px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+}
+.rc-permanent {
+  font-size: 11.5px;
+  color: var(--critical-text);
+}
+.dlq-danger-sep {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border);
+  margin: 0 4px;
+}
+.confirm-snapshot.neutral {
+  background: var(--surface);
+}
+.rc-code {
+  font-size: 11.5px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dlq-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.dlq-why {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 0 20px 12px;
+  padding: 8px 12px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+.dlq-why.permanent {
+  background: color-mix(in srgb, var(--critical) 10%, transparent);
+  color: var(--critical-text);
+}
+.dlq-why svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.dlq-why-code {
+  font-size: 12px;
+  opacity: 0.8;
+  overflow-wrap: anywhere;
+}
+.dlq-drawer-reason {
+  margin-bottom: 12px;
+}
+.dlq-drawer-reason > span {
+  overflow-wrap: anywhere;
+}
+.dlq-drawer-hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+/* Phones: the action toolbar takes its own row under the title and wraps its buttons. */
+@media (max-width: 520px) {
+  .dlq-head .spacer {
+    display: none;
+  }
+  .dlq-head .toolbar {
+    flex-basis: 100%;
+  }
+  .dlq-why {
+    margin: 0 16px 12px;
+  }
+}

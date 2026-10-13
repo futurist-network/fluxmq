@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "kafka-single-idle",
+  "label": "kafka-single",
+  "system_name": "kafka-single",
+  "system_title": "Kafka 1 node",
+  "system": "kafka",
+  "scenario": "idle",
+  "measure_start_ms": 1791469060513,
+  "measure_end_ms": 1791469066514,
+  "broker_version": "Apache Kafka 3.7.0"
+}

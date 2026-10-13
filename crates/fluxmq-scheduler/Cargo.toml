@@ -1,0 +1,18 @@
+[package]
+name = "fluxmq-scheduler"
+description = "FluxMQ delayed messages"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto.workspace = true
+fluxmq-meta.workspace = true
+fluxmq-core.workspace = true
+fluxmq-cluster.workspace = true
+bytes.workspace = true
+parking_lot.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true

@@ -1,0 +1,59 @@
+{
+  "acked": 165412,
+  "acked_unique": 165412,
+  "duplicates": 0,
+  "end_reason": "reached high watermarks",
+  "extra": {
+    "group": "crash-kill9-1-1660616-verify-696191",
+    "watermarks": {
+      "0": [
+        0,
+        40786
+      ],
+      "1": [
+        0,
+        44276
+      ],
+      "2": [
+        0,
+        40528
+      ],
+      "3": [
+        0,
+        39822
+      ]
+    }
+  },
+  "foreign": 0,
+  "found": 165412,
+  "last_ack_before_crash_ms": 1791581673771,
+  "lost": 0,
+  "lost_ack_ms_range": null,
+  "lost_acked_after_crash": 0,
+  "lost_acked_before_crash": 0,
+  "lost_by_partition": {},
+  "lost_sample": [],
+  "offsets_seen": {
+    "0": [
+      0,
+      40785
+    ],
+    "1": [
+      0,
+      44275
+    ],
+    "2": [
+      0,
+      40527
+    ],
+    "3": [
+      0,
+      39821
+    ]
+  },
+  "scanned": 165412,
+  "seconds": 0.4,
+  "system": "kafka",
+  "topic": "crash-kill9-1-1660616",
+  "unacked_but_stored": 0
+}

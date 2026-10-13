@@ -1,0 +1,321 @@
+{
+  "broker_version": "Apache Kafka 3.7.0",
+  "cleanup_error": null,
+  "client": "librdkafka 2.12.1 (rdkafka crate) FutureProducer linger.ms=5, StreamConsumer",
+  "consume_mb_s": 24.28,
+  "consume_rate": 242809.0,
+  "consumed": 7284402,
+  "drained": true,
+  "durability": "Kafka: topic 8 partitions, RF=3, min.insync.replicas=2; producer acks=all + enable.idempotence=true; broker default flush policy (no fsync per message: durability comes from replication, data reaches disk via the OS page cache); consumer offsets auto-committed every 5 s",
+  "e2e_ms": {
+    "count": 7283053,
+    "max": 47.263,
+    "mean": 6.866,
+    "min": 0.763,
+    "p50": 6.699,
+    "p90": 8.183,
+    "p99": 14.783,
+    "p999": 24.159
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "kafka-cluster",
+  "last_error": null,
+  "measure_end_ms": 1791504642697,
+  "measure_start_ms": 1791504612694,
+  "params": {
+    "brokers": [
+      "kafka1:9092",
+      "kafka2:9092",
+      "kafka3:9092"
+    ],
+    "consumers": 1,
+    "duration_s": 30,
+    "linger_ms": 5,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 1,
+    "queue_type": null,
+    "rate": 0,
+    "replication": 3,
+    "size": 100,
+    "tls": false,
+    "warmup_s": 10,
+    "window": 2000
+  },
+  "publish_mb_s": 24.28,
+  "publish_ms": {
+    "count": 7283053,
+    "max": 46.655,
+    "mean": 7.319,
+    "min": 0.915,
+    "p50": 7.147,
+    "p90": 8.655,
+    "p99": 15.239,
+    "p999": 24.575
+  },
+  "publish_rate": 242769.0,
+  "published": 7283215,
+  "received_of_window": 7283053,
+  "run_id": "kafka-cluster-sat-100B-1p1c-r2",
+  "scenario": "saturation",
+  "schema": 1,
+  "sent_in_window": 7283053,
+  "started_at_ms": 1791504601788,
+  "sustained": null,
+  "system": "kafka",
+  "timeline": [
+    {
+      "con": 116444,
+      "phase": "warmup",
+      "pub": 116444,
+      "t": 1
+    },
+    {
+      "con": 243956,
+      "phase": "warmup",
+      "pub": 243956,
+      "t": 2
+    },
+    {
+      "con": 252224,
+      "phase": "warmup",
+      "pub": 252224,
+      "t": 3
+    },
+    {
+      "con": 238155,
+      "phase": "warmup",
+      "pub": 238155,
+      "t": 4
+    },
+    {
+      "con": 240821,
+      "phase": "warmup",
+      "pub": 240821,
+      "t": 5
+    },
+    {
+      "con": 235545,
+      "phase": "warmup",
+      "pub": 235545,
+      "t": 6
+    },
+    {
+      "con": 231991,
+      "phase": "warmup",
+      "pub": 231991,
+      "t": 7
+    },
+    {
+      "con": 228817,
+      "phase": "warmup",
+      "pub": 228817,
+      "t": 8
+    },
+    {
+      "con": 235808,
+      "phase": "warmup",
+      "pub": 235808,
+      "t": 9
+    },
+    {
+      "con": 225393,
+      "phase": "warmup",
+      "pub": 225393,
+      "t": 10
+    },
+    {
+      "con": 237338,
+      "phase": "measure",
+      "pub": 237338,
+      "t": 11
+    },
+    {
+      "con": 236836,
+      "phase": "measure",
+      "pub": 236837,
+      "t": 12
+    },
+    {
+      "con": 245026,
+      "phase": "measure",
+      "pub": 245025,
+      "t": 13
+    },
+    {
+      "con": 235456,
+      "phase": "measure",
+      "pub": 235456,
+      "t": 14
+    },
+    {
+      "con": 244866,
+      "phase": "measure",
+      "pub": 244866,
+      "t": 15
+    },
+    {
+      "con": 250421,
+      "phase": "measure",
+      "pub": 250421,
+      "t": 16
+    },
+    {
+      "con": 243936,
+      "phase": "measure",
+      "pub": 243936,
+      "t": 17
+    },
+    {
+      "con": 243175,
+      "phase": "measure",
+      "pub": 243175,
+      "t": 18
+    },
+    {
+      "con": 247427,
+      "phase": "measure",
+      "pub": 247427,
+      "t": 19
+    },
+    {
+      "con": 249079,
+      "phase": "measure",
+      "pub": 249079,
+      "t": 20
+    },
+    {
+      "con": 244555,
+      "phase": "measure",
+      "pub": 244555,
+      "t": 21
+    },
+    {
+      "con": 244986,
+      "phase": "measure",
+      "pub": 244986,
+      "t": 22
+    },
+    {
+      "con": 242691,
+      "phase": "measure",
+      "pub": 242691,
+      "t": 23
+    },
+    {
+      "con": 232071,
+      "phase": "measure",
+      "pub": 232071,
+      "t": 24
+    },
+    {
+      "con": 239085,
+      "phase": "measure",
+      "pub": 239085,
+      "t": 25
+    },
+    {
+      "con": 249194,
+      "phase": "measure",
+      "pub": 249194,
+      "t": 26
+    },
+    {
+      "con": 246945,
+      "phase": "measure",
+      "pub": 246945,
+      "t": 27
+    },
+    {
+      "con": 243915,
+      "phase": "measure",
+      "pub": 243915,
+      "t": 28
+    },
+    {
+      "con": 242090,
+      "phase": "measure",
+      "pub": 240186,
+      "t": 29
+    },
+    {
+      "con": 248629,
+      "phase": "measure",
+      "pub": 250533,
+      "t": 30
+    },
+    {
+      "con": 249009,
+      "phase": "measure",
+      "pub": 249009,
+      "t": 31
+    },
+    {
+      "con": 249179,
+      "phase": "measure",
+      "pub": 249179,
+      "t": 32
+    },
+    {
+      "con": 247833,
+      "phase": "measure",
+      "pub": 247833,
+      "t": 33
+    },
+    {
+      "con": 255347,
+      "phase": "measure",
+      "pub": 255347,
+      "t": 34
+    },
+    {
+      "con": 246461,
+      "phase": "measure",
+      "pub": 246461,
+      "t": 35
+    },
+    {
+      "con": 192272,
+      "phase": "measure",
+      "pub": 192272,
+      "t": 36
+    },
+    {
+      "con": 241242,
+      "phase": "measure",
+      "pub": 241242,
+      "t": 37
+    },
+    {
+      "con": 241790,
+      "phase": "measure",
+      "pub": 241790,
+      "t": 38
+    },
+    {
+      "con": 248773,
+      "phase": "measure",
+      "pub": 248773,
+      "t": 39
+    },
+    {
+      "con": 244776,
+      "phase": "measure",
+      "pub": 243445,
+      "t": 40
+    }
+  ],
+  "topic": "bench-r-4601788",
+  "window_s": 30.001,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  },
+  "repeat": 2,
+  "system_name": "kafka-cluster",
+  "system_title": "Kafka 3 nodes RF=3"
+}

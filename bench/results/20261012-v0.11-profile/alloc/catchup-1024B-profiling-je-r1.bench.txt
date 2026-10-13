@@ -1,0 +1,11 @@
+fluxmq-bench → fluxmq:7420 (cluster 'local' of 1 nodes, broker 0.10.0), channel 'bench' created [Stream, 8 partitions]
+producers 4 × inflight 4 × batch 100, consumers 4 (prefetch 2000), size 1024 B, rate max (closed loop), duration 10s
+prefilled 3000000 msgs in 24.88s (120563 msg/s)
+  1.0s  con      616,826 msg/s
+  2.0s  con      685,596 msg/s
+  3.0s  con      659,676 msg/s
+  4.0s  con      626,969 msg/s
+
+=== drain summary ===
+consumed    3000000 of 3000000 msgs in 4.658s: 644120 msg/s, 659.6 MB/s
+reconnects  0

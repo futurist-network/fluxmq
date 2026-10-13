@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "run": "fluxmq-cluster-kill9-leader-1",
+  "system": "fluxmq-cluster",
+  "title": "FluxMQ 3 nodes RF=3 min ISR 2, group commit on every replica",
+  "family": "fluxmq",
+  "mode": "kill9",
+  "target": "leader",
+  "iteration": 1,
+  "topic": "crash-kill9-1-351233",
+  "method": "SIGKILL of the broker's whole process group inside its container (crashctl kill9). The kernel and its page cache survive: everything the broker had written with write(2) is still there after the restart, fsynced or not. Simulates a broker process crash (OOM kill, panic, kill -9), not a machine crash.",
+  "params": {
+    "rate": 5000,
+    "size": 1024,
+    "producers": 2,
+    "partitions": 4,
+    "down_s": 30.0,
+    "after_s": 20.0
+  },
+  "victims": [
+    "n3"
+  ],
+  "crash_ms": 1791620361218,
+  "crash_took_ms": 176,
+  "crash_after_s": 9.07,
+  "canary": {
+    "n3": {
+      "unsynced_survived": true,
+      "synced_survived": true
+    }
+  },
+  "method_valid": true,
+  "restart_ms": 1791620391556,
+  "recovery_s": 0.4,
+  "write": {
+    "acked": 300991,
+    "brokers": [
+      "n1:7420",
+      "n2:7420",
+      "n3:7420"
+    ],
+    "client": "fluxmq-client BatchingProducer linger=5ms (broker 0.7.0)",
+    "durability": "FluxMQ stream channel; publish acknowledged per the broker's FLUXMQ_FSYNC policy (group-commit: after fsync; os: after write(2)) and, in a cluster, after every ISR member has it",
+    "enqueue_errors": 0,
+    "failed": 0,
+    "first_error_ms": null,
+    "go_ms": 1791620351756,
+    "last_error": null,
+    "linger_ms": 5,
+    "partitions": 4,
+    "producers": 2,
+    "publish_timeout_s": 30,
+    "rate": 5000,
+    "replication": 1,
+    "sent": 300991,
+    "size": 1024,
+    "stop_ms": 1791620411994,
+    "system": "fluxmq",
+    "topic": "crash-kill9-1-351233",
+    "unacked_at_end": 0,
+    "window": 5000
+  },
+  "failover": {
+    "crash_ms": 1791620361218,
+    "restart_ms": 1791620391556,
+    "pub_gap_ms": 5561,
+    "partition_gap_ms": {
+      "0": 5631,
+      "2": 5626,
+      "1": 5588,
+      "3": 5561
+    },
+    "max_partition_gap_ms": 5631,
+    "pub_gap_ms_while_down": 5561,
+    "pub_gap_ms_after_restart": 66,
+    "max_partition_gap_ms_after_restart": 174,
+    "max_ack_latency_ms": 6112,
+    "p99_ack_latency_ms": 5031,
+    "acks_over_1s": 23494,
+    "errors": 0,
+    "first_error_ms": null,
+    "last_error": null,
+    "consumer_received": 300991,
+    "consumer_duplicates": 75,
+    "consumer_errors": 0,
+    "con_gap_ms": 5560,
+    "con_gap_ms_after_restart": 60
+  },
+  "verify": {
+    "acked": 300991,
+    "acked_unique": 300991,
+    "duplicates": 35,
+    "end_reason": "all acked found",
+    "extra": {
+      "group": "crash-kill9-1-351233-verify-413854"
+    },
+    "foreign": 0,
+    "found": 300991,
+    "last_ack_before_crash_ms": 1791620361322,
+    "lost": 0,
+    "lost_ack_ms_range": null,
+    "lost_acked_after_crash": 0,
+    "lost_acked_before_crash": 0,
+    "lost_by_partition": {},
+    "offsets_seen": {
+      "0": [
+        0,
+        71323
+      ],
+      "1": [
+        0,
+        83156
+      ],
+      "2": [
+        0,
+        69270
+      ],
+      "3": [
+        0,
+        77273
+      ]
+    },
+    "scanned": 301026,
+    "seconds": 2.4,
+    "system": "fluxmq",
+    "topic": "crash-kill9-1-351233",
+    "unacked_but_stored": 0,
+    "lost_sample": []
+  },
+  "verify_passes": 1,
+  "acked": 300991,
+  "lost": 0
+}

@@ -1,0 +1,132 @@
+{
+  "broker_version": "RabbitMQ 4.1.8",
+  "cleanup_error": null,
+  "client": "lapin 2.x (AMQP 0-9-1), publisher confirms, prefetch=2000",
+  "consume_mb_s": 44.77,
+  "consume_rate": 43720.0,
+  "consumed": 104857,
+  "drain_miss": null,
+  "drain_s": 2.398,
+  "drained": true,
+  "duplicates": 0,
+  "durability": "RabbitMQ: 8 durable classic queues, persistent messages (delivery_mode=2), publisher confirms (confirm after the message is written to disk / fsync'd in batches by the queue); manual ack per message",
+  "e2e_ms": {
+    "count": 104857,
+    "max": 2617.343,
+    "mean": 2356.562,
+    "min": 2209.792,
+    "p50": 2357.247,
+    "p90": 2463.743,
+    "p99": 2551.807,
+    "p999": 2600.959
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "rabbitmq-single",
+  "lag_end": 104857,
+  "lag_growth_per_s": null,
+  "lag_start": 104857,
+  "last_error": null,
+  "measure_end_ms": 1791572443753,
+  "measure_start_ms": 1791572441529,
+  "params": {
+    "brokers": [
+      "amqp://guest:guest@rabbitmq:5672/%2f"
+    ],
+    "consumers": 4,
+    "duration_s": 0,
+    "fluxmq_ack_mode": null,
+    "fluxmq_compression": null,
+    "fluxmq_raw_records": null,
+    "fluxmq_verify_crc": null,
+    "linger_ms": 5,
+    "max_in_flight": null,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "preload": 104857,
+    "producers": 4,
+    "queue_type": "classic",
+    "rate": 0,
+    "replication": 1,
+    "retention_bytes": 536870912,
+    "segment_bytes": 16777216,
+    "size": 1024,
+    "tls": false,
+    "warmup_s": 0,
+    "window": 20000
+  },
+  "preload": {
+    "acked": 104857,
+    "bytes": 107373568,
+    "catchup_s": 2.398,
+    "consume_rate_after_first": 44117.0,
+    "first_receipt_s": 0.022,
+    "messages": 104857,
+    "publish_rate": 46627.0,
+    "seconds": 2.249
+  },
+  "publish_mb_s": 47.75,
+  "publish_ms": {
+    "count": 104857,
+    "max": 411.903,
+    "mean": 86.845,
+    "min": 1.346,
+    "p50": 70.783,
+    "p90": 182.399,
+    "p99": 318.975,
+    "p999": 371.711
+  },
+  "publish_rate": 46627.0,
+  "published": 104857,
+  "received_of_window": 104857,
+  "redelivered": 0,
+  "run_id": "rabbitmq-single-catchup-1024B-4p4c",
+  "scenario": "catchup",
+  "schema": 2,
+  "sent_in_window": 104857,
+  "started_at_ms": 1791572441444,
+  "sustained": null,
+  "system": "rabbitmq",
+  "timeline": [
+    {
+      "con": 0,
+      "lag": 45482,
+      "phase": "measure",
+      "pub": 45482,
+      "t": 1
+    },
+    {
+      "con": 0,
+      "lag": 94147,
+      "phase": "measure",
+      "pub": 48665,
+      "t": 2
+    },
+    {
+      "con": 32934,
+      "lag": 71923,
+      "phase": "drain",
+      "pub": 10710,
+      "t": 3
+    },
+    {
+      "con": 45383,
+      "lag": 26540,
+      "phase": "drain",
+      "pub": 0,
+      "t": 4
+    }
+  ],
+  "topic": "bench-r-72441444",
+  "window_s": 2.249,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  },
+  "repeat": 1,
+  "system_name": "rabbitmq-single",
+  "system_title": "RabbitMQ 1 node (classic)"
+}

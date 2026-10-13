@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "rabbitmq-cluster-idle",
+  "label": "rabbitmq-cluster",
+  "system_name": "rabbitmq-cluster",
+  "system_title": "RabbitMQ 3 nodes (quorum)",
+  "system": "rabbitmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791505107825,
+  "measure_end_ms": 1791505137835,
+  "broker_version": "RabbitMQ 4.1.8",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  }
+}

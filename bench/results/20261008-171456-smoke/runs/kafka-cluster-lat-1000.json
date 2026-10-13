@@ -1,0 +1,98 @@
+{
+  "broker_version": "Apache Kafka 3.7.0",
+  "cleanup_error": null,
+  "client": "librdkafka 2.12.1 (rdkafka crate) FutureProducer linger.ms=1, StreamConsumer",
+  "consume_mb_s": 0.98,
+  "consume_rate": 960.0,
+  "consumed": 2885,
+  "drained": true,
+  "durability": "Kafka: topic 8 partitions, RF=3, min.insync.replicas=2; producer acks=all + enable.idempotence=true; broker default flush policy (no fsync per message: durability comes from replication, data reaches disk via the OS page cache); consumer offsets auto-committed every 5 s",
+  "e2e_ms": {
+    "count": 3005,
+    "max": 274.943,
+    "mean": 15.23,
+    "min": 2.094,
+    "p50": 4.051,
+    "p90": 16.959,
+    "p99": 206.975,
+    "p999": 252.543
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "kafka-cluster",
+  "last_error": null,
+  "measure_end_ms": 1791469135910,
+  "measure_start_ms": 1791469132904,
+  "params": {
+    "brokers": [
+      "kafka1:9092",
+      "kafka2:9092",
+      "kafka3:9092"
+    ],
+    "consumers": 4,
+    "duration_s": 3,
+    "linger_ms": 1,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 4,
+    "queue_type": null,
+    "rate": 1000,
+    "replication": 3,
+    "size": 1024,
+    "tls": false,
+    "warmup_s": 1,
+    "window": 2000
+  },
+  "publish_mb_s": 0.98,
+  "publish_ms": {
+    "count": 3005,
+    "max": 268.543,
+    "mean": 15.245,
+    "min": 2.16,
+    "p50": 4.115,
+    "p90": 17.327,
+    "p99": 206.847,
+    "p999": 244.607
+  },
+  "publish_rate": 961.0,
+  "published": 2889,
+  "received_of_window": 3005,
+  "run_id": "kafka-cluster-lat-1000",
+  "scenario": "latency",
+  "schema": 1,
+  "sent_in_window": 3005,
+  "started_at_ms": 1791469129744,
+  "sustained": true,
+  "system": "kafka",
+  "timeline": [
+    {
+      "con": 988,
+      "phase": "warmup",
+      "pub": 988,
+      "t": 1
+    },
+    {
+      "con": 1009,
+      "phase": "measure",
+      "pub": 1009,
+      "t": 2
+    },
+    {
+      "con": 998,
+      "phase": "measure",
+      "pub": 998,
+      "t": 3
+    },
+    {
+      "con": 878,
+      "phase": "measure",
+      "pub": 881,
+      "t": 4
+    }
+  ],
+  "topic": "bench-r-69129744",
+  "window_s": 3.006,
+  "system_name": "kafka-cluster",
+  "system_title": "Kafka 3 nodes RF=3"
+}

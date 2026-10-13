@@ -1,0 +1,184 @@
+{
+  "broker_version": "RabbitMQ 4.1.8",
+  "cleanup_error": null,
+  "client": "lapin 2.x (AMQP 0-9-1), publisher confirms, prefetch=2000",
+  "consume_mb_s": 27.87,
+  "consume_rate": 27221.0,
+  "consumed": 104857,
+  "drain_miss": null,
+  "drain_s": 3.852,
+  "drained": true,
+  "duplicates": 0,
+  "durability": "RabbitMQ: 8 quorum queues (Raft, replicated to every cluster node), persistent messages, publisher confirms (confirm after a majority has the entry fsync'd to its WAL); manual ack per message",
+  "e2e_ms": {
+    "count": 104857,
+    "max": 8904.703,
+    "mean": 6585.659,
+    "min": 3536.896,
+    "p50": 6848.511,
+    "p90": 7917.567,
+    "p99": 8495.103,
+    "p999": 8642.559
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "rabbitmq-cluster",
+  "lag_end": 104857,
+  "lag_growth_per_s": null,
+  "lag_start": 104857,
+  "last_error": null,
+  "measure_end_ms": 1791578970699,
+  "measure_start_ms": 1791578963057,
+  "params": {
+    "brokers": [
+      "amqp://guest:guest@rmq1:5672/%2f",
+      "amqp://guest:guest@rmq2:5672/%2f",
+      "amqp://guest:guest@rmq3:5672/%2f"
+    ],
+    "consumers": 4,
+    "duration_s": 0,
+    "fluxmq_ack_mode": null,
+    "fluxmq_compression": null,
+    "fluxmq_raw_records": null,
+    "fluxmq_verify_crc": null,
+    "linger_ms": 5,
+    "max_in_flight": null,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "preload": 104857,
+    "producers": 4,
+    "queue_type": "quorum",
+    "rate": 0,
+    "replication": 1,
+    "retention_bytes": 536870912,
+    "segment_bytes": 16777216,
+    "size": 1024,
+    "tls": false,
+    "warmup_s": 0,
+    "window": 20000
+  },
+  "preload": {
+    "acked": 104857,
+    "bytes": 107373568,
+    "catchup_s": 3.852,
+    "consume_rate_after_first": 27841.0,
+    "first_receipt_s": 0.086,
+    "messages": 104857,
+    "publish_rate": 13677.0,
+    "seconds": 7.667
+  },
+  "publish_mb_s": 14.01,
+  "publish_ms": {
+    "count": 104857,
+    "max": 2715.647,
+    "mean": 1178.538,
+    "min": 15.432,
+    "p50": 1247.231,
+    "p90": 2170.879,
+    "p99": 2541.567,
+    "p999": 2699.263
+  },
+  "publish_rate": 13677.0,
+  "published": 104857,
+  "received_of_window": 104857,
+  "redelivered": 0,
+  "run_id": "rabbitmq-cluster-catchup-1024B-4p4c",
+  "scenario": "catchup",
+  "schema": 2,
+  "sent_in_window": 104857,
+  "started_at_ms": 1791578962857,
+  "sustained": null,
+  "system": "rabbitmq",
+  "timeline": [
+    {
+      "con": 0,
+      "lag": 8297,
+      "phase": "measure",
+      "pub": 8297,
+      "t": 1
+    },
+    {
+      "con": 0,
+      "lag": 19639,
+      "phase": "measure",
+      "pub": 11342,
+      "t": 2
+    },
+    {
+      "con": 0,
+      "lag": 36323,
+      "phase": "measure",
+      "pub": 16684,
+      "t": 3
+    },
+    {
+      "con": 0,
+      "lag": 51763,
+      "phase": "measure",
+      "pub": 15440,
+      "t": 4
+    },
+    {
+      "con": 0,
+      "lag": 66328,
+      "phase": "measure",
+      "pub": 14565,
+      "t": 5
+    },
+    {
+      "con": 0,
+      "lag": 82245,
+      "phase": "measure",
+      "pub": 15917,
+      "t": 6
+    },
+    {
+      "con": 0,
+      "lag": 96708,
+      "phase": "measure",
+      "pub": 14463,
+      "t": 7
+    },
+    {
+      "con": 9192,
+      "lag": 95665,
+      "phase": "drain",
+      "pub": 8149,
+      "t": 8
+    },
+    {
+      "con": 27191,
+      "lag": 68474,
+      "phase": "drain",
+      "pub": 0,
+      "t": 9
+    },
+    {
+      "con": 37659,
+      "lag": 30815,
+      "phase": "drain",
+      "pub": 0,
+      "t": 10
+    },
+    {
+      "con": 23850,
+      "lag": 6965,
+      "phase": "drain",
+      "pub": 0,
+      "t": 11
+    }
+  ],
+  "topic": "bench-r-78962857",
+  "window_s": 7.667,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  },
+  "repeat": 1,
+  "system_name": "rabbitmq-cluster",
+  "system_title": "RabbitMQ 3 nodes (quorum)",
+  "reused_from": "20261009-v0.7"
+}

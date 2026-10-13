@@ -1,0 +1,31 @@
+[package]
+name = "fluxmq-notify"
+description = "FluxMQ notifications (Telegram, Slack, Discord, email, PagerDuty, webhooks) and the system events feed"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto.workspace = true
+fluxmq-meta.workspace = true
+fluxmq-core.workspace = true
+fluxmq-cluster.workspace = true
+fluxmq-telemetry.workspace = true
+bytes.workspace = true
+hex = "0.4"
+hmac = "0.12"
+lettre = { version = "0.11", default-features = false, features = ["builder", "smtp-transport", "tokio1", "tokio1-rustls", "aws-lc-rs", "rustls-platform-verifier"] }
+parking_lot.workspace = true
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "json"] }
+serde.workspace = true
+serde_json.workspace = true
+sha2 = "0.10"
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+axum.workspace = true
+tokio = { workspace = true, features = ["test-util"] }
+tempfile.workspace = true

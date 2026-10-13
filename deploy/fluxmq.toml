@@ -1,0 +1,42 @@
+# FluxMQ configuration: `fluxmq --config /etc/fluxmq/fluxmq.toml` (or FLUXMQ_CONFIG).
+#
+# Keys are the command-line flag names (`fluxmq --help` lists all of them). A flag or a
+# FLUXMQ_* environment variable overrides the same key here. Unknown keys are an error.
+
+data-dir = "/var/lib/fluxmq"
+
+# Listeners: 7420 client protocol, 7421 HTTP API + web console.
+client-addr = "0.0.0.0:7420"
+http-addr = "0.0.0.0:7421"
+
+# Admin token for the API, console and clients. install.sh generates this file; without any
+# token the broker runs in open mode (anyone who reaches the ports is an admin).
+admin-token-file = "/etc/fluxmq/admin-token"
+
+# Web console on the HTTP port ("off" leaves only the API).
+# ui = "on"
+
+# Base URL of the console, for links in notifications.
+# public-url = "https://mq.example.com"
+
+# "group-commit" acknowledges after fsync (2 ms batches); "os" after write(2): faster, but a
+# power loss can drop the last acknowledged messages.
+# fsync = "group-commit"
+
+# Log filter, e.g. "info,fluxmq_core=debug".
+# log = "info"
+
+# ---- TLS (all ports plaintext without it) -------------------------------------------------
+# tls-cert = "/etc/fluxmq/tls/server.pem"
+# tls-key = "/etc/fluxmq/tls/server-key.pem"
+# tls-client-ca = "/etc/fluxmq/tls/ca.pem"     # require client certificates (mTLS)
+
+# ---- Cluster (single node without `peers`) ------------------------------------------------
+# Same `peers` and secret on every node; `node-id` and `advertise-host` differ per node.
+# node-id = "n1"
+# peers = "n1@10.0.0.1:7422,n2@10.0.0.2:7422,n3@10.0.0.3:7422"
+# advertise-host = "10.0.0.1"                  # how the other nodes and clients reach this one
+# cluster-secret-file = "/etc/fluxmq/cluster-secret"
+# raft-addr = "0.0.0.0:7422"
+# replication-addr = "0.0.0.0:7423"
+# replication-factor = 3

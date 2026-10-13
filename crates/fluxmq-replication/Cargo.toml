@@ -1,0 +1,24 @@
+[package]
+name = "fluxmq-replication"
+description = "FluxMQ partition data replication (leader/follower, ISR, high watermark)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto = { workspace = true, features = ["codec"] }
+fluxmq-core.workspace = true
+fluxmq-tls = { workspace = true, features = ["server"] }
+bytes.workspace = true
+crc32fast.workspace = true
+parking_lot.workspace = true
+postcard.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

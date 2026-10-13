@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "kafka-single-system",
+  "system_name": "kafka-single",
+  "system_title": "Kafka 1 node",
+  "system": "kafka",
+  "startup_s": 4.8,
+  "broker_version": "Apache Kafka 3.7.0",
+  "nodes": [
+    "kafka"
+  ],
+  "tls": false,
+  "kafka_log_flush_interval_messages": 9223372036854775807,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

@@ -1,0 +1,47 @@
+{
+ "kind": "evidence",
+ "run": "fluxmq-single-sat-100B-4p4c-r1",
+ "logs": {
+  "fluxmq": [
+   "fluxmq-1  | \u001b[2m2026-10-09T22:30:50.703533Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_core::broker\u001b[0m\u001b[2m:\u001b[0m broker opened \u001b[3mnode_id\u001b[0m\u001b[2m=\u001b[0m\"n-5a6fe6882808\" \u001b[3mchannels\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T22:30:50.704106Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_router\u001b[0m\u001b[2m:\u001b[0m router started \u001b[3mroutes\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T22:30:50.714540Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_notify\u001b[0m\u001b[2m:\u001b[0m notifications started \u001b[3mnotifiers\u001b[0m\u001b[2m=\u001b[0m0 \u001b[3mrules\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T22:30:50.718837Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_webhooks\u001b[0m\u001b[2m:\u001b[0m webhooks started \u001b[3mwebhooks\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T22:30:50.727399Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_server\u001b[0m\u001b[2m:\u001b[0m FluxMQ 0.7.0 started",
+   "fluxmq-1  |   node:        n-5a6fe6882808 (cluster \"local\")",
+   "fluxmq-1  |   data dir:    /var/lib/fluxmq",
+   "fluxmq-1  |   clients:     tcp://0.0.0.0:7420",
+   "fluxmq-1  |   http:        http://0.0.0.0:7421",
+   "fluxmq-1  |   ui:          http://127.0.0.1:7421/",
+   "fluxmq-1  |   auth:        open (dev mode: no admin token, no access tokens)",
+   "fluxmq-1  |   fsync:       GroupCommit",
+   "fluxmq-1  | \u001b[2m2026-10-09T22:31:59.848234Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-85052510\"",
+   "fluxmq-1  | \u001b[2m2026-10-09T22:32:43.847432Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-85123373\"",
+   "fluxmq-1  | \u001b[2m2026-10-09T22:33:42.458102Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-85167168\""
+  ]
+ },
+ "channel": {
+  "fluxmq": {
+   "name": "bench-r-85225740",
+   "mode": "stream",
+   "partitions": 8,
+   "retention": {
+    "max_age_secs": 3600,
+    "max_bytes": 4294967296
+   },
+   "retry": {
+    "max_attempts": 5,
+    "backoff_ms": [
+     1000,
+     10000,
+     60000,
+     300000
+    ],
+    "ack_timeout_ms": 30000
+   },
+   "dlq_enabled": true,
+   "ordering_key": null,
+   "created_at_ms": 1791585225741
+  }
+ }
+}

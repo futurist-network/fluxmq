@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "fluxmq-single-system",
+  "system_name": "fluxmq-single",
+  "system_title": "FluxMQ 1 node",
+  "system": "fluxmq",
+  "startup_s": 2.4,
+  "broker_version": "FluxMQ 0.8.0",
+  "nodes": [
+    "fluxmq"
+  ],
+  "tls": false,
+  "kafka_log_flush_interval_messages": null,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

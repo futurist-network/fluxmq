@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "run": "fluxmq-cluster-os-powercut-leader-1",
+  "system": "fluxmq-cluster-os",
+  "title": "FluxMQ 3 nodes RF=3 min ISR 2, fsync=os",
+  "family": "fluxmq",
+  "mode": "powercut",
+  "target": "leader",
+  "iteration": 1,
+  "topic": "crash-powercut-1-778199",
+  "method": "Simulated power loss of the broker's machine (crashctl powercut). The data directory is an ext4 filesystem on a device-mapper device over a loop device backed by a sparse file in a Docker volume. At the cut the dm device is suspended without flushing and switched to the dm `error` target, then the broker gets SIGKILL (before the device resumes, so it never sees the I/O errors). The filesystem is unmounted: dirty pages (written but not yet written back or fsynced) fail against the error target and the device's cache is dropped. Then the linear mapping is restored and ext4 is mounted again (journal replay), exactly the bytes that had reached the device at the cut. Only data that was fsynced (or written back by the kernel's periodic writeback before the cut) survives. A per-crash canary proves it: a file created just before the cut must be gone, a file synced before the workload must be there.",
+  "params": {
+    "rate": 5000,
+    "size": 1024,
+    "producers": 2,
+    "partitions": 4,
+    "down_s": 3.0,
+    "after_s": 5.0
+  },
+  "victims": [
+    "n3"
+  ],
+  "crash_ms": 1791580787121,
+  "crash_took_ms": 174,
+  "crash_after_s": 8.32,
+  "canary": {
+    "n3": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    }
+  },
+  "method_valid": true,
+  "restart_ms": 1791580790554,
+  "recovery_s": 0.5,
+  "write": {
+    "acked": 86857,
+    "brokers": [
+      "n1:7420",
+      "n2:7420",
+      "n3:7420"
+    ],
+    "client": "fluxmq-client BatchingProducer linger=5ms (broker 0.7.0)",
+    "durability": "FluxMQ stream channel; publish acknowledged per the broker's FLUXMQ_FSYNC policy (group-commit: after fsync; os: after write(2)) and, in a cluster, after every ISR member has it",
+    "enqueue_errors": 0,
+    "failed": 0,
+    "first_error_ms": null,
+    "go_ms": 1791580778712,
+    "last_error": null,
+    "linger_ms": 5,
+    "partitions": 4,
+    "producers": 2,
+    "publish_timeout_s": 30,
+    "rate": 5000,
+    "replication": 1,
+    "sent": 86857,
+    "size": 1024,
+    "stop_ms": 1791580796088,
+    "system": "fluxmq",
+    "topic": "crash-powercut-1-778199",
+    "unacked_at_end": 0,
+    "window": 5000
+  },
+  "failover": {
+    "crash_ms": 1791580787121,
+    "restart_ms": 1791580790554,
+    "pub_gap_ms": 3388,
+    "partition_gap_ms": {
+      "0": 3638,
+      "1": 3388,
+      "2": 3651,
+      "3": 3389
+    },
+    "max_partition_gap_ms": 3651,
+    "pub_gap_ms_while_down": 3365,
+    "pub_gap_ms_after_restart": 246,
+    "max_partition_gap_ms_after_restart": 291,
+    "max_ack_latency_ms": 3738,
+    "p99_ack_latency_ms": 3482,
+    "acks_over_1s": 13426,
+    "errors": 0,
+    "first_error_ms": null,
+    "last_error": null
+  },
+  "verify": {
+    "acked": 86857,
+    "acked_unique": 86857,
+    "duplicates": 3,
+    "end_reason": "all acked found",
+    "extra": {
+      "group": "crash-powercut-1-778199-verify-796744"
+    },
+    "foreign": 0,
+    "found": 86857,
+    "last_ack_before_crash_ms": 1791580787189,
+    "lost": 0,
+    "lost_ack_ms_range": null,
+    "lost_acked_after_crash": 0,
+    "lost_acked_before_crash": 0,
+    "lost_by_partition": {},
+    "offsets_seen": {
+      "0": [
+        0,
+        18757
+      ],
+      "1": [
+        0,
+        17382
+      ],
+      "2": [
+        0,
+        31220
+      ],
+      "3": [
+        0,
+        19497
+      ]
+    },
+    "scanned": 86860,
+    "seconds": 2.1,
+    "system": "fluxmq",
+    "topic": "crash-powercut-1-778199",
+    "unacked_but_stored": 0,
+    "lost_sample": []
+  },
+  "verify_passes": 1,
+  "acked": 86857,
+  "lost": 0
+}

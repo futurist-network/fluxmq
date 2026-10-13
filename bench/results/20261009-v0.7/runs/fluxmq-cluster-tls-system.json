@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "fluxmq-cluster-tls-system",
+  "system_name": "fluxmq-cluster-tls",
+  "system_title": "FluxMQ 3 nodes RF=3, full TLS",
+  "system": "fluxmq",
+  "startup_s": 2.7,
+  "broker_version": "FluxMQ 0.7.0",
+  "nodes": [
+    "n1",
+    "n2",
+    "n3"
+  ],
+  "tls": true,
+  "kafka_log_flush_interval_messages": null,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  }
+}

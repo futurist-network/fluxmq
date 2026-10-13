@@ -1,0 +1,55 @@
+/* Alert playbook: cause → what to do (Alerts center cards). */
+.ac-playbook {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 44px;
+}
+.pb-facts {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px 16px;
+  margin: 0;
+  font-size: 13px;
+}
+.pb-facts dt {
+  font-size: 11.5px;
+  color: var(--text-tertiary, var(--text-secondary));
+  margin-bottom: 2px;
+}
+.pb-facts dd {
+  margin: 0;
+  min-width: 0;
+}
+.pb-hint {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.pb-hint svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.pb-hint.permanent {
+  color: var(--critical-text);
+}
+.pb-line {
+  margin: 0;
+  font-size: 13px;
+}
+.pb-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 640px) {
+  .ac-playbook {
+    padding-left: 0;
+  }
+  .pb-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

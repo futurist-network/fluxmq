@@ -1,0 +1,41 @@
+{
+  "acked": 86857,
+  "acked_unique": 86857,
+  "duplicates": 3,
+  "end_reason": "all acked found",
+  "extra": {
+    "group": "crash-powercut-1-778199-verify-796744"
+  },
+  "foreign": 0,
+  "found": 86857,
+  "last_ack_before_crash_ms": 1791580787189,
+  "lost": 0,
+  "lost_ack_ms_range": null,
+  "lost_acked_after_crash": 0,
+  "lost_acked_before_crash": 0,
+  "lost_by_partition": {},
+  "lost_sample": [],
+  "offsets_seen": {
+    "0": [
+      0,
+      18757
+    ],
+    "1": [
+      0,
+      17382
+    ],
+    "2": [
+      0,
+      31220
+    ],
+    "3": [
+      0,
+      19497
+    ]
+  },
+  "scanned": 86860,
+  "seconds": 2.1,
+  "system": "fluxmq",
+  "topic": "crash-powercut-1-778199",
+  "unacked_but_stored": 0
+}

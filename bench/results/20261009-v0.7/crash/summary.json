@@ -1,0 +1,1274 @@
+[
+  {
+    "run": "fluxmq-cluster-os-kill9-leader-1",
+    "system": "fluxmq-cluster-os",
+    "mode": "kill9",
+    "target": "leader",
+    "iteration": 1,
+    "victims": [
+      "n3"
+    ],
+    "acked": 93190,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.3,
+    "crash_after_s": 9.9,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580701206,
+      "restart_ms": 1791580704518,
+      "pub_gap_ms": 3272,
+      "partition_gap_ms": {
+        "1": 3276,
+        "0": 3675,
+        "2": 3674,
+        "3": 3273
+      },
+      "max_partition_gap_ms": 3675,
+      "pub_gap_ms_while_down": 3246,
+      "pub_gap_ms_after_restart": 375,
+      "max_partition_gap_ms_after_restart": 429,
+      "max_ack_latency_ms": 4699,
+      "p99_ack_latency_ms": 4327,
+      "acks_over_1s": 13760,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-os-kill9-leader-2",
+    "system": "fluxmq-cluster-os",
+    "mode": "kill9",
+    "target": "leader",
+    "iteration": 2,
+    "victims": [
+      "n3"
+    ],
+    "acked": 85527,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.3,
+    "crash_after_s": 8.39,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580722186,
+      "restart_ms": 1791580725486,
+      "pub_gap_ms": 3264,
+      "partition_gap_ms": {
+        "1": 3267,
+        "2": 3775,
+        "0": 3767,
+        "3": 3264
+      },
+      "max_partition_gap_ms": 3775,
+      "pub_gap_ms_while_down": 3235,
+      "pub_gap_ms_after_restart": 499,
+      "max_partition_gap_ms_after_restart": 539,
+      "max_ack_latency_ms": 5010,
+      "p99_ack_latency_ms": 4668,
+      "acks_over_1s": 14595,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-os-kill9-all-1",
+    "system": "fluxmq-cluster-os",
+    "mode": "kill9",
+    "target": "all",
+    "iteration": 1,
+    "victims": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "acked": 89592,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.3,
+    "crash_after_s": 8.94,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580743608,
+      "restart_ms": 1791580747171,
+      "pub_gap_ms": 6801,
+      "partition_gap_ms": {
+        "0": 6801,
+        "2": 6826,
+        "1": 6812,
+        "3": 6852
+      },
+      "max_partition_gap_ms": 6852,
+      "pub_gap_ms_while_down": 3493,
+      "pub_gap_ms_after_restart": 3308,
+      "max_partition_gap_ms_after_restart": 3358,
+      "max_ack_latency_ms": 7199,
+      "p99_ack_latency_ms": 6684,
+      "acks_over_1s": 29533,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-os-kill9-all-2",
+    "system": "fluxmq-cluster-os",
+    "mode": "kill9",
+    "target": "all",
+    "iteration": 2,
+    "victims": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "acked": 94299,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.3,
+    "crash_after_s": 10.08,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580766247,
+      "restart_ms": 1791580769606,
+      "pub_gap_ms": 4349,
+      "partition_gap_ms": {
+        "0": 4353,
+        "1": 4349,
+        "2": 4349,
+        "3": 4354
+      },
+      "max_partition_gap_ms": 4354,
+      "pub_gap_ms_while_down": 3286,
+      "pub_gap_ms_after_restart": 1063,
+      "max_partition_gap_ms_after_restart": 1067,
+      "max_ack_latency_ms": 5121,
+      "p99_ack_latency_ms": 4757,
+      "acks_over_1s": 19881,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-os-powercut-leader-1",
+    "system": "fluxmq-cluster-os",
+    "mode": "powercut",
+    "target": "leader",
+    "iteration": 1,
+    "victims": [
+      "n3"
+    ],
+    "acked": 86857,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.5,
+    "crash_after_s": 8.32,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580787121,
+      "restart_ms": 1791580790554,
+      "pub_gap_ms": 3388,
+      "partition_gap_ms": {
+        "0": 3638,
+        "1": 3388,
+        "2": 3651,
+        "3": 3389
+      },
+      "max_partition_gap_ms": 3651,
+      "pub_gap_ms_while_down": 3365,
+      "pub_gap_ms_after_restart": 246,
+      "max_partition_gap_ms_after_restart": 291,
+      "max_ack_latency_ms": 3738,
+      "p99_ack_latency_ms": 3482,
+      "acks_over_1s": 13426,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-os-powercut-leader-2",
+    "system": "fluxmq-cluster-os",
+    "mode": "powercut",
+    "target": "leader",
+    "iteration": 2,
+    "victims": [
+      "n3"
+    ],
+    "acked": 85398,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 0.3,
+    "crash_after_s": 8.34,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580808280,
+      "restart_ms": 1791580811621,
+      "pub_gap_ms": 3302,
+      "partition_gap_ms": {
+        "0": 3799,
+        "1": 3305,
+        "2": 3800,
+        "3": 3303
+      },
+      "max_partition_gap_ms": 3800,
+      "pub_gap_ms_while_down": 3274,
+      "pub_gap_ms_after_restart": 471,
+      "max_partition_gap_ms_after_restart": 526,
+      "max_ack_latency_ms": 4053,
+      "p99_ack_latency_ms": 3141,
+      "acks_over_1s": 14310,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-os-powercut-all-1",
+    "system": "fluxmq-cluster-os",
+    "mode": "powercut",
+    "target": "all",
+    "iteration": 1,
+    "victims": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "acked": 94946,
+    "lost": 49446,
+    "method_valid": true,
+    "recovery_s": 0.7,
+    "crash_after_s": 9.6,
+    "lost_acked_before_crash": 49446,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580830545,
+      "restart_ms": 1791580834061,
+      "pub_gap_ms": 4330,
+      "partition_gap_ms": {
+        "0": 4334,
+        "1": 4330,
+        "2": 4353,
+        "3": 4330
+      },
+      "max_partition_gap_ms": 4353,
+      "pub_gap_ms_while_down": 3344,
+      "pub_gap_ms_after_restart": 986,
+      "max_partition_gap_ms_after_restart": 1008,
+      "max_ack_latency_ms": 5240,
+      "p99_ack_latency_ms": 4758,
+      "acks_over_1s": 18789,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "fluxmq-cluster-os-powercut-all-2",
+    "system": "fluxmq-cluster-os",
+    "mode": "powercut",
+    "target": "all",
+    "iteration": 2,
+    "victims": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "acked": 98175,
+    "lost": 54928,
+    "method_valid": true,
+    "recovery_s": 0.3,
+    "crash_after_s": 10.7,
+    "lost_acked_before_crash": 54928,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580892831,
+      "restart_ms": 1791580896328,
+      "pub_gap_ms": 4354,
+      "partition_gap_ms": {
+        "0": 4375,
+        "1": 4653,
+        "2": 4374,
+        "3": 4355
+      },
+      "max_partition_gap_ms": 4653,
+      "pub_gap_ms_while_down": 3333,
+      "pub_gap_ms_after_restart": 1021,
+      "max_partition_gap_ms_after_restart": 1319,
+      "max_ack_latency_ms": 5037,
+      "p99_ack_latency_ms": 4321,
+      "acks_over_1s": 18709,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-single-kill9-node-1",
+    "system": "kafka-single",
+    "mode": "kill9",
+    "target": "node",
+    "iteration": 1,
+    "victims": [
+      "kafka"
+    ],
+    "acked": 126903,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 16.4,
+    "crash_after_s": 11.92,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791580963339,
+      "restart_ms": 1791580966655,
+      "pub_gap_ms": 22967,
+      "partition_gap_ms": {
+        "2": 22978,
+        "3": 22982,
+        "0": 23044,
+        "1": 22998
+      },
+      "max_partition_gap_ms": 23044,
+      "pub_gap_ms_while_down": 3253,
+      "pub_gap_ms_after_restart": 19714,
+      "max_partition_gap_ms_after_restart": 19737,
+      "max_ack_latency_ms": 25552,
+      "p99_ack_latency_ms": 25046,
+      "acks_over_1s": 60334,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-single-kill9-node-2",
+    "system": "kafka-single",
+    "mode": "kill9",
+    "target": "node",
+    "iteration": 2,
+    "victims": [
+      "kafka"
+    ],
+    "acked": 179359,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 15.9,
+    "crash_after_s": 11.54,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581003700,
+      "restart_ms": 1791581007026,
+      "pub_gap_ms": 21995,
+      "partition_gap_ms": {
+        "2": 22009,
+        "3": 22007,
+        "0": 22010,
+        "1": 22007
+      },
+      "max_partition_gap_ms": 22010,
+      "pub_gap_ms_while_down": 3263,
+      "pub_gap_ms_after_restart": 18732,
+      "max_partition_gap_ms_after_restart": 18744,
+      "max_ack_latency_ms": 23575,
+      "p99_ack_latency_ms": 22854,
+      "acks_over_1s": 109596,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-single-powercut-node-1",
+    "system": "kafka-single",
+    "mode": "powercut",
+    "target": "node",
+    "iteration": 1,
+    "victims": [
+      "kafka"
+    ],
+    "acked": 112113,
+    "lost": 43931,
+    "method_valid": true,
+    "recovery_s": 16.9,
+    "crash_after_s": 8.65,
+    "lost_acked_before_crash": 43931,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581040245,
+      "restart_ms": 1791581043632,
+      "pub_gap_ms": 18470,
+      "partition_gap_ms": {
+        "2": 18490,
+        "3": 18480,
+        "0": 18475,
+        "1": 18475
+      },
+      "max_partition_gap_ms": 18490,
+      "pub_gap_ms_while_down": 3318,
+      "pub_gap_ms_after_restart": 15152,
+      "max_partition_gap_ms_after_restart": 15162,
+      "max_ack_latency_ms": 28126,
+      "p99_ack_latency_ms": 27682,
+      "acks_over_1s": 49002,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-single-powercut-node-2",
+    "system": "kafka-single",
+    "mode": "powercut",
+    "target": "node",
+    "iteration": 2,
+    "victims": [
+      "kafka"
+    ],
+    "acked": 170843,
+    "lost": 46163,
+    "method_valid": true,
+    "recovery_s": 16.6,
+    "crash_after_s": 9.02,
+    "lost_acked_before_crash": 46163,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581091568,
+      "restart_ms": 1791581094956,
+      "pub_gap_ms": 19044,
+      "partition_gap_ms": {
+        "2": 19049,
+        "3": 19078,
+        "1": 19128,
+        "0": 19063
+      },
+      "max_partition_gap_ms": 19128,
+      "pub_gap_ms_while_down": 3304,
+      "pub_gap_ms_after_restart": 15740,
+      "max_partition_gap_ms_after_restart": 15758,
+      "max_ack_latency_ms": 21172,
+      "p99_ack_latency_ms": 20494,
+      "acks_over_1s": 96755,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-single-fsync-kill9-node-1",
+    "system": "kafka-single-fsync",
+    "mode": "kill9",
+    "target": "node",
+    "iteration": 1,
+    "victims": [
+      "kafka"
+    ],
+    "acked": 107224,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 15.8,
+    "crash_after_s": 10.67,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581148637,
+      "restart_ms": 1791581151927,
+      "pub_gap_ms": 23867,
+      "partition_gap_ms": {
+        "3": 23879,
+        "1": 23907,
+        "2": 23883,
+        "0": 23867
+      },
+      "max_partition_gap_ms": 23907,
+      "pub_gap_ms_while_down": 3228,
+      "pub_gap_ms_after_restart": 20639,
+      "max_partition_gap_ms_after_restart": 20653,
+      "max_ack_latency_ms": 24988,
+      "p99_ack_latency_ms": 24567,
+      "acks_over_1s": 53293,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-single-fsync-kill9-node-2",
+    "system": "kafka-single-fsync",
+    "mode": "kill9",
+    "target": "node",
+    "iteration": 2,
+    "victims": [
+      "kafka"
+    ],
+    "acked": 107252,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 15.9,
+    "crash_after_s": 8.21,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581184849,
+      "restart_ms": 1791581188179,
+      "pub_gap_ms": 19898,
+      "partition_gap_ms": {
+        "2": 19977,
+        "3": 19914,
+        "0": 19901,
+        "1": 19910
+      },
+      "max_partition_gap_ms": 19977,
+      "pub_gap_ms_while_down": 3259,
+      "pub_gap_ms_after_restart": 16639,
+      "max_partition_gap_ms_after_restart": 16654,
+      "max_ack_latency_ms": 26778,
+      "p99_ack_latency_ms": 26343,
+      "acks_over_1s": 52859,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-single-fsync-powercut-node-1",
+    "system": "kafka-single-fsync",
+    "mode": "powercut",
+    "target": "node",
+    "iteration": 1,
+    "victims": [
+      "kafka"
+    ],
+    "acked": 170996,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 16.1,
+    "crash_after_s": 9.65,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581224463,
+      "restart_ms": 1791581227867,
+      "pub_gap_ms": 19375,
+      "partition_gap_ms": {
+        "2": 19391,
+        "3": 19400,
+        "0": 19392,
+        "1": 19384
+      },
+      "max_partition_gap_ms": 19400,
+      "pub_gap_ms_while_down": 3344,
+      "pub_gap_ms_after_restart": 16031,
+      "max_partition_gap_ms_after_restart": 16056,
+      "max_ack_latency_ms": 20740,
+      "p99_ack_latency_ms": 20054,
+      "acks_over_1s": 96504,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-single-fsync-powercut-node-2",
+    "system": "kafka-single-fsync",
+    "mode": "powercut",
+    "target": "node",
+    "iteration": 2,
+    "victims": [
+      "kafka"
+    ],
+    "acked": 149984,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 16.0,
+    "crash_after_s": 11.76,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581263857,
+      "restart_ms": 1791581267250,
+      "pub_gap_ms": 23453,
+      "partition_gap_ms": {
+        "3": 23483,
+        "1": 23488,
+        "2": 23453,
+        "0": 23466
+      },
+      "max_partition_gap_ms": 23488,
+      "pub_gap_ms_while_down": 3327,
+      "pub_gap_ms_after_restart": 20126,
+      "max_partition_gap_ms_after_restart": 20151,
+      "max_ack_latency_ms": 24251,
+      "p99_ack_latency_ms": 23653,
+      "acks_over_1s": 86572,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-kill9-leader-1",
+    "system": "kafka-cluster",
+    "mode": "kill9",
+    "target": "leader",
+    "iteration": 1,
+    "victims": [
+      "kafka3"
+    ],
+    "acked": 140402,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 10.4,
+    "crash_after_s": 9.3,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581312810,
+      "restart_ms": 1791581316111,
+      "pub_gap_ms": 6237,
+      "partition_gap_ms": {
+        "0": 8359,
+        "3": 6253,
+        "2": 6243,
+        "1": 6238
+      },
+      "max_partition_gap_ms": 8359,
+      "pub_gap_ms_while_down": 3230,
+      "pub_gap_ms_after_restart": 3007,
+      "max_partition_gap_ms_after_restart": 5108,
+      "max_ack_latency_ms": 8349,
+      "p99_ack_latency_ms": 7181,
+      "acks_over_1s": 28693,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-kill9-leader-2",
+    "system": "kafka-cluster",
+    "mode": "kill9",
+    "target": "leader",
+    "iteration": 2,
+    "victims": [
+      "kafka1"
+    ],
+    "acked": 193870,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 19.8,
+    "crash_after_s": 10.51,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581345824,
+      "restart_ms": 1791581349155,
+      "pub_gap_ms": 6707,
+      "partition_gap_ms": {
+        "0": 13072,
+        "2": 6766,
+        "3": 6824,
+        "1": 6842
+      },
+      "max_partition_gap_ms": 13072,
+      "pub_gap_ms_while_down": 3270,
+      "pub_gap_ms_after_restart": 6707,
+      "max_partition_gap_ms_after_restart": 9798,
+      "max_ack_latency_ms": 12991,
+      "p99_ack_latency_ms": 11905,
+      "acks_over_1s": 61627,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-kill9-all-1",
+    "system": "kafka-cluster",
+    "mode": "kill9",
+    "target": "all",
+    "iteration": 1,
+    "victims": [
+      "kafka1",
+      "kafka2",
+      "kafka3"
+    ],
+    "acked": 202450,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 23.4,
+    "crash_after_s": 8.57,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581387682,
+      "restart_ms": 1791581391069,
+      "pub_gap_ms": 21526,
+      "partition_gap_ms": {
+        "2": 21526,
+        "1": 21600,
+        "3": 21551,
+        "0": 21544
+      },
+      "max_partition_gap_ms": 21600,
+      "pub_gap_ms_while_down": 3312,
+      "pub_gap_ms_after_restart": 18214,
+      "max_partition_gap_ms_after_restart": 18251,
+      "max_ack_latency_ms": 22083,
+      "p99_ack_latency_ms": 21391,
+      "acks_over_1s": 108645,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-kill9-all-2",
+    "system": "kafka-cluster",
+    "mode": "kill9",
+    "target": "all",
+    "iteration": 2,
+    "victims": [
+      "kafka1",
+      "kafka2",
+      "kafka3"
+    ],
+    "acked": 201253,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 19.8,
+    "crash_after_s": 11.93,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581436063,
+      "restart_ms": 1791581439424,
+      "pub_gap_ms": 22785,
+      "partition_gap_ms": {
+        "1": 22832,
+        "0": 22863,
+        "2": 22789,
+        "3": 22838
+      },
+      "max_partition_gap_ms": 22863,
+      "pub_gap_ms_while_down": 3289,
+      "pub_gap_ms_after_restart": 19496,
+      "max_partition_gap_ms_after_restart": 19569,
+      "max_ack_latency_ms": 24405,
+      "p99_ack_latency_ms": 23604,
+      "acks_over_1s": 115517,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-powercut-leader-1",
+    "system": "kafka-cluster",
+    "mode": "powercut",
+    "target": "leader",
+    "iteration": 1,
+    "victims": [
+      "kafka1"
+    ],
+    "acked": 151351,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 12.7,
+    "crash_after_s": 9.05,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581477597,
+      "restart_ms": 1791581481007,
+      "pub_gap_ms": 7760,
+      "partition_gap_ms": {
+        "1": 7760,
+        "0": 10579,
+        "3": 7886,
+        "2": 7876
+      },
+      "max_partition_gap_ms": 10579,
+      "pub_gap_ms_while_down": 3314,
+      "pub_gap_ms_after_restart": 4446,
+      "max_partition_gap_ms_after_restart": 7240,
+      "max_ack_latency_ms": 10564,
+      "p99_ack_latency_ms": 9126,
+      "acks_over_1s": 49048,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-powercut-leader-2",
+    "system": "kafka-cluster",
+    "mode": "powercut",
+    "target": "leader",
+    "iteration": 2,
+    "victims": [
+      "kafka3"
+    ],
+    "acked": 150003,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 9.7,
+    "crash_after_s": 11.85,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581514073,
+      "restart_ms": 1791581517435,
+      "pub_gap_ms": 6244,
+      "partition_gap_ms": {
+        "0": 9707,
+        "2": 6383,
+        "3": 6415,
+        "1": 6255
+      },
+      "max_partition_gap_ms": 9707,
+      "pub_gap_ms_while_down": 3290,
+      "pub_gap_ms_after_restart": 2954,
+      "max_partition_gap_ms_after_restart": 6415,
+      "max_ack_latency_ms": 9732,
+      "p99_ack_latency_ms": 8468,
+      "acks_over_1s": 30748,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-powercut-all-1",
+    "system": "kafka-cluster",
+    "mode": "powercut",
+    "target": "all",
+    "iteration": 1,
+    "victims": [
+      "kafka1",
+      "kafka2",
+      "kafka3"
+    ],
+    "acked": 200481,
+    "lost": 59521,
+    "method_valid": true,
+    "recovery_s": 19.6,
+    "crash_after_s": 11.65,
+    "lost_acked_before_crash": 59521,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581547496,
+      "restart_ms": 1791581551190,
+      "pub_gap_ms": 23682,
+      "partition_gap_ms": {
+        "1": 23757,
+        "3": 23696,
+        "2": 23703,
+        "0": 23709
+      },
+      "max_partition_gap_ms": 23757,
+      "pub_gap_ms_while_down": 3583,
+      "pub_gap_ms_after_restart": 20099,
+      "max_partition_gap_ms_after_restart": 20159,
+      "max_ack_latency_ms": 24432,
+      "p99_ack_latency_ms": 23707,
+      "acks_over_1s": 118462,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-powercut-all-2",
+    "system": "kafka-cluster",
+    "mode": "powercut",
+    "target": "all",
+    "iteration": 2,
+    "victims": [
+      "kafka1",
+      "kafka2",
+      "kafka3"
+    ],
+    "acked": 204760,
+    "lost": 59657,
+    "method_valid": true,
+    "recovery_s": 20.5,
+    "crash_after_s": 11.73,
+    "lost_acked_before_crash": 59657,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581602202,
+      "restart_ms": 1791581605795,
+      "pub_gap_ms": 20128,
+      "partition_gap_ms": {
+        "3": 20779,
+        "2": 20770,
+        "0": 20136,
+        "1": 20614
+      },
+      "max_partition_gap_ms": 20779,
+      "pub_gap_ms_while_down": 3519,
+      "pub_gap_ms_after_restart": 16609,
+      "max_partition_gap_ms_after_restart": 17260,
+      "max_ack_latency_ms": 22582,
+      "p99_ack_latency_ms": 21780,
+      "acks_over_1s": 105603,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-fsync-kill9-leader-1",
+    "system": "kafka-cluster-fsync",
+    "mode": "kill9",
+    "target": "leader",
+    "iteration": 1,
+    "victims": [
+      "kafka2"
+    ],
+    "acked": 165412,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 13.0,
+    "crash_after_s": 11.65,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581673714,
+      "restart_ms": 1791581677017,
+      "pub_gap_ms": 7191,
+      "partition_gap_ms": {
+        "1": 7237,
+        "0": 13759,
+        "3": 7299,
+        "2": 7364
+      },
+      "max_partition_gap_ms": 13759,
+      "pub_gap_ms_while_down": 3246,
+      "pub_gap_ms_after_restart": 7191,
+      "max_partition_gap_ms_after_restart": 10512,
+      "max_ack_latency_ms": 13889,
+      "p99_ack_latency_ms": 12647,
+      "acks_over_1s": 67905,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-fsync-kill9-leader-2",
+    "system": "kafka-cluster-fsync",
+    "mode": "kill9",
+    "target": "leader",
+    "iteration": 2,
+    "victims": [
+      "kafka2"
+    ],
+    "acked": 134317,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 9.2,
+    "crash_after_s": 8.47,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581707909,
+      "restart_ms": 1791581711713,
+      "pub_gap_ms": 6585,
+      "partition_gap_ms": {
+        "1": 6793,
+        "2": 6592,
+        "3": 8861,
+        "0": 9014
+      },
+      "max_partition_gap_ms": 9014,
+      "pub_gap_ms_while_down": 3582,
+      "pub_gap_ms_after_restart": 3003,
+      "max_partition_gap_ms_after_restart": 5279,
+      "max_ack_latency_ms": 9517,
+      "p99_ack_latency_ms": 9066,
+      "acks_over_1s": 47862,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-fsync-kill9-all-1",
+    "system": "kafka-cluster-fsync",
+    "mode": "kill9",
+    "target": "all",
+    "iteration": 1,
+    "victims": [
+      "kafka1",
+      "kafka2",
+      "kafka3"
+    ],
+    "acked": 200638,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 20.7,
+    "crash_after_s": 10.91,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581740706,
+      "restart_ms": 1791581744103,
+      "pub_gap_ms": 20208,
+      "partition_gap_ms": {
+        "3": 20265,
+        "0": 20358,
+        "2": 20208,
+        "1": 20226
+      },
+      "max_partition_gap_ms": 20358,
+      "pub_gap_ms_while_down": 3318,
+      "pub_gap_ms_after_restart": 16890,
+      "max_partition_gap_ms_after_restart": 17040,
+      "max_ack_latency_ms": 23975,
+      "p99_ack_latency_ms": 23216,
+      "acks_over_1s": 112207,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-fsync-kill9-all-2",
+    "system": "kafka-cluster-fsync",
+    "mode": "kill9",
+    "target": "all",
+    "iteration": 2,
+    "victims": [
+      "kafka1",
+      "kafka2",
+      "kafka3"
+    ],
+    "acked": 142926,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 20.4,
+    "crash_after_s": 9.93,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581784005,
+      "restart_ms": 1791581787454,
+      "pub_gap_ms": 20264,
+      "partition_gap_ms": {
+        "1": 20377,
+        "0": 20339,
+        "2": 20265,
+        "3": 20264
+      },
+      "max_partition_gap_ms": 20377,
+      "pub_gap_ms_while_down": 3342,
+      "pub_gap_ms_after_restart": 16922,
+      "max_partition_gap_ms_after_restart": 17033,
+      "max_ack_latency_ms": 28594,
+      "p99_ack_latency_ms": 28059,
+      "acks_over_1s": 71059,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-fsync-powercut-leader-1",
+    "system": "kafka-cluster-fsync",
+    "mode": "powercut",
+    "target": "leader",
+    "iteration": 1,
+    "victims": [
+      "kafka2"
+    ],
+    "acked": 145082,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 9.6,
+    "crash_after_s": 10.43,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581827239,
+      "restart_ms": 1791581831122,
+      "pub_gap_ms": 7450,
+      "partition_gap_ms": {
+        "3": 7453,
+        "0": 9259,
+        "2": 7450,
+        "1": 7471
+      },
+      "max_partition_gap_ms": 9259,
+      "pub_gap_ms_while_down": 3810,
+      "pub_gap_ms_after_restart": 3640,
+      "max_partition_gap_ms_after_restart": 5449,
+      "max_ack_latency_ms": 9350,
+      "p99_ack_latency_ms": 8284,
+      "acks_over_1s": 39157,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-fsync-powercut-leader-2",
+    "system": "kafka-cluster-fsync",
+    "mode": "powercut",
+    "target": "leader",
+    "iteration": 2,
+    "victims": [
+      "kafka1"
+    ],
+    "acked": 165291,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 15.2,
+    "crash_after_s": 9.28,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581859276,
+      "restart_ms": 1791581862706,
+      "pub_gap_ms": 6747,
+      "partition_gap_ms": {
+        "0": 10312,
+        "2": 6747,
+        "1": 6758,
+        "3": 6780
+      },
+      "max_partition_gap_ms": 10312,
+      "pub_gap_ms_while_down": 3344,
+      "pub_gap_ms_after_restart": 3403,
+      "max_partition_gap_ms_after_restart": 6918,
+      "max_ack_latency_ms": 11292,
+      "p99_ack_latency_ms": 9331,
+      "acks_over_1s": 39894,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-fsync-powercut-all-1",
+    "system": "kafka-cluster-fsync",
+    "mode": "powercut",
+    "target": "all",
+    "iteration": 1,
+    "victims": [
+      "kafka1",
+      "kafka2",
+      "kafka3"
+    ],
+    "acked": 192468,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 20.7,
+    "crash_after_s": 9.35,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581895944,
+      "restart_ms": 1791581899595,
+      "pub_gap_ms": 19394,
+      "partition_gap_ms": {
+        "0": 20706,
+        "2": 20188,
+        "3": 19418,
+        "1": 20506
+      },
+      "max_partition_gap_ms": 20706,
+      "pub_gap_ms_while_down": 3534,
+      "pub_gap_ms_after_restart": 15860,
+      "max_partition_gap_ms_after_restart": 17165,
+      "max_ack_latency_ms": 28299,
+      "p99_ack_latency_ms": 27569,
+      "acks_over_1s": 123467,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  },
+  {
+    "run": "kafka-cluster-fsync-powercut-all-2",
+    "system": "kafka-cluster-fsync",
+    "mode": "powercut",
+    "target": "all",
+    "iteration": 2,
+    "victims": [
+      "kafka1",
+      "kafka2",
+      "kafka3"
+    ],
+    "acked": 191847,
+    "lost": 0,
+    "method_valid": true,
+    "recovery_s": 20.7,
+    "crash_after_s": 8.92,
+    "lost_acked_before_crash": 0,
+    "failed_publishes": 0,
+    "failover": {
+      "crash_ms": 1791581938571,
+      "restart_ms": 1791581942167,
+      "pub_gap_ms": 19841,
+      "partition_gap_ms": {
+        "0": 19983,
+        "2": 19856,
+        "3": 19900,
+        "1": 19865
+      },
+      "max_partition_gap_ms": 19983,
+      "pub_gap_ms_while_down": 3534,
+      "pub_gap_ms_after_restart": 16307,
+      "max_partition_gap_ms_after_restart": 16449,
+      "max_ack_latency_ms": 21020,
+      "p99_ack_latency_ms": 19966,
+      "acks_over_1s": 104199,
+      "errors": 0,
+      "first_error_ms": null,
+      "last_error": null
+    },
+    "unacked_at_end": 0
+  }
+]

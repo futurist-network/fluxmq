@@ -1,0 +1,213 @@
+{
+  "acked": 134317,
+  "brokers": [
+    "kafka1:9092",
+    "kafka2:9092",
+    "kafka3:9092"
+  ],
+  "client": "librdkafka 2.12.1 FutureProducer linger.ms=5",
+  "consumer": null,
+  "durability": "Kafka topic RF=3, min.insync.replicas=2; producer acks=all, enable.idempotence=true; broker flush policy per its config (log.flush.interval.messages)",
+  "enqueue_errors": 0,
+  "failed": 0,
+  "first_error_ms": null,
+  "go_ms": 1791581699057,
+  "last_error": null,
+  "linger_ms": 5,
+  "partitions": 4,
+  "producers": 2,
+  "publish_timeout_s": 30,
+  "rate": 5000,
+  "replication": 3,
+  "sent": 134317,
+  "size": 1024,
+  "stop_ms": 1791581725946,
+  "system": "kafka",
+  "timeline": [
+    {
+      "acked": 4827,
+      "errors": 0,
+      "ms": 1791581700059,
+      "sent": 4982,
+      "t": 1
+    },
+    {
+      "acked": 5040,
+      "errors": 0,
+      "ms": 1791581701058,
+      "sent": 5018,
+      "t": 2
+    },
+    {
+      "acked": 5022,
+      "errors": 0,
+      "ms": 1791581702059,
+      "sent": 5002,
+      "t": 3
+    },
+    {
+      "acked": 5024,
+      "errors": 0,
+      "ms": 1791581703058,
+      "sent": 4998,
+      "t": 4
+    },
+    {
+      "acked": 4778,
+      "errors": 0,
+      "ms": 1791581704057,
+      "sent": 4992,
+      "t": 5
+    },
+    {
+      "acked": 5208,
+      "errors": 0,
+      "ms": 1791581705058,
+      "sent": 5006,
+      "t": 6
+    },
+    {
+      "acked": 5016,
+      "errors": 0,
+      "ms": 1791581706057,
+      "sent": 4994,
+      "t": 7
+    },
+    {
+      "acked": 4942,
+      "errors": 0,
+      "ms": 1791581707058,
+      "sent": 5007,
+      "t": 8
+    },
+    {
+      "acked": 2393,
+      "errors": 0,
+      "ms": 1791581708059,
+      "sent": 4948,
+      "t": 9
+    },
+    {
+      "acked": 303,
+      "errors": 0,
+      "ms": 1791581709058,
+      "sent": 5053,
+      "t": 10
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581710058,
+      "sent": 2553,
+      "t": 11
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581711058,
+      "sent": 0,
+      "t": 12
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581712058,
+      "sent": 0,
+      "t": 13
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581713059,
+      "sent": 0,
+      "t": 14
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581714058,
+      "sent": 0,
+      "t": 15
+    },
+    {
+      "acked": 5041,
+      "errors": 0,
+      "ms": 1791581715058,
+      "sent": 5041,
+      "t": 16
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581716059,
+      "sent": 0,
+      "t": 17
+    },
+    {
+      "acked": 4510,
+      "errors": 0,
+      "ms": 1791581717059,
+      "sent": 4510,
+      "t": 18
+    },
+    {
+      "acked": 33686,
+      "errors": 0,
+      "ms": 1791581718060,
+      "sent": 32900,
+      "t": 19
+    },
+    {
+      "acked": 13934,
+      "errors": 0,
+      "ms": 1791581719058,
+      "sent": 4994,
+      "t": 20
+    },
+    {
+      "acked": 5022,
+      "errors": 0,
+      "ms": 1791581720059,
+      "sent": 4999,
+      "t": 21
+    },
+    {
+      "acked": 5108,
+      "errors": 0,
+      "ms": 1791581721058,
+      "sent": 4995,
+      "t": 22
+    },
+    {
+      "acked": 5043,
+      "errors": 0,
+      "ms": 1791581722058,
+      "sent": 5000,
+      "t": 23
+    },
+    {
+      "acked": 4812,
+      "errors": 0,
+      "ms": 1791581723059,
+      "sent": 4985,
+      "t": 24
+    },
+    {
+      "acked": 5068,
+      "errors": 0,
+      "ms": 1791581724058,
+      "sent": 5015,
+      "t": 25
+    },
+    {
+      "acked": 5067,
+      "errors": 0,
+      "ms": 1791581725058,
+      "sent": 5008,
+      "t": 26
+    }
+  ],
+  "topic": "crash-kill9-2-1698094",
+  "unacked_at_end": 0,
+  "window": 5000
+}

@@ -1,0 +1,70 @@
+samples: 1062
+
+threads:
+   97.2%  fluxmq-delivery
+    2.7%  tokio-rt-worker
+    0.1%  fluxmq
+
+top self:
+   46.6%  __pread64
+   21.5%  writev
+    7.4%  <fluxmq_server::net::codec::OutboundEncoder>::ext
+    5.1%  crc32c::hw_x86_64::crc_u64_parallel3
+    1.8%  madvise
+    1.5%  syscall
+    1.4%  <fluxmq_core::group::Group>::poll_batch
+    1.3%  malloc
+    1.2%  <u64 as serde_core::ser::Serialize>::serialize::<&mut postcard::ser::serializer::Serializer>
+    1.0%  <fluxmq_core::storage::log::RecentCache>::find
+    0.8%  <fluxmq_core::storage::log::PartitionLog>::cached_entries
+    0.8%  epoll_wait
+    0.8%  realloc
+    0.8%  <core::iter::adapters::map::Map as core::iter::traits::iterator::Iterator>::next
+    0.8%  <fluxmq_server::net::codec::OutboundEncoder>::encode
+    0.7%  cfree
+    0.6%  <fluxmq_core::group::GroupState>::ack_at
+    0.5%  <fluxmq_core::storage::entry::ChunkRecords as core::iter::traits::iterator::Iterator>::next
+    0.5%  __recv
+    0.4%  <fluxmq_proto::batch::Records as core::iter::traits::iterator::Iterator>::next
+    0.3%  <fluxmq_core::group::GroupState>::deliver_run
+    0.3%  bytes::bytes::shared_clone
+    0.2%  <fluxmq_core::group::Group>::ack_ranges
+    0.2%  __write
+    0.2%  crc32c::hw_x86_64::crc_u64_append
+    0.2%  <tokio::sync::mpsc::bounded::Sender>::send::{closure#0}
+    0.2%  <bytes::bytes::Bytes>::slice_ref
+    0.2%  tokio::runtime::task::raw::poll::<tokio::runtime::blocking::task::BlockingTask, tokio::runtime::blocking::schedule::BlockingSchedule>
+    0.2%  sched_yield
+    0.2%  fluxmq_telemetry::rates::window_histogram
+
+top total:
+   99.9%  std::sys::backtrace::__rust_begin_short_backtrace::<::spawn_thread::{closure#0}, ()>
+   99.9%  <std::sys::thread::unix::Thread>::new::thread_start
+   99.9%  <alloc::boxed::Box as core::ops::function::FnOnce>::call_once
+   99.9%  <std::thread::lifecycle::spawn_unchecked::{closure#1} as core::ops::function::FnOnce>::call_once::{shim:vtable#0}
+   99.9%  __clone
+   99.3%  tokio::runtime::task::raw::poll::<tokio::runtime::blocking::task::BlockingTask, tokio::runtime::blocking::schedule::BlockingSchedule>
+   47.7%  <fluxmq_core::storage::log::PartitionLog>::read_envelopes
+   47.1%  <fluxmq_core::storage::segment::Segment>::read_entries_in
+   47.0%  fluxmq_core::storage::segment::read_exact_at_uninit
+   46.6%  __pread64
+   43.0%  tokio::runtime::scheduler::multi_thread::worker::run
+   41.9%  <tokio::runtime::scheduler::multi_thread::worker::Context>::run_task
+   32.6%  <fluxmq_core::storage::segment::SegmentScan>::fill
+   32.6%  <fluxmq_core::storage::segment::SegmentScan>::peek_entry
+   31.5%  tokio::runtime::task::raw::poll::<fluxmq_server::net::connection::write_loop::{closure#0}, alloc::sync::Arc>
+   31.5%  fluxmq_server::net::connection::write_loop::<tokio::net::tcp::split_owned::OwnedWriteHalf>::{closure#0}
+   21.5%  <fluxmq_server::net::writer::FrameWriter>::poll_write_until
+   21.5%  <tokio::net::tcp::stream::TcpStream>::poll_write_vectored_priv
+   21.5%  writev
+   18.3%  fluxmq_server::net::connection::feed::<tokio::net::tcp::split_owned::OwnedWriteHalf>::{closure#0}
+   12.6%  <fluxmq_core::storage::segment::Segment>::seek_entry_in
+   10.0%  <fluxmq_server::net::codec::OutboundEncoder>::encode
+    8.8%  tokio::runtime::task::raw::poll::<fluxmq_server::net::connection::pump::{closure#0}, alloc::sync::Arc>
+    8.6%  fluxmq_server::net::connection::pump::{closure#0}
+    8.0%  <core::iter::adapters::map::Map as core::iter::traits::iterator::Iterator>::next
+    7.4%  <fluxmq_server::net::codec::OutboundEncoder>::ext
+    6.7%  <fluxmq_core::storage::entry::ChunkRecords as core::iter::traits::iterator::Iterator>::next
+    5.3%  crc32c::hw_x86_64::crc_u64_parallel3
+    5.3%  crc32c::hw_x86_64::crc32c
+    4.2%  <fluxmq_core::group::Group>::poll_batch

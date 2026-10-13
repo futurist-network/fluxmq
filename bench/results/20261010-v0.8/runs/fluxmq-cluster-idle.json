@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-cluster-idle",
+  "label": "fluxmq-cluster",
+  "system_name": "fluxmq-cluster",
+  "system_title": "FluxMQ 3 nodes RF=3",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791619030657,
+  "measure_end_ms": 1791619060660,
+  "broker_version": "FluxMQ 0.7.0",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

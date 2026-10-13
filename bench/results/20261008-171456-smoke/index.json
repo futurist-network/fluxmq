@@ -1,0 +1,16 @@
+[
+  "runs/rabbitmq-single-system.json",
+  "runs/rabbitmq-single-idle.json",
+  "runs/rabbitmq-single-sat-1024B-2p2c.json",
+  "runs/rabbitmq-single-sat-100B-2p2c.json",
+  "runs/rabbitmq-single-lat-1000.json",
+  "runs/rabbitmq-single-lat-10000.json",
+  "runs/rabbitmq-single-lat-50000.json",
+  "runs/rabbitmq-cluster-system.json",
+  "runs/rabbitmq-cluster-idle.json",
+  "runs/rabbitmq-cluster-sat-1024B-2p2c.json",
+  "runs/rabbitmq-cluster-sat-100B-2p2c.json",
+  "runs/rabbitmq-cluster-lat-1000.json",
+  "runs/rabbitmq-cluster-lat-10000.json",
+  "runs/rabbitmq-cluster-lat-50000.json"
+]

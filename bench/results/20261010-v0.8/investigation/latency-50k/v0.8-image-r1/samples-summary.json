@@ -1,0 +1,36 @@
+[
+ {
+  "run": "fluxmq-cluster-lat-50000",
+  "system": "fluxmq-cluster",
+  "scenario": "latency",
+  "size": 1024,
+  "rate": 50000,
+  "retention_bytes_per_partition": 536870912,
+  "segment_bytes": 16777216,
+  "partitions": 8,
+  "published_bytes": 1537180672,
+  "peak_data_bytes": {},
+  "samples": 4,
+  "free_gb_min": 37.5,
+  "fsync": {
+   "n2": {
+    "per_s": 534.2,
+    "mean_ms": 5.63,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 5.8
+   },
+   "n3": {
+    "per_s": 534.6,
+    "mean_ms": 5.53,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 5.7
+   },
+   "n1": {
+    "per_s": 536.4,
+    "mean_ms": 5.66,
+    "p99_le_ms": 25.0,
+    "worst_2s_mean_ms": 5.8
+   }
+  }
+ }
+]

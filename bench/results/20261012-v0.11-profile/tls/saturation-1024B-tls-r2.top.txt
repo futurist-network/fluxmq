@@ -1,0 +1,72 @@
+samples: 1888
+
+threads:
+   31.5%  fluxmq-delivery
+   29.7%  tokio-rt-worker
+   22.9%  fluxmq-writer-b
+   15.9%  fluxmq-fsync
+    0.1%  fluxmq-meta
+
+top self:
+   18.9%  writev
+   14.2%  fdatasync
+   10.2%  syscall
+    9.6%  __write
+    8.6%  _aesni_ctr32_ghash_6x
+    7.2%  __recv
+    3.4%  epoll_wait
+    2.7%  crc32c::hw_x86_64::crc_u64_parallel3
+    2.5%  <rustls::msgs::message::outbound::OutboundChunks>::copy_to_vec
+    2.4%  <fluxmq_core::storage::log::PartitionWriter>::append_batch
+    2.1%  <tokio_util::codec::framed_impl::FramedImpl as futures_core::stream::Stream>::poll_next
+    0.9%  malloc
+    0.8%  <fluxmq_core::group::Group>::poll_batch
+    0.8%  tokio::runtime::scheduler::multi_thread::worker::run
+    0.7%  cfree
+    0.7%  <fluxmq_core::storage::log::RecentCache>::find
+    0.4%  fluxmq_server::net::connection::run_io::<fluxmq_tls::stream::TlsRead, fluxmq_tls::stream::TlsWrite>::{closure#0}
+    0.4%  realloc
+    0.4%  fluxmq_telemetry::rates::window_histogram
+    0.4%  std::sys::backtrace::__rust_begin_short_backtrace::<::start::{closure#2}, ()>
+    0.4%  <fluxmq_tls::fast::io::TlsWriteHalf as tokio::io::async_write::AsyncWrite>::poll_write_vectored
+    0.3%  <tokio::sync::mpsc::list::Rx>::pop
+    0.3%  aws_lc_0_45_0_aes_hw_encrypt
+    0.3%  <parking_lot::condvar::Condvar>::wait_until_internal
+    0.3%  bytes::bytes::shared_drop
+    0.3%  <hdrhistogram::Histogram>::record_n_inner
+    0.3%  aead_aes_gcm_seal_scatter_impl
+    0.2%  <fluxmq_core::broker::Broker>::publish_batch::{closure#0}
+    0.2%  <fluxmq_server::net::connection::Connection>::handle::{closure#0}
+    0.2%  <tokio::runtime::time::wheel::Wheel>::next_expiration
+
+top total:
+  100.0%  <alloc::boxed::Box as core::ops::function::FnOnce>::call_once
+  100.0%  <std::sys::thread::unix::Thread>::new::thread_start
+  100.0%  <std::thread::lifecycle::spawn_unchecked::{closure#1} as core::ops::function::FnOnce>::call_once::{shim:vtable#0}
+  100.0%  __clone
+   61.1%  std::sys::backtrace::__rust_begin_short_backtrace::<::spawn_thread::{closure#0}, ()>
+   61.0%  tokio::runtime::task::raw::poll::<tokio::runtime::blocking::task::BlockingTask, tokio::runtime::blocking::schedule::BlockingSchedule>
+   61.0%  tokio::runtime::scheduler::multi_thread::worker::run
+   53.2%  <tokio::runtime::scheduler::multi_thread::worker::Context>::run_task
+   22.9%  std::sys::backtrace::__rust_begin_short_backtrace::<::start::{closure#2}, ()>
+   22.7%  tokio::runtime::task::raw::poll::<fluxmq_server::net::connection::write_loop::{closure#0}, alloc::sync::Arc>
+   22.7%  fluxmq_server::net::connection::write_loop::<fluxmq_tls::stream::TlsWrite>::{closure#0}
+   22.6%  tokio::runtime::task::raw::poll::<tokio_util::task::task_tracker::TrackedFuture, alloc::sync::Arc>
+   22.5%  <tokio_util::task::task_tracker::TrackedFuture as core::future::future::Future>::poll
+   22.5%  fluxmq_server::net::connection::run_io::<fluxmq_tls::stream::TlsRead, fluxmq_tls::stream::TlsWrite>::{closure#0}
+   22.4%  <fluxmq_server::net::writer::FrameWriter>::poll_flush
+   22.2%  <fluxmq_server::net::writer::FrameWriter>::poll_write_until
+   22.1%  <fluxmq_tls::fast::io::TlsWriteHalf as tokio::io::async_write::AsyncWrite>::poll_write_vectored
+   18.9%  writev
+   15.9%  std::sys::backtrace::__rust_begin_short_backtrace::<::submit_groups::{closure#1}, ()>
+   15.7%  <tokio_util::codec::framed_impl::FramedImpl as futures_core::stream::Stream>::poll_next
+   14.4%  fluxmq_core::fsync_pool::run_chain
+   14.2%  fdatasync
+   13.0%  <fluxmq_tls::fast::io::TlsWriteHalf>::poll_drain_to
+   12.8%  <tokio::net::tcp::stream::TcpStream>::poll_write_vectored_priv
+   12.5%  <fluxmq_core::storage::log::PartitionWriter>::write_out
+   10.2%  syscall
+    9.6%  __write
+    8.7%  <rustls::crypto::aws_lc_rs::tls13::GcmMessageEncrypter as rustls::crypto::cipher::MessageEncrypter>::encrypt
+    8.6%  _aesni_ctr32_ghash_6x
+    7.3%  <tokio::net::tcp::stream::TcpStream>::poll_read_priv

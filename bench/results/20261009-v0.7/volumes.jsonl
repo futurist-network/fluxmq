@@ -1,0 +1,190 @@
+{"ts": 1791564533.9, "run": "fluxmq-single-sat-1024B-1p1c-r1", "system": "fluxmq-single", "bytes": {"fluxmq": 73728}, "host_free_gb": 28.4}
+{"ts": 1791564581.2, "run": "fluxmq-single-sat-1024B-4p4c-r1", "system": "fluxmq-single", "bytes": {"fluxmq": 77824}, "host_free_gb": 28.4}
+{"ts": 1791564652.7, "run": "fluxmq-single-sat-100B-1p1c-r1", "system": "fluxmq-single", "bytes": {"fluxmq": 81920}, "host_free_gb": 28.4}
+{"ts": 1791564804.2, "run": "fluxmq-single-sat-100B-4p4c-r1", "system": "fluxmq-single", "bytes": {"fluxmq": 94208}, "host_free_gb": 28.4}
+{"ts": 1791564925.1, "run": "fluxmq-single-sat-1024B-1p1c-r2", "system": "fluxmq-single", "bytes": {"fluxmq": 102400}, "host_free_gb": 28.4}
+{"ts": 1791564973.7, "run": "fluxmq-single-sat-1024B-4p4c-r2", "system": "fluxmq-single", "bytes": {"fluxmq": 110592}, "host_free_gb": 28.4}
+{"ts": 1791565044.5, "run": "fluxmq-single-sat-100B-1p1c-r2", "system": "fluxmq-single", "bytes": {"fluxmq": 110592}, "host_free_gb": 28.4}
+{"ts": 1791565120.3, "run": "fluxmq-single-sat-100B-4p4c-r2", "system": "fluxmq-single", "bytes": {"fluxmq": 118784}, "host_free_gb": 28.4}
+{"ts": 1791565163.8, "run": "fluxmq-single-lat-1000", "system": "fluxmq-single", "bytes": {"fluxmq": 122880}, "host_free_gb": 28.5}
+{"ts": 1791565207.4, "run": "fluxmq-single-lat-10000", "system": "fluxmq-single", "bytes": {"fluxmq": 131072}, "host_free_gb": 28.5}
+{"ts": 1791565250.9, "run": "fluxmq-single-lat-50000", "system": "fluxmq-single", "bytes": {"fluxmq": 131072}, "host_free_gb": 28.5}
+{"ts": 1791565258.4, "run": "fluxmq-single-catchup-1024B-4p4c", "system": "fluxmq-single", "bytes": {"fluxmq": 135168}, "host_free_gb": 28.5}
+{"ts": 1791565274.3, "run": "fluxmq-single-catchup-100B-4p4c", "system": "fluxmq-single", "bytes": {"fluxmq": 139264}, "host_free_gb": 28.5}
+{"ts": 1791565349.4, "run": "fluxmq-single-overload-1024B-4p4c", "system": "fluxmq-single", "bytes": {"fluxmq": 143360}, "host_free_gb": 28.5}
+{"ts": 1791565428.3, "run": "fluxmq-single-overload-100B-4p4c", "system": "fluxmq-single", "bytes": {"fluxmq": 151552}, "host_free_gb": 26.5}
+{"ts": 1791565629.1, "run": "fluxmq-single-tls-sat-1024B-1p1c-r1", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 69632}, "host_free_gb": 25.5}
+{"ts": 1791565695.5, "run": "fluxmq-single-tls-sat-1024B-4p4c-r1", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 77824}, "host_free_gb": 28.4}
+{"ts": 1791565778.5, "run": "fluxmq-single-tls-sat-100B-1p1c-r1", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 86016}, "host_free_gb": 28.5}
+{"ts": 1791565856.3, "run": "fluxmq-single-tls-sat-100B-4p4c-r1", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 94208}, "host_free_gb": 28.5}
+{"ts": 1791565990.7, "run": "fluxmq-single-tls-sat-1024B-1p1c-r2", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 102400}, "host_free_gb": 28.4}
+{"ts": 1791566056.2, "run": "fluxmq-single-tls-sat-1024B-4p4c-r2", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 110592}, "host_free_gb": 28.4}
+{"ts": 1791566138.2, "run": "fluxmq-single-tls-sat-100B-1p1c-r2", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 110592}, "host_free_gb": 28.4}
+{"ts": 1791566220.5, "run": "fluxmq-single-tls-sat-100B-4p4c-r2", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 118784}, "host_free_gb": 28.4}
+{"ts": 1791566264.1, "run": "fluxmq-single-tls-lat-1000", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 122880}, "host_free_gb": 28.4}
+{"ts": 1791566307.7, "run": "fluxmq-single-tls-lat-10000", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 126976}, "host_free_gb": 28.1}
+{"ts": 1791566351.5, "run": "fluxmq-single-tls-lat-50000", "system": "fluxmq-single-tls", "bytes": {"fluxmq": 131072}, "host_free_gb": 28.1}
+{"ts": 1791566479.8, "run": "fluxmq-single-os-sat-1024B-1p1c-r1", "system": "fluxmq-single-os", "bytes": {"fluxmq": 69632}, "host_free_gb": 23.4}
+{"ts": 1791566602.6, "run": "fluxmq-single-os-sat-1024B-4p4c-r1", "system": "fluxmq-single-os", "bytes": {"fluxmq": 81920}, "host_free_gb": 24.1}
+{"ts": 1791566678.5, "run": "fluxmq-single-os-sat-100B-1p1c-r1", "system": "fluxmq-single-os", "bytes": {"fluxmq": 86016}, "host_free_gb": 24.7}
+{"ts": 1791566828.6, "run": "fluxmq-single-os-sat-100B-4p4c-r1", "system": "fluxmq-single-os", "bytes": {"fluxmq": 98304}, "host_free_gb": 24.1}
+{"ts": 1791566889.2, "run": "fluxmq-single-os-sat-1024B-1p1c-r2", "system": "fluxmq-single-os", "bytes": {"fluxmq": 102400}, "host_free_gb": 22.9}
+{"ts": 1791567011.0, "run": "fluxmq-single-os-sat-1024B-4p4c-r2", "system": "fluxmq-single-os", "bytes": {"fluxmq": 110592}, "host_free_gb": 24.2}
+{"ts": 1791567087.3, "run": "fluxmq-single-os-sat-100B-1p1c-r2", "system": "fluxmq-single-os", "bytes": {"fluxmq": 114688}, "host_free_gb": 24.9}
+{"ts": 1791567242.6, "run": "fluxmq-single-os-sat-100B-4p4c-r2", "system": "fluxmq-single-os", "bytes": {"fluxmq": 126976}, "host_free_gb": 24.2}
+{"ts": 1791567286.6, "run": "fluxmq-single-os-lat-1000", "system": "fluxmq-single-os", "bytes": {"fluxmq": 131072}, "host_free_gb": 28.5}
+{"ts": 1791567330.2, "run": "fluxmq-single-os-lat-10000", "system": "fluxmq-single-os", "bytes": {"fluxmq": 135168}, "host_free_gb": 28.1}
+{"ts": 1791567373.9, "run": "fluxmq-single-os-lat-50000", "system": "fluxmq-single-os", "bytes": {"fluxmq": 139264}, "host_free_gb": 26.4}
+{"ts": 1791567593.9, "run": "fluxmq-single-lz4-sat-1024B-1p1c-r1", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 69632}, "host_free_gb": 28.5}
+{"ts": 1791568172.7, "run": "fluxmq-single-lz4-sat-1024B-1p1c-r1", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 69632}, "host_free_gb": 28.4}
+{"ts": 1791568400.2, "run": "fluxmq-single-lz4-sat-1024B-4p4c-r1", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 81920}, "host_free_gb": 28.4}
+{"ts": 1791568470.6, "run": "fluxmq-single-lz4-sat-100B-1p1c-r1", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 86016}, "host_free_gb": 28.3}
+{"ts": 1791568553.6, "run": "fluxmq-single-lz4-sat-100B-4p4c-r1", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 94208}, "host_free_gb": 28.3}
+{"ts": 1791568711.7, "run": "fluxmq-single-lz4-sat-1024B-1p1c-r2", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 102400}, "host_free_gb": 28.4}
+{"ts": 1791568934.1, "run": "fluxmq-single-lz4-sat-1024B-4p4c-r2", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 110592}, "host_free_gb": 28.4}
+{"ts": 1791569005.1, "run": "fluxmq-single-lz4-sat-100B-1p1c-r2", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 114688}, "host_free_gb": 28.4}
+{"ts": 1791569091.0, "run": "fluxmq-single-lz4-sat-100B-4p4c-r2", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 122880}, "host_free_gb": 28.5}
+{"ts": 1791569134.5, "run": "fluxmq-single-lz4-lat-1000", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 126976}, "host_free_gb": 28.5}
+{"ts": 1791569178.0, "run": "fluxmq-single-lz4-lat-10000", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 131072}, "host_free_gb": 28.5}
+{"ts": 1791569221.6, "run": "fluxmq-single-lz4-lat-50000", "system": "fluxmq-single-lz4", "bytes": {"fluxmq": 131072}, "host_free_gb": 28.4}
+{"ts": 1791569407.0, "run": "fluxmq-single-cumulative-sat-1024B-1p1c-r1", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 73728}, "host_free_gb": 28.4}
+{"ts": 1791569454.9, "run": "fluxmq-single-cumulative-sat-1024B-4p4c-r1", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 77824}, "host_free_gb": 28.4}
+{"ts": 1791569528.4, "run": "fluxmq-single-cumulative-sat-100B-1p1c-r1", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 86016}, "host_free_gb": 28.4}
+{"ts": 1791569610.6, "run": "fluxmq-single-cumulative-sat-100B-4p4c-r1", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 94208}, "host_free_gb": 28.4}
+{"ts": 1791569689.9, "run": "fluxmq-single-cumulative-sat-1024B-1p1c-r2", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 98304}, "host_free_gb": 28.4}
+{"ts": 1791569742.9, "run": "fluxmq-single-cumulative-sat-1024B-4p4c-r2", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 106496}, "host_free_gb": 28.4}
+{"ts": 1791569816.1, "run": "fluxmq-single-cumulative-sat-100B-1p1c-r2", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 106496}, "host_free_gb": 28.4}
+{"ts": 1791569966.4, "run": "fluxmq-single-cumulative-sat-100B-4p4c-r2", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 118784}, "host_free_gb": 28.4}
+{"ts": 1791570009.9, "run": "fluxmq-single-cumulative-lat-1000", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 122880}, "host_free_gb": 28.4}
+{"ts": 1791570053.5, "run": "fluxmq-single-cumulative-lat-10000", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 126976}, "host_free_gb": 28.3}
+{"ts": 1791570097.1, "run": "fluxmq-single-cumulative-lat-50000", "system": "fluxmq-single-cumulative", "bytes": {"fluxmq": 126976}, "host_free_gb": 28.4}
+{"ts": 1791570217.3, "run": "kafka-single-sat-1024B-1p1c-r1", "system": "kafka-single", "bytes": {"kafka": 712704}, "host_free_gb": 28.4}
+{"ts": 1791570262.8, "run": "kafka-single-sat-1024B-4p4c-r1", "system": "kafka-single", "bytes": {"kafka": 741376}, "host_free_gb": 28.4}
+{"ts": 1791570307.9, "run": "kafka-single-sat-100B-1p1c-r1", "system": "kafka-single", "bytes": {"kafka": 761856}, "host_free_gb": 28.4}
+{"ts": 1791570417.5, "run": "kafka-single-sat-100B-4p4c-r1", "system": "kafka-single", "bytes": {"kafka": 811008}, "host_free_gb": 28.4}
+{"ts": 1791570462.7, "run": "kafka-single-sat-1024B-1p1c-r2", "system": "kafka-single", "bytes": {"kafka": 831488}, "host_free_gb": 28.4}
+{"ts": 1791570510.4, "run": "kafka-single-sat-1024B-4p4c-r2", "system": "kafka-single", "bytes": {"kafka": 860160}, "host_free_gb": 28.4}
+{"ts": 1791570555.6, "run": "kafka-single-sat-100B-1p1c-r2", "system": "kafka-single", "bytes": {"kafka": 884736}, "host_free_gb": 28.4}
+{"ts": 1791570714.1, "run": "kafka-single-sat-100B-4p4c-r2", "system": "kafka-single", "bytes": {"kafka": 937984}, "host_free_gb": 28.4}
+{"ts": 1791570760.5, "run": "kafka-single-lat-1000", "system": "kafka-single", "bytes": {"kafka": 966656}, "host_free_gb": 28.4}
+{"ts": 1791570805.5, "run": "kafka-single-lat-10000", "system": "kafka-single", "bytes": {"kafka": 995328}, "host_free_gb": 28.4}
+{"ts": 1791570852.0, "run": "kafka-single-lat-50000", "system": "kafka-single", "bytes": {"kafka": 1019904}, "host_free_gb": 28.4}
+{"ts": 1791570861.5, "run": "kafka-single-catchup-1024B-4p4c", "system": "kafka-single", "bytes": {"kafka": 1028096}, "host_free_gb": 28.4}
+{"ts": 1791570893.3, "run": "kafka-single-catchup-100B-4p4c", "system": "kafka-single", "bytes": {"kafka": 1048576}, "host_free_gb": 28.4}
+{"ts": 1791570970.6, "run": "kafka-single-overload-1024B-4p4c", "system": "kafka-single", "bytes": {"kafka": 1085440}, "host_free_gb": 28.4}
+{"ts": 1791571069.7, "run": "kafka-single-overload-100B-4p4c", "system": "kafka-single", "bytes": {"kafka": 1122304}, "host_free_gb": 28.4}
+{"ts": 1791571185.7, "run": "kafka-single-fsync-sat-1024B-1p1c-r1", "system": "kafka-single-fsync", "bytes": {"kafka": 712704}, "host_free_gb": 28.4}
+{"ts": 1791571231.0, "run": "kafka-single-fsync-sat-1024B-4p4c-r1", "system": "kafka-single-fsync", "bytes": {"kafka": 741376}, "host_free_gb": 28.4}
+{"ts": 1791571276.1, "run": "kafka-single-fsync-sat-100B-1p1c-r1", "system": "kafka-single-fsync", "bytes": {"kafka": 765952}, "host_free_gb": 28.4}
+{"ts": 1791571330.9, "run": "kafka-single-fsync-sat-100B-4p4c-r1", "system": "kafka-single-fsync", "bytes": {"kafka": 794624}, "host_free_gb": 28.4}
+{"ts": 1791571376.1, "run": "kafka-single-fsync-sat-1024B-1p1c-r2", "system": "kafka-single-fsync", "bytes": {"kafka": 819200}, "host_free_gb": 28.4}
+{"ts": 1791571421.3, "run": "kafka-single-fsync-sat-1024B-4p4c-r2", "system": "kafka-single-fsync", "bytes": {"kafka": 843776}, "host_free_gb": 28.4}
+{"ts": 1791571466.3, "run": "kafka-single-fsync-sat-100B-1p1c-r2", "system": "kafka-single-fsync", "bytes": {"kafka": 868352}, "host_free_gb": 28.4}
+{"ts": 1791571538.4, "run": "kafka-single-fsync-sat-100B-4p4c-r2", "system": "kafka-single-fsync", "bytes": {"kafka": 905216}, "host_free_gb": 28.4}
+{"ts": 1791571583.5, "run": "kafka-single-fsync-lat-1000", "system": "kafka-single-fsync", "bytes": {"kafka": 933888}, "host_free_gb": 28.4}
+{"ts": 1791571628.5, "run": "kafka-single-fsync-lat-10000", "system": "kafka-single-fsync", "bytes": {"kafka": 962560}, "host_free_gb": 28.4}
+{"ts": 1791571674.8, "run": "kafka-single-fsync-lat-50000", "system": "kafka-single-fsync", "bytes": {"kafka": 978944}, "host_free_gb": 28.4}
+{"ts": 1791571683.2, "run": "kafka-single-fsync-catchup-1024B-4p4c", "system": "kafka-single-fsync", "bytes": {"kafka": 987136}, "host_free_gb": 28.4}
+{"ts": 1791571716.7, "run": "kafka-single-fsync-catchup-100B-4p4c", "system": "kafka-single-fsync", "bytes": {"kafka": 1007616}, "host_free_gb": 28.4}
+{"ts": 1791571792.1, "run": "kafka-single-fsync-overload-1024B-4p4c", "system": "kafka-single-fsync", "bytes": {"kafka": 1044480}, "host_free_gb": 28.4}
+{"ts": 1791571872.9, "run": "kafka-single-fsync-overload-100B-4p4c", "system": "kafka-single-fsync", "bytes": {"kafka": 1073152}, "host_free_gb": 28.4}
+{"ts": 1791571987.6, "run": "rabbitmq-single-sat-1024B-1p1c-r1", "system": "rabbitmq-single", "bytes": {"rabbitmq": 253952}, "host_free_gb": 28.4}
+{"ts": 1791572056.2, "run": "rabbitmq-single-sat-1024B-4p4c-r1", "system": "rabbitmq-single", "bytes": {"rabbitmq": 262144}, "host_free_gb": 28.4}
+{"ts": 1791572101.6, "run": "rabbitmq-single-sat-100B-1p1c-r1", "system": "rabbitmq-single", "bytes": {"rabbitmq": 249856}, "host_free_gb": 28.4}
+{"ts": 1791572147.4, "run": "rabbitmq-single-sat-100B-4p4c-r1", "system": "rabbitmq-single", "bytes": {"rabbitmq": 258048}, "host_free_gb": 28.4}
+{"ts": 1791572191.9, "run": "rabbitmq-single-sat-1024B-1p1c-r2", "system": "rabbitmq-single", "bytes": {"rabbitmq": 262144}, "host_free_gb": 28.4}
+{"ts": 1791572262.3, "run": "rabbitmq-single-sat-1024B-4p4c-r2", "system": "rabbitmq-single", "bytes": {"rabbitmq": 249856}, "host_free_gb": 28.4}
+{"ts": 1791572307.2, "run": "rabbitmq-single-sat-100B-1p1c-r2", "system": "rabbitmq-single", "bytes": {"rabbitmq": 258048}, "host_free_gb": 28.4}
+{"ts": 1791572354.2, "run": "rabbitmq-single-sat-100B-4p4c-r2", "system": "rabbitmq-single", "bytes": {"rabbitmq": 262144}, "host_free_gb": 28.4}
+{"ts": 1791572397.7, "run": "rabbitmq-single-lat-1000", "system": "rabbitmq-single", "bytes": {"rabbitmq": 270336}, "host_free_gb": 28.4}
+{"ts": 1791572441.3, "run": "rabbitmq-single-lat-10000", "system": "rabbitmq-single", "bytes": {"rabbitmq": 249856}, "host_free_gb": 28.4}
+{"ts": 1791572449.4, "run": "rabbitmq-single-catchup-1024B-4p4c", "system": "rabbitmq-single", "bytes": {"rabbitmq": 258048}, "host_free_gb": 28.4}
+{"ts": 1791572499.5, "run": "rabbitmq-single-catchup-100B-4p4c", "system": "rabbitmq-single", "bytes": {"rabbitmq": 274432}, "host_free_gb": 28.4}
+{"ts": 1791572580.5, "run": "rabbitmq-single-overload-1024B-4p4c", "system": "rabbitmq-single", "bytes": {"rabbitmq": 266240}, "host_free_gb": 28.3}
+{"ts": 1791572657.0, "run": "rabbitmq-single-overload-100B-4p4c", "system": "rabbitmq-single", "bytes": {"rabbitmq": 249856}, "host_free_gb": 28.3}
+{"ts": 1791572766.9, "run": "fluxmq-cluster-sat-1024B-1p1c-r1", "system": "fluxmq-cluster", "bytes": {"n1": 98304, "n2": 94208, "n3": 94208}, "host_free_gb": 20.3}
+{"ts": 1791572811.8, "run": "fluxmq-cluster-sat-1024B-4p4c-r1", "system": "fluxmq-cluster", "bytes": {"n1": 102400, "n2": 98304, "n3": 98304}, "host_free_gb": 11.7}
+{"ts": 1791572857.3, "run": "fluxmq-cluster-sat-100B-1p1c-r1", "system": "fluxmq-cluster", "bytes": {"n1": 118784, "n2": 114688, "n3": 114688}, "host_free_gb": 20.7}
+{"ts": 1791572918.0, "run": "fluxmq-cluster-sat-100B-4p4c-r1", "system": "fluxmq-cluster", "bytes": {"n1": 126976, "n2": 122880, "n3": 122880}, "host_free_gb": 21.5}
+{"ts": 1791572962.8, "run": "fluxmq-cluster-sat-1024B-1p1c-r2", "system": "fluxmq-cluster", "bytes": {"n1": 139264, "n2": 135168, "n3": 135168}, "host_free_gb": 22.2}
+{"ts": 1791573007.4, "run": "fluxmq-cluster-sat-1024B-4p4c-r2", "system": "fluxmq-cluster", "bytes": {"n1": 155648, "n2": 151552, "n3": 151552}, "host_free_gb": 24.9}
+{"ts": 1791573051.5, "run": "fluxmq-cluster-sat-100B-1p1c-r2", "system": "fluxmq-cluster", "bytes": {"n1": 163840, "n2": 159744, "n3": 159744}, "host_free_gb": 28.4}
+{"ts": 1791573109.8, "run": "fluxmq-cluster-sat-100B-4p4c-r2", "system": "fluxmq-cluster", "bytes": {"n1": 172032, "n2": 167936, "n3": 167936}, "host_free_gb": 16.9}
+{"ts": 1791573153.9, "run": "fluxmq-cluster-lat-1000", "system": "fluxmq-cluster", "bytes": {"n1": 184320, "n2": 180224, "n3": 180224}, "host_free_gb": 28.4}
+{"ts": 1791573197.7, "run": "fluxmq-cluster-lat-10000", "system": "fluxmq-cluster", "bytes": {"n1": 192512, "n2": 188416, "n3": 188416}, "host_free_gb": 28.0}
+{"ts": 1791573242.1, "run": "fluxmq-cluster-lat-50000", "system": "fluxmq-cluster", "bytes": {"n1": 208896, "n2": 204800, "n3": 204800}, "host_free_gb": 26.5}
+{"ts": 1791573255.2, "run": "fluxmq-cluster-catchup-1024B-4p4c", "system": "fluxmq-cluster", "bytes": {"n1": 217088, "n2": 212992, "n3": 212992}, "host_free_gb": 28.4}
+{"ts": 1791573279.5, "run": "fluxmq-cluster-catchup-100B-4p4c", "system": "fluxmq-cluster", "bytes": {"n1": 221184, "n2": 217088, "n3": 217088}, "host_free_gb": 27.3}
+{"ts": 1791573353.5, "run": "fluxmq-cluster-overload-1024B-4p4c", "system": "fluxmq-cluster", "bytes": {"n1": 237568, "n2": 233472, "n3": 233472}, "host_free_gb": 16.4}
+{"ts": 1791573433.5, "run": "fluxmq-cluster-overload-100B-4p4c", "system": "fluxmq-cluster", "bytes": {"n1": 245760, "n2": 241664, "n3": 241664}, "host_free_gb": 19.3}
+{"ts": 1791573559.5, "run": "fluxmq-cluster-tls-sat-1024B-1p1c-r1", "system": "fluxmq-cluster-tls", "bytes": {"n1": 98304, "n2": 94208, "n3": 94208}, "host_free_gb": 25.9}
+{"ts": 1791573686.0, "run": "fluxmq-cluster-tls-sat-1024B-4p4c-r1", "system": "fluxmq-cluster-tls", "bytes": {"n1": 122880, "n2": 118784, "n3": 118784}, "host_free_gb": 16.4}
+{"ts": 1791573730.9, "run": "fluxmq-cluster-tls-sat-100B-1p1c-r1", "system": "fluxmq-cluster-tls", "bytes": {"n1": 126976, "n2": 122880, "n3": 122880}, "host_free_gb": 28.4}
+{"ts": 1791573793.0, "run": "fluxmq-cluster-tls-sat-100B-4p4c-r1", "system": "fluxmq-cluster-tls", "bytes": {"n1": 139264, "n2": 135168, "n3": 135168}, "host_free_gb": 21.2}
+{"ts": 1791573855.6, "run": "fluxmq-cluster-tls-sat-1024B-1p1c-r2", "system": "fluxmq-cluster-tls", "bytes": {"n1": 151552, "n2": 147456, "n3": 147456}, "host_free_gb": 15.2}
+{"ts": 1791573922.3, "run": "fluxmq-cluster-tls-sat-1024B-4p4c-r2", "system": "fluxmq-cluster-tls", "bytes": {"n1": 159744, "n2": 159744, "n3": 159744}, "host_free_gb": 28.3}
+{"ts": 1791573966.4, "run": "fluxmq-cluster-tls-sat-100B-1p1c-r2", "system": "fluxmq-cluster-tls", "bytes": {"n1": 176128, "n2": 172032, "n3": 172032}, "host_free_gb": 21.2}
+{"ts": 1791574029.3, "run": "fluxmq-cluster-tls-sat-100B-4p4c-r2", "system": "fluxmq-cluster-tls", "bytes": {"n1": 188416, "n2": 184320, "n3": 184320}, "host_free_gb": 27.2}
+{"ts": 1791574073.1, "run": "fluxmq-cluster-tls-lat-1000", "system": "fluxmq-cluster-tls", "bytes": {"n1": 200704, "n2": 196608, "n3": 196608}, "host_free_gb": 28.4}
+{"ts": 1791574116.9, "run": "fluxmq-cluster-tls-lat-10000", "system": "fluxmq-cluster-tls", "bytes": {"n1": 204800, "n2": 200704, "n3": 200704}, "host_free_gb": 28.3}
+{"ts": 1791574160.9, "run": "fluxmq-cluster-tls-lat-50000", "system": "fluxmq-cluster-tls", "bytes": {"n1": 221184, "n2": 217088, "n3": 217088}, "host_free_gb": 27.1}
+{"ts": 1791574278.4, "run": "fluxmq-cluster-os-sat-1024B-1p1c-r1", "system": "fluxmq-cluster-os", "bytes": {"n1": 94208, "n2": 90112, "n3": 90112}, "host_free_gb": 11.6}
+{"ts": 1791574327.2, "run": "fluxmq-cluster-os-sat-1024B-4p4c-r1", "system": "fluxmq-cluster-os", "bytes": {"n1": 102400, "n2": 98304, "n3": 98304}, "host_free_gb": 11.9}
+{"ts": 1791574372.0, "run": "fluxmq-cluster-os-sat-100B-1p1c-r1", "system": "fluxmq-cluster-os", "bytes": {"n1": 110592, "n2": 106496, "n3": 106496}, "host_free_gb": 19.3}
+{"ts": 1791574434.0, "run": "fluxmq-cluster-os-sat-100B-4p4c-r1", "system": "fluxmq-cluster-os", "bytes": {"n1": 131072, "n2": 126976, "n3": 126976}, "host_free_gb": 16.9}
+{"ts": 1791574480.5, "run": "fluxmq-cluster-os-sat-1024B-1p1c-r2", "system": "fluxmq-cluster-os", "bytes": {"n1": 139264, "n2": 135168, "n3": 135168}, "host_free_gb": 9.9}
+{"ts": 1791574648.3, "run": "fluxmq-cluster-os-sat-1024B-1p1c-r1", "system": "fluxmq-cluster-os", "bytes": {"n1": 94208, "n2": 90112, "n3": 90112}, "host_free_gb": 20.9}
+{"ts": 1791574697.0, "run": "fluxmq-cluster-os-sat-1024B-4p4c-r1", "system": "fluxmq-cluster-os", "bytes": {"n1": 102400, "n2": 98304, "n3": 98304}, "host_free_gb": 23.0}
+{"ts": 1791574741.1, "run": "fluxmq-cluster-os-sat-100B-1p1c-r1", "system": "fluxmq-cluster-os", "bytes": {"n1": 110592, "n2": 106496, "n3": 106496}, "host_free_gb": 33.0}
+{"ts": 1791574802.2, "run": "fluxmq-cluster-os-sat-100B-4p4c-r1", "system": "fluxmq-cluster-os", "bytes": {"n1": 126976, "n2": 122880, "n3": 122880}, "host_free_gb": 30.0}
+{"ts": 1791574846.5, "run": "fluxmq-cluster-os-sat-1024B-1p1c-r2", "system": "fluxmq-cluster-os", "bytes": {"n1": 135168, "n2": 131072, "n3": 131072}, "host_free_gb": 21.9}
+{"ts": 1791574897.7, "run": "fluxmq-cluster-os-sat-1024B-4p4c-r2", "system": "fluxmq-cluster-os", "bytes": {"n1": 143360, "n2": 139264, "n3": 139264}, "host_free_gb": 25.2}
+{"ts": 1791574942.2, "run": "fluxmq-cluster-os-sat-100B-1p1c-r2", "system": "fluxmq-cluster-os", "bytes": {"n1": 159744, "n2": 155648, "n3": 155648}, "host_free_gb": 31.4}
+{"ts": 1791575002.0, "run": "fluxmq-cluster-os-sat-100B-4p4c-r2", "system": "fluxmq-cluster-os", "bytes": {"n1": 167936, "n2": 163840, "n3": 163840}, "host_free_gb": 29.7}
+{"ts": 1791575046.5, "run": "fluxmq-cluster-os-lat-1000", "system": "fluxmq-cluster-os", "bytes": {"n1": 180224, "n2": 176128, "n3": 176128}, "host_free_gb": 40.4}
+{"ts": 1791575090.4, "run": "fluxmq-cluster-os-lat-10000", "system": "fluxmq-cluster-os", "bytes": {"n1": 192512, "n2": 188416, "n3": 188416}, "host_free_gb": 39.2}
+{"ts": 1791575134.8, "run": "fluxmq-cluster-os-lat-50000", "system": "fluxmq-cluster-os", "bytes": {"n1": 204800, "n2": 200704, "n3": 200704}, "host_free_gb": 34.3}
+{"ts": 1791575262.8, "run": "kafka-cluster-sat-1024B-1p1c-r1", "system": "kafka-cluster", "bytes": {"kafka1": 581632, "kafka2": 585728, "kafka3": 581632}, "host_free_gb": 40.4}
+{"ts": 1791575385.3, "run": "kafka-cluster-sat-1024B-4p4c-r1", "system": "kafka-cluster", "bytes": {"kafka1": 626688, "kafka2": 630784, "kafka3": 622592}, "host_free_gb": 40.5}
+{"ts": 1791575431.4, "run": "kafka-cluster-sat-100B-1p1c-r1", "system": "kafka-cluster", "bytes": {"kafka1": 651264, "kafka2": 659456, "kafka3": 651264}, "host_free_gb": 40.5}
+{"ts": 1791576054.1, "run": "kafka-cluster-sat-100B-4p4c-r1", "system": "kafka-cluster", "bytes": {"kafka1": 778240, "kafka2": 786432, "kafka3": 774144}, "host_free_gb": 40.5}
+{"ts": 1791576100.2, "run": "kafka-cluster-sat-1024B-1p1c-r2", "system": "kafka-cluster", "bytes": {"kafka1": 806912, "kafka2": 815104, "kafka3": 798720}, "host_free_gb": 40.5}
+{"ts": 1791576235.5, "run": "kafka-cluster-sat-1024B-4p4c-r2", "system": "kafka-cluster", "bytes": {"kafka1": 851968, "kafka2": 856064, "kafka3": 843776}, "host_free_gb": 40.4}
+{"ts": 1791576282.5, "run": "kafka-cluster-sat-100B-1p1c-r2", "system": "kafka-cluster", "bytes": {"kafka1": 876544, "kafka2": 884736, "kafka3": 872448}, "host_free_gb": 40.4}
+{"ts": 1791576505.7, "run": "kafka-cluster-sat-100B-4p4c-r2", "system": "kafka-cluster", "bytes": {"kafka1": 933888, "kafka2": 946176, "kafka3": 933888}, "host_free_gb": 40.4}
+{"ts": 1791576552.7, "run": "kafka-cluster-lat-1000", "system": "kafka-cluster", "bytes": {"kafka1": 966656, "kafka2": 974848, "kafka3": 966656}, "host_free_gb": 40.4}
+{"ts": 1791576600.3, "run": "kafka-cluster-lat-10000", "system": "kafka-cluster", "bytes": {"kafka1": 999424, "kafka2": 1003520, "kafka3": 999424}, "host_free_gb": 40.4}
+{"ts": 1791576647.6, "run": "kafka-cluster-lat-50000", "system": "kafka-cluster", "bytes": {"kafka1": 1015808, "kafka2": 1019904, "kafka3": 1015808}, "host_free_gb": 40.4}
+{"ts": 1791576659.9, "run": "kafka-cluster-catchup-1024B-4p4c", "system": "kafka-cluster", "bytes": {"kafka1": 1028096, "kafka2": 1028096, "kafka3": 1028096}, "host_free_gb": 40.4}
+{"ts": 1791576711.5, "run": "kafka-cluster-catchup-100B-4p4c", "system": "kafka-cluster", "bytes": {"kafka1": 1056768, "kafka2": 1052672, "kafka3": 1056768}, "host_free_gb": 40.6}
+{"ts": 1791576800.7, "run": "kafka-cluster-overload-1024B-4p4c", "system": "kafka-cluster", "bytes": {"kafka1": 1097728, "kafka2": 1093632, "kafka3": 1093632}, "host_free_gb": 40.5}
+{"ts": 1791577117.4, "run": "kafka-cluster-overload-100B-4p4c", "system": "kafka-cluster", "bytes": {"kafka1": 1167360, "kafka2": 1159168, "kafka3": 1163264}, "host_free_gb": 40.5}
+{"ts": 1791577242.5, "run": "kafka-cluster-fsync-sat-1024B-1p1c-r1", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 585728, "kafka2": 577536, "kafka3": 585728}, "host_free_gb": 40.6}
+{"ts": 1791577298.2, "run": "kafka-cluster-fsync-sat-1024B-4p4c-r1", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 618496, "kafka2": 606208, "kafka3": 618496}, "host_free_gb": 40.6}
+{"ts": 1791577344.0, "run": "kafka-cluster-fsync-sat-100B-1p1c-r1", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 647168, "kafka2": 630784, "kafka3": 647168}, "host_free_gb": 40.6}
+{"ts": 1791577504.6, "run": "kafka-cluster-fsync-sat-100B-4p4c-r1", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 704512, "kafka2": 692224, "kafka3": 708608}, "host_free_gb": 39.8}
+{"ts": 1791577550.5, "run": "kafka-cluster-fsync-sat-1024B-1p1c-r2", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 733184, "kafka2": 720896, "kafka3": 733184}, "host_free_gb": 40.6}
+{"ts": 1791577605.0, "run": "kafka-cluster-fsync-sat-1024B-4p4c-r2", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 765952, "kafka2": 749568, "kafka3": 765952}, "host_free_gb": 40.6}
+{"ts": 1791577650.7, "run": "kafka-cluster-fsync-sat-100B-1p1c-r2", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 794624, "kafka2": 778240, "kafka3": 790528}, "host_free_gb": 40.6}
+{"ts": 1791577869.9, "run": "kafka-cluster-fsync-sat-100B-4p4c-r2", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 851968, "kafka2": 835584, "kafka3": 847872}, "host_free_gb": 40.2}
+{"ts": 1791577915.3, "run": "kafka-cluster-fsync-lat-1000", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 884736, "kafka2": 864256, "kafka3": 880640}, "host_free_gb": 40.6}
+{"ts": 1791577962.1, "run": "kafka-cluster-fsync-lat-10000", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 917504, "kafka2": 897024, "kafka3": 909312}, "host_free_gb": 40.6}
+{"ts": 1791578008.1, "run": "kafka-cluster-fsync-lat-50000", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 946176, "kafka2": 929792, "kafka3": 942080}, "host_free_gb": 40.4}
+{"ts": 1791578024.0, "run": "kafka-cluster-fsync-catchup-1024B-4p4c", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 954368, "kafka2": 942080, "kafka3": 954368}, "host_free_gb": 40.4}
+{"ts": 1791578079.7, "run": "kafka-cluster-fsync-catchup-100B-4p4c", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 978944, "kafka2": 970752, "kafka3": 983040}, "host_free_gb": 40.4}
+{"ts": 1791578178.1, "run": "kafka-cluster-fsync-overload-1024B-4p4c", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 1032192, "kafka2": 1019904, "kafka3": 1036288}, "host_free_gb": 40.4}
+{"ts": 1791578414.5, "run": "kafka-cluster-fsync-overload-100B-4p4c", "system": "kafka-cluster-fsync", "bytes": {"kafka1": 1097728, "kafka2": 1081344, "kafka3": 1101824}, "host_free_gb": 38.4}
+{"ts": 1791578535.3, "run": "rabbitmq-cluster-sat-1024B-1p1c-r1", "system": "rabbitmq-cluster", "bytes": {"rmq1": 34705408, "rmq2": 365899776, "rmq3": 365875200}, "host_free_gb": 39.6}
+{"ts": 1791578581.2, "run": "rabbitmq-cluster-sat-1024B-4p4c-r1", "system": "rabbitmq-cluster", "bytes": {"rmq1": 152694784, "rmq2": 85626880, "rmq3": 85643264}, "host_free_gb": 40.1}
+{"ts": 1791578628.3, "run": "rabbitmq-cluster-sat-100B-1p1c-r1", "system": "rabbitmq-cluster", "bytes": {"rmq1": 53604352, "rmq2": 37289984, "rmq3": 37322752}, "host_free_gb": 40.3}
+{"ts": 1791578680.9, "run": "rabbitmq-cluster-sat-100B-4p4c-r1", "system": "rabbitmq-cluster", "bytes": {"rmq1": 130715648, "rmq2": 111448064, "rmq3": 111476736}, "host_free_gb": 40.0}
+{"ts": 1791578725.3, "run": "rabbitmq-cluster-sat-1024B-1p1c-r2", "system": "rabbitmq-cluster", "bytes": {"rmq1": 304394240, "rmq2": 254504960, "rmq3": 254648320}, "host_free_gb": 39.6}
+{"ts": 1791578772.0, "run": "rabbitmq-cluster-sat-1024B-4p4c-r2", "system": "rabbitmq-cluster", "bytes": {"rmq1": 432979968, "rmq2": 369385472, "rmq3": 369553408}, "host_free_gb": 39.2}
+{"ts": 1791578818.5, "run": "rabbitmq-cluster-sat-100B-1p1c-r2", "system": "rabbitmq-cluster", "bytes": {"rmq1": 7626752, "rmq2": 114614272, "rmq3": 114630656}, "host_free_gb": 40.0}
+{"ts": 1791578872.4, "run": "rabbitmq-cluster-sat-100B-4p4c-r2", "system": "rabbitmq-cluster", "bytes": {"rmq1": 64303104, "rmq2": 45277184, "rmq3": 45305856}, "host_free_gb": 40.1}
+{"ts": 1791578916.3, "run": "rabbitmq-cluster-lat-1000", "system": "rabbitmq-cluster", "bytes": {"rmq1": 120143872, "rmq2": 101122048, "rmq3": 101150720}, "host_free_gb": 40.0}
+{"ts": 1791578962.7, "run": "rabbitmq-cluster-lat-10000", "system": "rabbitmq-cluster", "bytes": {"rmq1": 234381312, "rmq2": 171765760, "rmq3": 171819008}, "host_free_gb": 39.7}
+{"ts": 1791578978.1, "run": "rabbitmq-cluster-catchup-1024B-4p4c", "system": "rabbitmq-cluster", "bytes": {"rmq1": 372862976, "rmq2": 310251520, "rmq3": 310308864}, "host_free_gb": 39.3}
+{"ts": 1791579078.2, "run": "rabbitmq-cluster-catchup-100B-4p4c", "system": "rabbitmq-cluster", "bytes": {"rmq1": 25796608, "rmq2": 16896000, "rmq3": 16891904}, "host_free_gb": 40.3}
+{"ts": 1791579154.3, "run": "rabbitmq-cluster-overload-1024B-4p4c", "system": "rabbitmq-cluster", "bytes": {"rmq1": 78827520, "rmq2": 15183872, "rmq3": 15237120}, "host_free_gb": 40.2}
+{"ts": 1791579233.8, "run": "rabbitmq-cluster-overload-100B-4p4c", "system": "rabbitmq-cluster", "bytes": {"rmq1": 78106624, "rmq2": 59068416, "rmq3": 59092992}, "host_free_gb": 40.1}

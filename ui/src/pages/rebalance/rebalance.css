@@ -1,0 +1,591 @@
+/* Nodes → Rebalancing panel (v0.4). Neutral by default; amber / red only for problems. */
+.rb-head {
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+.rb-run {
+  height: 20px;
+  font-size: 11.5px;
+  padding: 0 7px;
+}
+.rb-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.rb-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* facts strip — same rhythm as the cluster summary */
+.rb-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 -16px;
+}
+.rb-facts .cs-item:first-child {
+  padding-left: 16px;
+}
+.rb-fact-v {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.rb-imb {
+  height: 20px;
+  font-size: 11.5px;
+  padding: 0 7px;
+}
+.rb-trigger-v {
+  font-size: 15px;
+  line-height: 28px;
+  font-weight: 550;
+}
+@media (max-width: 900px) {
+  .rb-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 14px;
+  }
+  .rb-facts .cs-item:nth-child(3) {
+    border-left: 0;
+  }
+}
+
+/* whole-plan progress */
+.rb-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -6px;
+}
+.rb-pbar {
+  flex: 1;
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border);
+  overflow: hidden;
+}
+.rb-pbar > span {
+  height: 100%;
+  transition: width 0.6s var(--ease);
+}
+.rb-pbar .done {
+  background: var(--primary);
+}
+.rb-pbar .rolled {
+  background: var(--warning);
+}
+.rb-pbar .cancelled {
+  background: var(--text-disabled);
+}
+.rb-pbar .flight {
+  background: repeating-linear-gradient(-45deg, var(--primary-soft) 0 4px, color-mix(in srgb, var(--primary) 45%, transparent) 4px 8px);
+}
+.rb-pbar.paused .done {
+  background: var(--text-tertiary);
+}
+.rb-progress-meta {
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+.rb-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rb-sub-h {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+.rb-sub-note {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+/* load bars */
+.lb {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.lb-row {
+  display: grid;
+  grid-template-columns: 110px repeat(4, minmax(0, 1fr));
+  gap: 0 20px;
+  align-items: center;
+  padding: 9px 14px;
+}
+.lb-row + .lb-row {
+  border-top: 1px solid var(--border-subtle);
+}
+.lb-headrow {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background: var(--surface);
+  font-size: 11.5px;
+  color: var(--text-tertiary);
+}
+.lb-h {
+  cursor: help;
+}
+.lb-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 550;
+  min-width: 0;
+}
+.lb-new {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 11px;
+}
+.lb-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.lb-vals {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.lb-val {
+  font-weight: 550;
+}
+.lb-next {
+  font-size: 12px;
+  color: var(--primary-text);
+  font-weight: 500;
+}
+.lb-bar {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border);
+  overflow: hidden;
+}
+.lb-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--text-tertiary);
+  transition: width 0.5s var(--ease);
+}
+.lb-bar.next {
+  height: 3px;
+  background: transparent;
+}
+.lb-bar.next > span {
+  background: var(--primary);
+}
+.lb-legend {
+  display: flex;
+  gap: 16px;
+  padding: 7px 14px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 11.5px;
+}
+.lb-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.lb-key {
+  display: inline-block;
+  width: 14px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--text-tertiary);
+}
+.lb-key.next {
+  height: 3px;
+  background: var(--primary);
+}
+@media (max-width: 760px) {
+  .lb {
+    overflow-x: auto;
+  }
+  .lb-row {
+    min-width: 560px;
+    grid-template-columns: 64px repeat(4, minmax(0, 1fr));
+    gap: 0 12px;
+    padding: 8px 10px;
+  }
+  .lb-legend {
+    min-width: 560px;
+  }
+  .rb-progress {
+    flex-wrap: wrap;
+  }
+  .rb-progress .rb-pbar {
+    flex-basis: 100%;
+  }
+}
+
+/* plan table */
+.rb-table td {
+  vertical-align: middle;
+}
+.rb-part {
+  white-space: nowrap;
+  max-width: 260px;
+}
+.rb-ch {
+  display: inline-block;
+  max-width: 190px;
+  vertical-align: bottom;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 12.5px;
+}
+.rb-ch:hover {
+  text-decoration: underline;
+}
+.rb-p {
+  margin-left: 6px;
+  font-size: 12px;
+}
+.rb-reason {
+  height: 20px;
+  font-size: 11.5px;
+  padding: 0 7px;
+  background: var(--surface);
+}
+.rb-reason svg {
+  color: var(--text-tertiary);
+}
+.rb-diff {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+.rb-reps {
+  display: inline-flex;
+  gap: 3px;
+}
+.rb-rep {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.rb-rep svg {
+  color: var(--text-tertiary);
+}
+.rb-rep.added {
+  color: var(--success);
+  background: var(--success-soft);
+  border-color: transparent;
+  font-weight: 550;
+}
+.rb-rep.added svg {
+  color: currentColor;
+}
+.rb-rep.removed {
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+  text-decoration-color: var(--critical);
+  border-style: dashed;
+  background: transparent;
+}
+.rb-arrow {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+.rb-state {
+  height: 20px;
+  font-size: 11.5px;
+  padding: 0 7px;
+}
+.rb-state-cell {
+  max-width: 280px;
+}
+.rb-err {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.rb-catch-cell {
+  min-width: 170px;
+  font-size: 12.5px;
+}
+.rb-catch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rb-catch-bar {
+  flex: 1;
+  min-width: 60px;
+  max-width: 120px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  overflow: hidden;
+}
+.rb-catch-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--primary);
+  transition: width 0.6s var(--ease);
+}
+.rb-catch-bar > span.indeterminate {
+  width: 30%;
+  animation: rb-indet 1.4s ease-in-out infinite;
+}
+.rb-catch-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.rb-time {
+  display: flex;
+  flex-direction: column;
+  font-size: 12.5px;
+}
+.rb-time small {
+  font-size: 11.5px;
+}
+.rb-table.preview td {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.rb-config-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 12.5px;
+}
+.rb-config-line {
+  column-gap: 18px;
+}
+.rb-config-line b {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.rb-confirm-note {
+  margin: 0;
+  font-size: 12.5px;
+}
+
+/* dry-run dialog */
+.rb-filter {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.rb-filter .field {
+  flex: 1;
+  min-width: 0;
+}
+.rb-preview-btn {
+  margin-top: 22px;
+  flex-shrink: 0;
+}
+.rb-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0;
+  justify-content: center;
+  font-size: 13px;
+}
+.rb-dim {
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.rb-preview-sum {
+  font-size: 13px;
+  line-height: 19px;
+}
+.rb-preview-table {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+}
+.rb-foot-note {
+  flex: 1;
+  font-size: 12px;
+  text-align: left;
+}
+
+/* config dialog */
+.rb-modes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+@media (max-width: 720px) {
+  .rb-modes {
+    grid-template-columns: 1fr;
+  }
+}
+.rb-mode {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  cursor: pointer;
+}
+.rb-mode input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.rb-mode:hover {
+  border-color: var(--border-strong);
+}
+.rb-mode.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+.rb-mode:focus-within {
+  box-shadow: var(--focus);
+}
+fieldset:disabled .rb-mode {
+  cursor: default;
+}
+.rb-mode .ro-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 550;
+  font-size: 13px;
+}
+.rb-mode .ro-hint {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-tertiary);
+}
+.rb-input-unit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rb-input-unit .input {
+  width: 96px;
+  flex: none;
+}
+.rb-unit {
+  width: auto;
+  flex: none;
+}
+.rb-inline-check {
+  margin-left: 4px;
+  white-space: nowrap;
+}
+.rb-diffnote {
+  margin: 4px 0 0;
+  font-size: 12px;
+}
+@keyframes rb-indet {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(340%);
+  }
+}
+.rb-more {
+  padding: 10px 20px 2px;
+  font-size: 12.5px;
+}
+.lb.compact .lb-row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.lb.compact .lb-headrow {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.lb.compact .lb-cell {
+  gap: 3px;
+}
+.lb-node-id {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.lb-status {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.lb-status.warning {
+  color: var(--warning-text);
+}
+.lb-status.critical {
+  color: var(--critical-text);
+}
+.lb-row.st-down {
+  background: var(--critical-soft);
+}
+.lb-row.st-down .lb-bar.cur > span {
+  background: repeating-linear-gradient(45deg, var(--critical) 0 3px, transparent 3px 6px);
+}
+.lb-row.st-down .lb-val,
+.lb-row.st-leaving .lb-val {
+  color: var(--text-secondary);
+}
+.badge.rb-cancelled {
+  color: var(--text-tertiary);
+  border-style: dashed;
+}
+/* v0.5: a decommissioning node drains to zero replicas */
+.lb-status.primary {
+  color: var(--primary-text);
+  font-weight: 550;
+}
+.lb-row.st-decommissioning {
+  background: var(--primary-soft);
+}
+.lb-row.st-decommissioning .lb-bar.cur > span {
+  background: repeating-linear-gradient(45deg, var(--primary) 0 3px, transparent 3px 6px);
+}
+.lb-row.st-decommissioning .lb-val {
+  color: var(--text-secondary);
+}

@@ -1,0 +1,96 @@
+{
+  "broker_version": "FluxMQ 0.4.0",
+  "cleanup_error": null,
+  "client": "fluxmq-client (Rust SDK) BatchingProducer linger=1ms, prefetch=2000",
+  "consume_mb_s": 50.95,
+  "consume_rate": 49753.0,
+  "consumed": 149318,
+  "drained": true,
+  "durability": "FluxMQ cluster of 1 nodes: stream channel, 8 partitions; publish acked after the broker's group commit (fsync) and, in a cluster, after every ISR member has the batch (acks=all; min ISR per broker flag); consumer acks every message",
+  "e2e_ms": {
+    "count": 150026,
+    "max": 105.087,
+    "mean": 30.234,
+    "min": 8.848,
+    "p50": 28.799,
+    "p90": 40.479,
+    "p99": 82.623,
+    "p999": 94.911
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "fluxmq-single",
+  "last_error": null,
+  "measure_end_ms": 1791468934254,
+  "measure_start_ms": 1791468931253,
+  "params": {
+    "brokers": [
+      "fluxmq:7420"
+    ],
+    "consumers": 4,
+    "duration_s": 3,
+    "linger_ms": 1,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 4,
+    "queue_type": null,
+    "rate": 50000,
+    "replication": 1,
+    "size": 1024,
+    "tls": false,
+    "warmup_s": 1,
+    "window": 2000
+  },
+  "publish_mb_s": 50.95,
+  "publish_ms": {
+    "count": 150026,
+    "max": 97.407,
+    "mean": 29.586,
+    "min": 8.92,
+    "p50": 28.207,
+    "p90": 39.679,
+    "p99": 80.895,
+    "p999": 92.415
+  },
+  "publish_rate": 49760.0,
+  "published": 149339,
+  "received_of_window": 150026,
+  "run_id": "fluxmq-single-lat-50000",
+  "scenario": "latency",
+  "schema": 1,
+  "sent_in_window": 150026,
+  "started_at_ms": 1791468930218,
+  "sustained": true,
+  "system": "fluxmq",
+  "timeline": [
+    {
+      "con": 49182,
+      "phase": "measure",
+      "pub": 49182,
+      "t": 1
+    },
+    {
+      "con": 50114,
+      "phase": "measure",
+      "pub": 50114,
+      "t": 2
+    },
+    {
+      "con": 49213,
+      "phase": "measure",
+      "pub": 49301,
+      "t": 3
+    },
+    {
+      "con": 49991,
+      "phase": "measure",
+      "pub": 49903,
+      "t": 4
+    }
+  ],
+  "topic": "bench-r-68930218",
+  "window_s": 3.001,
+  "system_name": "fluxmq-single",
+  "system_title": "FluxMQ 1 node"
+}

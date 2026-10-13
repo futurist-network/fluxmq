@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "skipped",
+  "run_id": "rabbitmq-cluster-lat-50000",
+  "label": "rabbitmq-cluster",
+  "system_name": "rabbitmq-cluster",
+  "system_title": "RabbitMQ 3 nodes (quorum)",
+  "system": "rabbitmq",
+  "scenario": "latency",
+  "params": {
+    "rate": 50000,
+    "size": 1024
+  },
+  "reason": "saturation throughput at 1 KiB (8638 msg/s) is below 50000 msg/s",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  }
+}

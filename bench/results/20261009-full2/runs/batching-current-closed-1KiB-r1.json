@@ -1,0 +1,58 @@
+{
+  "published": 5942600,
+  "publish_rate": 198051,
+  "publish_mb_s": 202.8,
+  "consumed": 5942600,
+  "consume_rate": 198024,
+  "drained": true,
+  "publish_ms": {
+    "min": 3.04,
+    "p50": 7.76,
+    "p90": 9.57,
+    "p99": 15.27,
+    "p999": 31.84,
+    "max": 57.53
+  },
+  "e2e_ms": {
+    "min": 2.11,
+    "p50": 8.69,
+    "p90": 10.57,
+    "p99": 16.62,
+    "p999": 33.38,
+    "max": 73.6
+  },
+  "errors": 0,
+  "schema": 1,
+  "kind": "fluxmq-bench",
+  "scenario": "batching",
+  "run_id": "batching-current-closed-1KiB-r1",
+  "label": "current",
+  "image": "fluxmq:dev",
+  "revision": "a02a18b",
+  "bench_image": "fluxmq:dev",
+  "run": "closed-1KiB",
+  "args": [
+    "--producers",
+    "4",
+    "--consumers",
+    "4",
+    "--inflight",
+    "4",
+    "--batch",
+    "100",
+    "--size",
+    "1024",
+    "--duration",
+    "30"
+  ],
+  "exit": 0,
+  "repeat": 1,
+  "measure_start_ms": 1791499426146,
+  "measure_end_ms": 1791499456537,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

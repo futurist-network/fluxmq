@@ -1,0 +1,117 @@
+<p class="warn"><b>Partial result set.</b> Stopped by the decision to start v0.7.
+Measured: FluxMQ on 1 node (group commit, TLS, fsync=os), Kafka on 1 node and RabbitMQ on 1 node, with 3 saturation repeats each.
+FluxMQ on 3 nodes, plaintext and TLS, with 2 repeats.
+Not run: FluxMQ on 3 nodes with fsync=os, Kafka on 3 nodes, RabbitMQ on 3 nodes, the commit-pipeline A/B, and the v0.4 batching comparison (already published in v0.5).
+The only 3-node Kafka/RabbitMQ numbers come from <code>20261009-full2</code>. That set used window 2000, so its rows are not directly comparable and appear below only with that label.</p>
+
+<h3>Headline: FluxMQ v0.5 → v0.6, and the other brokers</h3>
+<p>Saturation = median <b>consumed</b> msg/s, i.e. sustained end to end. The 3-node rows are medians of 2 repeats, the rest of 3.
+Latency = end-to-end p50 / p99 at a fixed rate, 1 KiB, one run each.
+FluxMQ stays on group commit: an fsync before every ack.
+FluxMQ producers send no <code>flux-producer</code> header (<code>stamp_producer=false</code>), like the Kafka and RabbitMQ clients.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Measurement</th><th>FluxMQ 0.5<br><span class="muted-inline">full2, window 2000</span></th><th>FluxMQ 0.6</th><th>Kafka 3.7</th><th>RabbitMQ 4.1</th></tr></thead>
+<tbody>
+<tr><td>1 node, 1 KiB, 1×1</td><td>150k</td><td><b>256k</b> (+71 %)</td><td>534k</td><td>11.2k</td></tr>
+<tr><td>1 node, 1 KiB, 4×4</td><td>169k</td><td><b>355k</b> (+110 %)</td><td>587k (client-bound, 4.0 CPUs)</td><td>10.6k</td></tr>
+<tr><td>1 node, 100 B, 1×1</td><td>188k</td><td><b>404k</b> (+115 %)</td><td>696k</td><td>11.2k</td></tr>
+<tr><td>1 node, 100 B, 4×4</td><td>204k</td><td><b>36k</b>: consumers starved (1.49M msg/s published)</td><td>374k: consumers behind (1.31M published)</td><td>29.5k</td></tr>
+<tr><td>3 nodes RF=3, 1 KiB, 1×1</td><td>94k</td><td><b>202k</b> (+115 %)</td><td colspan="2" class="muted-inline">not run in v0.6 (full2, window 2000, not comparable: Kafka 216k, RabbitMQ 4.7k)</td></tr>
+<tr><td>3 nodes RF=3, 1 KiB, 4×4</td><td>120k</td><td><b>307k</b> (+155 %)</td><td colspan="2" class="muted-inline">not run (full2: Kafka 229k, RabbitMQ 6.5k)</td></tr>
+<tr><td>3 nodes RF=3, 100 B, 4×4</td><td>179k</td><td><b>11.5k</b>: consumers starved (648k published)</td><td colspan="2" class="muted-inline">not run (full2: Kafka 592k, RabbitMQ 8.2k)</td></tr>
+<tr><td>p50 / p99 at 1k msg/s, 1 node</td><td>3.9 / 6.4 ms</td><td><b>1.96 / 4.2 ms</b></td><td>3.1 / 6.6 ms</td><td>1.7 / 3.5 ms</td></tr>
+<tr><td>p50 / p99 at 10k msg/s, 1 node</td><td>4.5 / 13.0 ms</td><td><b>2.7 / 6.4 ms</b></td><td>2.3 / 6.4 ms</td><td>3.6 / 40.7 ms</td></tr>
+<tr><td>p50 / p99 at 50k msg/s, 1 node</td><td>8.1 / 593 ms</td><td><b>4.4 / 155 ms</b> (see "tail" below)</td><td>2.3 / 9.0 ms</td><td>not reachable</td></tr>
+<tr><td>p50 / p99 at 50k msg/s, 3 nodes</td><td>29.5 / 1842 ms</td><td><b>19.4 / 61 ms</b></td><td colspan="2" class="muted-inline">not run (full2: Kafka 2.6 / 64 ms)</td></tr>
+<tr><td>Broker CPU at 10k msg/s, 1 node, 8 partitions</td><td>1.21–1.27 cores</td><td><b>0.63–0.74 cores</b></td><td>0.77</td><td>2.17</td></tr>
+</tbody></table></div>
+
+<h3>Conclusions</h3>
+<ul class="concl">
+<li><b>FluxMQ v0.6 roughly doubles v0.5's throughput:</b> +71 to +155 % at 1 KiB on 1 and 3 nodes, still with an fsync before every ack.
+Broker efficiency at 1 KiB 4×4 went from about 100k to about 180k messages per broker CPU-second.
+This gain mixes three things: the broker work, the SDK work, and the fairer harness (window 2000 → 20000, no producer header).
+A broker-only check, the same v0.5 harness against both broker images at window 2000, gave 134k → 162k msg/s (+21 %, one run each).
+The rest of the gain comes from the client side.</li>
+<li><b>Kafka is still faster at saturation on one node:</b> 1.7–2.1× at 1 KiB and 1.7× at 100 B 1×1. Kafka acks from the page cache.
+Even FluxMQ with <code>fsync=os</code> (the same durability point as Kafka) reached 291k / 537k at 1×1, against Kafka's 534k / 696k.
+The 3-node gap could not be measured in v0.6.</li>
+<li><b>Low-rate latency is now on par with or better than Kafka</b> while keeping fsync-before-ack:
+p50 1.96 ms at 1k msg/s (Kafka 3.1, RabbitMQ 1.7) and p99 6.4 ms at 10k msg/s (Kafka 6.4).</li>
+<li><b>Weakness: consumers starve under producer overload at 100 B 4×4.</b>
+The window no longer throttles the producers, so 4 FluxMQ producers publish about 1.4–1.5M msg/s.
+On 1 node the consumers then manage only 29–43k msg/s; on 3 nodes, 11–14k.
+Most of the backlog stays stored, and the rest is removed by the 512 MiB/partition retention cap.
+Kafka shows the same pattern but degrades far less (374k consumed against 1.31M published).
+FluxMQ needs fair scheduling between publish and fetch, or producer backpressure, before it holds up under overload. This is open work.</li>
+<li><b>The 50k msg/s tail is much smaller, but the target is not reliably met.</b>
+The retention stall is gone (A/B below: v0.5 p99 572 / 1208 ms against v0.6 12.6–64 ms with the same 128 MiB/partition cap).
+Without any retention, though, single runs still show 0.1–0.3 s tails at random moments: 155 ms in the headline run, 10.2 ms in an earlier identical run.</li>
+<li><b>No data loss.</b> Every FluxMQ run passed the id-level check, with 0 true missing messages.
+Every id that did not arrive was either still stored (the audit found it in the log) or provably removed by size retention.
+For the latter, the audit did not find it, and the broker's v0.6 "retention removed messages a consumer group had not consumed" counter covers at least that many messages.
+The tables report such ids as "dropped by retention (backlog &gt; cap)", separately from "missing".
+Kafka's 100 B 4×4 gaps are classified the same way, inferred from consumer lag against the cap (Kafka has no audit).
+The cap could not be raised enough for Kafka at 100 B: holding its backlog would need more than 6 GB per broker, above the 5 GB volume guard.</li>
+<li><b>SDK bug found and fixed (also present in v0.5).</b> <code>PublishFuture</code> wrapped a tokio oneshot, which spends the awaiting task's coop budget.
+With about 20k sends outstanding in one <code>FuturesUnordered</code>, as in the harness at window 20000, completed sends kept coming back <code>Pending</code>, and the cost per message grew with the window.
+Measured at 1 KiB 1×1, FluxMQ throughput by window: 2000 → 215k msg/s, 3000 → 215k, 5000 → 191k, 10000 → 105k, 20000 → 50k.
+The v0.5 SDK did the same (42k at window 20000).
+The fix uses <code>futures::channel::oneshot</code>, with a regression test.
+After the fix: 389k msg/s published at window 20000. The rows measured with the buggy SDK are kept in <code>investigation/sdk-coop-bug-window20000/</code> and are not used here.</li>
+<li><b>TLS</b> costs 21–31 % at saturation on 1 node and 2 % on 3 nodes at 1×1.
+It costs 56 % at 3 nodes, 1 KiB 4×4 (307k → 134k), where the TLS consumers fell behind and retention dropped part of the backlog.
+TLS latency p99 was noisy in this set (cluster TLS: 106 ms at 1k msg/s, a single run).</li>
+</ul>
+
+<h3>A/B on Linux/ext4 (Docker): retention stall at 50k msg/s</h3>
+<p>FluxMQ 1 node, 1 KiB 4×4, 50k msg/s, 128 MiB/partition cap (the v0.5 stall case), 2 runs each, interleaved. Raw JSON: <code>investigation/stall-*</code>.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Broker</th><th>Segment size</th><th>p50 (runs)</th><th>p99 (runs)</th><th>p99.9 (runs)</th></tr></thead>
+<tbody>
+<tr><td>v0.5</td><td>128 MiB (its fixed default)</td><td>4.4 / 10.6 ms</td><td><b>572 / 1208 ms</b></td><td>760 / 1463 ms</td></tr>
+<tr><td>v0.6</td><td>128 MiB (= cap, the v0.5 layout)</td><td>4.3 / 8.9 ms</td><td><b>12.6 / 23.1 ms</b></td><td>94 / 52 ms</td></tr>
+<tr><td>v0.6</td><td>64 MiB (new default)</td><td>4.2 / 4.7 ms</td><td>51 / 64 ms</td><td>214 / 227 ms</td></tr>
+<tr><td>v0.6</td><td>16 MiB (bench setting)</td><td>4.5 / 4.2 ms</td><td>32 / 24 ms</td><td>178 / 102 ms</td></tr>
+</tbody></table></div>
+<p>Verdict: v0.6 removes the retention stall; p99 drops 20–50×.
+Paced deletion with stepwise truncation is what fixed it: the effect holds even with the v0.5 segment layout.
+p99.9 still shows 50–230 ms bumps.
+Smaller segments mean more frequent rolls and do not lower the tail on this disk.</p>
+
+<h3>A/B: broker CPU at 10k msg/s (fsync pool + sticky partitioner)</h3>
+<p>FluxMQ 1 node, 1 KiB 4×4, 10k msg/s, v0.5 and v0.6 images, 3 interleaved runs each. Raw JSON: <code>investigation/cpu-*</code>.
+The laptop slept from 07:01 to 10:17 during three of these runs (v0.5 p8 r1, v0.6 p1 r1, v0.5 p1 r1).
+Their CPU numbers match the other runs; their p99 is not trusted.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Partitions</th><th>v0.5 broker CPU (cores)</th><th>v0.6 broker CPU (cores)</th><th>v0.5 p50</th><th>v0.6 p50</th></tr></thead>
+<tbody>
+<tr><td>8</td><td>1.27 / 1.21 / 1.21</td><td><b>0.74 / 0.63 / 0.63</b> (−45 %)</td><td>2.8–3.9 ms</td><td>2.7–2.8 ms (one 7.3)</td></tr>
+<tr><td>1</td><td>0.51 / 0.52 / 0.52</td><td>0.50 / 0.52 / 0.51</td><td>1.2 ms</td><td>1.2 ms</td></tr>
+</tbody></table></div>
+<p>With 8 partitions v0.6 needs about 45 % less broker CPU at the same rate.
+A v0.5 commit spawned up to 8 threads and ran up to 8 fdatasyncs; v0.6 sends one sticky request to one partition through a pooled fsync thread.
+With 1 partition there was nothing to save.
+p99 at 10k msg/s was noisy in these runs (5–226 ms in both versions), so no latency verdict comes from them.</p>
+
+<h3>Not measured</h3>
+<ul>
+<li><b>Commit pipeline on vs off</b> (<code>FLUXMQ_COMMIT_PIPELINE</code>): not run, because the set was stopped first.
+The runner has the <code>fluxmq-single-pipeline</code> system for it (<code>bench/run.sh --systems fluxmq-single,fluxmq-single-pipeline</code>).
+No basis to change the default: it stays off.</li>
+<li>The v0.5 broker under the v0.6 harness (with the fixed SDK), and repeated 50k msg/s runs to bound the remaining tail.</li>
+</ul>
+
+<h3>Method changes since v0.5, and anomalies</h3>
+<ul>
+<li>Window 20000 (was 2000), FluxMQ <code>max_in_flight</code> 32, 16 MiB segments for FluxMQ and Kafka, retention 512 MiB per partition/queue (was 128), FluxMQ <code>stamp_producer=false</code>.</li>
+<li>Late drain 35 s and idle settle 15 s for the FluxMQ reruns and the 3-node phase, to save time (Kafka/RabbitMQ 1 node: 45 s and 30 s).
+The 3-node FluxMQ idle memory (336 MiB) was probably measured before start-up had settled.</li>
+<li>Kafka/RabbitMQ 1 node were measured with the harness image from before the SDK fix. Their client paths do not use the FluxMQ SDK.</li>
+<li>Runner hardening added during this set:
+the drain-miss classification; the audit now holds missing ids as per-producer bitsets (an OOM at 12M missing ids left a 4.4 GB channel behind);
+orphaned bench channels/topics are deleted after a failed run;
+a FluxMQ run with true missing messages stops the matrix.</li>
+<li>Single-node FluxMQ saturation with a large window has wide ranges, because the producers outrun the consumers in some repeats (marked "not drained").
+The bars show medians with min–max whiskers.</li>
+</ul>

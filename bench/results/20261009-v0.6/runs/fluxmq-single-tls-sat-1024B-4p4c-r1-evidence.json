@@ -1,0 +1,46 @@
+{
+ "kind": "evidence",
+ "run": "fluxmq-single-tls-sat-1024B-4p4c-r1",
+ "logs": {
+  "fluxmq": [
+   "fluxmq-1  | \u001b[2m2026-10-09T08:08:13.502603Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_core::broker\u001b[0m\u001b[2m:\u001b[0m broker opened \u001b[3mnode_id\u001b[0m\u001b[2m=\u001b[0m\"n-5a63d98ff868\" \u001b[3mchannels\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T08:08:13.503106Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_router\u001b[0m\u001b[2m:\u001b[0m router started \u001b[3mroutes\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T08:08:13.513811Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_notify\u001b[0m\u001b[2m:\u001b[0m notifications started \u001b[3mnotifiers\u001b[0m\u001b[2m=\u001b[0m0 \u001b[3mrules\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T08:08:13.518336Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_webhooks\u001b[0m\u001b[2m:\u001b[0m webhooks started \u001b[3mwebhooks\u001b[0m\u001b[2m=\u001b[0m0",
+   "fluxmq-1  | \u001b[2m2026-10-09T08:08:13.526868Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq_server\u001b[0m\u001b[2m:\u001b[0m FluxMQ 0.6.0 started",
+   "fluxmq-1  |   node:        n-5a63d98ff868 (cluster \"local\")",
+   "fluxmq-1  |   data dir:    /var/lib/fluxmq",
+   "fluxmq-1  |   clients:     tls://0.0.0.0:7420",
+   "fluxmq-1  |   http:        https://0.0.0.0:7421",
+   "fluxmq-1  |   ui:          https://127.0.0.1:7421/",
+   "fluxmq-1  |   auth:        open (dev mode: no admin token, no access tokens)",
+   "fluxmq-1  |   fsync:       GroupCommit",
+   "fluxmq-1  |   tls:         client O=FluxMQ development, CN=fluxmq-server; http O=FluxMQ development, CN=fluxmq-server; cluster off",
+   "fluxmq-1  | \u001b[2m2026-10-09T08:10:06.743016Z\u001b[0m \u001b[32m INFO\u001b[0m \u001b[2mfluxmq::audit\u001b[0m\u001b[2m:\u001b[0m audit \u001b[3mactor\u001b[0m\u001b[2m=\u001b[0m\"anonymous\" \u001b[3maction\u001b[0m\u001b[2m=\u001b[0m\"channel.delete\" \u001b[3mtarget\u001b[0m\u001b[2m=\u001b[0m\"bench-r-33340432\""
+  ]
+ },
+ "channel": {
+  "fluxmq": {
+   "name": "bench-r-33410255",
+   "mode": "stream",
+   "partitions": 8,
+   "retention": {
+    "max_age_secs": 3600,
+    "max_bytes": 4294967296
+   },
+   "retry": {
+    "max_attempts": 5,
+    "backoff_ms": [
+     1000,
+     10000,
+     60000,
+     300000
+    ],
+    "ack_timeout_ms": 30000
+   },
+   "dlq_enabled": true,
+   "ordering_key": null,
+   "created_at_ms": 1791533410289
+  }
+ }
+}

@@ -1,0 +1,196 @@
+/* Settings → Security (TLS, v0.4) */
+.tls-summary {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1200px) {
+  .tls-summary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .tls-summary .cs-item:nth-child(5) {
+    border-left: 1px solid var(--border-subtle);
+  }
+}
+@media (max-width: 640px) {
+  .tls-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 14px;
+  }
+}
+.tls-node-note {
+  margin: -4px 0 0;
+  font-size: 12.5px;
+}
+.tls-head {
+  align-items: flex-start;
+  padding-top: 18px;
+}
+.tls-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.tls-head .badge {
+  margin-top: 2px;
+  /* Never squeeze a status badge ("Без шифрования") — the title column wraps instead. */
+  flex: none;
+  white-space: nowrap;
+}
+.tls-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-tertiary);
+}
+.tls-icon.on {
+  color: var(--success);
+  background: var(--success-soft);
+  border-color: transparent;
+}
+.tls-card.off .tls-head h2 {
+  color: var(--text-secondary);
+}
+.tls-off-note {
+  margin: 0 0 0 44px;
+  font-size: 12.5px;
+  line-height: 18px;
+}
+.tls-grid {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 24px;
+  margin-left: 44px;
+}
+@media (max-width: 900px) {
+  .tls-grid {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+  .tls-off-note {
+    margin-left: 0;
+  }
+}
+.tls-expiry {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  min-width: 0;
+}
+.tls-countdown {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tls-life {
+  width: 100%;
+  margin: 6px 0 2px;
+}
+.tls-level {
+  margin-top: 6px;
+  height: 20px;
+  font-size: 11.5px;
+  padding: 0 7px;
+}
+.tls-kv {
+  font-size: 12.5px;
+  row-gap: 8px;
+}
+.tls-kv dd {
+  white-space: normal;
+}
+.tls-wrap {
+  overflow-wrap: anywhere;
+  font-size: 12px;
+}
+.tls-sans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.tls-sans .chip {
+  font-size: 11.5px;
+}
+.tls-fp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.tls-fp code {
+  display: flex;
+  flex-direction: column;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+  line-height: 16px;
+  min-width: 0;
+}
+.tls-cn {
+  color: var(--text);
+  font-weight: 550;
+}
+.tls-fp .btn {
+  flex: none;
+}
+.tls-reload-err {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 16px 0 0 44px;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  background: var(--warning-soft);
+  font-size: 12.5px;
+  line-height: 18px;
+}
+.tls-reload-err svg {
+  color: var(--warning);
+  flex: none;
+  margin-top: 1px;
+}
+.tls-reload-err .mono {
+  color: var(--warning-text);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 900px) {
+  .tls-reload-err {
+    margin-left: 0;
+  }
+}
+.tls-plain {
+  border-color: var(--border-strong);
+}
+.tls-plain-p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 19px;
+}
+.tls-steps {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 19px;
+}
+.tls-steps li > .code-block {
+  margin-top: 8px;
+}
+.tls-guide {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 12.5px;
+}

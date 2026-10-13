@@ -1,0 +1,7 @@
+ Container fluxmq-bench-fluxmq-bench-run-06d3d9ff787f Creating 
+ Container fluxmq-bench-fluxmq-bench-run-06d3d9ff787f Created 
+Error: server: ProtocolViolation: unsupported protocol version 3 (broker speaks 2)
+
+Caused by:
+    ProtocolViolation: unsupported protocol version 3 (broker speaks 2)
+

@@ -1,0 +1,9 @@
+{"ts": 1791772162.287, "system": "fluxmq-single-tls", "service": "fluxmq", "cpu_pct": 45.63, "mem_bytes": 200487731, "mem_limit": 2147483648}
+{"ts": 1791772163.974, "system": "fluxmq-single-tls", "service": "bench", "cpu_pct": 130.11, "mem_bytes": 193462272, "mem_limit": 2147483648}
+{"ts": 1791772163.974, "system": "fluxmq-single-tls", "service": "fluxmq", "cpu_pct": 102.4, "mem_bytes": 584056832, "mem_limit": 2147483648}
+{"ts": 1791772167.431, "system": "fluxmq-single-tls", "service": "fluxmq", "cpu_pct": 0.68, "mem_bytes": 237502464, "mem_limit": 2147483648}
+{"ts": 1791772169.939, "system": "fluxmq-single-tls", "service": "fluxmq", "cpu_pct": 0.68, "mem_bytes": 237607321, "mem_limit": 2147483648}
+{"ts": 1791772175.607, "system": "fluxmq-single-tls-user", "service": "fluxmq", "cpu_pct": 42.38, "mem_bytes": 174063616, "mem_limit": 2147483648}
+{"ts": 1791772177.285, "system": "fluxmq-single-tls-user", "service": "bench", "cpu_pct": 149.55, "mem_bytes": 220410675, "mem_limit": 2147483648}
+{"ts": 1791772177.285, "system": "fluxmq-single-tls-user", "service": "fluxmq", "cpu_pct": 150.11, "mem_bytes": 864026624, "mem_limit": 2147483648}
+{"ts": 1791772180.749, "system": "fluxmq-single-tls-user", "service": "fluxmq", "cpu_pct": 0.66, "mem_bytes": 287519539, "mem_limit": 2147483648}

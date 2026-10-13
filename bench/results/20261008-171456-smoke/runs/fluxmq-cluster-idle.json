@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-cluster-idle",
+  "label": "fluxmq-cluster",
+  "system_name": "fluxmq-cluster",
+  "system_title": "FluxMQ 3 nodes RF=3",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791468980347,
+  "measure_end_ms": 1791468986348,
+  "broker_version": "FluxMQ 0.4.0"
+}

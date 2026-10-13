@@ -1,0 +1,30 @@
+[package]
+name = "fluxmq-cluster"
+description = "FluxMQ cluster: Raft metadata, membership, partition assignment, failover"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto = { workspace = true, features = ["codec"] }
+fluxmq-meta.workspace = true
+fluxmq-core.workspace = true
+fluxmq-replication.workspace = true
+fluxmq-tls = { workspace = true, features = ["server"] }
+axum.workspace = true
+crc32fast.workspace = true
+futures.workspace = true
+openraft = { version = "0.9.25", features = ["serde", "storage-v2"] }
+parking_lot.workspace = true
+postcard.workspace = true
+reqwest = { version = "0.13", default-features = false, features = ["json", "query", "rustls"] }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

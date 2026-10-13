@@ -1,0 +1,165 @@
+/* Design tokens — docs/ROADMAP.md §4. Dark and light; the console follows the system unless the user picks one. */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b0d10;
+  --surface: #11151a;
+  --card: #151a21;
+  --card-hover: #19202a;
+  --elevated: #1a2029;
+  --border: #242a33;
+  --border-strong: #313945;
+  --border-subtle: #1c2129;
+
+  --primary: #5b7cfa;
+  --primary-hover: #7290ff;
+  --primary-soft: rgba(91, 124, 250, 0.14);
+  --primary-text: #8ea4ff;
+  --on-primary: #ffffff;
+
+  --success: #33c27f;
+  --success-soft: rgba(51, 194, 127, 0.12);
+  --warning: #f5a524;
+  --warning-soft: rgba(245, 165, 36, 0.12);
+  --warning-text: #f7b955;
+  --critical: #f04444;
+  --critical-soft: rgba(240, 68, 68, 0.12);
+  --critical-text: #ff6b6b;
+
+  --text: #e6e9ef;
+  --text-secondary: #a6afbd;
+  --text-tertiary: #7d8798;
+  --text-disabled: #4f5a6b;
+
+  /* chart series (categorical, validated for dark bg) */
+  /* validated (dataviz validator, dark surface #151A21): blue / teal / orchid */
+  --series-1: #5b7cfa; /* published / p50 */
+  --series-2: #179e87; /* consumed / p95 */
+  --series-3: #b871cc; /* p99 */
+  --chart-grid: rgba(255, 255, 255, 0.05);
+  --chart-axis: #667085;
+
+  /* JSON syntax */
+  --syn-key: #8ea4ff;
+  --syn-string: #7dd3a8;
+  --syn-number: #f7b955;
+  --syn-bool: #c4a1ff;
+  --syn-null: #98a2b3;
+  --syn-punct: #667085;
+  --syn-tag: #7cc4fa;
+  --syn-attr: #c4a1ff;
+
+  --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+  --scrim: rgba(5, 7, 10, 0.62);
+  --focus: 0 0 0 2px var(--bg), 0 0 0 4px rgba(91, 124, 250, 0.7);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f3f4f7;
+  --surface: #f9fafb;
+  --card: #ffffff;
+  --card-hover: #f7f8fa;
+  --elevated: #ffffff;
+  --border: #e2e5eb;
+  --border-strong: #cdd2da;
+  --border-subtle: #eceef2;
+
+  --primary: #4766f0;
+  --primary-hover: #3653d6;
+  --primary-soft: rgba(71, 102, 240, 0.1);
+  --primary-text: #3653d6;
+  --on-primary: #ffffff;
+
+  --success: #12935a;
+  --success-soft: rgba(18, 147, 90, 0.1);
+  --warning: #c27803;
+  --warning-soft: rgba(245, 165, 36, 0.16);
+  --warning-text: #a15c00;
+  --critical: #d92d2d;
+  --critical-soft: rgba(217, 45, 45, 0.09);
+  --critical-text: #c01f1f;
+
+  --text: #1b2230;
+  --text-secondary: #4a5466;
+  --text-tertiary: #6b7588;
+  --text-disabled: #a0a8b6;
+
+  --series-1: #4766f0;
+  --series-2: #0e8c78;
+  --series-3: #b84ba6;
+  --chart-grid: rgba(16, 24, 40, 0.06);
+  --chart-axis: #667085;
+
+  --syn-key: #3653d6;
+  --syn-string: #067647;
+  --syn-number: #b54708;
+  --syn-bool: #7a2ecc;
+  --syn-null: #667085;
+  --syn-punct: #98a2b3;
+  --syn-tag: #0b6bcb;
+  --syn-attr: #7a2ecc;
+
+  --shadow-lg: 0 24px 48px -12px rgba(16, 24, 40, 0.18), 0 0 0 1px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 8px 24px -8px rgba(16, 24, 40, 0.12);
+  --scrim: rgba(16, 24, 40, 0.35);
+  --focus: 0 0 0 2px var(--bg), 0 0 0 4px rgba(71, 102, 240, 0.55);
+}
+
+:root {
+  /* Inter: built for screens, open shapes and a full Cyrillic set; JetBrains Mono for code and
+     payloads (clear 0/O, 1/l/I). Weights stay moderate: 400 text, 500 emphasis, 550–600 titles. */
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* type scale */
+  --fs-title: 28px;
+  --lh-title: 32px;
+  --fs-section: 18px;
+  --lh-section: 24px;
+  --fs-body: 14px;
+  --lh-body: 21px;
+  --fs-table: 13px;
+  --fs-label: 12px;
+  --fs-metric: 32px;
+  --fs-metric-lg: 40px;
+
+  /* spacing (4px grid) */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s8: 32px;
+
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 14px;
+
+  --sidebar-w: 232px;
+  --topbar-h: 56px;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Node identity colours (leader fills in the partition matrix). Amber and red stay reserved for
+   problems (under-replicated / offline), so none of these are warm. */
+:root,
+:root[data-theme='dark'] {
+  --node-0: #5b7cfa;
+  --node-1: #179e87;
+  --node-2: #b871cc;
+  --node-3: #3a9fd1;
+  --node-4: #7f9c3a;
+  --node-5: #8d7f72;
+}
+:root[data-theme='light'] {
+  --node-0: #4766f0;
+  --node-1: #0e8c78;
+  --node-2: #a456b8;
+  --node-3: #2483b5;
+  --node-4: #6a8429;
+  --node-5: #7a6c5f;
+}

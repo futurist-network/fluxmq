@@ -1,0 +1,47 @@
+[package]
+name = "fluxmq-api"
+description = "FluxMQ HTTP surface: REST API, WebSocket telemetry gateway, static UI"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto.workspace = true
+fluxmq-core.workspace = true
+fluxmq-telemetry.workspace = true
+fluxmq-auth.workspace = true
+fluxmq-router.workspace = true
+fluxmq-notify.workspace = true
+fluxmq-webhooks.workspace = true
+fluxmq-cluster.workspace = true
+fluxmq-meta.workspace = true
+fluxmq-backup.workspace = true
+fluxmq-scheduler.workspace = true
+fluxmq-tls = { workspace = true, features = ["server"] }
+axum.workspace = true
+base64 = "0.22"
+crc32fast = "1"
+bytes.workspace = true
+futures.workspace = true
+parking_lot.workspace = true
+postcard.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+tower-http.workspace = true
+tracing.workspace = true
+# CPU profiling endpoint (`--features profiling`): signal-based sampling, no perf_event needed.
+# Web console built into the binary (`ui/dist` at compile time).
+rust-embed = { version = "8.13", features = ["mime-guess"] }
+pprof = { version = "0.15", default-features = false, features = ["flamegraph"], optional = true }
+
+[features]
+profiling = ["dep:pprof"]
+
+[dev-dependencies]
+http-body-util = "0.1"
+tempfile.workspace = true
+tower = { version = "0.5", features = ["util"] }

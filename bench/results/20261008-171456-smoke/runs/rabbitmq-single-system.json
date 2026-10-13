@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "rabbitmq-single-system",
+  "system_name": "rabbitmq-single",
+  "system_title": "RabbitMQ 1 node (classic)",
+  "system": "rabbitmq",
+  "startup_s": 8.8,
+  "broker_version": "RabbitMQ 4.1.8",
+  "nodes": [
+    "rabbitmq"
+  ],
+  "tls": false
+}

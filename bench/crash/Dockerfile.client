@@ -1,0 +1,33 @@
+# syntax=docker/dockerfile:1.7
+#
+# mq-crash client image (bench/crash). Build context = a tree with Cargo.toml, crates/ and
+# bench/crash (the repository root, or the `git archive` context made by bench/crash/build.sh
+# --ref). librdkafka is compiled from source (rdkafka `cmake-build`), as in bench/harness.
+ARG RUST_IMAGE=rust:1-slim-bookworm
+ARG RUNTIME_IMAGE=debian:bookworm-slim
+
+FROM ${RUST_IMAGE} AS build
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends cmake make g++ pkg-config libcurl4-openssl-dev \
+ && rm -rf /var/lib/apt/lists/*
+WORKDIR /src
+COPY Cargo.toml Cargo.lock ./
+COPY crates ./crates
+COPY bench/crash/Cargo.toml bench/crash/Cargo.lock ./bench/crash/
+COPY bench/crash/src ./bench/crash/src
+ENV CARGO_INCREMENTAL=0 CARGO_TERM_COLOR=never
+WORKDIR /src/bench/crash
+RUN --mount=type=cache,id=fluxmq-cargo-registry,target=/usr/local/cargo/registry,sharing=locked \
+    --mount=type=cache,id=fluxmq-cargo-git,target=/usr/local/cargo/git,sharing=locked \
+    --mount=type=cache,id=fluxmq-crash-target,target=/src/bench/crash/target,sharing=locked \
+    find /src/crates /src/bench/crash/src -type f -exec touch {} + \
+ && cargo build --release \
+ && mkdir -p /out && cp target/release/mq-crash /out/
+
+FROM ${RUNTIME_IMAGE}
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ca-certificates libcurl4 \
+ && rm -rf /var/lib/apt/lists/* \
+ && mkdir -p /results
+COPY --from=build /out/mq-crash /usr/local/bin/mq-crash
+ENTRYPOINT ["mq-crash"]

@@ -1,0 +1,60 @@
+[package]
+name = "fluxmq-server"
+description = "FluxMQ broker binary"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lib]
+name = "fluxmq_server"
+path = "src/lib.rs"
+
+[[bin]]
+name = "fluxmq"
+path = "src/main.rs"
+
+[dependencies]
+fluxmq-proto.workspace = true
+fluxmq-core.workspace = true
+fluxmq-telemetry.workspace = true
+fluxmq-api.workspace = true
+fluxmq-auth.workspace = true
+fluxmq-router.workspace = true
+fluxmq-notify.workspace = true
+fluxmq-webhooks.workspace = true
+fluxmq-cluster.workspace = true
+fluxmq-meta.workspace = true
+fluxmq-backup.workspace = true
+fluxmq-scheduler.workspace = true
+fluxmq-tls = { workspace = true, features = ["server"] }
+anyhow.workspace = true
+axum.workspace = true
+bytes.workspace = true
+clap.workspace = true
+futures.workspace = true
+postcard.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+toml = "1.1"
+tokio.workspace = true
+tokio-util = { workspace = true, features = ["rt"] }
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[target.'cfg(not(target_env = "msvc"))'.dependencies]
+tikv-jemallocator = { version = "0.6", optional = true }
+
+[features]
+# `GET /api/debug/pprof/profile` (admin): CPU profile of the running broker.
+profiling = ["fluxmq-api/profiling"]
+# jemalloc as the global allocator (reuses large read buffers instead of mmap/munmap per fetch).
+jemalloc = ["dep:tikv-jemallocator"]
+
+[dev-dependencies]
+fluxmq-client.workspace = true
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls"] }
+serde_json.workspace = true
+tempfile.workspace = true
+tokio-tungstenite = "0.29"

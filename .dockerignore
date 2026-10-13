@@ -1,0 +1,25 @@
+# Build context for the FluxMQ image (Dockerfile) and the bench harness (bench/harness/Dockerfile).
+# Keep it small: only Cargo.toml/Cargo.lock, crates/, ui/ sources, deploy/ scripts and bench/harness.
+**/target
+target/
+**/node_modules
+ui/dist
+ui/screenshots
+ui/test-results
+ui/playwright-report
+graphify-out/
+.git/
+.idea/
+.vscode/
+**/.DS_Store
+*.log
+*.ndjson
+data/
+data-dev/
+img.png
+docs/
+scripts/
+bench/results/
+bench/report/
+bench/harness/target
+deploy/README.md

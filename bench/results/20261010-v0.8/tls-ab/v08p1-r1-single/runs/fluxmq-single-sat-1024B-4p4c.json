@@ -1,0 +1,375 @@
+{
+  "broker_version": "FluxMQ 0.7.0",
+  "cleanup_error": null,
+  "client": "fluxmq-client (Rust SDK) BatchingProducer linger=5ms, max_in_flight=32, prefetch=2000, stamp_producer=false, compression=none, ack_mode=individual, raw_records=true, verify_crc=true",
+  "consume_mb_s": 618.67,
+  "consume_rate": 604167.0,
+  "consumed": 18125727,
+  "drain_miss": null,
+  "drain_s": 0.053,
+  "drained": true,
+  "duplicates": 0,
+  "durability": "FluxMQ single node: stream channel, 8 partitions; publish acked after the broker's group commit (fsync) and, in a cluster, after every ISR member has the batch (acks=all; min ISR per broker flag); consumer acks every message",
+  "e2e_ms": {
+    "count": 18125462,
+    "max": 448.767,
+    "mean": 132.565,
+    "min": 85.248,
+    "p50": 127.231,
+    "p90": 153.343,
+    "p99": 247.423,
+    "p999": 313.343
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "fluxmq-single",
+  "lag_end": 5054,
+  "lag_growth_per_s": 168.0,
+  "lag_start": 0,
+  "last_error": null,
+  "measure_end_ms": 1791628893860,
+  "measure_start_ms": 1791628863860,
+  "params": {
+    "brokers": [
+      "fluxmq:7420"
+    ],
+    "consumers": 4,
+    "duration_s": 30,
+    "fluxmq_ack_mode": "individual",
+    "fluxmq_compression": "none",
+    "fluxmq_raw_records": true,
+    "fluxmq_verify_crc": true,
+    "linger_ms": 5,
+    "max_in_flight": 32,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "preload": 0,
+    "producers": 4,
+    "queue_type": null,
+    "rate": 0,
+    "replication": 1,
+    "retention_bytes": 536870912,
+    "segment_bytes": 16777216,
+    "size": 1024,
+    "tls": false,
+    "warmup_s": 10,
+    "window": 20000
+  },
+  "preload": null,
+  "publish_mb_s": 618.85,
+  "publish_ms": {
+    "count": 18125462,
+    "max": 447.999,
+    "mean": 128.23,
+    "min": 81.472,
+    "p50": 122.879,
+    "p90": 148.735,
+    "p99": 244.095,
+    "p999": 310.271
+  },
+  "publish_rate": 604350.0,
+  "published": 18131208,
+  "received_of_window": 18125462,
+  "redelivered": 0,
+  "run_id": "fluxmq-single-sat-1024B-4p4c",
+  "scenario": "saturation",
+  "schema": 2,
+  "sent_in_window": 18125462,
+  "started_at_ms": 1791628853837,
+  "sustained": null,
+  "system": "fluxmq",
+  "timeline": [
+    {
+      "con": 616000,
+      "lag": 1000,
+      "phase": "warmup",
+      "pub": 617000,
+      "t": 1
+    },
+    {
+      "con": 649000,
+      "lag": 22,
+      "phase": "warmup",
+      "pub": 648022,
+      "t": 2
+    },
+    {
+      "con": 637000,
+      "lag": 0,
+      "phase": "warmup",
+      "pub": 636449,
+      "t": 3
+    },
+    {
+      "con": 509938,
+      "lag": 5062,
+      "phase": "warmup",
+      "pub": 515529,
+      "t": 4
+    },
+    {
+      "con": 536062,
+      "lag": 0,
+      "phase": "warmup",
+      "pub": 531000,
+      "t": 5
+    },
+    {
+      "con": 561000,
+      "lag": 6000,
+      "phase": "warmup",
+      "pub": 567000,
+      "t": 6
+    },
+    {
+      "con": 528000,
+      "lag": 0,
+      "phase": "warmup",
+      "pub": 522000,
+      "t": 7
+    },
+    {
+      "con": 538000,
+      "lag": 2000,
+      "phase": "warmup",
+      "pub": 540000,
+      "t": 8
+    },
+    {
+      "con": 551000,
+      "lag": 0,
+      "phase": "warmup",
+      "pub": 549000,
+      "t": 9
+    },
+    {
+      "con": 510984,
+      "lag": 2016,
+      "phase": "measure",
+      "pub": 513000,
+      "t": 10
+    },
+    {
+      "con": 585016,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 583000,
+      "t": 11
+    },
+    {
+      "con": 585000,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 585000,
+      "t": 12
+    },
+    {
+      "con": 441000,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 441000,
+      "t": 13
+    },
+    {
+      "con": 378000,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 378000,
+      "t": 14
+    },
+    {
+      "con": 370454,
+      "lag": 234,
+      "phase": "measure",
+      "pub": 370688,
+      "t": 15
+    },
+    {
+      "con": 627156,
+      "lag": 5058,
+      "phase": "measure",
+      "pub": 631980,
+      "t": 16
+    },
+    {
+      "con": 614390,
+      "lag": 2000,
+      "phase": "measure",
+      "pub": 611332,
+      "t": 17
+    },
+    {
+      "con": 617000,
+      "lag": 2000,
+      "phase": "measure",
+      "pub": 617000,
+      "t": 18
+    },
+    {
+      "con": 664000,
+      "lag": 4000,
+      "phase": "measure",
+      "pub": 666000,
+      "t": 19
+    },
+    {
+      "con": 625208,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 621208,
+      "t": 20
+    },
+    {
+      "con": 629120,
+      "lag": 1880,
+      "phase": "measure",
+      "pub": 631000,
+      "t": 21
+    },
+    {
+      "con": 611672,
+      "lag": 4000,
+      "phase": "measure",
+      "pub": 613792,
+      "t": 22
+    },
+    {
+      "con": 602208,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 598208,
+      "t": 23
+    },
+    {
+      "con": 614000,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 613865,
+      "t": 24
+    },
+    {
+      "con": 605984,
+      "lag": 2016,
+      "phase": "measure",
+      "pub": 608135,
+      "t": 25
+    },
+    {
+      "con": 624808,
+      "lag": 6208,
+      "phase": "measure",
+      "pub": 629000,
+      "t": 26
+    },
+    {
+      "con": 615819,
+      "lag": 389,
+      "phase": "measure",
+      "pub": 610000,
+      "t": 27
+    },
+    {
+      "con": 624389,
+      "lag": 6000,
+      "phase": "measure",
+      "pub": 630000,
+      "t": 28
+    },
+    {
+      "con": 638465,
+      "lag": 733,
+      "phase": "measure",
+      "pub": 633198,
+      "t": 29
+    },
+    {
+      "con": 618535,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 617802,
+      "t": 30
+    },
+    {
+      "con": 639000,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 639000,
+      "t": 31
+    },
+    {
+      "con": 622994,
+      "lag": 6912,
+      "phase": "measure",
+      "pub": 629906,
+      "t": 32
+    },
+    {
+      "con": 602107,
+      "lag": 4620,
+      "phase": "measure",
+      "pub": 599815,
+      "t": 33
+    },
+    {
+      "con": 708238,
+      "lag": 1797,
+      "phase": "measure",
+      "pub": 705415,
+      "t": 34
+    },
+    {
+      "con": 692645,
+      "lag": 0,
+      "phase": "measure",
+      "pub": 688981,
+      "t": 35
+    },
+    {
+      "con": 613016,
+      "lag": 5000,
+      "phase": "measure",
+      "pub": 619883,
+      "t": 36
+    },
+    {
+      "con": 629289,
+      "lag": 6809,
+      "phase": "measure",
+      "pub": 631098,
+      "t": 37
+    },
+    {
+      "con": 640959,
+      "lag": 3536,
+      "phase": "measure",
+      "pub": 637686,
+      "t": 38
+    },
+    {
+      "con": 639000,
+      "lag": 6182,
+      "phase": "measure",
+      "pub": 641646,
+      "t": 39
+    },
+    {
+      "con": 653000,
+      "lag": 0,
+      "phase": "drain",
+      "pub": 646818,
+      "t": 40
+    }
+  ],
+  "topic": "bench-r-28853837",
+  "window_s": 30.001,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  },
+  "repeat": 1,
+  "system_name": "fluxmq-single",
+  "system_title": "FluxMQ 1 node"
+}

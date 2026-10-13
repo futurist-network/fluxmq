@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-single-idle",
+  "label": "fluxmq-single",
+  "system_name": "fluxmq-single",
+  "system_title": "FluxMQ 1 node",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791493660753,
+  "measure_end_ms": 1791493690757,
+  "broker_version": "FluxMQ 0.5.0",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

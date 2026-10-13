@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-cluster-os-idle",
+  "label": "fluxmq-cluster-os",
+  "system_name": "fluxmq-cluster-os",
+  "system_title": "FluxMQ 3 nodes RF=3, fsync=os (durability parity with Kafka defaults)",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791574197689,
+  "measure_end_ms": 1791574227694,
+  "broker_version": "FluxMQ 0.7.0",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  }
+}

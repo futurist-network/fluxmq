@@ -1,0 +1,96 @@
+{
+  "broker_version": "Apache Kafka 3.7.0",
+  "cleanup_error": null,
+  "client": "librdkafka 2.12.1 (rdkafka crate) FutureProducer linger.ms=5, StreamConsumer",
+  "consume_mb_s": 39.0,
+  "consume_rate": 390034.0,
+  "consumed": 1171287,
+  "drained": true,
+  "durability": "Kafka: topic 8 partitions, RF=1, min.insync.replicas=1; producer acks=all + enable.idempotence=true; broker default flush policy (no fsync per message: durability comes from replication, data reaches disk via the OS page cache); consumer offsets auto-committed every 5 s",
+  "e2e_ms": {
+    "count": 1169806,
+    "max": 67.519,
+    "mean": 9.608,
+    "min": 1.21,
+    "p50": 8.319,
+    "p90": 14.607,
+    "p99": 29.199,
+    "p999": 56.479
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "kafka-single",
+  "last_error": null,
+  "measure_end_ms": 1791469078406,
+  "measure_start_ms": 1791469075403,
+  "params": {
+    "brokers": [
+      "kafka:9092"
+    ],
+    "consumers": 2,
+    "duration_s": 3,
+    "linger_ms": 5,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 2,
+    "queue_type": null,
+    "rate": 0,
+    "replication": 1,
+    "size": 100,
+    "tls": false,
+    "warmup_s": 1,
+    "window": 2000
+  },
+  "publish_mb_s": 38.95,
+  "publish_ms": {
+    "count": 1169806,
+    "max": 57.343,
+    "mean": 9.069,
+    "min": 1.257,
+    "p50": 8.147,
+    "p90": 13.119,
+    "p99": 24.063,
+    "p999": 39.615
+  },
+  "publish_rate": 389541.0,
+  "published": 1169807,
+  "received_of_window": 1169806,
+  "run_id": "kafka-single-sat-100B-2p2c",
+  "scenario": "saturation",
+  "schema": 1,
+  "sent_in_window": 1169806,
+  "started_at_ms": 1791469074006,
+  "sustained": null,
+  "system": "kafka",
+  "timeline": [
+    {
+      "con": 251624,
+      "phase": "measure",
+      "pub": 251624,
+      "t": 1
+    },
+    {
+      "con": 456162,
+      "phase": "measure",
+      "pub": 454334,
+      "t": 2
+    },
+    {
+      "con": 353105,
+      "phase": "measure",
+      "pub": 354933,
+      "t": 3
+    },
+    {
+      "con": 358610,
+      "phase": "measure",
+      "pub": 358322,
+      "t": 4
+    }
+  ],
+  "topic": "bench-r-69074006",
+  "window_s": 3.003,
+  "system_name": "kafka-single",
+  "system_title": "Kafka 1 node"
+}

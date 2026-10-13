@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-single-idle",
+  "label": "fluxmq-single",
+  "system_name": "fluxmq-single",
+  "system_title": "FluxMQ 1 node",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791468904777,
+  "measure_end_ms": 1791468910778,
+  "broker_version": "FluxMQ 0.4.0"
+}

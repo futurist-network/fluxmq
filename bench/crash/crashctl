@@ -1,0 +1,209 @@
+#!/bin/sh
+# crashctl: runs a broker on a crash-injectable block device inside its container and
+# injects crashes (bench/crash/README.md). Needs a privileged container (loop + device-mapper).
+#
+#   crashctl boot           container entrypoint: build the disk, mount it, start the broker
+#   crashctl start          start the broker (after a crash)
+#   crashctl kill9          SIGKILL the broker's process group (page cache survives)
+#   crashctl stop           SIGSTOP the broker (first phase of a multi-node power cut)
+#   crashctl powercut       simulated power loss: freeze the device, switch it to the dm
+#                           `error` target, SIGKILL, unmount (unsynced dirty pages are lost),
+#                           switch back, remount (ext4 journal recovery)
+#   crashctl prepare        write the synced marker and sync the data fs (before the workload)
+#   crashctl canary         write the unsynced marker (right before the crash)
+#   crashctl check-canary   report which markers survived (JSON)
+#   crashctl sync           sync the data filesystem
+#   crashctl status         JSON: broker pid, device, mount
+#   crashctl teardown       stop the broker, unmount, remove the dm device, detach the loop
+#
+# Environment (set by bench/crash/docker-compose.crash.yml):
+#   CRASH_BROKER_CMD   broker command line (run as CRASH_RUN_AS)
+#   CRASH_RUN_AS       uid:gid of the broker process
+#   CRASH_DATA_DIR     broker data directory (the mount point)
+#   CRASH_DISK_IMG     backing file (in a named volume), default /crashdisk/disk.img
+#   CRASH_DISK_SIZE    sparse size of the backing file, default 3G
+set -eu
+
+STATE=/run/crashctl
+IMG="${CRASH_DISK_IMG:-/crashdisk/disk.img}"
+SIZE="${CRASH_DISK_SIZE:-3G}"
+DATA="${CRASH_DATA_DIR:?CRASH_DATA_DIR not set}"
+RUN_AS="${CRASH_RUN_AS:?CRASH_RUN_AS not set}"
+mkdir -p "$STATE"
+# Never hold the data filesystem busy ourselves (docker exec starts in the image's WorkingDir,
+# which is the data dir for FluxMQ): a busy fs can't be unmounted at the power cut.
+cd /
+
+log() { echo "crashctl[$(hostname)]: $*" >&2; }
+dm_name() { cat "$STATE/dm"; }
+loop_dev() { cat "$STATE/loop"; }
+sectors() { blockdev --getsz "$(loop_dev)"; }
+broker_pid() { cat "$STATE/pid" 2>/dev/null || true; }
+alive() { p="$(broker_pid)"; [ -n "$p" ] && kill -0 "$p" 2>/dev/null; }
+
+attach() {
+  mkdir -p "$(dirname "$IMG")" "$DATA"
+  [ -f "$IMG" ] || truncate -s "$SIZE" "$IMG"
+  loop="$(losetup -f --show "$IMG")"
+  echo "$loop" > "$STATE/loop"
+  # dm names are global in the (Docker VM) kernel: make them unique per container.
+  name="fxcrash-$(hostname)-$(head -c 4 /dev/urandom | od -An -tx1 | tr -d ' \n')"
+  echo "$name" > "$STATE/dm"
+  dmsetup create "$name" --table "0 $(sectors) linear $loop 0"
+  dmsetup mknodes "$name" >/dev/null 2>&1 || true
+  if ! blkid "/dev/mapper/$name" >/dev/null 2>&1; then
+    # No lazy init: background zeroing would add writes the test doesn't control.
+    mkfs.ext4 -q -E lazy_itable_init=0,lazy_journal_init=0 "/dev/mapper/$name"
+  fi
+  do_mount
+}
+
+do_mount() {
+  dev="/dev/mapper/$(dm_name)"
+  if ! mount -t ext4 "$dev" "$DATA" 2>"$STATE/mount.err"; then
+    log "mount failed ($(cat "$STATE/mount.err")); running e2fsck"
+    e2fsck -fy "$dev" >&2 || true
+    echo "fsck" >> "$STATE/events"
+    mount -t ext4 "$dev" "$DATA"
+  fi
+  grep -q "^$dev $DATA ext4 rw" /proc/mounts || { log "$DATA not mounted read-write"; exit 1; }
+  # Kafka rejects any non topic-partition directory in its log dir; ext4's lost+found (from
+  # mkfs, or recreated by e2fsck) is removed when empty.
+  rmdir "$DATA/lost+found" 2>/dev/null || true
+  chown "$RUN_AS" "$DATA"
+}
+
+start() {
+  # Never start a broker on the container's own volume by mistake.
+  grep -q " $DATA ext4 " /proc/mounts || { log "$DATA is not mounted"; exit 1; }
+  if alive; then log "broker already running ($(broker_pid))"; return 0; fi
+  uid="${RUN_AS%%:*}"; gid="${RUN_AS##*:}"
+  # setsid: own process group (kill9 kills the whole group); output to the container log.
+  # shellcheck disable=SC2086
+  # The subshell exits at once, so the broker is reparented to PID 1 (tini, init: true),
+  # which reaps it when it is killed (otherwise it would linger as our zombie).
+  (
+    setsid setpriv --reuid="$uid" --regid="$gid" --clear-groups \
+      /bin/sh -c "cd '$DATA' && exec $CRASH_BROKER_CMD" >>/proc/1/fd/1 2>>/proc/1/fd/2 &
+    echo $! > "$STATE/pid"
+  )
+  log "broker started (pid $(broker_pid))"
+}
+
+wait_dead() {
+  p="$(broker_pid)"
+  [ -n "$p" ] || return 0
+  i=0
+  while kill -0 "$p" 2>/dev/null; do
+    i=$((i + 1)); [ $i -gt 600 ] && { log "broker $p did not die"; return 1; }
+    sleep 0.05
+  done
+}
+
+kill9() {
+  p="$(broker_pid)"
+  [ -n "$p" ] && kill -KILL -- "-$p" 2>/dev/null || kill -KILL "$p" 2>/dev/null || true
+  wait_dead
+  log "kill -9 done"
+}
+
+stop_broker() {
+  p="$(broker_pid)"
+  [ -n "$p" ] && kill -STOP -- "-$p" 2>/dev/null || true
+}
+
+powercut() {
+  name="$(dm_name)"; s="$(sectors)"; loop="$(loop_dev)"
+  p="$(broker_pid)"
+  # 1. The cut: freeze I/O at the device without flushing, swap in the error target. From
+  #    here nothing reaches the "disk"; dirty pages in the page cache are doomed.
+  dmsetup suspend --noflush --nolockfs "$name"
+  dmsetup load "$name" --table "0 $s error"
+  # 2. The process dies with the power: SIGKILL before the device resumes, so it can't act on
+  #    the I/O errors (a fatal signal is handled before any syscall returns to user space).
+  [ -n "$p" ] && { kill -KILL -- "-$p" 2>/dev/null || kill -KILL "$p" 2>/dev/null || true; }
+  dmsetup resume "$name"
+  wait_dead
+  # 3. Discard the page cache of this filesystem: unmounting writes back dirty pages, which
+  #    fail against the error target; the last close of the device drops its cache.
+  #    A lazy unmount is NOT acceptable: the superblock (and its cache) would live on and the
+  #    remount below would reuse it. Retry, then fail the crash (the run is then invalid).
+  i=0
+  until umount "$DATA" 2>"$STATE/umount.err"; do
+    i=$((i + 1))
+    if [ $i -gt 100 ]; then
+      log "umount failed: $(cat "$STATE/umount.err"); users: $(fuser -vm "$DATA" 2>&1 | tr '\n' ' ')"
+      exit 1
+    fi
+    sleep 0.1
+  done
+  if grep -q "^/dev/mapper/$name " /proc/mounts; then log "still mounted after umount"; exit 1; fi
+  # 4. "Power back on": the same bytes as at the cut, through a fresh mount (journal replay).
+  #    --noflush: a flushing suspend would fail against the error target.
+  dmsetup suspend --noflush "$name"
+  dmsetup load "$name" --table "0 $s linear $loop 0"
+  dmsetup resume "$name"
+  do_mount
+  log "power cut done"
+}
+
+prepare() {
+  # Before the workload: the synced marker plus a filesystem-wide sync, so the state the test
+  # starts from is durable (as on a broker that has been running for a while).
+  rm -f "$DATA"/.canary-*
+  date +%s%N > "$DATA/.canary-synced"
+  sync -f "$DATA" 2>/dev/null || sync
+}
+
+canary() {
+  # Right before the crash: a new file that only exists in the page cache. It must vanish in
+  # a power cut and survive a kill -9 (that is what proves the crash mode did what it says).
+  # No sync of any kind here, so the canary never makes broker data durable.
+  date +%s%N > "$DATA/.canary-unsynced"
+}
+
+check_canary() {
+  u=false; s=false
+  [ -f "$DATA/.canary-unsynced" ] && [ -s "$DATA/.canary-unsynced" ] && u=true
+  [ -f "$DATA/.canary-synced" ] && [ -s "$DATA/.canary-synced" ] && s=true
+  echo "{\"unsynced_survived\": $u, \"synced_survived\": $s}"
+  rm -f "$DATA/.canary-unsynced" "$DATA/.canary-synced" 2>/dev/null || true
+}
+
+teardown() {
+  if alive; then kill9 || true; fi
+  if [ -f "$STATE/dm" ]; then
+    umount "$DATA" 2>/dev/null || umount -l "$DATA" 2>/dev/null || true
+    dmsetup remove --retry "$(dm_name)" 2>/dev/null || dmsetup remove --force "$(dm_name)" 2>/dev/null || true
+    rm -f "$STATE/dm"
+  fi
+  if [ -f "$STATE/loop" ]; then
+    losetup -d "$(loop_dev)" 2>/dev/null || true
+    rm -f "$STATE/loop"
+  fi
+  log "teardown done"
+}
+
+case "${1:-}" in
+  boot)
+    trap 'teardown; exit 0' TERM INT
+    attach
+    start
+    # Stay up while the broker crashes and restarts; tini (init: true) reaps it.
+    while :; do sleep 1 & wait $! || true; done
+    ;;
+  start) start ;;
+  kill9) kill9 ;;
+  stop) stop_broker ;;
+  powercut) powercut ;;
+  prepare) prepare ;;
+  canary) canary ;;
+  check-canary) check_canary ;;
+  sync) sync -f "$DATA" 2>/dev/null || sync ;;
+  status)
+    a=false; alive && a=true
+    echo "{\"pid\": \"$(broker_pid)\", \"alive\": $a, \"dm\": \"$(cat "$STATE/dm" 2>/dev/null)\", \"loop\": \"$(cat "$STATE/loop" 2>/dev/null)\", \"events\": \"$(cat "$STATE/events" 2>/dev/null | tr '\n' ' ')\"}"
+    ;;
+  teardown) teardown ;;
+  *) sed -n '2,25p' "$0"; exit 2 ;;
+esac

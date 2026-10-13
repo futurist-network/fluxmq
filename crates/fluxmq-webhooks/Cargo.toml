@@ -1,0 +1,30 @@
+[package]
+name = "fluxmq-webhooks"
+description = "FluxMQ HTTP push subscriptions (webhooks)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+fluxmq-proto.workspace = true
+fluxmq-meta.workspace = true
+fluxmq-core.workspace = true
+fluxmq-router.workspace = true
+base64 = "0.22"
+bytes.workspace = true
+hex = "0.4"
+hmac = "0.12"
+httpdate = "1"
+parking_lot.workspace = true
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "json"] }
+serde.workspace = true
+serde_json.workspace = true
+sha2 = "0.10"
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+axum.workspace = true
+tempfile.workspace = true

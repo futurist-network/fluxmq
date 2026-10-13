@@ -1,0 +1,17 @@
+/target
+graphify-out/
+node_modules/
+ui/dist/
+/data/
+/data-dev/
+*.log
+.DS_Store
+.idea/
+ui/test-results/
+ui/playwright-report/
+*.ndjson
+/bench/harness/target/
+__pycache__/
+*.pyc
+# crash-test acked-id lists: large raw evidence, kept locally (summaries are committed)
+bench/results/**/acked.jsonl.gz

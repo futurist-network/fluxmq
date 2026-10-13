@@ -1,0 +1,96 @@
+{
+  "broker_version": "RabbitMQ 4.1.8",
+  "cleanup_error": null,
+  "client": "lapin 2.x (AMQP 0-9-1), publisher confirms, prefetch=2000",
+  "consume_mb_s": 2.12,
+  "consume_rate": 21211.0,
+  "consumed": 63666,
+  "drained": true,
+  "durability": "RabbitMQ: 8 durable classic queues, persistent messages (delivery_mode=2), publisher confirms (confirm after the message is written to disk / fsync'd in batches by the queue); manual ack per message",
+  "e2e_ms": {
+    "count": 65047,
+    "max": 207.103,
+    "mean": 118.136,
+    "min": 60.928,
+    "p50": 116.671,
+    "p90": 167.039,
+    "p99": 197.887,
+    "p999": 204.415
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "rabbitmq-single",
+  "last_error": null,
+  "measure_end_ms": 1791469219766,
+  "measure_start_ms": 1791469216764,
+  "params": {
+    "brokers": [
+      "amqp://guest:guest@rabbitmq:5672/%2f"
+    ],
+    "consumers": 2,
+    "duration_s": 3,
+    "linger_ms": 5,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 2,
+    "queue_type": "classic",
+    "rate": 0,
+    "replication": 1,
+    "size": 100,
+    "tls": false,
+    "warmup_s": 1,
+    "window": 2000
+  },
+  "publish_mb_s": 2.18,
+  "publish_ms": {
+    "count": 65047,
+    "max": 93.439,
+    "mean": 26.334,
+    "min": 0.67,
+    "p50": 23.647,
+    "p90": 47.775,
+    "p99": 67.263,
+    "p999": 84.927
+  },
+  "publish_rate": 21764.0,
+  "published": 65327,
+  "received_of_window": 65047,
+  "run_id": "rabbitmq-single-sat-100B-2p2c",
+  "scenario": "saturation",
+  "schema": 1,
+  "sent_in_window": 65047,
+  "started_at_ms": 1791469215709,
+  "sustained": null,
+  "system": "rabbitmq",
+  "timeline": [
+    {
+      "con": 22851,
+      "phase": "warmup",
+      "pub": 23489,
+      "t": 1
+    },
+    {
+      "con": 23175,
+      "phase": "measure",
+      "pub": 23929,
+      "t": 2
+    },
+    {
+      "con": 21288,
+      "phase": "measure",
+      "pub": 21612,
+      "t": 3
+    },
+    {
+      "con": 19196,
+      "phase": "measure",
+      "pub": 19786,
+      "t": 4
+    }
+  ],
+  "topic": "bench-r-69215709",
+  "window_s": 3.002,
+  "system_name": "rabbitmq-single",
+  "system_title": "RabbitMQ 1 node (classic)"
+}

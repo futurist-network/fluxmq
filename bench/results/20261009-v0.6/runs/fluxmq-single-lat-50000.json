@@ -1,0 +1,326 @@
+{
+  "broker_version": "FluxMQ 0.6.0",
+  "cleanup_error": null,
+  "client": "fluxmq-client (Rust SDK) BatchingProducer linger=1ms, max_in_flight=32, prefetch=2000, stamp_producer=false",
+  "consume_mb_s": 51.2,
+  "consume_rate": 50000.0,
+  "consumed": 1500037,
+  "drain_miss": null,
+  "drain_s": 0.0,
+  "drained": true,
+  "duplicates": 0,
+  "durability": "FluxMQ single node: stream channel, 8 partitions; publish acked after the broker's group commit (fsync) and, in a cluster, after every ISR member has the batch (acks=all; min ISR per broker flag); consumer acks every message",
+  "e2e_ms": {
+    "count": 1499991,
+    "max": 329.983,
+    "mean": 8.314,
+    "min": 0.681,
+    "p50": 4.419,
+    "p90": 6.511,
+    "p99": 155.391,
+    "p999": 289.023
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "fluxmq-single",
+  "last_error": null,
+  "measure_end_ms": 1791533287216,
+  "measure_start_ms": 1791533257216,
+  "params": {
+    "brokers": [
+      "fluxmq:7420"
+    ],
+    "consumers": 4,
+    "duration_s": 30,
+    "linger_ms": 1,
+    "max_in_flight": 32,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 4,
+    "queue_type": null,
+    "rate": 50000,
+    "replication": 1,
+    "retention_bytes": 536870912,
+    "segment_bytes": 16777216,
+    "size": 1024,
+    "tls": false,
+    "warmup_s": 10,
+    "window": 20000
+  },
+  "publish_mb_s": 51.2,
+  "publish_ms": {
+    "count": 1499991,
+    "max": 324.863,
+    "mean": 7.981,
+    "min": 0.704,
+    "p50": 4.339,
+    "p90": 6.403,
+    "p99": 139.903,
+    "p999": 281.087
+  },
+  "publish_rate": 50000.0,
+  "published": 1500037,
+  "received_of_window": 1499991,
+  "redelivered": 0,
+  "run_id": "fluxmq-single-lat-50000",
+  "scenario": "latency",
+  "schema": 2,
+  "sent_in_window": 1499991,
+  "started_at_ms": 1791533247196,
+  "sustained": true,
+  "system": "fluxmq",
+  "timeline": [
+    {
+      "con": 49892,
+      "phase": "warmup",
+      "pub": 49892,
+      "t": 1
+    },
+    {
+      "con": 50005,
+      "phase": "warmup",
+      "pub": 50005,
+      "t": 2
+    },
+    {
+      "con": 50018,
+      "phase": "warmup",
+      "pub": 50018,
+      "t": 3
+    },
+    {
+      "con": 49944,
+      "phase": "warmup",
+      "pub": 49944,
+      "t": 4
+    },
+    {
+      "con": 50010,
+      "phase": "warmup",
+      "pub": 50010,
+      "t": 5
+    },
+    {
+      "con": 50034,
+      "phase": "warmup",
+      "pub": 50079,
+      "t": 6
+    },
+    {
+      "con": 49917,
+      "phase": "warmup",
+      "pub": 49872,
+      "t": 7
+    },
+    {
+      "con": 49946,
+      "phase": "warmup",
+      "pub": 49946,
+      "t": 8
+    },
+    {
+      "con": 50167,
+      "phase": "warmup",
+      "pub": 50167,
+      "t": 9
+    },
+    {
+      "con": 49937,
+      "phase": "measure",
+      "pub": 49943,
+      "t": 10
+    },
+    {
+      "con": 50043,
+      "phase": "measure",
+      "pub": 50037,
+      "t": 11
+    },
+    {
+      "con": 48615,
+      "phase": "measure",
+      "pub": 48615,
+      "t": 12
+    },
+    {
+      "con": 51302,
+      "phase": "measure",
+      "pub": 51302,
+      "t": 13
+    },
+    {
+      "con": 50119,
+      "phase": "measure",
+      "pub": 50119,
+      "t": 14
+    },
+    {
+      "con": 49935,
+      "phase": "measure",
+      "pub": 49935,
+      "t": 15
+    },
+    {
+      "con": 50027,
+      "phase": "measure",
+      "pub": 50006,
+      "t": 16
+    },
+    {
+      "con": 47020,
+      "phase": "measure",
+      "pub": 47270,
+      "t": 17
+    },
+    {
+      "con": 53040,
+      "phase": "measure",
+      "pub": 52821,
+      "t": 18
+    },
+    {
+      "con": 49885,
+      "phase": "measure",
+      "pub": 49875,
+      "t": 19
+    },
+    {
+      "con": 50015,
+      "phase": "measure",
+      "pub": 50015,
+      "t": 20
+    },
+    {
+      "con": 50044,
+      "phase": "measure",
+      "pub": 50044,
+      "t": 21
+    },
+    {
+      "con": 49972,
+      "phase": "measure",
+      "pub": 49972,
+      "t": 22
+    },
+    {
+      "con": 50006,
+      "phase": "measure",
+      "pub": 49992,
+      "t": 23
+    },
+    {
+      "con": 50025,
+      "phase": "measure",
+      "pub": 50039,
+      "t": 24
+    },
+    {
+      "con": 50014,
+      "phase": "measure",
+      "pub": 50014,
+      "t": 25
+    },
+    {
+      "con": 49951,
+      "phase": "measure",
+      "pub": 49951,
+      "t": 26
+    },
+    {
+      "con": 49988,
+      "phase": "measure",
+      "pub": 49988,
+      "t": 27
+    },
+    {
+      "con": 49996,
+      "phase": "measure",
+      "pub": 49996,
+      "t": 28
+    },
+    {
+      "con": 50012,
+      "phase": "measure",
+      "pub": 50012,
+      "t": 29
+    },
+    {
+      "con": 49946,
+      "phase": "measure",
+      "pub": 49951,
+      "t": 30
+    },
+    {
+      "con": 50075,
+      "phase": "measure",
+      "pub": 50070,
+      "t": 31
+    },
+    {
+      "con": 50018,
+      "phase": "measure",
+      "pub": 50019,
+      "t": 32
+    },
+    {
+      "con": 50008,
+      "phase": "measure",
+      "pub": 50007,
+      "t": 33
+    },
+    {
+      "con": 49970,
+      "phase": "measure",
+      "pub": 49970,
+      "t": 34
+    },
+    {
+      "con": 50065,
+      "phase": "measure",
+      "pub": 50065,
+      "t": 35
+    },
+    {
+      "con": 49877,
+      "phase": "measure",
+      "pub": 49877,
+      "t": 36
+    },
+    {
+      "con": 50036,
+      "phase": "measure",
+      "pub": 50036,
+      "t": 37
+    },
+    {
+      "con": 50027,
+      "phase": "measure",
+      "pub": 50027,
+      "t": 38
+    },
+    {
+      "con": 50058,
+      "phase": "measure",
+      "pub": 50058,
+      "t": 39
+    },
+    {
+      "con": 49948,
+      "phase": "drain",
+      "pub": 49948,
+      "t": 40
+    }
+  ],
+  "topic": "bench-r-33247196",
+  "window_s": 30.001,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  },
+  "repeat": 1,
+  "system_name": "fluxmq-single",
+  "system_title": "FluxMQ 1 node"
+}

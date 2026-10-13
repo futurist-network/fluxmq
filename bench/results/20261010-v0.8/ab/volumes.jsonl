@@ -1,0 +1,4 @@
+{"ts": 1791620025.6, "run": "fluxmq-cluster-sat-1024B-4p4c", "system": "fluxmq-cluster", "bytes": {"n1": 90112, "n2": 86016, "n3": 86016}, "host_free_gb": 43.1}
+{"ts": 1791620079.8, "run": "fluxmq-cluster-lat-1000", "system": "fluxmq-cluster", "bytes": {"n1": 90112, "n2": 86016, "n3": 86016}, "host_free_gb": 43.0}
+{"ts": 1791620123.9, "run": "fluxmq-cluster-lat-10000", "system": "fluxmq-cluster", "bytes": {"n1": 106496, "n2": 102400, "n3": 102400}, "host_free_gb": 42.2}
+{"ts": 1791620169.1, "run": "fluxmq-cluster-lat-50000", "system": "fluxmq-cluster", "bytes": {"n1": 122880, "n2": 118784, "n3": 118784}, "host_free_gb": 36.9}

@@ -1,0 +1,98 @@
+{
+  "broker_version": "FluxMQ 0.4.0",
+  "cleanup_error": null,
+  "client": "fluxmq-client (Rust SDK) BatchingProducer linger=5ms, prefetch=2000",
+  "consume_mb_s": 5.54,
+  "consume_rate": 55435.0,
+  "consumed": 166362,
+  "drained": true,
+  "durability": "FluxMQ cluster of 3 nodes: stream channel, 8 partitions; publish acked after the broker's group commit (fsync) and, in a cluster, after every ISR member has the batch (acks=all; min ISR per broker flag); consumer acks every message",
+  "e2e_ms": {
+    "count": 166343,
+    "max": 212.351,
+    "mean": 73.144,
+    "min": 17.984,
+    "p50": 65.311,
+    "p90": 121.983,
+    "p99": 166.015,
+    "p999": 190.975
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "fluxmq-cluster",
+  "last_error": null,
+  "measure_end_ms": 1791468995699,
+  "measure_start_ms": 1791468992698,
+  "params": {
+    "brokers": [
+      "n1:7420",
+      "n2:7420",
+      "n3:7420"
+    ],
+    "consumers": 2,
+    "duration_s": 3,
+    "linger_ms": 5,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 2,
+    "queue_type": null,
+    "rate": 0,
+    "replication": 1,
+    "size": 100,
+    "tls": false,
+    "warmup_s": 1,
+    "window": 2000
+  },
+  "publish_mb_s": 5.54,
+  "publish_ms": {
+    "count": 166343,
+    "max": 214.911,
+    "mean": 72.923,
+    "min": 17.664,
+    "p50": 65.087,
+    "p90": 121.919,
+    "p99": 166.911,
+    "p999": 191.103
+  },
+  "publish_rate": 55429.0,
+  "published": 166344,
+  "received_of_window": 166343,
+  "run_id": "fluxmq-cluster-sat-100B-2p2c",
+  "scenario": "saturation",
+  "schema": 1,
+  "sent_in_window": 166343,
+  "started_at_ms": 1791468991445,
+  "sustained": null,
+  "system": "fluxmq",
+  "timeline": [
+    {
+      "con": 70914,
+      "phase": "measure",
+      "pub": 70914,
+      "t": 1
+    },
+    {
+      "con": 81363,
+      "phase": "measure",
+      "pub": 81363,
+      "t": 2
+    },
+    {
+      "con": 48633,
+      "phase": "measure",
+      "pub": 48633,
+      "t": 3
+    },
+    {
+      "con": 36230,
+      "phase": "measure",
+      "pub": 36249,
+      "t": 4
+    }
+  ],
+  "topic": "bench-r-68991445",
+  "window_s": 3.001,
+  "system_name": "fluxmq-cluster",
+  "system_title": "FluxMQ 3 nodes RF=3"
+}

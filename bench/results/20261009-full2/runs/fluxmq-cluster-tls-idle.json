@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "fluxmq-cluster-tls-idle",
+  "label": "fluxmq-cluster-tls",
+  "system_name": "fluxmq-cluster-tls",
+  "system_title": "FluxMQ 3 nodes RF=3, full TLS",
+  "system": "fluxmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791503542108,
+  "measure_end_ms": 1791503572117,
+  "broker_version": "FluxMQ 0.5.0",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  }
+}

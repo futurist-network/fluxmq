@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "kafka-cluster-idle",
+  "label": "kafka-cluster",
+  "system_name": "kafka-cluster",
+  "system_title": "Kafka 3 nodes RF=3",
+  "system": "kafka",
+  "scenario": "idle",
+  "measure_start_ms": 1791575185593,
+  "measure_end_ms": 1791575215598,
+  "broker_version": "Apache Kafka 3.7.0",
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  },
+  "reused_from": "20261009-v0.7"
+}

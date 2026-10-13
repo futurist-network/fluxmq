@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "kind": "idle",
+  "run_id": "rabbitmq-single-idle",
+  "label": "rabbitmq-single",
+  "system_name": "rabbitmq-single",
+  "system_title": "RabbitMQ 1 node (classic)",
+  "system": "rabbitmq",
+  "scenario": "idle",
+  "measure_start_ms": 1791469204628,
+  "measure_end_ms": 1791469210630,
+  "broker_version": "RabbitMQ 4.1.8"
+}

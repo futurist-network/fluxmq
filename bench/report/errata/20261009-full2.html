@@ -1,0 +1,10 @@
+The "not drained" FluxMQ run (3 nodes, TLS, 1 KiB 4×4, repeat 2: 250 of 3.27 M acknowledged
+messages not received) was <b>real data loss, not slow redelivery</b>. Size retention deleted the
+newest closed segment. The harness's per-partition cap (128 MiB) equalled FluxMQ's default segment
+size, so right after a segment roll, closed + active segment exceeded the cap and the just-closed
+segment was deleted. Retention then kept almost nothing, and a consumer group whose next
+undelivered offset was still inside that segment skipped past it. In this run the skipped data
+was one producer batch of 250 messages (2000 window ÷ 8 partitions) that the producer had already
+had acknowledged. Fixed in v0.6: retention deletes a segment only while what remains still holds
+the cap, which is Kafka's rule. Regression test in <code>fluxmq-core</code>. The v0.6 harness checks
+delivery by message id and reports late vs missing messages.

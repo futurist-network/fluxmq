@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "kind": "invalid",
+  "reconstructed": true,
+  "valid_measurement": true,
+  "invalid_reason": "measurement itself looked clean (0 errors) but the stack was filling the host disk (Kafka kept deleted segments for 60 s); superseded by the rerun in 20261009-full2",
+  "note": "Reconstructed from the runner log (bench1.log summary line): the original run JSON, its docker-stats samples and the idle record were deleted during a disk-full cleanup on 2026-10-09 before the decision to keep the first measurement intact. Only the fields printed in the summary line are known.",
+  "run_id": "kafka-single-sat-1024B-1p1c-r1",
+  "label": "kafka-single",
+  "system": "kafka",
+  "system_name": "kafka-single",
+  "system_title": "Kafka 1 node",
+  "scenario": "saturation",
+  "repeat": 1,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  },
+  "params": {
+    "size": 1024,
+    "producers": 1,
+    "consumers": 1,
+    "partitions": 8,
+    "rate": 0
+  },
+  "publish_rate": 394344,
+  "consume_rate": 394365,
+  "publish_mb_s": 403.8,
+  "drained": true,
+  "e2e_ms": {
+    "p50": 4.0,
+    "p99": 12.24,
+    "p999": 62.94
+  },
+  "errors": 0,
+  "broker_version": "Apache Kafka 3.7.0"
+}

@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1.7
+#
+# Broker image for the crash-durability test: the unchanged broker image plus device-mapper /
+# loop / ext4 tools and `crashctl` (bench/crash/README.md). Works on Debian (FluxMQ) and
+# Alpine (apache/kafka) bases:
+#   docker build -f bench/crash/Dockerfile.broker --build-arg BASE=fluxmq:dev -t fluxmq-crash:dev bench/crash
+#   docker build -f bench/crash/Dockerfile.broker --build-arg BASE=apache/kafka:3.7.0 -t kafka-crash:dev bench/crash
+ARG BASE=fluxmq:dev
+FROM ${BASE}
+USER root
+RUN set -eu; \
+    if command -v apt-get >/dev/null 2>&1; then \
+      apt-get update; \
+      apt-get install -y --no-install-recommends dmsetup e2fsprogs util-linux mount coreutils; \
+      rm -rf /var/lib/apt/lists/*; \
+    else \
+      apk add --no-cache device-mapper e2fsprogs util-linux coreutils; \
+    fi; \
+    for t in dmsetup losetup blockdev blkid mkfs.ext4 e2fsck mount umount setpriv setsid truncate; do \
+      command -v "$t" >/dev/null || { echo "missing $t" >&2; exit 1; }; \
+    done
+COPY crashctl /usr/local/bin/crashctl
+RUN chmod 0755 /usr/local/bin/crashctl
+ENTRYPOINT ["/usr/local/bin/crashctl", "boot"]
+CMD []

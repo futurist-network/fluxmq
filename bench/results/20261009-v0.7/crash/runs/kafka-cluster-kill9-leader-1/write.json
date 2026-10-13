@@ -1,0 +1,227 @@
+{
+  "acked": 140402,
+  "brokers": [
+    "kafka1:9092",
+    "kafka2:9092",
+    "kafka3:9092"
+  ],
+  "client": "librdkafka 2.12.1 FutureProducer linger.ms=5",
+  "consumer": null,
+  "durability": "Kafka topic RF=3, min.insync.replicas=2; producer acks=all, enable.idempotence=true; broker flush policy per its config (log.flush.interval.messages)",
+  "enqueue_errors": 0,
+  "failed": 0,
+  "first_error_ms": null,
+  "go_ms": 1791581303396,
+  "last_error": null,
+  "linger_ms": 5,
+  "partitions": 4,
+  "producers": 2,
+  "publish_timeout_s": 30,
+  "rate": 5000,
+  "replication": 3,
+  "sent": 140402,
+  "size": 1024,
+  "stop_ms": 1791581331487,
+  "system": "kafka",
+  "timeline": [
+    {
+      "acked": 4964,
+      "errors": 0,
+      "ms": 1791581304398,
+      "sent": 5000,
+      "t": 1
+    },
+    {
+      "acked": 5005,
+      "errors": 0,
+      "ms": 1791581305397,
+      "sent": 4999,
+      "t": 2
+    },
+    {
+      "acked": 5008,
+      "errors": 0,
+      "ms": 1791581306397,
+      "sent": 5001,
+      "t": 3
+    },
+    {
+      "acked": 5000,
+      "errors": 0,
+      "ms": 1791581307397,
+      "sent": 4999,
+      "t": 4
+    },
+    {
+      "acked": 4990,
+      "errors": 0,
+      "ms": 1791581308397,
+      "sent": 5000,
+      "t": 5
+    },
+    {
+      "acked": 5008,
+      "errors": 0,
+      "ms": 1791581309397,
+      "sent": 5001,
+      "t": 6
+    },
+    {
+      "acked": 5010,
+      "errors": 0,
+      "ms": 1791581310397,
+      "sent": 5000,
+      "t": 7
+    },
+    {
+      "acked": 4995,
+      "errors": 0,
+      "ms": 1791581311398,
+      "sent": 5002,
+      "t": 8
+    },
+    {
+      "acked": 4987,
+      "errors": 0,
+      "ms": 1791581312397,
+      "sent": 4998,
+      "t": 9
+    },
+    {
+      "acked": 2435,
+      "errors": 0,
+      "ms": 1791581313398,
+      "sent": 4999,
+      "t": 10
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581314398,
+      "sent": 5001,
+      "t": 11
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581315400,
+      "sent": 2402,
+      "t": 12
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581316398,
+      "sent": 0,
+      "t": 13
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581317400,
+      "sent": 0,
+      "t": 14
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791581318397,
+      "sent": 0,
+      "t": 15
+    },
+    {
+      "acked": 27741,
+      "errors": 0,
+      "ms": 1791581319398,
+      "sent": 22597,
+      "t": 16
+    },
+    {
+      "acked": 4132,
+      "errors": 0,
+      "ms": 1791581320397,
+      "sent": 4993,
+      "t": 17
+    },
+    {
+      "acked": 10697,
+      "errors": 0,
+      "ms": 1791581321397,
+      "sent": 5009,
+      "t": 18
+    },
+    {
+      "acked": 4960,
+      "errors": 0,
+      "ms": 1791581322398,
+      "sent": 4999,
+      "t": 19
+    },
+    {
+      "acked": 5047,
+      "errors": 0,
+      "ms": 1791581323398,
+      "sent": 4999,
+      "t": 20
+    },
+    {
+      "acked": 4998,
+      "errors": 0,
+      "ms": 1791581324398,
+      "sent": 5001,
+      "t": 21
+    },
+    {
+      "acked": 4993,
+      "errors": 0,
+      "ms": 1791581325397,
+      "sent": 4992,
+      "t": 22
+    },
+    {
+      "acked": 5014,
+      "errors": 0,
+      "ms": 1791581326398,
+      "sent": 5008,
+      "t": 23
+    },
+    {
+      "acked": 5008,
+      "errors": 0,
+      "ms": 1791581327398,
+      "sent": 5002,
+      "t": 24
+    },
+    {
+      "acked": 4977,
+      "errors": 0,
+      "ms": 1791581328398,
+      "sent": 5000,
+      "t": 25
+    },
+    {
+      "acked": 4998,
+      "errors": 0,
+      "ms": 1791581329398,
+      "sent": 4997,
+      "t": 26
+    },
+    {
+      "acked": 5005,
+      "errors": 0,
+      "ms": 1791581330398,
+      "sent": 5003,
+      "t": 27
+    },
+    {
+      "acked": 5007,
+      "errors": 0,
+      "ms": 1791581331398,
+      "sent": 4997,
+      "t": 28
+    }
+  ],
+  "topic": "crash-kill9-1-1302252",
+  "unacked_at_end": 0,
+  "window": 5000
+}

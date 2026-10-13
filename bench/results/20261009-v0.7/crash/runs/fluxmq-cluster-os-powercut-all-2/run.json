@@ -1,0 +1,311 @@
+{
+  "schema": 1,
+  "run": "fluxmq-cluster-os-powercut-all-2",
+  "system": "fluxmq-cluster-os",
+  "title": "FluxMQ 3 nodes RF=3 min ISR 2, fsync=os",
+  "family": "fluxmq",
+  "mode": "powercut",
+  "target": "all",
+  "iteration": 2,
+  "topic": "crash-powercut-2-881479",
+  "method": "Simulated power loss of the broker's machine (crashctl powercut). The data directory is an ext4 filesystem on a device-mapper device over a loop device backed by a sparse file in a Docker volume. At the cut the dm device is suspended without flushing and switched to the dm `error` target, then the broker gets SIGKILL (before the device resumes, so it never sees the I/O errors). The filesystem is unmounted: dirty pages (written but not yet written back or fsynced) fail against the error target and the device's cache is dropped. Then the linear mapping is restored and ext4 is mounted again (journal replay), exactly the bytes that had reached the device at the cut. Only data that was fsynced (or written back by the kernel's periodic writeback before the cut) survives. A per-crash canary proves it: a file created just before the cut must be gone, a file synced before the workload must be there.",
+  "params": {
+    "rate": 5000,
+    "size": 1024,
+    "producers": 2,
+    "partitions": 4,
+    "down_s": 3.0,
+    "after_s": 5.0
+  },
+  "victims": [
+    "n1",
+    "n2",
+    "n3"
+  ],
+  "crash_ms": 1791580892831,
+  "crash_took_ms": 285,
+  "crash_after_s": 10.7,
+  "canary": {
+    "n2": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    },
+    "n3": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    },
+    "n1": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    }
+  },
+  "method_valid": true,
+  "restart_ms": 1791580896328,
+  "recovery_s": 0.3,
+  "write": {
+    "acked": 98175,
+    "brokers": [
+      "n1:7420",
+      "n2:7420",
+      "n3:7420"
+    ],
+    "client": "fluxmq-client BatchingProducer linger=5ms (broker 0.7.0)",
+    "durability": "FluxMQ stream channel; publish acknowledged per the broker's FLUXMQ_FSYNC policy (group-commit: after fsync; os: after write(2)) and, in a cluster, after every ISR member has it",
+    "enqueue_errors": 0,
+    "failed": 0,
+    "first_error_ms": null,
+    "go_ms": 1791580882008,
+    "last_error": null,
+    "linger_ms": 5,
+    "partitions": 4,
+    "producers": 2,
+    "publish_timeout_s": 30,
+    "rate": 5000,
+    "replication": 1,
+    "sent": 98175,
+    "size": 1024,
+    "stop_ms": 1791580901659,
+    "system": "fluxmq",
+    "topic": "crash-powercut-2-881479",
+    "unacked_at_end": 0,
+    "window": 5000
+  },
+  "failover": {
+    "crash_ms": 1791580892831,
+    "restart_ms": 1791580896328,
+    "pub_gap_ms": 4354,
+    "partition_gap_ms": {
+      "0": 4375,
+      "1": 4653,
+      "2": 4374,
+      "3": 4355
+    },
+    "max_partition_gap_ms": 4653,
+    "pub_gap_ms_while_down": 3333,
+    "pub_gap_ms_after_restart": 1021,
+    "max_partition_gap_ms_after_restart": 1319,
+    "max_ack_latency_ms": 5037,
+    "p99_ack_latency_ms": 4321,
+    "acks_over_1s": 18709,
+    "errors": 0,
+    "first_error_ms": null,
+    "last_error": null
+  },
+  "verify": {
+    "acked": 98175,
+    "acked_unique": 98175,
+    "duplicates": 0,
+    "end_reason": "idle timeout",
+    "extra": {
+      "group": "crash-powercut-2-881479-verify-927738"
+    },
+    "foreign": 0,
+    "found": 43247,
+    "last_ack_before_crash_ms": 1791580892995,
+    "lost": 54928,
+    "lost_ack_ms_range": [
+      1791580882011,
+      1791580892995
+    ],
+    "lost_acked_after_crash": 0,
+    "lost_acked_before_crash": 54928,
+    "lost_by_partition": {
+      "0": {
+        "acked_offsets": [
+          0,
+          13723
+        ],
+        "count": 13724
+      },
+      "1": {
+        "acked_offsets": [
+          0,
+          13810
+        ],
+        "count": 13811
+      },
+      "2": {
+        "acked_offsets": [
+          0,
+          13732
+        ],
+        "count": 13733
+      },
+      "3": {
+        "acked_offsets": [
+          0,
+          13659
+        ],
+        "count": 13660
+      }
+    },
+    "offsets_seen": {
+      "0": [
+        0,
+        7159
+      ],
+      "1": [
+        0,
+        14876
+      ],
+      "2": [
+        0,
+        6972
+      ],
+      "3": [
+        0,
+        14236
+      ]
+    },
+    "scanned": 43247,
+    "seconds": 15.1,
+    "system": "fluxmq",
+    "topic": "crash-powercut-2-881479",
+    "unacked_but_stored": 0,
+    "lost_sample": [
+      [
+        0,
+        0,
+        0,
+        0,
+        1791580882011
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        1791580882011
+      ],
+      [
+        0,
+        2,
+        0,
+        2,
+        1791580882011
+      ],
+      [
+        0,
+        3,
+        1,
+        3,
+        1791580882011
+      ],
+      [
+        0,
+        4,
+        1,
+        4,
+        1791580882011
+      ],
+      [
+        0,
+        5,
+        2,
+        0,
+        1791580882012
+      ],
+      [
+        0,
+        6,
+        2,
+        1,
+        1791580882012
+      ],
+      [
+        0,
+        7,
+        2,
+        2,
+        1791580882012
+      ],
+      [
+        0,
+        8,
+        3,
+        3,
+        1791580882013
+      ],
+      [
+        0,
+        9,
+        3,
+        4,
+        1791580882013
+      ],
+      [
+        0,
+        10,
+        0,
+        5,
+        1791580882014
+      ],
+      [
+        0,
+        11,
+        0,
+        6,
+        1791580882014
+      ],
+      [
+        0,
+        12,
+        0,
+        7,
+        1791580882014
+      ],
+      [
+        0,
+        13,
+        1,
+        8,
+        1791580882015
+      ],
+      [
+        0,
+        14,
+        1,
+        9,
+        1791580882015
+      ],
+      [
+        0,
+        15,
+        2,
+        7,
+        1791580882016
+      ],
+      [
+        0,
+        16,
+        2,
+        8,
+        1791580882016
+      ],
+      [
+        0,
+        17,
+        2,
+        9,
+        1791580882016
+      ],
+      [
+        0,
+        18,
+        3,
+        5,
+        1791580882017
+      ],
+      [
+        0,
+        19,
+        3,
+        6,
+        1791580882017
+      ]
+    ]
+  },
+  "verify_passes": 2,
+  "acked": 98175,
+  "lost": 54928
+}

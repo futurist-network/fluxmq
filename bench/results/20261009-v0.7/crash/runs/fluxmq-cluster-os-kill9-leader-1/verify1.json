@@ -1,0 +1,41 @@
+{
+  "acked": 93190,
+  "acked_unique": 93190,
+  "duplicates": 2,
+  "end_reason": "all acked found",
+  "extra": {
+    "group": "crash-kill9-1-690703-verify-710587"
+  },
+  "foreign": 0,
+  "found": 93190,
+  "last_ack_before_crash_ms": 1791580701272,
+  "lost": 0,
+  "lost_ack_ms_range": null,
+  "lost_acked_after_crash": 0,
+  "lost_acked_before_crash": 0,
+  "lost_by_partition": {},
+  "lost_sample": [],
+  "offsets_seen": {
+    "0": [
+      0,
+      28001
+    ],
+    "1": [
+      0,
+      25265
+    ],
+    "2": [
+      0,
+      19671
+    ],
+    "3": [
+      0,
+      20251
+    ]
+  },
+  "scanned": 93192,
+  "seconds": 2.2,
+  "system": "fluxmq",
+  "topic": "crash-kill9-1-690703",
+  "unacked_but_stored": 0
+}

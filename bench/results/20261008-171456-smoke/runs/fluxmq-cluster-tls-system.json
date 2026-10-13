@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "run_id": "fluxmq-cluster-tls-system",
+  "system_name": "fluxmq-cluster-tls",
+  "system_title": "FluxMQ 3 nodes RF=3, full TLS",
+  "system": "fluxmq",
+  "startup_s": 2.8,
+  "broker_version": "FluxMQ 0.4.0",
+  "nodes": [
+    "n1",
+    "n2",
+    "n3"
+  ],
+  "tls": true
+}

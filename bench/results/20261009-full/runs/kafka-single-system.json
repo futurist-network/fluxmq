@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "kind": "system",
+  "reconstructed": true,
+  "note": "Reconstructed from the runner log (bench1.log summary line): the original run JSON, its docker-stats samples and the idle record were deleted during a disk-full cleanup on 2026-10-09 before the decision to keep the first measurement intact. Only the fields printed in the summary line are known.",
+  "run_id": "kafka-single-system",
+  "system_name": "kafka-single",
+  "system_title": "Kafka 1 node",
+  "system": "kafka",
+  "startup_s": 5.0,
+  "broker_version": "Apache Kafka 3.7.0",
+  "nodes": [
+    "kafka"
+  ],
+  "tls": false,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

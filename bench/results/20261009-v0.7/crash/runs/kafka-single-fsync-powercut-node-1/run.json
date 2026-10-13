@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "run": "kafka-single-fsync-powercut-node-1",
+  "system": "kafka-single-fsync",
+  "title": "Kafka 1 node, log.flush.interval.messages=1 (fsync before ack)",
+  "family": "kafka",
+  "mode": "powercut",
+  "target": "node",
+  "iteration": 1,
+  "topic": "crash-powercut-1-1214228",
+  "method": "Simulated power loss of the broker's machine (crashctl powercut). The data directory is an ext4 filesystem on a device-mapper device over a loop device backed by a sparse file in a Docker volume. At the cut the dm device is suspended without flushing and switched to the dm `error` target, then the broker gets SIGKILL (before the device resumes, so it never sees the I/O errors). The filesystem is unmounted: dirty pages (written but not yet written back or fsynced) fail against the error target and the device's cache is dropped. Then the linear mapping is restored and ext4 is mounted again (journal replay), exactly the bytes that had reached the device at the cut. Only data that was fsynced (or written back by the kernel's periodic writeback before the cut) survives. A per-crash canary proves it: a file created just before the cut must be gone, a file synced before the workload must be there.",
+  "params": {
+    "rate": 5000,
+    "size": 1024,
+    "producers": 2,
+    "partitions": 4,
+    "down_s": 3.0,
+    "after_s": 5.0
+  },
+  "victims": [
+    "kafka"
+  ],
+  "crash_ms": 1791581224463,
+  "crash_took_ms": 213,
+  "crash_after_s": 9.65,
+  "canary": {
+    "kafka": {
+      "unsynced_survived": false,
+      "synced_survived": true
+    }
+  },
+  "method_valid": true,
+  "restart_ms": 1791581227867,
+  "recovery_s": 16.1,
+  "write": {
+    "acked": 170996,
+    "brokers": [
+      "kafka:9092"
+    ],
+    "client": "librdkafka 2.12.1 FutureProducer linger.ms=5",
+    "durability": "Kafka topic RF=1, min.insync.replicas=1; producer acks=all, enable.idempotence=true; broker flush policy per its config (log.flush.interval.messages)",
+    "enqueue_errors": 0,
+    "failed": 0,
+    "first_error_ms": null,
+    "go_ms": 1791581214733,
+    "last_error": null,
+    "linger_ms": 5,
+    "partitions": 4,
+    "producers": 2,
+    "publish_timeout_s": 30,
+    "rate": 5000,
+    "replication": 1,
+    "sent": 170996,
+    "size": 1024,
+    "stop_ms": 1791581248942,
+    "system": "kafka",
+    "topic": "crash-powercut-1-1214228",
+    "unacked_at_end": 0,
+    "window": 5000
+  },
+  "failover": {
+    "crash_ms": 1791581224463,
+    "restart_ms": 1791581227867,
+    "pub_gap_ms": 19375,
+    "partition_gap_ms": {
+      "2": 19391,
+      "3": 19400,
+      "0": 19392,
+      "1": 19384
+    },
+    "max_partition_gap_ms": 19400,
+    "pub_gap_ms_while_down": 3344,
+    "pub_gap_ms_after_restart": 16031,
+    "max_partition_gap_ms_after_restart": 16056,
+    "max_ack_latency_ms": 20740,
+    "p99_ack_latency_ms": 20054,
+    "acks_over_1s": 96504,
+    "errors": 0,
+    "first_error_ms": null,
+    "last_error": null
+  },
+  "verify": {
+    "acked": 170996,
+    "acked_unique": 170996,
+    "duplicates": 0,
+    "end_reason": "reached high watermarks",
+    "extra": {
+      "group": "crash-powercut-1-1214228-verify-249897",
+      "watermarks": {
+        "0": [
+          0,
+          31686
+        ],
+        "1": [
+          0,
+          51751
+        ],
+        "2": [
+          0,
+          41664
+        ],
+        "3": [
+          0,
+          45895
+        ]
+      }
+    },
+    "foreign": 0,
+    "found": 170996,
+    "last_ack_before_crash_ms": 1791581224523,
+    "lost": 0,
+    "lost_ack_ms_range": null,
+    "lost_acked_after_crash": 0,
+    "lost_acked_before_crash": 0,
+    "lost_by_partition": {},
+    "offsets_seen": {
+      "0": [
+        0,
+        31685
+      ],
+      "1": [
+        0,
+        51750
+      ],
+      "2": [
+        0,
+        41663
+      ],
+      "3": [
+        0,
+        45894
+      ]
+    },
+    "scanned": 170996,
+    "seconds": 0.4,
+    "system": "kafka",
+    "topic": "crash-powercut-1-1214228",
+    "unacked_but_stored": 0,
+    "lost_sample": []
+  },
+  "verify_passes": 1,
+  "acked": 170996,
+  "lost": 0
+}

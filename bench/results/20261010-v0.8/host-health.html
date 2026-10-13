@@ -1,0 +1,24 @@
+<p><b>Disk.</b> Free disk stayed at 34–43 GB (the previous v0.8 attempts ran with 8–13 GB free). Under saturation FluxMQ's fsyncs averaged 2–7 ms on 1 node and 10–14 ms on 3 nodes, where three brokers share one SSD. The worst 2-s mean was 18 ms on 1 node and 25 ms on 3 nodes (table below). Last night's v0.8 runs saw 4–130 ms means and multi-second stalls. Throughput was stable: the two repeats of each 1 KiB cell agree within ±5–10 %.</p>
+<p><b>The open item: publish p99 spikes of 30–380 ms.</b> They do appear on the healthy host. Evidence (1 KiB 4×4, p99 in ms; each cell is one 30 s run; all 1-node runs in one session, alternating images):</p>
+<div class="tablewrap"><table><thead><tr><th>Runs</th><th>Image</th><th>1k msg/s</th><th>10k</th><th>50k</th></tr></thead><tbody>
+<tr><td>1 node, sampler on (<code>docker exec</code> every 2 s)</td><td>v0.8 (matrix pass 1)</td><td>150</td><td>113</td><td>173</td></tr>
+<tr><td>1 node, sampler on, A/B</td><td>v0.7</td><td>85 / 57</td><td>–</td><td>221 / 156</td></tr>
+<tr><td>1 node, sampler on, A/B</td><td>v0.8</td><td>41 / 5.1</td><td>–</td><td>223 / 110</td></tr>
+<tr><td>1 node, sampler off, A/B</td><td>v0.7</td><td>6.8</td><td>–</td><td>123</td></tr>
+<tr><td>1 node, sampler off, A/B</td><td>v0.8</td><td>34</td><td>–</td><td>8.4</td></tr>
+<tr><td>1 node, sampler off (headline rows)</td><td>v0.8</td><td>18</td><td>10</td><td>15</td></tr>
+<tr><td>3 nodes, sampler off</td><td>v0.8: matrix, extra 1, extra 2</td><td>6.7</td><td>15</td><td>84 / 203 / 142</td></tr>
+<tr><td>3 nodes, sampler off</td><td>v0.7: control, extra 1, extra 2</td><td>40</td><td>59</td><td>86 / 136 / 366</td></tr>
+<tr><td>Kafka default, 1 node (same day / v0.7 set)</td><td>3.7.0</td><td>– / 12</td><td>12 / 16</td><td>18 / 22</td></tr>
+<tr><td>Kafka fsync per message, 1 node (same day / v0.7 set)</td><td>3.7.0</td><td>– / 40</td><td>38 / 44</td><td>104 / 57</td></tr>
+</tbody></table></div>
+<p><b>Root cause.</b> The spikes come from the environment, not from v0.8 code:</p>
+<ul>
+<li><b>Both images show them.</b> The v0.7 image shows them as often and as large as v0.8 when the runs alternate (A/B rows), so they are not caused by v0.8 changes.</li>
+<li><b>Retention is not involved.</b> The suspected 50 ms retention passes delete nothing in a latency run: bench channels are Stream mode and a 30 s latency run writes at most ~2 GiB, below the 4 GiB cap (sampled peak 1.9 GiB at 50k). A pass with nothing due only counts segments under read locks.</li>
+<li><b>Fetch-ahead is not involved.</b> The 1-node rows have no replication.</li>
+<li><b>The storage engine's fsyncs are healthy inside the spiky windows.</b> In the sampler-on 1-node runs the fsync mean was 0.6–1 ms and p99 ≤ 2.5–10 ms, while the publish p99 was 110–223 ms.</li>
+<li><b>Outside load raises them.</b> Anything that adds work on the host raises the tails: <code>docker exec</code> every 2 s (sampler on vs off), and the macOS storage indexer running at 50–90 % CPU all session. The harness timestamps from the scheduled send time, so any pause of the client, broker or VM vCPU counts.</li>
+</ul>
+<p>Systems that fsync before the ack are hit harder (Kafka-fsync's p99 at 50k rose from 57 to 104 ms). Kafka's default acks from the page cache and was barely affected on 1 node.</p>
+<p>The 3-node p99 at 50k msg/s comes from a different, structural cause, the same in v0.7 and v0.8: three brokers fsync the same data on one SSD. The p99 follows the fsync mean in the three extra rounds: fsync mean 2.0 ms gives 136 ms, 3.2 ms gives 142, 5.3–5.6 ms gives 203–366. <b>No code change was made</b>: nothing in the v0.8 code is implicated, and the 3-node tail needs the local-commit work listed in <code>docs/design/v0.8-replication.md</code> §5. Evidence: <code>investigation/latency-tails/</code> and <code>investigation/latency-50k/</code> (run JSONs; the fsync stats of the extra 3-node rounds are in each directory's <code>samples-summary.json</code>).</p>

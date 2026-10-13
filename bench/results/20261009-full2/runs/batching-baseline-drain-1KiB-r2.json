@@ -1,0 +1,40 @@
+{
+  "publish_ms": null,
+  "e2e_ms": null,
+  "errors": 0,
+  "schema": 1,
+  "kind": "fluxmq-bench",
+  "scenario": "batching",
+  "run_id": "batching-baseline-drain-1KiB-r2",
+  "label": "baseline",
+  "image": "fluxmq:v0.4-baseline",
+  "revision": "3a6bb81",
+  "bench_image": "fluxmq:dev",
+  "run": "drain-1KiB",
+  "args": [
+    "--producers",
+    "4",
+    "--consumers",
+    "4",
+    "--inflight",
+    "4",
+    "--batch",
+    "100",
+    "--size",
+    "1024",
+    "--drain",
+    "1000000",
+    "--duration",
+    "120"
+  ],
+  "exit": 1,
+  "repeat": 2,
+  "measure_start_ms": 1791499661447,
+  "measure_end_ms": 1791499661691,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "4",
+    "bench_mem": "2g"
+  }
+}

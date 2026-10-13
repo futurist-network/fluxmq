@@ -1,0 +1,72 @@
+samples: 1690
+
+threads:
+   29.2%  fluxmq-writer-b
+   28.0%  fluxmq-delivery
+   23.8%  tokio-rt-worker
+   18.8%  fluxmq-fsync
+    0.2%  fluxmq-meta
+
+top self:
+   24.3%  writev
+   16.6%  fdatasync
+   12.7%  __write
+   10.9%  syscall
+    8.6%  __recv
+    4.0%  crc32c::hw_x86_64::crc_u64_parallel3
+    3.7%  epoll_wait
+    2.3%  <fluxmq_core::storage::log::PartitionWriter>::append_batch
+    1.5%  malloc
+    0.8%  crc32c::hw_x86_64::crc_u64_append
+    0.7%  <fluxmq_core::group::Group>::poll_batch
+    0.5%  <fluxmq_core::storage::log::RecentCache>::find
+    0.4%  cfree
+    0.4%  <tokio::runtime::scheduler::multi_thread::worker::Context>::park_internal
+    0.4%  __clock_gettime
+    0.4%  fluxmq_server::net::connection::run_io::<tokio::net::tcp::split_owned::OwnedReadHalf, tokio::net::tcp::split_owned::OwnedWriteHalf>::{closure#0}
+    0.4%  tokio::runtime::scheduler::multi_thread::worker::run
+    0.4%  fluxmq_server::net::connection::pump::{closure#0}
+    0.4%  powf32x
+    0.4%  <fluxmq_core::group::Group>::ack_ranges
+    0.3%  realloc
+    0.3%  fluxmq_telemetry::rates::window_histogram
+    0.3%  <fluxmq_server::net::connection::Connection>::handle::{closure#0}
+    0.3%  <std::sys::pal::unix::time::Timespec>::now
+    0.2%  <tokio::runtime::time::Driver>::park_internal
+    0.2%  <fluxmq_core::storage::log::PartitionWriter>::write_out
+    0.2%  <fluxmq_core::broker::Broker>::publish_batch::{closure#0}
+    0.2%  <tokio::runtime::scheduler::multi_thread::worker::Context>::run_task
+    0.2%  <fluxmq_core::broker::Broker>::stats
+    0.2%  <tokio::sync::notify::NotifyGuard>::notify_waiters
+
+top total:
+  100.0%  __clone
+  100.0%  <std::thread::lifecycle::spawn_unchecked::{closure#1} as core::ops::function::FnOnce>::call_once::{shim:vtable#0}
+  100.0%  <alloc::boxed::Box as core::ops::function::FnOnce>::call_once
+  100.0%  <std::sys::thread::unix::Thread>::new::thread_start
+   51.8%  std::sys::backtrace::__rust_begin_short_backtrace::<::spawn_thread::{closure#0}, ()>
+   51.6%  tokio::runtime::task::raw::poll::<tokio::runtime::blocking::task::BlockingTask, tokio::runtime::blocking::schedule::BlockingSchedule>
+   51.5%  tokio::runtime::scheduler::multi_thread::worker::run
+   43.7%  <tokio::runtime::scheduler::multi_thread::worker::Context>::run_task
+   29.2%  std::sys::backtrace::__rust_begin_short_backtrace::<::start::{closure#2}, ()>
+   24.3%  writev
+   18.9%  tokio::runtime::task::raw::poll::<fluxmq_server::net::connection::write_loop::{closure#0}, alloc::sync::Arc>
+   18.8%  fluxmq_server::net::connection::write_loop::<tokio::net::tcp::split_owned::OwnedWriteHalf>::{closure#0}
+   18.8%  std::sys::backtrace::__rust_begin_short_backtrace::<::submit_groups::{closure#1}, ()>
+   18.0%  <fluxmq_server::net::writer::FrameWriter>::poll_write_until
+   17.9%  <tokio::net::tcp::stream::TcpStream>::poll_write_vectored_priv
+   17.0%  fluxmq_core::fsync_pool::run_chain
+   16.6%  fdatasync
+   15.5%  <fluxmq_core::storage::log::PartitionWriter>::write_out
+   15.3%  tokio::runtime::task::raw::poll::<tokio_util::task::task_tracker::TrackedFuture, alloc::sync::Arc>
+   15.2%  <tokio_util::task::task_tracker::TrackedFuture as core::future::future::Future>::poll
+   15.1%  fluxmq_server::net::connection::run_io::<tokio::net::tcp::split_owned::OwnedReadHalf, tokio::net::tcp::split_owned::OwnedWriteHalf>::{closure#0}
+   12.7%  __write
+   10.9%  syscall
+    9.8%  <tokio_util::codec::framed_impl::FramedImpl as futures_core::stream::Stream>::poll_next
+    9.5%  <fluxmq_core::channel::WriterState>::submit
+    8.9%  <fluxmq_core::storage::log::PartitionWriter>::prepare_commit
+    8.8%  <tokio::net::tcp::stream::TcpStream>::poll_read_priv
+    8.6%  __recv
+    7.6%  fluxmq_core::channel::writer_loop::{closure#2}
+    7.5%  <fluxmq_core::storage::log::PartitionWriter>::append_batch

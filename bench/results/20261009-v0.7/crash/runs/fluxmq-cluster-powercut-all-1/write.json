@@ -1,0 +1,171 @@
+{
+  "acked": 103989,
+  "brokers": [
+    "n1:7420",
+    "n2:7420",
+    "n3:7420"
+  ],
+  "client": "fluxmq-client BatchingProducer linger=5ms (broker 0.7.0)",
+  "consumer": null,
+  "durability": "FluxMQ stream channel; publish acknowledged per the broker's FLUXMQ_FSYNC policy (group-commit: after fsync; os: after write(2)) and, in a cluster, after every ISR member has it",
+  "enqueue_errors": 0,
+  "failed": 0,
+  "first_error_ms": null,
+  "go_ms": 1791579739041,
+  "last_error": null,
+  "linger_ms": 5,
+  "partitions": 4,
+  "producers": 2,
+  "publish_timeout_s": 30,
+  "rate": 5000,
+  "replication": 1,
+  "sent": 103989,
+  "size": 1024,
+  "stop_ms": 1791579759847,
+  "system": "fluxmq",
+  "timeline": [
+    {
+      "acked": 4972,
+      "errors": 0,
+      "ms": 1791579740042,
+      "sent": 5001,
+      "t": 1
+    },
+    {
+      "acked": 4980,
+      "errors": 0,
+      "ms": 1791579741042,
+      "sent": 5001,
+      "t": 2
+    },
+    {
+      "acked": 5009,
+      "errors": 0,
+      "ms": 1791579742042,
+      "sent": 4999,
+      "t": 3
+    },
+    {
+      "acked": 4990,
+      "errors": 0,
+      "ms": 1791579743042,
+      "sent": 5001,
+      "t": 4
+    },
+    {
+      "acked": 5013,
+      "errors": 0,
+      "ms": 1791579744043,
+      "sent": 4997,
+      "t": 5
+    },
+    {
+      "acked": 5012,
+      "errors": 0,
+      "ms": 1791579745042,
+      "sent": 5003,
+      "t": 6
+    },
+    {
+      "acked": 4978,
+      "errors": 0,
+      "ms": 1791579746042,
+      "sent": 5000,
+      "t": 7
+    },
+    {
+      "acked": 5015,
+      "errors": 0,
+      "ms": 1791579747043,
+      "sent": 4997,
+      "t": 8
+    },
+    {
+      "acked": 5005,
+      "errors": 0,
+      "ms": 1791579748042,
+      "sent": 5003,
+      "t": 9
+    },
+    {
+      "acked": 4995,
+      "errors": 0,
+      "ms": 1791579749042,
+      "sent": 4997,
+      "t": 10
+    },
+    {
+      "acked": 5003,
+      "errors": 0,
+      "ms": 1791579750043,
+      "sent": 5002,
+      "t": 11
+    },
+    {
+      "acked": 4925,
+      "errors": 0,
+      "ms": 1791579751043,
+      "sent": 5000,
+      "t": 12
+    },
+    {
+      "acked": 557,
+      "errors": 0,
+      "ms": 1791579752042,
+      "sent": 5000,
+      "t": 13
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791579753043,
+      "sent": 5000,
+      "t": 14
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791579754042,
+      "sent": 453,
+      "t": 15
+    },
+    {
+      "acked": 0,
+      "errors": 0,
+      "ms": 1791579755043,
+      "sent": 0,
+      "t": 16
+    },
+    {
+      "acked": 18300,
+      "errors": 0,
+      "ms": 1791579756042,
+      "sent": 13308,
+      "t": 17
+    },
+    {
+      "acked": 11210,
+      "errors": 0,
+      "ms": 1791579757043,
+      "sent": 6240,
+      "t": 18
+    },
+    {
+      "acked": 5008,
+      "errors": 0,
+      "ms": 1791579758042,
+      "sent": 4999,
+      "t": 19
+    },
+    {
+      "acked": 4995,
+      "errors": 0,
+      "ms": 1791579759043,
+      "sent": 5001,
+      "t": 20
+    }
+  ],
+  "topic": "crash-powercut-1-9738510",
+  "unacked_at_end": 0,
+  "window": 5000
+}

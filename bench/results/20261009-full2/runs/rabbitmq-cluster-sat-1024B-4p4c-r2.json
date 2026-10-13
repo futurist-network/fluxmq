@@ -1,0 +1,327 @@
+{
+  "broker_version": "RabbitMQ 4.1.8",
+  "cleanup_error": null,
+  "client": "lapin 2.x (AMQP 0-9-1), publisher confirms, prefetch=2000",
+  "consume_mb_s": 6.61,
+  "consume_rate": 6453.0,
+  "consumed": 193604,
+  "drained": true,
+  "durability": "RabbitMQ: 8 quorum queues (Raft, replicated to every cluster node), persistent messages, publisher confirms (confirm after a majority has the entry fsync'd to its WAL); manual ack per message",
+  "e2e_ms": {
+    "count": 193866,
+    "max": 3184.639,
+    "mean": 1269.512,
+    "min": 327.424,
+    "p50": 1033.727,
+    "p90": 2215.935,
+    "p99": 2648.063,
+    "p999": 2947.071
+  },
+  "errors": 0,
+  "kind": "harness",
+  "label": "rabbitmq-cluster",
+  "last_error": null,
+  "measure_end_ms": 1791505401682,
+  "measure_start_ms": 1791505371681,
+  "params": {
+    "brokers": [
+      "amqp://guest:guest@rmq1:5672/%2f",
+      "amqp://guest:guest@rmq2:5672/%2f",
+      "amqp://guest:guest@rmq3:5672/%2f"
+    ],
+    "consumers": 4,
+    "duration_s": 30,
+    "linger_ms": 5,
+    "mtls": false,
+    "partitions": 8,
+    "prefetch": 2000,
+    "producers": 4,
+    "queue_type": "quorum",
+    "rate": 0,
+    "replication": 1,
+    "size": 1024,
+    "tls": false,
+    "warmup_s": 10,
+    "window": 2000
+  },
+  "publish_mb_s": 6.62,
+  "publish_ms": {
+    "count": 193866,
+    "max": 3188.735,
+    "mean": 1230.078,
+    "min": 328.192,
+    "p50": 933.887,
+    "p90": 2222.079,
+    "p99": 2631.679,
+    "p999": 2953.215
+  },
+  "publish_rate": 6462.0,
+  "published": 193870,
+  "received_of_window": 193866,
+  "run_id": "rabbitmq-cluster-sat-1024B-4p4c-r2",
+  "scenario": "saturation",
+  "schema": 1,
+  "sent_in_window": 193866,
+  "started_at_ms": 1791505361504,
+  "sustained": null,
+  "system": "rabbitmq",
+  "timeline": [
+    {
+      "con": 9421,
+      "phase": "warmup",
+      "pub": 9616,
+      "t": 1
+    },
+    {
+      "con": 9508,
+      "phase": "warmup",
+      "pub": 9628,
+      "t": 2
+    },
+    {
+      "con": 8781,
+      "phase": "warmup",
+      "pub": 8813,
+      "t": 3
+    },
+    {
+      "con": 9577,
+      "phase": "warmup",
+      "pub": 9402,
+      "t": 4
+    },
+    {
+      "con": 7252,
+      "phase": "warmup",
+      "pub": 7361,
+      "t": 5
+    },
+    {
+      "con": 6361,
+      "phase": "warmup",
+      "pub": 6389,
+      "t": 6
+    },
+    {
+      "con": 5659,
+      "phase": "warmup",
+      "pub": 5453,
+      "t": 7
+    },
+    {
+      "con": 5528,
+      "phase": "warmup",
+      "pub": 5769,
+      "t": 8
+    },
+    {
+      "con": 5757,
+      "phase": "warmup",
+      "pub": 5597,
+      "t": 9
+    },
+    {
+      "con": 5959,
+      "phase": "warmup",
+      "pub": 5923,
+      "t": 10
+    },
+    {
+      "con": 6370,
+      "phase": "measure",
+      "pub": 6463,
+      "t": 11
+    },
+    {
+      "con": 6692,
+      "phase": "measure",
+      "pub": 6706,
+      "t": 12
+    },
+    {
+      "con": 6043,
+      "phase": "measure",
+      "pub": 6176,
+      "t": 13
+    },
+    {
+      "con": 4950,
+      "phase": "measure",
+      "pub": 4760,
+      "t": 14
+    },
+    {
+      "con": 5920,
+      "phase": "measure",
+      "pub": 5475,
+      "t": 15
+    },
+    {
+      "con": 6455,
+      "phase": "measure",
+      "pub": 6772,
+      "t": 16
+    },
+    {
+      "con": 5702,
+      "phase": "measure",
+      "pub": 5899,
+      "t": 17
+    },
+    {
+      "con": 6241,
+      "phase": "measure",
+      "pub": 6127,
+      "t": 18
+    },
+    {
+      "con": 6247,
+      "phase": "measure",
+      "pub": 6383,
+      "t": 19
+    },
+    {
+      "con": 5980,
+      "phase": "measure",
+      "pub": 5881,
+      "t": 20
+    },
+    {
+      "con": 6295,
+      "phase": "measure",
+      "pub": 5907,
+      "t": 21
+    },
+    {
+      "con": 6148,
+      "phase": "measure",
+      "pub": 6641,
+      "t": 22
+    },
+    {
+      "con": 6258,
+      "phase": "measure",
+      "pub": 6220,
+      "t": 23
+    },
+    {
+      "con": 6768,
+      "phase": "measure",
+      "pub": 6745,
+      "t": 24
+    },
+    {
+      "con": 6651,
+      "phase": "measure",
+      "pub": 6639,
+      "t": 25
+    },
+    {
+      "con": 6285,
+      "phase": "measure",
+      "pub": 6416,
+      "t": 26
+    },
+    {
+      "con": 6638,
+      "phase": "measure",
+      "pub": 6486,
+      "t": 27
+    },
+    {
+      "con": 6220,
+      "phase": "measure",
+      "pub": 6489,
+      "t": 28
+    },
+    {
+      "con": 6915,
+      "phase": "measure",
+      "pub": 6708,
+      "t": 29
+    },
+    {
+      "con": 6629,
+      "phase": "measure",
+      "pub": 6704,
+      "t": 30
+    },
+    {
+      "con": 6731,
+      "phase": "measure",
+      "pub": 6836,
+      "t": 31
+    },
+    {
+      "con": 6939,
+      "phase": "measure",
+      "pub": 6881,
+      "t": 32
+    },
+    {
+      "con": 7295,
+      "phase": "measure",
+      "pub": 7146,
+      "t": 33
+    },
+    {
+      "con": 6726,
+      "phase": "measure",
+      "pub": 6798,
+      "t": 34
+    },
+    {
+      "con": 6824,
+      "phase": "measure",
+      "pub": 6916,
+      "t": 35
+    },
+    {
+      "con": 6472,
+      "phase": "measure",
+      "pub": 6257,
+      "t": 36
+    },
+    {
+      "con": 6903,
+      "phase": "measure",
+      "pub": 7022,
+      "t": 37
+    },
+    {
+      "con": 6751,
+      "phase": "measure",
+      "pub": 6677,
+      "t": 38
+    },
+    {
+      "con": 6930,
+      "phase": "measure",
+      "pub": 6943,
+      "t": 39
+    },
+    {
+      "con": 6626,
+      "phase": "measure",
+      "pub": 6796,
+      "t": 40
+    },
+    {
+      "con": 6127,
+      "phase": "drain",
+      "pub": 5726,
+      "t": 41
+    }
+  ],
+  "topic": "bench-r-5361504",
+  "window_s": 30.001,
+  "limits": {
+    "broker_cpus": "2",
+    "broker_mem": "2g",
+    "bench_cpus": "2",
+    "bench_mem": "2g"
+  },
+  "repeat": 2,
+  "system_name": "rabbitmq-cluster",
+  "system_title": "RabbitMQ 3 nodes (quorum)"
+}

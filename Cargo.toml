@@ -1,0 +1,83 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/fluxmq-proto",
+    "crates/fluxmq-meta",
+    "crates/fluxmq-auth",
+    "crates/fluxmq-router",
+    "crates/fluxmq-notify",
+    "crates/fluxmq-cluster",
+    "crates/fluxmq-replication",
+    "crates/fluxmq-core",
+    "crates/fluxmq-telemetry",
+    "crates/fluxmq-api",
+    "crates/fluxmq-server",
+    "crates/fluxmq-client",
+    "crates/fluxmq-webhooks",
+    "crates/fluxmq-backup",
+    "crates/fluxmq-tls",
+    "crates/fluxmq-scheduler",
+]
+
+[workspace.package]
+version = "0.11.0"
+edition = "2024"
+license = "Apache-2.0"
+repository = "https://github.com/futurist-network/fluxmq"
+rust-version = "1.88"
+
+[workspace.dependencies]
+fluxmq-proto = { path = "crates/fluxmq-proto" }
+fluxmq-meta = { path = "crates/fluxmq-meta" }
+fluxmq-auth = { path = "crates/fluxmq-auth" }
+fluxmq-router = { path = "crates/fluxmq-router" }
+fluxmq-notify = { path = "crates/fluxmq-notify" }
+fluxmq-cluster = { path = "crates/fluxmq-cluster" }
+fluxmq-replication = { path = "crates/fluxmq-replication" }
+fluxmq-core = { path = "crates/fluxmq-core" }
+fluxmq-telemetry = { path = "crates/fluxmq-telemetry" }
+fluxmq-api = { path = "crates/fluxmq-api" }
+fluxmq-client = { path = "crates/fluxmq-client" }
+fluxmq-webhooks = { path = "crates/fluxmq-webhooks" }
+fluxmq-backup = { path = "crates/fluxmq-backup" }
+fluxmq-tls = { path = "crates/fluxmq-tls", default-features = false }
+fluxmq-scheduler = { path = "crates/fluxmq-scheduler" }
+
+anyhow = "1"
+axum = { version = "0.8", features = ["ws"] }
+bytes = { version = "1", features = ["serde"] }
+clap = { version = "4", features = ["derive", "env"] }
+crc32fast = "1"
+crc32c = "0.6"
+lz4_flex = { version = "0.11", default-features = false, features = ["safe-encode", "safe-decode", "std"] }
+zstd = { version = "0.13", default-features = false }
+futures = "0.3"
+hdrhistogram = "7"
+parking_lot = "0.12"
+postcard = { version = "1", features = ["use-std"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+thiserror = "2"
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["codec"] }
+tower-http = { version = "0.7", features = ["fs", "cors", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Line tables are enough for backtraces; full debuginfo of ~100 test binaries took 80+ GB.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
+
+# No incremental cache for the ~100 test targets: each kept its own, and target/debug regrew to 80 GB
+# within a day. Workspace libs keep incremental (dev profile), so edit-rebuild stays fast.
+[profile.test]
+incremental = false
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+debug = 1

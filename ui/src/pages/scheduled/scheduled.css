@@ -1,0 +1,49 @@
+/* Delayed messages page. */
+.sched-kpis {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1280px) {
+  .sched-kpis {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .sched-kpis .hm:nth-child(4) {
+    border-left: 1px solid var(--border-subtle);
+  }
+  .sched-kpis .hm:nth-child(n + 4) {
+    border-top: none;
+  }
+}
+@media (max-width: 720px) {
+  .sched-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sched-kpis .hm:nth-child(3) {
+    border-left: none;
+  }
+  .sched-kpis .hm:nth-child(n + 3) {
+    border-top: 1px solid var(--border-subtle);
+  }
+}
+.sched-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.sched-chips .tchip .num {
+  margin-left: 4px;
+}
+.sched-sub {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.sched-actions {
+  white-space: nowrap;
+}
+.sched-actions .btn + .btn,
+.sched-actions .gate-wrap + .gate-wrap {
+  margin-left: 6px;
+}
+.sched-how {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
