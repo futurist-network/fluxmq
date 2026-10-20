@@ -51,7 +51,7 @@ jobs:
           tar -czf "out/$asset" -C out fluxmq
           (cd out && sha256sum "$asset" > "$asset.sha256")
           echo "${{ steps.image.outputs.digest }}" > out/digest-${{ matrix.arch }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.arch }}
           path: |
