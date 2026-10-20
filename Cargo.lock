@@ -985,7 +985,7 @@ dependencies = [
  "fluxmq-meta",
  "fluxmq-proto",
  "futures",
- "getrandom 0.3.4",
+ "getrandom 0.4.3",
  "object_store",
  "parking_lot",
  "serde",
